@@ -1,21 +1,21 @@
 import React from 'react';
+import '../../assets/css/sharedHover.css'
 
 const BasicButton = ({content}) => {
     const buttonStyle = {
-        height: '50px',
-        minWidth: '185px',
+        height: '60px',
+        minWidth: '200px',
         background: '#F15D03',
-        borderRadius: '28px',
+        borderRadius: '8px',
         border: 'none',
-        //fontFamily: 'Roboto',
-        fontSize: '16px',
+        fontSize: '22px',
         lineHeight: '18px',
         color: '#FFFFFF',
         fontWeight: 'bold',
         padding: '0px 10px 0px 10px'
     }
     return (
-        <button style={buttonStyle}>{content}</button>
+        <button id="basic-button" style={buttonStyle}>{content}</button>
     );
 }
 

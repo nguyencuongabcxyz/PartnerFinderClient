@@ -3,23 +3,19 @@ import NavigationBar from './NavigationBar';
 import DownButton from './shared/DownButton';
 import BasicButton from './shared/BasicButton';
 import '../assets/css/home.css';
+import '../assets/css/sharedHover.css'
 
 const Home = () => {
-    const sologanStyle = {
-        color: 'white',
-
-    }
     return (
         <div id="Home">
-            <div id="section1" style={{position: 'relative'}}>
-                <div>
+            <div id="section1">
                 <NavigationBar />
-                <h1 id="sologan" style={{color: 'white'}}>Let's find your partner and let <span style={{color: '#FDB82D', fontFamily: 'Pacifico, cursive'}}>PartnerFinder</span> help you enhance your english skills</h1>
-                <BasicButton content="Join Us" />
-                <DownButton content="How PartnerFinder can help you" />
+                <div id="center-intro">
+                <h1 id="sologan">Let's find your partner</h1>
+                <h2 id="sub-sologan">Let <span style={{color: '#6C3A8F', fontFamily: 'Pacifico, cursive', fontSize:'33px'}}>PartnerFinder</span> help you enhance your english skills</h2>
+                <BasicButton content="Join us now" />
                 </div>
-                <div >             
-                 </div>
+                <DownButton   headContent="See how" tailContent="can help you" />
             </div>
             <div id="section2">
             </div>
