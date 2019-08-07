@@ -1,31 +1,36 @@
-import React from 'react'
-
+import React from 'react';
+import '../assets/css/sharedHover.css';
 const NavigationBar = () => {
     const navBarStyles = {
         display: 'flex',
-        paddingTop: '15px',
-        paddingLeft: '15px'
+        paddingTop: '25px',
+        paddingLeft: '5%'
     }
     const buttonStyles = {
-        height: '70px',
-        width: '120px',
         background: 'none',
-        border: 'solid white 1px',
-        marginRight: '10px',
-        fontSize:  '18px',
+        border: 'none',
+        marginRight: '30px',
+        fontSize:  '22px',
         fontWeight: 'bold',
-        color: 'white'
+        color: 'white',
+        fontFamily: 'Dancing Script, cursive'
+    }
+    const buttonSectionStyles = {
+        display: 'flex',
+        paddingTop: '15px'
     }
     return(
         <div id="navigation-bar" style={navBarStyles}>
-            <div style={{marginRight: '20px'}}>
+            <div style={{marginRight: '40px'}}>
                 <img src="/Images/logo.svg" alt="logo" height="70px" width="70px" />
             </div>
+            <div id="button-section" style={buttonSectionStyles}>
             <div>
-                <button style={buttonStyles}>Sign In</button>
+                <button className="auth-button" style={buttonStyles}>Sign In</button>
             </div>
             <div>
-                <button style={buttonStyles}>Sign Up</button>
+                <button className="auth-button" style={buttonStyles}>Sign Up</button>
+            </div>
             </div>
         </div>
     );

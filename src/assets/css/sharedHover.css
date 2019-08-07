@@ -1,7 +1,14 @@
-#basic-button:hover{
-    background: white;
-    border: solid #F15D03 1px;
+#basic-button {
+    transition: ease-out 0.3s all;
 }
-#basic-button{
-    background: white;
+#basic-button:hover{
+    background: white !important;
+    border: solid #F15D03 1px !important;
+    color: #F15D03 !important;
+}
+.auth-button{
+    transition: linear 0.3s all;
+}
+.auth-button:hover{
+     color: #FFB906 !important;
 }
