@@ -75,48 +75,66 @@
     font-weight: bold;
 }
 
-.section-block img{
-    width: 60%;
+.section-block {
+    padding: 10px 3% 0 3%;
 }
+
+.section-block img{
+    width: 40%;
+    margin-bottom: 20px;
+}
+
+.section-block h2{
+    color: #4f4f4f;
+    font-size: 26px;
+}
+
 .section-block p{
     font-family: 'Arimo', sans-serif;
     margin-top: 30px;
     text-align: center;
     color: #4F4F4F;
     font-size: 16px;
-    font-weight: 600;
     line-height: 28px;
 }
 
 #section3{
-    height: 120vh;
 }
 
 .guide-content{
     height: 90%;
-    padding: 10vh 25% 10px 25%;
+    padding: 15vh 20% 10px 20%;
 }
 
 .guide-block{
-    height: 25%;
     display: flex;
+    margin-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 .guide-block img{
-    height: 80%;
+    width: 20%;
     margin-right: 20px;
+}
+
+.guide-block h2{
+    font-size: 22px;
+    max-width: 40vh;
+    color: #F15D03;
 }
 
 .guide-block p{
     max-width: 40vh;
 }
 
-.guide-block p span{
-    font-size: 80px;
+.guide-block h2 span{
+    font-size: 76px;
     line-height: 70px;
     font-weight: bold;
     color: #F15D03;
 }
+
 .block-right{
     display: flex;
     justify-content: flex-end;
@@ -129,5 +147,62 @@
 
 .block-right p {
     text-align: right;
+}
+
+.block-right h2 {
+    text-align: right;
+}
+
+#section4{
+    margin-top: 15vh;
+    background: #ffeaa7;
+    padding-top: 10vh;
+    padding-bottom: 10vh;
+    color: #4F4F4F;
+    position: relative;
+}
+
+#flex-container{
+    display: flex;
+    justify-content: space-around;
+}
+
+#first-part{
+    padding-left: 3%;
+    text-align: center;
+}
+
+#first-part h2{
+    margin-bottom: 30px;
+}
+
+#first-part p {
+    max-width: 400px;
+}
+
+#center-part h2{
+    margin-bottom: 30px;
+}
+
+#center-part a{
+    display: block;
+    margin-bottom: 10px;
+    text-decoration: none;
+    color: #4F4F4F;
+    max-width: max-content;
+}
+
+#contact-item img{
+    height: 25px;
+    margin-right: 20px;
+}
+
+#third-part{
+    display: flex;
+    align-items: center;
+}
+
+#contact-item p{
+    margin-bottom: 10px;
 }
 

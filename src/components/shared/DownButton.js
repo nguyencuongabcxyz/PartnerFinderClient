@@ -13,13 +13,15 @@ const scrollToSection = (link, e) => {
 const DownButton = ({headContent, tailContent, textColor, link}) => {
     const textStyle = {
         color: textColor,
-        fontSize: '25px',
+        fontSize: '18px',
         fontWeight: 'bold'
     }
     return(
         <div className="down-button">
-            <p style={textStyle}>{headContent}<span style={{color: '#FFB906', fontFamily: 'Pacifico, cursive', fontSize:'27px'}}> PartnerFinder </span>{tailContent}</p>
-            <img onClick={(e)=>scrollToSection(link, e)} style={{cursor: 'pointer'}} height="60px" width="60px" alt="down_img" src="/images/Vector.svg"></img>
+            <p style={textStyle}>{headContent}<span style={{color: '#FFB906', fontFamily: 'Pacifico, cursive', fontSize:'20px'}}> PartnerFinder </span>{tailContent}</p>
+            <div style={{position: 'relative', height: '50px'}}>
+            <img onClick={(e)=>scrollToSection(link, e)} style={{cursor: 'pointer', position: 'absolute', left: 'calc(50vw - 35px)'}} height="50px" width="50px" alt="down_img" src="/images/Vector.svg"></img>
+            </div>
         </div>
     );
 }

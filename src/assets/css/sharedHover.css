@@ -12,3 +12,37 @@
 .auth-button:hover{
      color: #FFB906 !important;
 }
+
+.down-button img{
+    animation: myAnimation 0.5s ease-in-out infinite;
+    -moz-animation: myAnimation 0.5s ease-in-out infinite;
+    -webkit-animation: myAnimation 0.5s ease-in-out infinite;
+    -o-animation: myAnimation 0.5s ease-in-out infinite;
+}
+
+@keyframes myAnimation {
+    from {height: 40px}
+    to {height: 50px}
+}
+
+/* Hien thi cho Firefox */
+@-moz-keyframes myAnimation {
+    from {height: 40px}
+    to {height: 50px}
+}
+
+/* Hien thi cho Safari and Chrome */
+@-webkit-keyframes myAnimation {
+    from {height: 40px}
+    to {height: 50px}
+}
+
+.section-block:hover{
+    background: #ffeaa7 !important;
+    box-shadow: 4px 4px #fdcb6e;
+}
+
+
+.section-block{
+    transition: linear 0.3s all;
+}
