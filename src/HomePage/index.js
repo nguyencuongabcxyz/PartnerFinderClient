@@ -1,8 +1,8 @@
 import React from 'react'
 import NavigationBar from './NavigationBar';
-import DownButton from './shared/DownButton';
-import BasicButton from './shared/BasicButton';
-import '../assets/css/home.css';
+import DownButton from '../_components/shared/DownButton';
+import BasicButton from '../_components/shared/BasicButton';
+import './home.css';
 import '../assets/css/sharedHover.css'
 
 const scrollToTop = (e) => {
