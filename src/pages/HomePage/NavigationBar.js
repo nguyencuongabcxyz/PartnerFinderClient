@@ -1,5 +1,5 @@
 import React from 'react';
-import '../assets/css/sharedHover.css';
+import '../../assets/css/sharedHover.css';
 const NavigationBar = () => {
     const navBarStyles = {
         display: 'flex',
@@ -26,7 +26,7 @@ const NavigationBar = () => {
             </div>
             <div id="button-section" style={buttonSectionStyles}>
             <div>
-                <button className="auth-button" style={buttonStyles}>Sign In</button>
+                <button type="button" className="auth-button" style={buttonStyles} data-toggle="modal" data-target="#exampleModal">Sign In</button>
             </div>
             <div>
                 <button className="auth-button" style={buttonStyles}>Sign Up</button>

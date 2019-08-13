@@ -1,9 +1,10 @@
 import React from 'react'
 import NavigationBar from './NavigationBar';
-import DownButton from '../_components/shared/DownButton';
-import BasicButton from '../_components/shared/BasicButton';
+import DownButton from '../../_components/shared/DownButton';
+import BasicButton from '../../_components/shared/BasicButton';
 import './home.css';
-import '../assets/css/sharedHover.css'
+import '../../assets/css/sharedHover.css'
+import LoginPage from '../LoginPage';
 
 const scrollToTop = (e) => {
     e.preventDefault();
@@ -31,6 +32,7 @@ const Home = () => {
         <div id="Home">
             <div id="section1">
                 <NavigationBar />
+                <LoginPage />
                 <div id="center-intro">
                     <h1 id="sologan">Let's find your partner</h1>
                     <h2 id="sub-sologan">Let <span style={{ color: '#FFB906', fontFamily: 'Pacifico, cursive', fontSize: '28px' }}>PartnerFinder</span> help you enhance your english skills</h2>
