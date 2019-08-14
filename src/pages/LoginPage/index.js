@@ -27,7 +27,6 @@ class LoginPage extends React.Component {
     }
 
     onSubmit = (formValues) => {
-        console.log(formValues);
         this.props.login(formValues.userName, formValues.password);
     }
 

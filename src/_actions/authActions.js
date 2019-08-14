@@ -1,10 +1,10 @@
 import {authServices} from '../_services/authServices';
 
 export const login = (userName, password) => async (dispatch) => {
-    const userId = await authServices.login(userName, password);
-    console.log("dsfalasf");
+    const result = await authServices.login(userName, password);
+    console.log(result);
     dispatch({
         type: 'LOGIN',
-        payload: userId
+        payload: result
     });
 };
