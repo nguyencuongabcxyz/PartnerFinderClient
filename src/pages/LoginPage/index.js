@@ -1,12 +1,14 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
+import { connect } from 'react-redux';
+import { login }  from '../../_actions/authActions';
 
 class LoginPage extends React.Component {
 
     renderError({ error, touched }) {
         if (touched && error) {
             return (
-                <div class="alert alert-danger" style={{marginTop: '5px'}}>
+                <div className="alert alert-danger" style={{marginTop: '5px'}}>
                     {error}
                 </div>
             );
@@ -24,8 +26,9 @@ class LoginPage extends React.Component {
         );
     }
 
-    onSubmit(formValues) {
+    onSubmit = (formValues) => {
         console.log(formValues);
+        this.props.login(formValues.userName, formValues.password);
     }
 
     render() {
@@ -74,4 +77,4 @@ const validate = (formValues) => {
 export default reduxForm({
     form: 'signIn',
     validate
-})(LoginPage);
+})(connect(null, {login})(LoginPage));
