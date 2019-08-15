@@ -27,7 +27,7 @@ const customStyleBasicButtonSection4 = {
 }
 
 const Home = () => {
-
+    console.log('home render');
     return (
         <div id="Home">
             <div id="section1">

@@ -2,19 +2,17 @@ import axios from 'axios';
 
 
 const auth = axios.create({
-    baseURL: 'https://localhost:44348/api/auth'
+    baseURL: `${process.env.REACT_APP_BASE_URL}/auth`
 });
 
 const login = async (userName, password) => {
-  var data = { userName, password };
-  try {
-    var response = await auth.post("/login", data);
-    console.log(response);
-    return handleAuthentication(response);
-  } catch (e) 
-  {
-      console.log(e);
-  }             //TODO: add some logic after error occurs
+    var data = { userName, password };
+    try {
+        var response = await auth.post("/login", data);
+        return handleAuthentication(response);
+    } catch (e) {
+        return handleAuthentication(e.response);
+    }
 
 };
 
@@ -23,16 +21,21 @@ const logout = () => {
 }
 
 const handleAuthentication = response => {
-  if (response.status !== 200) {
-    if (response.status === 400) {
-      return {isSignedIn: false, statusCode: 400, userId: null};
+
+    switch (response.status) {
+        case 200:
+            localStorage.setItem('token', response.data.token);
+            process.env.REACT_APP_TOKEN = response.data.token;
+            return { isAuthenticated: true, statusCode: 200, userId: response.data.id };
+        case 400:
+            return { isAuthenticated: false, statusCode: 400, userId: null };
+        case 403:
+            return { isAuthenticated: false, statusCode: 403, userId: null };
+        case 500:
+            return { isAuthenticated: false, statusCode: 500, userId: null };
+        default:
+            return { isAuthenticated: false, statusCode: 404, userId: null };
     }
-    if (response.status === 403) {
-      return {isSignedIn: false, statusCode: 403, userId: null};
-    }
-  }
-  localStorage.setItem('token', response.data.token);
-  return {isSignedIn: true, statusCode: 200, userId: response.data.id};
 };
 
 export const authServices = {
