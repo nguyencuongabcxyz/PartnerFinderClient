@@ -16,14 +16,13 @@ class LoginPage extends React.Component {
     }
 
     renderInput = ({ input, label, meta, type }) => {
-        //const validateClassName = `form-control ${meta.error && meta.touched ? 'is-invalid' : ''}`
+        const validateClassName = `form-control ${meta.error && meta.touched ? 'is-invalid' : ''}`
         return (
-            <div></div>
-            // <div className="form-group">
-            //     <label htmlFor={input.name}>{label}</label>
-            //     <input type={type} id={input.name} className={validateClassName}  {...input} />
-            //     {this.renderError(meta)}
-            // </div>
+            <div className="form-group">
+                <label htmlFor={input.name}>{label}</label>
+                <input type={type} id={input.name} className={validateClassName}  {...input} />
+                {this.renderError(meta)}
+            </div>
         );
     }
 
