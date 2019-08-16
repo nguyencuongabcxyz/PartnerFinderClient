@@ -16,8 +16,32 @@ const login = async (userName, password) => {
 
 };
 
+
+
+const register = async ({userName, password, email}) => {
+    var data = {userName, password, email};
+    try {
+        var response = await auth.post("/register", data);
+        return handleRegistration(response);
+    }catch(e){
+        return handleRegistration(e.response);
+    }
+}
+
 const logout = () => {
     localStorage.removeItem('token');
+}
+
+const handleRegistration = response => {
+    if(response.status !== 200) {
+        return { registrationResult: 'failed' }
+    }else{
+        if(response.data.succeeded === false){
+            return { registrationResult: 'duplicate'}
+        }
+        return { registrationResult: 'successfull'}
+    }
+
 }
 
 const handleAuthentication = response => {
@@ -41,4 +65,5 @@ const handleAuthentication = response => {
 export const authServices = {
     login,
     logout,
+    register
 }

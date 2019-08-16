@@ -1,16 +1,5 @@
 import { authServices } from '../_services/authServices';
 import { removeModalBootstrap } from '../_helpers/uiHelper';
-import { withToastManager } from 'react-toast-notifications';
-
-const Demo = ({ content, toastManager }) => (
-  <Button onClick={() => toastManager.add(content, {
-    appearance: 'success',
-    autoDismiss: true,
-    pauseOnHover: false,
-  })}>
-    Add Toast
-  </Button>
-);
 
 import history from '../history';
 import {
@@ -19,7 +8,7 @@ import {
     LOGIN_BAD_REQUEST,
     LOGIN_FORBIDDEN,
     LOGIN_SERVER_ERROR,
-    LOGOUT
+    LOGOUT, 
 } from '../_constants/authConstants'
 
 const requestLogin = () => {

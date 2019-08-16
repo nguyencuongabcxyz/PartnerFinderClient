@@ -26,10 +26,10 @@ const NavigationBar = () => {
             </div>
             <div id="button-section" style={buttonSectionStyles}>
             <div>
-                <button type="button" className="auth-button" style={buttonStyles} data-toggle="modal" data-target="#exampleModal">Sign In</button>
+                <button type="button" className="auth-button" style={buttonStyles} data-toggle="modal" data-target="#loginModal">Sign In</button>
             </div>
             <div>
-                <button className="auth-button" style={buttonStyles}>Sign Up</button>
+                <button type="button" className="auth-button" style={buttonStyles} data-toggle="modal" data-target="#registerModal">Sign Up</button>
             </div>
             </div>
         </div>
