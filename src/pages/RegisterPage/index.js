@@ -5,6 +5,12 @@ import { registerUser } from '../../_actions/registrationAction';
 import '../../assets/css/loginRegisterForm.css';
 import $ from 'jquery';
 
+import {
+    SUCCESSFULL, 
+    FAILED,
+    DUPLICATE
+} from '../../_constants/registrationResult'
+
 class RegisterPage extends React.Component {
 
     renderError({ error, touched }) {
@@ -23,7 +29,7 @@ class RegisterPage extends React.Component {
             <div>
             <div className="form-group">
                 <label htmlFor={input.name}>{label}</label>
-                <input type={type} id={input.name} placeholder={hint} className={validateClassName}  {...input} />
+                <input type={type} placeholder={hint} className={validateClassName}  {...input} />
             </div>
             {this.renderError(meta)}
             </div>
@@ -40,32 +46,39 @@ class RegisterPage extends React.Component {
         this.props.registerUser(formValues);
     }
 
-    handleAuthenticationResult() {
+    handleRegistrationResult() {
         let display = 'none';
         let responseMessage = '';
+        let prefixMessage = '';
+        let alertClass = 'alert-danger';
 
-        switch(this.props.auth.statusCode) {
-            case 400: 
+        switch(this.props.registrationResult) {
+            case DUPLICATE: 
                 display = 'block';
-                responseMessage = 'Incorrect username or password!';
+                responseMessage = 'This user name is already taken!';
+                prefixMessage = 'Warning!';
+                alertClass = 'alert-warning';
                 break;
-            case 403:
+            case FAILED:
                 display = 'block';
-                responseMessage = 'Your account has been block!';
+                responseMessage = 'Errors occured! Registration failed!';
+                prefixMessage = 'Danger!';
                 break;
-            case 500:
+            case SUCCESSFULL:
                 display = 'block';
-                responseMessage = 'There are something wrong on server!';
+                responseMessage = 'Registration is successfull!';
+                prefixMessage = 'Successfull!'
+                alertClass = 'alert-success'
                 break;
             default:
                 break;
         } 
-        return {display, responseMessage};
+        return {display, responseMessage, prefixMessage, alertClass};
     }
 
     render() {
         
-        //let {display, responseMessage} = this.handleAuthenticationResult();
+        let {display, responseMessage, prefixMessage, alertClass} = this.handleRegistrationResult();
 
         return (
             <div>
@@ -81,9 +94,9 @@ class RegisterPage extends React.Component {
                                 </button>
                             </div>
                             <div className="modal-body">
-                                {/* <div className="alert alert-danger" style={{display: `${display}`}}>
-                                    <strong>Warning!</strong> {responseMessage}
-                                </div> */}
+                                <div className={`alert ${alertClass}`}  style={{display: `${display}`}}>
+                                    <strong>{prefixMessage}</strong> {responseMessage}
+                                </div>
                                 <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
                                     <Field name="userName" component={this.renderInput} hint="Type your user name" label="User name" type="text" />
                                     <Field name="email" component={this.renderInput} hint="Type your email" label="Email" type="email" />

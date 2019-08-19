@@ -22,7 +22,7 @@ class LoginPage extends React.Component {
             <div>
             <div className="form-group">
                 <label htmlFor={input.name}>{label}</label>
-                <input type={type} id={input.name} placeholder={hint} className={validateClassName}  {...input} />
+                <input type={type}  placeholder={hint} className={validateClassName}  {...input} />
             </div>
             {this.renderError(meta)}
             </div>
@@ -83,8 +83,8 @@ class LoginPage extends React.Component {
                                     <button type="submit" className="btn btn-lg btn-primary btn-login">SIGN IN</button>
                                     <p className="login-options-text">Or login with</p>
                                     <div className="login-options-images">
-                                        <img alt="login-options" src="/Images/facebook_login.svg"/>
-                                        <img alt="login-options" src="/Images/google_login.svg"/>
+                                        <img alt="login-options" src="/Images/LoginPage/facebook_login.svg"/>
+                                        <img alt="login-options" src="/Images/LoginPage/google_login.svg"/>
                                     </div>
                                 </form>
                             </div>

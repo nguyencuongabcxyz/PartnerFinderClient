@@ -6,6 +6,7 @@ import './home.css';
 import '../../assets/css/sharedHover.css'
 import LoginPage from '../LoginPage';
 import RegisterPage from '../RegisterPage';
+import { removeModalBootstrap } from '../../_helpers/uiHelper';
 
 const scrollToTop = (e) => {
     e.preventDefault();
@@ -28,7 +29,7 @@ const customStyleBasicButtonSection4 = {
 }
 
 const Home = () => {
-    console.log('home render');
+    removeModalBootstrap();
     return (
         <div id="Home">
             <div id="section1">
@@ -46,17 +47,17 @@ const Home = () => {
                 <h1 className="section-title">How <span>PartnerFinder</span> can help you</h1>
                 <div className="section-content row">
                     <div className="section-block col-lg-3">
-                        <img src="/Images/finding_partner.svg" alt="finding_partner"></img>
+                        <img src="/Images/HomePage/finding_partner.svg" alt="finding_partner"></img>
                         <h2>While you don’t have to use any specific library to</h2>
                         <p>While you don’t have to use any specific library to integrate Bootstrap with React apps, it's often easier than trying to wrap the Bootstrap jQuery plugins. React Bootstrap is the most popular option that strives for complete parity with Bootstrap.</p>
                     </div>
                     <div className="section-block col-lg-3">
-                        <img src="/Images/asking.svg" alt="asking"></img>
+                        <img src="/Images/HomePage/asking.svg" alt="asking"></img>
                         <h2>While you don’t have to use any specific library to</h2>
                         <p>While you don’t have to use any specific library to integrate Bootstrap with React apps, it's often easier than trying to wrap the Bootstrap jQuery plugins. React Bootstrap is the most popular option that strives for complete parity with Bootstrap. </p>
                     </div>
                     <div className="section-block col-lg-3">
-                        <img src="/Images/feedback.svg" alt="feedback"></img>
+                        <img src="/Images/HomePage/feedback.svg" alt="feedback"></img>
                         <h2>While you don’t have to use any specific library to</h2>
                         <p>While you don’t have to use any specific library to integrate Bootstrap with React apps, it's often easier than trying to wrap the Bootstrap jQuery plugins. React Bootstrap is the most popular option that strives for complete parity with Bootstrap. </p>
                     </div>
@@ -67,7 +68,7 @@ const Home = () => {
                 <h1 className="section-title">See how <span>PartnerFinder</span> works</h1>
                 <div className="guide-content">
                     <div className="guide-block">
-                        <img alt="guide_image" src="/Images/exam_guide.svg"></img>
+                        <img alt="guide_image" src="/Images/HomePage/exam_guide.svg"></img>
                         <div>
                         <h2><span>1</span>While you don’t have to use any specific library to integrate Bootstrap with React apps</h2>
                             <p>While you don’t have to use any specific library to integrate Bootstrap with React apps, it's often easier than trying to wrap the Bootstrap jQuery plugins. React Bootstrap is the most popular option that strives for complete parity with Bootstrap. reactstrap is also a good choice</p>
@@ -78,10 +79,10 @@ const Home = () => {
                         <h2><span>2</span>While you don’t have to use any specific library to integrate Bootstrap with React apps</h2>
                             <p>While you don’t have to use any specific library to integrate Bootstrap with React apps, it's often easier than trying to wrap the Bootstrap jQuery plugins. React Bootstrap is the most popular option that strives for complete parity with Bootstrap. reactstrap is also a good choice</p>
                         </div>
-                        <img alt="guide_image" src="/Images/fill_info_guide.svg"></img>
+                        <img alt="guide_image" src="/Images/HomePage/fill_info_guide.svg"></img>
                     </div>
                     <div className="guide-block">
-                        <img alt="guide_image" src="/Images/search_guide.svg"></img>
+                        <img alt="guide_image" src="/Images/HomePage/search_guide.svg"></img>
                         <div>
                         <h2><span>3</span>While you don’t have to use any specific library to integrate Bootstrap with React apps</h2>
                             <p>While you don’t have to use any specific library to integrate Bootstrap with React apps, it's often easier than trying to wrap the Bootstrap jQuery plugins. React Bootstrap is the most popular option that strives for complete parity with Bootstrap. reactstrap is also a good choice</p>
@@ -92,7 +93,7 @@ const Home = () => {
                             <h2><span>4</span>While you don’t have to use any specific library to integrate Bootstrap with React apps</h2>
                             <p>While you don’t have to use any specific library to integrate Bootstrap with React apps, it's often easier than trying to wrap the Bootstrap jQuery plugins. React Bootstrap is the most popular option that strives for complete parity with Bootstrap. reactstrap is also a good choice</p>
                         </div>
-                        <img alt="guide_image" src="/Images/question_guide.svg"></img>
+                        <img alt="guide_image" src="/Images/HomePage/question_guide.svg"></img>
                     </div>
                 </div>
             </div>
@@ -105,10 +106,10 @@ const Home = () => {
                     <div id="center-part">
                         <h2>Contact us</h2>
                         <div id="contact-item">
-                            <a href="https://www.facebook.com/profile.php?id=100005185776957"><img alt="contact-icon" src="/Images/facebook.svg"></img>Facebook</a>
-                            <a href="https://www.instagram.com/nguyencuong1111/"><img alt="contact-icon" src="/Images/instagram.svg"></img>Instagram</a>
-                            <p><img alt="contact-icon" src="/Images/email.svg"></img>nguyencuongoc@gmail.com</p>
-                            <p><img alt="contact-icon" src="/Images/phone.svg"></img>+84969087853</p>
+                            <a href="https://www.facebook.com/profile.php?id=100005185776957"><img alt="contact-icon" src="/Images/HomePage/facebook.svg"></img>Facebook</a>
+                            <a href="https://www.instagram.com/nguyencuong1111/"><img alt="contact-icon" src="/Images/HomePage/instagram.svg"></img>Instagram</a>
+                            <p><img alt="contact-icon" src="/Images/HomePage/email.svg"></img>nguyencuongoc@gmail.com</p>
+                            <p><img alt="contact-icon" src="/Images/HomePage/phone.svg"></img>+84969087853</p>
                         </div>
                     </div>
                     <div id="third-part">

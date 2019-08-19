@@ -4,7 +4,7 @@
     background-image: linear-gradient(
         rgba(25, 0, 0, 0.7),
         rgba(0, 0, 0, 0.7)
-      ),url("/images/background_home1.jpg");
+      ),url("/images/HomePage/background_home1.jpg");
     background-size: cover; 
     background-attachment: fixed;
 }

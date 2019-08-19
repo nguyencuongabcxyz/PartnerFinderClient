@@ -10,20 +10,17 @@ import {
     SUCCESSFULL,
     DUPLICATE
 } from '../_constants/registrationResult'
-const INITIAL_STATE = {
-    registrationResult: null
-}
 
-export default (state = INITIAL_STATE, action) => {
+export default (state = null, action) => {
     switch(action.type) {
         case REGISTER_REQUEST: 
            return state;
         case REGISTER_DUPLICATE: 
-           return {...state, registrationResult: DUPLICATE}
+           return DUPLICATE
         case REGISTER_FAILURE:
-           return {...state, registrationResult: FAILED}
+           return FAILED
         case REGISTER_SUCCESS: 
-           return {...state, registrationResult: SUCCESSFULL}
+           return SUCCESSFULL
         default:
             return state;
     }

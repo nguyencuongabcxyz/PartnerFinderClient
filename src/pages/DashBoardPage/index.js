@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { logoutUser } from '../../_actions/authActions'
+import { logoutUser } from '../../_actions/authActions';
+import { removeModalBootstrap } from '../../_helpers/uiHelper';
 
 class DashBoardPage extends React.Component {
 
@@ -9,12 +10,10 @@ class DashBoardPage extends React.Component {
     }
 
     render() {
-
-        var token = process.env.REACT_APP_TOKEN;
+        removeModalBootstrap();
         return (
             <div>
                 DashBoardPage
-                <h1>{token}</h1>
                 <button onClick={this.logout} className="btn btn-lg btn-danger">Logout</button>
             </div>
         );

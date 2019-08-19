@@ -1,6 +1,5 @@
 import { authServices } from '../_services/authServices';
 // import { removeModalBootstrap } from '../_helpers/uiHelper';
-// import history from '../history';
 
 import {
     REGISTER_REQUEST,

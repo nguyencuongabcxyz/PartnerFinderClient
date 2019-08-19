@@ -20,7 +20,7 @@ const DownButton = ({headContent, tailContent, textColor, link}) => {
         <div className="down-button">
             <p style={textStyle}>{headContent}<span style={{color: '#FFB906', fontFamily: 'Pacifico, cursive', fontSize:'20px'}}> PartnerFinder </span>{tailContent}</p>
             <div style={{position: 'relative', height: '50px'}}>
-            <img onClick={(e)=>scrollToSection(link, e)} style={{cursor: 'pointer', position: 'absolute', left: 'calc(50vw - 35px)'}} height="50px" width="50px" alt="down_img" src="/images/Vector.svg"></img>
+            <img onClick={(e)=>scrollToSection(link, e)} style={{cursor: 'pointer', position: 'absolute', left: 'calc(50vw - 35px)'}} height="50px" width="50px" alt="down_img" src="/images/HomePage/Vector.svg"></img>
             </div>
         </div>
     );
