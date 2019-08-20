@@ -11,6 +11,9 @@ const login = async (userName, password) => {
         var response = await auth.post("/login", data);
         return handleAuthentication(response);
     } catch (e) {
+        if(typeof e.response === 'undefined'){
+            return { isAuthenticated: false, statusCode: 500, userId: null };
+        }
         return handleAuthentication(e.response);
     }
 
@@ -24,6 +27,9 @@ const register = async ({userName, password, email}) => {
         var response = await auth.post("/register", data);
         return handleRegistration(response);
     }catch(e){
+        if(typeof e.response === 'undefined'){
+            return { registrationResult: 'failed' }
+        }
         return handleRegistration(e.response);
     }
 }

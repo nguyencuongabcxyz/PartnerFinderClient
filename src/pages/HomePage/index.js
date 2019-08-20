@@ -39,30 +39,31 @@ const Home = () => {
                 <div id="center-intro">
                     <h1 id="sologan">Let's find your partner</h1>
                     <h2 id="sub-sologan">Let <span style={{ color: '#FFB906', fontFamily: 'Pacifico, cursive', fontSize: '28px' }}>PartnerFinder</span> help you enhance your english skills</h2>
-                    <BasicButton customStyles={customStyleBasicButtonSection1} content="Join us now" />
+                    <BasicButton isLoginButton={true} customStyles={customStyleBasicButtonSection1} content="Join us now" />
                 </div>
                 <DownButton link="section2" textColor="white" headContent="See how" tailContent="can help you" />
             </div>
             <div id="section2">
                 <h1 className="section-title">How <span>PartnerFinder</span> can help you</h1>
                 <div className="section-content row">
-                    <div className="section-block col-lg-3">
+                    <div className="section-block col-lg-3 col-md-4">
                         <img src="/Images/HomePage/finding_partner.svg" alt="finding_partner"></img>
                         <h2>While you don’t have to use any specific library to</h2>
                         <p>While you don’t have to use any specific library to integrate Bootstrap with React apps, it's often easier than trying to wrap the Bootstrap jQuery plugins. React Bootstrap is the most popular option that strives for complete parity with Bootstrap.</p>
                     </div>
-                    <div className="section-block col-lg-3">
+                    <div className="section-block col-lg-3 col-md-4">
                         <img src="/Images/HomePage/asking.svg" alt="asking"></img>
                         <h2>While you don’t have to use any specific library to</h2>
                         <p>While you don’t have to use any specific library to integrate Bootstrap with React apps, it's often easier than trying to wrap the Bootstrap jQuery plugins. React Bootstrap is the most popular option that strives for complete parity with Bootstrap. </p>
                     </div>
-                    <div className="section-block col-lg-3">
+                    <div className="section-block col-lg-3 col-md-4">
                         <img src="/Images/HomePage/feedback.svg" alt="feedback"></img>
                         <h2>While you don’t have to use any specific library to</h2>
                         <p>While you don’t have to use any specific library to integrate Bootstrap with React apps, it's often easier than trying to wrap the Bootstrap jQuery plugins. React Bootstrap is the most popular option that strives for complete parity with Bootstrap. </p>
                     </div>
                 </div>
                 <DownButton link="section3" textColor="#4f4f4f" headContent="See how" tailContent="works" />
+                <span id="end-line"></span>
             </div>
             <div id="section3">
                 <h1 className="section-title">See how <span>PartnerFinder</span> works</h1>
@@ -113,12 +114,12 @@ const Home = () => {
                         </div>
                     </div>
                     <div id="third-part">
-                        <BasicButton customStyles={customStyleBasicButtonSection4} content="Join us" />
+                        <BasicButton isLoginButton={true} customStyles={customStyleBasicButtonSection4} content="Join us" />
                     </div>
                 </div>
-                <div style={{ textTransform: 'uppercase', fontWeight: '600', position: 'absolute', bottom: '0', width: '100%', textAlign: 'center', paddingBottom: '20px' }}>Copyright by partnerfinder.com.vn 2019</div>
+                <div id="footer-end-text" style={{ textTransform: 'uppercase', fontWeight: '600', position: 'absolute', bottom: '0', width: '100%', textAlign: 'center', paddingBottom: '20px' }}>Copyright by partnerfinder.com.vn 2019</div>
             </div>
-            <img onClick={(e) => { scrollToTop(e) }} style={{ position: "fixed", bottom: '30px', left: '95vw', cursor: 'pointer' }} width="40px" alt="back-to-top" src="/Images/back-to-top.svg"></img>
+            <img id="back-to-top" onClick={(e) => { scrollToTop(e) }} style={{ position: "fixed", bottom: '30px', left: '93vw', cursor: 'pointer' }} width="40px" alt="back-to-top" src="/Images/HomePage/back-to-top.svg"></img>
         </div>
     );
 }

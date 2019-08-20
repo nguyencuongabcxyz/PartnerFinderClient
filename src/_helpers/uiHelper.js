@@ -4,4 +4,5 @@ export const removeModalBootstrap = () => {
     for(let i = 0; i < modals.length; i++){
         document.body.removeChild(modals[i]);
     }
+    document.body.classList.remove('modal-open');
 }

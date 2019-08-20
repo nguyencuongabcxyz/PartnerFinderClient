@@ -49,6 +49,7 @@ const loginFailureWithServerError = () => {
 export const loginUser = (userName, password) => async (dispatch) => {
     dispatch(requestLogin());
     const result = await authServices.login(userName, password);
+    console.log(result);
     switch (result.statusCode) {
         case 400:
             dispatch(loginFailureWithBadRequest());

@@ -50,7 +50,13 @@ class LoginPage extends React.Component {
                 display = 'block';
                 responseMessage = 'There are something wrong on server!';
                 break;
+            case 200:
+                break;
+            case 0: 
+                break;
             default:
+                display = 'block';
+                responseMessage = 'There are something wrong, check your internet connection!';
                 break;
         } 
         return {display, responseMessage};
