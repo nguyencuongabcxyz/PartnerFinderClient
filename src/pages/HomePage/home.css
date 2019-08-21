@@ -99,6 +99,9 @@
     font-size: 16px;
     line-height: 28px;
 }
+#end-line{
+    display: none !important;
+}
 
 #section3{
 }
@@ -435,7 +438,7 @@
         line-height: 50px;
     }
     #end-line{
-        display: block;
+        display: block !important;
         width: 90%;
         height: 2px;
         background: wheat;
