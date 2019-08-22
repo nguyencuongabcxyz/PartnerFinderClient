@@ -30,15 +30,15 @@ const NavigationBar = () => {
                     <li className="nav-item">
                         <a className="nav-link" href="#">Notification</a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle right-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <li className="nav-item dropdown">
+                        <a className="nav-link dropdown-toggle right-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                          <img alt="seting_icon" src="/Images/HomePage/setting_icon.svg" />
                         </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">User information</a>
-                            <a class="dropdown-item" href="#">User account</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Logout</a>
+                        <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a className="dropdown-item" href="#">User information</a>
+                            <a className="dropdown-item" href="#">User account</a>
+                            <div className="dropdown-divider"></div>
+                            <a className="dropdown-item" href="#">Logout</a>
                         </div>
                     </li>
                 </ul>

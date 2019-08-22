@@ -15,9 +15,19 @@
 .nav-link {
     padding: 0px;
     height: 100%;
+    line-height: 30px;
 }
 
 
 .right-link img{
     height: 30px;
+}
+
+.form-inline {
+    width: 40%;
+}
+
+.navbar-nav {
+    width: 60%;
+    justify-content: flex-end;
 }
