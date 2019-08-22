@@ -1,0 +1,23 @@
+.navbar {
+    height: 70px;
+    position: fixed;
+    width: 100%;
+}
+.navbar-brand {
+    display: flex ;
+    align-items: center;
+}
+
+.navbar-brand img {
+    height: 35px;
+}
+
+.nav-link {
+    padding: 0px;
+    height: 100%;
+}
+
+
+.right-link img{
+    height: 30px;
+}

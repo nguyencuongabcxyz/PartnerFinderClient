@@ -8,8 +8,9 @@ import {
     LOGIN_BAD_REQUEST,
     LOGIN_FORBIDDEN,
     LOGIN_SERVER_ERROR,
-    LOGOUT, 
+    LOGOUT,
 } from '../_constants/authConstants'
+import { userService } from '../_services/userService';
 
 const requestLogin = () => {
     return {
@@ -49,7 +50,6 @@ const loginFailureWithServerError = () => {
 export const loginUser = (userName, password) => async (dispatch) => {
     dispatch(requestLogin());
     const result = await authServices.login(userName, password);
-    console.log(result);
     switch (result.statusCode) {
         case 400:
             dispatch(loginFailureWithBadRequest());
@@ -62,7 +62,12 @@ export const loginUser = (userName, password) => async (dispatch) => {
             break;
         case 200:
             dispatch(loginSuccess(result))
-            history.push('/dashboard');
+            const checkUserInfoResult = await userService.checkUserInfoAfterLogin(result.userId);
+            if (!checkUserInfoResult.isHavingInfo || !checkUserInfoResult.isHavingLevel) {
+                history.push('/checkinfo');
+            } else {
+                history.push('/dashboard');
+            }
             removeModalBootstrap();
             break;
         default:

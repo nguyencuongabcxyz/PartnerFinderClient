@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { loginUser } from '../../_actions/authActions';
 import '../../assets/css/loginRegisterForm.css';
 
-class LoginPage extends React.Component {
+class Login extends React.Component {
 
     renderError({ error, touched }) {
         if (touched && error) {
@@ -133,4 +133,4 @@ const mapStateToProps = (state) => {
 export default reduxForm({
     form: 'signIn',
     validate
-})(connect(mapStateToProps, { loginUser })(LoginPage));
+})(connect(mapStateToProps, { loginUser })(Login));

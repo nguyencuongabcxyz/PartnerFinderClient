@@ -4,8 +4,9 @@ import DownButton from '../../_components/shared/DownButton';
 import BasicButton from '../../_components/shared/BasicButton';
 import './home.css';
 import '../../assets/css/sharedHover.css'
-import LoginPage from '../LoginPage';
-import RegisterPage from '../RegisterPage';
+import Login from '../../_components/Login';
+import Register from '../../_components/Register';
+import Footer from '../../_components/Footer';
 import { removeModalBootstrap } from '../../_helpers/uiHelper';
 
 const scrollToTop = (e) => {
@@ -21,21 +22,14 @@ const customStyleBasicButtonSection1 = {
     border: 'none',
     color: '#FFFFFF',
 }
-
-const customStyleBasicButtonSection4 = {
-    background: 'none',
-    border: '1px solid',
-    color: '#4f4f4f',
-}
-
 const Home = () => {
     removeModalBootstrap();
     return (
         <div id="Home">
             <div id="section1">
                 <NavigationBar />
-                <LoginPage />
-                <RegisterPage />
+                <Login />
+                <Register />
                 <div id="center-intro">
                     <h1 id="sologan">Let's find your partner</h1>
                     <h2 id="sub-sologan">Let <span style={{ color: '#FFB906', fontFamily: 'Pacifico, cursive', fontSize: '28px' }}>PartnerFinder</span> help you enhance your english skills</h2>
@@ -98,27 +92,7 @@ const Home = () => {
                     </div>
                 </div>
             </div>
-            <div id="section4">
-                <div id="flex-container">
-                    <div id="first-part">
-                        <h2>About us</h2>
-                        <p>While you don’t have to use any specific library to integrate Bootstrap with React apps</p>
-                    </div>
-                    <div id="center-part">
-                        <h2>Contact us</h2>
-                        <div id="contact-item">
-                            <a href="https://www.facebook.com/profile.php?id=100005185776957"><img alt="contact-icon" src="/Images/HomePage/facebook.svg"></img>Facebook</a>
-                            <a href="https://www.instagram.com/nguyencuong1111/"><img alt="contact-icon" src="/Images/HomePage/instagram.svg"></img>Instagram</a>
-                            <p><img alt="contact-icon" src="/Images/HomePage/email.svg"></img>nguyencuongoc@gmail.com</p>
-                            <p><img alt="contact-icon" src="/Images/HomePage/phone.svg"></img>+84969087853</p>
-                        </div>
-                    </div>
-                    <div id="third-part">
-                        <BasicButton isLoginButton={true} customStyles={customStyleBasicButtonSection4} content="Join us" />
-                    </div>
-                </div>
-                <div id="footer-end-text" style={{ textTransform: 'uppercase', fontWeight: '600', position: 'absolute', bottom: '0', width: '100%', textAlign: 'center', paddingBottom: '20px' }}>Copyright by partnerfinder.com.vn 2019</div>
-            </div>
+            <Footer />
             <img id="back-to-top" onClick={(e) => { scrollToTop(e) }} style={{ position: "fixed", bottom: '30px', left: '93vw', cursor: 'pointer' }} width="40px" alt="back-to-top" src="/Images/HomePage/back-to-top.svg"></img>
         </div>
     );

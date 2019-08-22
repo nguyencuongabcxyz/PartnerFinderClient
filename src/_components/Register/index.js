@@ -1,7 +1,7 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
-import { registerUser } from '../../_actions/registrationAction';
+import { registerUser } from '../../_actions/registrationActions';
 import '../../assets/css/loginRegisterForm.css';
 import $ from 'jquery';
 
@@ -11,7 +11,7 @@ import {
     DUPLICATE
 } from '../../_constants/registrationResult'
 
-class RegisterPage extends React.Component {
+class Register extends React.Component {
 
     renderError({ error, touched }) {
         if (touched && error) {
@@ -160,4 +160,4 @@ const mapStateToProps = (state) => {
 export default reduxForm({
     form: 'signUp',
     validate
-})(connect(mapStateToProps, { registerUser })(RegisterPage));
+})(connect(mapStateToProps, { registerUser })(Register));

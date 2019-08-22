@@ -5,7 +5,7 @@ import {
     REGISTER_SUCCESS,
     REGISTER_DUPLICATE,
     REGISTER_FAILURE
-}from '../_constants/registrationActions'
+}from '../_constants/registrationConstants'
 
 import {
     FAILED,
