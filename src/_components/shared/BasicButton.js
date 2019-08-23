@@ -1,7 +1,7 @@
 import React from 'react';
 import '../../assets/css/sharedHover.css'
 
-const BasicButton = ({ content, customStyles, isLoginButton }) => {
+const BasicButton = ({ content, customStyles, isLoginButton, onClick }) => {
     const defaultStyle = {
         height: '60px',
         minWidth: '200px',
@@ -14,11 +14,11 @@ const BasicButton = ({ content, customStyles, isLoginButton }) => {
     const buttonStyle = { ...defaultStyle, ...customStyles };
     if (isLoginButton) {
         return (
-            <button id="basic-button" style={buttonStyle} data-toggle="modal" data-target="#loginModal">{content}</button>
+            <button onClick={onClick} id="basic-button" style={buttonStyle} data-toggle="modal" data-target="#loginModal">{content}</button>
         );
     } else {
         return (
-            <button id="basic-button" style={buttonStyle}>{content}</button>
+            <button onClick={onClick} id="basic-button" style={buttonStyle}>{content}</button>
         );
     }
 }

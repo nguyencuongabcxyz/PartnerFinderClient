@@ -55,7 +55,6 @@ const handleAuthentication = response => {
     switch (response.status) {
         case 200:
             localStorage.setItem('token', response.data.token);
-            process.env.REACT_APP_TOKEN = response.data.token;
             return { isAuthenticated: true, statusCode: 200, userId: response.data.id };
         case 400:
             return { isAuthenticated: false, statusCode: 400, userId: null };

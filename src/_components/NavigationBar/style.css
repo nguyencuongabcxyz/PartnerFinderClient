@@ -1,8 +1,10 @@
 .navbar {
-    height: 70px;
     position: fixed;
     width: 100%;
+    padding-left: 40px;
+    z-index: 1000;
 }
+
 .navbar-brand {
     display: flex ;
     align-items: center;
@@ -21,7 +23,7 @@
 
 .right-link img{
     height: 30px;
-}
+} 
 
 .form-inline {
     width: 40%;
@@ -30,4 +32,5 @@
 .navbar-nav {
     width: 60%;
     justify-content: flex-end;
+    margin-right: 70px !important;
 }

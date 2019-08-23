@@ -1,0 +1,18 @@
+#text-intro h1 {
+    text-align: center;
+    font-size: 58px;
+    line-height: 70px;
+    margin-top: 80px;
+}
+
+#content-intro {
+    margin: 100px 20%;
+    padding: 40px 5%;
+    background: wheat;
+}
+
+#content-intro ul {
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 500;
+}
