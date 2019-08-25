@@ -3,6 +3,7 @@ import "./style.css";
 import PageLayout from "../PageLayout";
 import ReactCountdownClock from "react-countdown-clock";
 import { levelTestService } from "../../_services/levelTestService";
+import { Field, reduxForm } from 'redux-form';
 
 class TestPage extends React.Component {
   state = {
@@ -34,6 +35,7 @@ class TestPage extends React.Component {
           <h2>{q.content}</h2>
           <label>{q.answerOptions[0].content}</label>
           <input type="radio" name={q.id} value={q.answerOptions[0].id} />
+          <Field name={q.id} />
           <br />
           <label>{q.answerOptions[1].content}</label>
           <input type="radio" name={q.id} value={q.answerOptions[1].id} />
