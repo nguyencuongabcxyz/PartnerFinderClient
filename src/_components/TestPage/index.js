@@ -57,9 +57,7 @@ class TestPage extends React.Component {
       questionObject.answerId = formValues[q];
       questionArray.push(questionObject);
     }
-    //console.log(questionArray);
     var response = await userService.updateLevel(extractTokenService.extractUserId(), questionArray);
-    console.log(response);
   }
 
   render() {
