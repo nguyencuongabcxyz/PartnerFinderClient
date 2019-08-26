@@ -17,6 +17,19 @@ const checkUserInfoAfterLogin = async (userId) => {
     }
 }
 
+const updateLevel = async (userId, data) => {
+    try {
+        var response = await users.patch(`${userId}/updatelevel`, data);
+        return response.data;
+    }catch(e) {
+        if(e.response.status === 500){
+            history.push('/servererror')
+        }
+        return history.push('/notfound')
+    }
+}
+
 export const userService = {
-    checkUserInfoAfterLogin
+    checkUserInfoAfterLogin,
+    updateLevel
 }
