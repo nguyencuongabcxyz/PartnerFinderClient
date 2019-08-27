@@ -1,3 +1,6 @@
+html {
+    scroll-behavior: smooth;
+  }
 #test-page h1{
     margin-top: 80px;
     font-size: 58px;
@@ -30,4 +33,41 @@
 input[type="radio"] {
     transform: scale(1.5);
     margin-right: 20px;
+}
+.hidden {
+    display: none;
+}
+.show {
+    display: block;
+}
+
+#result-block {
+    width:35%;
+    margin: 30px auto 60px;
+}
+
+#btn-submit{
+    display: block;
+    margin: 0 auto;
+}
+
+#btn-redirect {
+    width: 150px;
+    display: block;
+    margin: 0 auto;
+}
+
+.custom-header {
+    text-align: center;
+}
+
+.result-text {
+    text-align: center;
+    font-size: 18px;
+    display: block;
+    margin-bottom: 20px;
+}
+
+#question-audio {
+    margin-bottom: 20px;
 }

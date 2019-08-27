@@ -10,7 +10,7 @@ import history from '../../history';
 class CheckInfo extends React.Component {
 
     state = {
-        isHavingInfo : false,
+        completedInfoPercentage : 0,
         isHavingLevel : false
     }
 
@@ -25,14 +25,14 @@ class CheckInfo extends React.Component {
     async componentDidMount() {
         const checkUserResult = await userService.checkUserInfoAfterLogin(extractTokenService.extractUserId())
         this.setState({
-            isHavingInfo: checkUserResult.isHavingInfo,
+            completedInfoPercentage: checkUserResult.completedInfoPercentage,
             isHavingLevel: checkUserResult.isHavingLevel
         })
     }
 
     render() {
         let testCardClasses = this.state.isHavingLevel ? 'card hidden' : 'card';
-        let infoCardClasses = this.state.isHavingInfo ? 'card hidden' : 'card';
+        let infoCardClasses = this.state.completedInfoPercentage === 100 ? 'card hidden' : 'card';
         return (
             <PageLayout>
                 <div id="check-info">
@@ -51,10 +51,13 @@ class CheckInfo extends React.Component {
                     </div>
                     <div className={infoCardClasses}>
                         <div className="card-header">
-                            Update information
+                            Update more information
                         </div>
                         <div className="card-body">
-                            <h5 className="card-title">Update your information </h5>
+                            <h5 className="card-title">{this.state.completedInfoPercentage}% your information have been updated!</h5>
+                            <div className="progress">
+                            <div className="progress-bar bg-danger" style={{width: `${this.state.completedInfoPercentage}%`}} role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
                             <p className="card-text">Update your information to help you impress other people and get a high chance to meet your ideal partner</p>
                             <Link to={"/testintro"} className="right-btn btn btn-warning" >Update information</Link>
                         </div>
