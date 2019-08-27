@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { registerUser } from '../../_actions/registrationActions';
 import '../../assets/css/loginRegisterForm.css';
 import $ from 'jquery';
+import { toast } from 'react-toastify';
 
 import {
     SUCCESSFULL, 
@@ -13,6 +14,9 @@ import {
 
 class Register extends React.Component {
 
+    state = {
+        currentResult : ''
+    }
     renderError({ error, touched }) {
         if (touched && error) {
             return (
@@ -44,41 +48,36 @@ class Register extends React.Component {
 
     onSubmit = (formValues) => {
         this.props.registerUser(formValues);
+        this.setState({
+            currentResult: ''
+        });
     }
 
     handleRegistrationResult() {
-        let display = 'none';
-        let responseMessage = '';
-        let prefixMessage = '';
-        let alertClass = 'alert-danger';
-
+        if(this.state.currentResult !== this.props.registrationResult){
         switch(this.props.registrationResult) {
             case DUPLICATE: 
-                display = 'block';
-                responseMessage = 'This user name is already taken!';
-                prefixMessage = 'Warning!';
-                alertClass = 'alert-warning';
+                toast.warn("This user name is already taken!");
                 break;
             case FAILED:
-                display = 'block';
-                responseMessage = 'Errors occured! Registration failed!';
-                prefixMessage = 'Danger!';
+                toast.error("Errors occured! Registration failed!");
                 break;
             case SUCCESSFULL:
-                display = 'block';
-                responseMessage = 'Registration is successfull!';
-                prefixMessage = 'Successfull!'
-                alertClass = 'alert-success'
+                toast.success("Registration is successfull!");
                 break;
             default:
                 break;
         } 
-        return {display, responseMessage, prefixMessage, alertClass};
+        this.setState({
+            currentResult : this.props.registrationResult
+        });
+    }
+
     }
 
     render() {
         
-        let {display, responseMessage, prefixMessage, alertClass} = this.handleRegistrationResult();
+        this.handleRegistrationResult();
 
         return (
             <div>
@@ -94,9 +93,6 @@ class Register extends React.Component {
                                 </button>
                             </div>
                             <div className="modal-body">
-                                <div className={`alert ${alertClass}`}  style={{display: `${display}`}}>
-                                    <strong>{prefixMessage}</strong> {responseMessage}
-                                </div>
                                 <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
                                     <Field name="userName" component={this.renderInput} hint="Type your user name" label="User name" type="text" />
                                     <Field name="email" component={this.renderInput} hint="Type your email" label="Email" type="email" />

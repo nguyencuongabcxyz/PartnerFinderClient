@@ -2,10 +2,11 @@ import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 import { loginUser } from '../../_actions/authActions';
+import { toast } from 'react-toastify';
 import '../../assets/css/loginRegisterForm.css';
 
 class Login extends React.Component {
-
+    currentStatusCode = 0;
     renderError({ error, touched }) {
         if (touched && error) {
             return (
@@ -31,41 +32,39 @@ class Login extends React.Component {
 
     onSubmit = (formValues) => {
         this.props.loginUser(formValues.userName, formValues.password);
+        this.currentStatusCode = 0;
     }
 
     handleAuthenticationResult() {
-        let display = 'none';
-        let responseMessage = '';
-
+        if(this.currentStatusCode !== this.props.auth.statusCode){
         switch(this.props.auth.statusCode) {
             case 400: 
-                display = 'block';
-                responseMessage = 'Incorrect username or password!';
+                toast.warn('Incorrect username or password!');
                 break;
             case 403:
-                display = 'block';
-                responseMessage = 'Your account has been block!';
+                toast.info('Your account has been block!');
                 break;
             case 500:
-                display = 'block';
-                responseMessage = 'There are something wrong on server!';
+                toast.error('There are something wrong on server!');
                 break;
             case 200:
+                    toast.success('Login successfully!');
                 break;
             case 0: 
                 break;
             default:
-                display = 'block';
-                responseMessage = 'There are something wrong, check your internet connection!';
+                toast.info('There are something wrong, check your internet connection!');
                 break;
         } 
-        return {display, responseMessage};
+        this.currentStatusCode = this.props.auth.statusCode;
+
+    }
     }
 
     render() {
         
-        let {display, responseMessage} = this.handleAuthenticationResult();
-
+        this.handleAuthenticationResult();
+        console.log(this.props.auth.statusCode);
         return (
             <div>
                 <div className="modal fade" id="loginModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -80,9 +79,6 @@ class Login extends React.Component {
                                 </button>
                             </div>
                             <div className="modal-body">
-                                <div className="alert alert-danger" style={{display: `${display}`}}>
-                                    <strong>Warning!</strong> {responseMessage}
-                                </div>
                                 <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
                                     <Field name="userName" component={this.renderInput} hint="Type your user name" label="User name" type="text" />
                                     <Field name="password" component={this.renderInput} hint="Type your password" label="Password" type="password" />

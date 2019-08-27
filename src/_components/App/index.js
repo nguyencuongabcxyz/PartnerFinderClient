@@ -9,6 +9,8 @@ import ServerError from '../../pages/ServerError';
 import CheckInfo from '../CheckInfo';
 import TestIntro from '../TestIntro';
 import TestPage from '../TestPage';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 class App extends React.Component {
   render() {
@@ -22,6 +24,7 @@ class App extends React.Component {
           <ProtectedRoute exact path="/testpage" component={TestPage} />
           <Route exact path="/notfound" component={NotFound} />
           <Route exact path="/servererror" component={ServerError}/>
+          <ToastContainer autoClose={3000} />
         </div>
       </Router>
     );
