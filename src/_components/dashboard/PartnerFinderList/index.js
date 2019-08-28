@@ -1,9 +1,9 @@
 import React from 'react'
 import PageLayout from '../../PageLayout';
+import PartnerFinderItem from '../PartnerFinderItem';
+import FilterForm from '../FilterForm';
 
 class PartnerFinderList extends React.Component {
-
-
 
     render(){
         return (
@@ -12,7 +12,10 @@ class PartnerFinderList extends React.Component {
                     People looking for partner
                 </h1>
                 <div id="filter">
-                <input id="ex1" data-slider-id='ex1Slider' type="range" min="0" max = "10" />
+                  <FilterForm />
+                </div>
+                <div>
+                    <PartnerFinderItem />
                 </div>
             </div>
         );
