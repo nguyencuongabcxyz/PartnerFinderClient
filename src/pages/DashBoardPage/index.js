@@ -2,20 +2,17 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { logoutUser } from '../../_actions/authActions';
 import { removeModalBootstrap } from '../../_helpers/uiHelper';
+import PageLayout from '../../_components/PageLayout';
+import PartnerFinderList from '../../_components/dashboard/PartnerFinderList';
 
 class DashBoardPage extends React.Component {
-
-    logout = () => {
-        this.props.logoutUser();
-    }
 
     render() {
         removeModalBootstrap();
         return (
-            <div>
-                DashBoardPage
-                <button onClick={this.logout} className="btn btn-lg btn-danger">Logout</button>
-            </div>
+            <PageLayout >
+                <PartnerFinderList />
+            </PageLayout>
         );
     }
 }

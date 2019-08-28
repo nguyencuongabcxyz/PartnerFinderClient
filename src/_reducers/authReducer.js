@@ -1,6 +1,5 @@
 import {
     LOGIN_SUCCESS,
-    LOGIN_REQUEST,
     LOGIN_BAD_REQUEST,
     LOGIN_FORBIDDEN,
     LOGIN_SERVER_ERROR,
@@ -16,8 +15,6 @@ const INITIAL_STATE = {
 
 export default (state = INITIAL_STATE, action) => {
     switch (action.type) {
-        case LOGIN_REQUEST:
-            return { ...state, isAuthenticated: false };
         case LOGIN_SUCCESS:
             return { ...state, isAuthenticated: true, statusCode: action.statusCode, userId: action.userId };
         case LOGIN_BAD_REQUEST:

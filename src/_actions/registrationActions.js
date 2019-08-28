@@ -1,7 +1,6 @@
-import { authServices } from '../_services/authServices';
+import { authService } from '../_services/authService';
 
 import {
-    REGISTER_REQUEST,
     REGISTER_SUCCESS,
     REGISTER_DUPLICATE,
     REGISTER_FAILURE
@@ -12,12 +11,6 @@ import {
     DUPLICATE,
     SUCCESSFULL
 } from '../_constants/registrationResult'
-
-const requestRegister = () => {
-    return {
-        type: REGISTER_REQUEST
-    }
-}
 
 const registerFailureWithDuplicate = () => {
     return {
@@ -38,8 +31,7 @@ const registerSuccess = () => {
 }
 
 export const registerUser = (userInfo) => async (dispatch) => {
-    dispatch(requestRegister());
-    const result = await authServices.register(userInfo);
+    const result = await authService.register(userInfo);
     switch(result.registrationResult){
         case FAILED:
             dispatch(registerFailure());
