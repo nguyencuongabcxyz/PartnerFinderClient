@@ -1,22 +1,15 @@
-import { authServices } from '../_services/authServices';
+import { authService } from '../_services/authService';
 import { removeModalBootstrap } from '../_helpers/uiHelper';
 
 import history from '../history';
 import {
     LOGIN_SUCCESS,
-    LOGIN_REQUEST,
     LOGIN_BAD_REQUEST,
     LOGIN_FORBIDDEN,
     LOGIN_SERVER_ERROR,
     LOGOUT,
 } from '../_constants/authConstants'
 import { userService } from '../_services/userService';
-
-const requestLogin = () => {
-    return {
-        type: LOGIN_REQUEST,
-    }
-}
 
 const loginSuccess = (data) => {
     return {
@@ -48,8 +41,7 @@ const loginFailureWithServerError = () => {
 }
 
 export const loginUser = (userName, password) => async (dispatch) => {
-    dispatch(requestLogin());
-    const result = await authServices.login(userName, password);
+    const result = await authService.login(userName, password);
     switch (result.statusCode) {
         case 400:
             dispatch(loginFailureWithBadRequest());
@@ -76,7 +68,7 @@ export const loginUser = (userName, password) => async (dispatch) => {
 };
 
 export const logoutUser = () => {
-    authServices.logout();
+    authService.logout();
     history.push('/');
     return {
         type: LOGOUT
