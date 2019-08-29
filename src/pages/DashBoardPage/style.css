@@ -1,0 +1,12 @@
+#dashboard-page {
+    padding: 0 10% 0;
+}
+
+.dashboard-title {
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 50px;
+    color: #4f4f4f;
+    padding-top: 35px;
+}

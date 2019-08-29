@@ -18,20 +18,20 @@ class PartnerFinderItem extends React.Component {
 
   render() {
     return (
-      <div>
-        <div className="ui card">
-          <div className="image">
+      <div className="partner-item">
+        <div className="ui card user-block">
+          <div className="image partner-image">
             <img src="http://localhost:5000/images/myavatar.jpg" />
           </div>
           <div className="content">
-            <a className="header">Kristy</a>
+            <a className="header">Cuong nguyen</a>
             <div className="meta">
               <p><strong>Age:</strong> 19</p>
               <p><strong>Location:</strong> Da Nang</p>
               <p><strong>Level:</strong> Beginner</p>
             </div>
             <div className="description">
-            <span>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.....</span><a style={{color: 'blue'}} id="btn-more" onClick={this.loadMore}>show more</a>
+            <span>It is a long established fact that a reader will be distracted by.....</span><a style={{color: 'blue'}} id="btn-more" onClick={this.loadMore}>show more</a>
             <span id="text-more" style={{display: 'none'}}>The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', </span><a style={{display: 'none', color: 'blue'}} id="btn-less" onClick={this.loadLess}>show less</a>
             </div>
           </div>
@@ -42,12 +42,12 @@ class PartnerFinderItem extends React.Component {
             <a className="btn btn-secondary btn-partner">
                 Ignore
             </a>
-            <span>1h ago</span>
+            <div>1h ago</div>
           </div>
         </div>
 
         <div className="ui card">
-          <div className="image">
+          <div className="image partner-image">
             <img src="http://localhost:5000/images/linh.jpg" />
           </div>
           <div className="content">
@@ -58,7 +58,7 @@ class PartnerFinderItem extends React.Component {
               <p><strong>Level:</strong> Beginner</p>
             </div>
             <div className="description">
-            <span>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.....</span><a style={{color: 'blue'}} id="btn-more" onClick={this.loadMore}>show more</a>
+            <span>It is a long established fact that a reader will be distracted by.....</span><a style={{color: 'blue'}} id="btn-more" onClick={this.loadMore}>show more</a>
             <span id="text-more" style={{display: 'none'}}>The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', </span><a style={{display: 'none', color: 'blue'}} id="btn-less" onClick={this.loadLess}>show less</a>
             </div>
           </div>
@@ -69,7 +69,7 @@ class PartnerFinderItem extends React.Component {
             <a className="btn btn-secondary btn-partner">
                 Ignore
             </a>
-            <span>1h ago</span>
+            <div>1h ago</div>
           </div>
         </div>
       </div>

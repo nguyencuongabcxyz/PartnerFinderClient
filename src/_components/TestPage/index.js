@@ -19,7 +19,7 @@ class TestPage extends React.Component {
 
   submitForm = () => {
     console.log("submit!1");
-    document.getElementById('form-result').submit();
+    this._form.dispatchEvent(new Event("submit"));
   }
 
   async componentDidMount() {
@@ -121,14 +121,14 @@ class TestPage extends React.Component {
           </div>
           <div id="timer" className={this.state.timerClass}>
             <ReactCountdownClock
-              seconds={600}
+              seconds={6}
               color="#fdcb6e"
               alpha={1}
               size={100}
               onComplete={this.submitForm}
             />
           </div>
-          <form id="form-result" onSubmit={this.props.handleSubmit(this.onSubmit)}>
+          <form id="form-result" onSubmit={this.props.handleSubmit(this.onSubmit)} ref={(el) => { this._form = el; }}>
             {this.renderQuestion()}
             <button id="btn-submit" className="btn btn-lg btn-danger" style={{ fontWeight: 'bold' }} type="submit">Submit</button>
           </form>

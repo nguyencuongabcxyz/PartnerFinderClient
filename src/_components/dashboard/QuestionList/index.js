@@ -1,21 +1,18 @@
 import React from 'react'
-import PartnerFinderItem from '../PartnerFinderItem';
-import FilterForm from '../FilterForm';
-import './style.css'
+import './style.css';
+import QuestionItem from '../QuestionItem';
 
-class PartnerFinderList extends React.Component {
-
+class QuestionList extends React.Component {
     render() {
         return (
-            <div id="finder-list">
-                <h1 className="dashboard-title">
-                    People looking for partner
-                </h1>
-                <div id="filter">
-                    <FilterForm />
-                </div>
-                <div>
-                    <PartnerFinderItem />
+            <div id="question-list">
+                <h1 className="dashboard-title">Top questions</h1>
+                <div className="section-content">
+                    <QuestionItem />
+                    <QuestionItem />
+                    <QuestionItem />
+                    <QuestionItem />
+                    <QuestionItem />
                 </div>
                 <div className="paging">
                     <nav aria-label="Page navigation example">
@@ -37,5 +34,4 @@ class PartnerFinderList extends React.Component {
     }
 }
 
-export default PartnerFinderList;
-
+export default QuestionList;

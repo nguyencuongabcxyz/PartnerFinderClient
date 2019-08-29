@@ -1,0 +1,19 @@
+.btn-filter {
+    width: 100px;
+    font-weight: bold;
+    display: block;
+    margin: 0 auto;
+}
+
+#form-title{
+    font-size: 20px;
+    font-weight: 500;
+}
+
+form {
+    margin-bottom: 10px;
+    width: 100%;
+}
+.filter-item {
+    margin-bottom: 3px;
+}

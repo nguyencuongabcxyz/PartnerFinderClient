@@ -15,4 +15,34 @@
     color: white !important;
     font-weight: bold;
     margin-right: 6px;
+    font-size: 12px;
+}
+
+.partner-item {
+    display: flex;
+}
+
+.user-block {
+    margin: 0 !important;
+    margin-right: 20px !important;
+    margin-top: 0 !important;
+}
+
+.ui.card{
+    margin-top: 0 !important;
+    height: max-content !important;
+
+}
+
+.partner-image {
+    height: 150px;
+}
+
+.content {
+    flex-grow: unset !important;
+}
+
+.image img{
+    height: 100% !important;
+    object-fit: cover;
 }

@@ -1,0 +1,10 @@
+.paging {
+    margin-top: 50px;
+}
+
+#filter {
+    padding: 15px;
+    background: #f5f6fa;
+    margin-bottom: 15px;
+    border-radius: 4px;
+}
