@@ -1,3 +1,3 @@
-export const FETCH_ALL = 'FETCH_ALL'
-export const FETCH_WITH_FILTER = 'FETCH_WITH_FILTER'
+export const FETCH_MANY = 'FETCH_MANY'
+export const FETCH_MANY_WITH_FILTER = 'FETCH_MANY_WITH_FILTER'
 export const IGNORE = 'IGNORE'

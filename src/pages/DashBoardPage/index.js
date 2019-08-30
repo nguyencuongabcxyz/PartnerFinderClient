@@ -15,13 +15,11 @@ class DashBoardPage extends React.Component {
         return (
             <PageLayout >
                 <div className="row" id="dashboard-page">
-                <div className="col-lg-4">
+                <div className="col-lg-6">
                    <PartnerFinderList />
                 </div>
-                <div className="col-lg-4">
+                <div className="col-lg-6">
                    <QuestionList />
-                </div>
-                <div className="col-lg-4">
                    <FeedbackList />
                 </div>
                 </div>

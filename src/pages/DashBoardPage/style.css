@@ -10,3 +10,12 @@
     color: #4f4f4f;
     padding-top: 35px;
 }
+
+.paging-right {
+    width: 50%;
+}
+
+.paging-wrapper {
+    display: flex;
+    justify-content: flex-end;
+}
