@@ -9,6 +9,7 @@ class NavigationBar extends React.Component {
     window.addEventListener("scroll", function (event) {
         var scroll = this.scrollY;
         var navBar = this.document.getElementById('navigation-bar');
+        if(navBar){
         if(scroll !== 0) {
             navBar.style.height = '78px';
             navBar.style.setProperty('background-color', '#ffeaa7', 'important')
@@ -16,6 +17,7 @@ class NavigationBar extends React.Component {
             navBar.style.height = '65px';
             navBar.style.setProperty('background-color', '#f8f9fa', 'important')
         }
+      }
     });
   }
     

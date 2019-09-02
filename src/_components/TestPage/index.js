@@ -7,6 +7,7 @@ import { userService } from '../../_services/userService';
 import { Field, reduxForm } from 'redux-form';
 import { extractTokenService } from '../../_services/extractTokenService';
 import { Link } from 'react-router-dom'
+import Spinner from "../Spinner";
 
 class TestPage extends React.Component {
   state = {
@@ -23,12 +24,11 @@ class TestPage extends React.Component {
   }
 
   async componentDidMount() {
-    let levelTestResult = await levelTestService.getRandomTest();
-    if (levelTestResult.status === 200) {
+    let levelTest = await levelTestService.getRandomTest();
+    if (levelTest) {
       this.setState({
-        levelTest: levelTestResult.data
+        levelTest: levelTest
       });
-    } else {
     }
   }
 
@@ -103,6 +103,12 @@ class TestPage extends React.Component {
   }
 
   render() {
+    let spinnerDisplay = 'flex';
+    let clockState = true;
+    if(this.state.levelTest){
+      spinnerDisplay = 'none';
+      clockState = false;
+    }
     return (
       <PageLayout>
         <div id="test-page">
@@ -125,9 +131,11 @@ class TestPage extends React.Component {
               color="#fdcb6e"
               alpha={1}
               size={100}
+              paused={clockState}
               onComplete={this.submitForm}
             />
           </div>
+          <Spinner display={spinnerDisplay} />
           <form id="form-result" onSubmit={this.props.handleSubmit(this.onSubmit)} ref={(el) => { this._form = el; }}>
             {this.renderQuestion()}
             <button id="btn-submit" className="btn btn-lg btn-danger" style={{ fontWeight: 'bold' }} type="submit">Submit</button>

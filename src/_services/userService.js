@@ -10,10 +10,12 @@ const checkUserInfoAfterLogin = async (userId) => {
         var response = await users.get(`${userId}/checkinfo`);
         return response.data;
     } catch (e) {
-        if(e.response.status === 500){
+        if(!e.response){
             history.push('/servererror')
+        }else if(e.response.status === 400){
+            history.push('/notfound');
         }
-        return history.push('/notfound')
+        history.push('/servererror');
     }
 }
 

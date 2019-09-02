@@ -20,7 +20,7 @@ const NavigationBar = () => {
         paddingTop: '15px'
     }
     return(
-        <div id="navigation-bar" style={navBarStyles}>
+        <div id="navigation-bar-home" style={navBarStyles}>
             <div style={{marginRight: '40px'}}>
                 <img src="/Images/HomePage/logo.svg" alt="logo" height="70px" width="70px" />
             </div>

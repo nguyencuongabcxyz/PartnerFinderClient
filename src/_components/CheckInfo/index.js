@@ -24,10 +24,12 @@ class CheckInfo extends React.Component {
 
     async componentDidMount() {
         const checkUserResult = await userService.checkUserInfoAfterLogin(extractTokenService.extractUserId())
+        if(checkUserResult){
         this.setState({
             completedInfoPercentage: checkUserResult.completedInfoPercentage,
             isHavingLevel: checkUserResult.isHavingLevel
         })
+    }
     }
 
     render() {

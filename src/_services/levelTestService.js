@@ -1,4 +1,5 @@
 import axios from "axios";
+import history from '../history';
 
 const levelTest = axios.create({
   baseURL: `${process.env.REACT_APP_BASE_URL}/levelTests`
@@ -7,10 +8,9 @@ const levelTest = axios.create({
 const getRandomTest = async () => {
   try {
     const response = await levelTest.get("/random");
-    console.log(response);
-    return response;
+    return response.data;
   } catch (e) {
-      return e.response;
+      history.push('/servererror');
   }
 };
 
