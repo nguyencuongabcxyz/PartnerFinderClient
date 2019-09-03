@@ -1,12 +1,12 @@
 const INITIAL_STATE = {
-    questionPosts : [],
+    feedbackPosts : [],
     count : 0
 }
 
 export default (state = INITIAL_STATE, action) => {
     switch(action.type){
-        case 'FETCH_MANY_QUESTION_POSTS':
-            return {...state, questionPosts: action.questionPosts, count: action.count}
+        case 'FETCH_MANY_FEEDBACK_POSTS':
+            return {...state, feedbackPosts: action.feedbackPosts, count: action.count}
         default : 
         return state;
     }

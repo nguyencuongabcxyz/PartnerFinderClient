@@ -1,39 +1,49 @@
 import React from 'react'
 import './style.css';
 import FeedbackItem from '../FeedbackItem';
+import { connect } from 'react-redux';
+import { fetchManyFeedbackPosts } from '../../../_actions/feedbackPostAction';
+import Pagination from '../../shared/pagination';
+import Spinner from '../../Spinner';
 
 class FeedbackList extends React.Component {
+
+    sizePage = 6;
+
+    componentDidMount() {
+        this.props.fetchManyFeedbackPosts(0, this.sizePage);
+    }
+
+    renderFeedbackPosts = () => {
+        return this.props.feedbackPosts.map(item => {
+            return (
+                <FeedbackItem key={item.id} feedbackPost={item}/>
+            );
+        });
+    }
+
+    fetchFeedbackPostsPagination = (index) => {
+        this.props.fetchManyFeedbackPosts(index, this.sizePage);
+    }
+
     render() {
         return (
             <div id="feedback-list">
                 <h1 className="dashboard-title">Top feedback</h1>
                 <div className="right-section-content">
-                    <FeedbackItem />
-                    <FeedbackItem />
-                    <FeedbackItem />
-                    <FeedbackItem />
-                    <FeedbackItem />
+                    {this.renderFeedbackPosts()}
                 </div>
-                <div className="paging-wrapper">
-                    <div className="paging-right">
-                        <nav aria-label="Page navigation example">
-                            <ul className="pagination justify-content-center">
-                                <li className="page-item disabled">
-                                    <a className="page-link" href="#" tabIndex="-1">Previous</a>
-                                </li>
-                                <li className="page-item"><a className="page-link" href="#">1</a></li>
-                                <li className="page-item"><a className="page-link" href="#">2</a></li>
-                                <li className="page-item"><a className="page-link" href="#">3</a></li>
-                                <li className="page-item">
-                                    <a className="page-link" href="#">Next</a>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
+                <Pagination callBack={this.fetchFeedbackPostsPagination}  itemCount={this.props.count} sizePage={this.sizePage}/>
             </div>
         );
     }
 }
 
-export default FeedbackList;
+const mapStateToProps = (state) => {
+    return {
+        feedbackPosts : state.feedbackPost.feedbackPosts,
+        count : state.feedbackPost.count
+    }
+}
+
+export default connect(mapStateToProps, {fetchManyFeedbackPosts})(FeedbackList);

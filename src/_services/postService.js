@@ -5,15 +5,25 @@ const post = axios.create({
     baseURL : `${process.env.REACT_APP_BASE_URL}/posts`
 });
 
-const getMany = async (index, size) => {
+const getManyQuestionPosts = async (index, size) => {
     try{
-    var response = await axios.get(`/questionposts/${index}/${size}`);
-    return response.data;
+        var response = await post.get(`/questionposts/${index}/${size}`);
+        return response.data;
+    }catch(e){
+        history.push('servererror');
+    }
+}
+
+const getManyFeedbackPosts = async (index, size) => {
+    try{
+        var response = await post.get(`/feedbackposts/${index}/${size}`);
+        return response.data;
     }catch(e){
         history.push('servererror');
     }
 }
 
 export const postService = {
-    getMany
+    getManyQuestionPosts,
+    getManyFeedbackPosts
 }

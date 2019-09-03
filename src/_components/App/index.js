@@ -9,7 +9,7 @@ import ServerError from '../../pages/ServerError';
 import CheckInfo from '../CheckInfo';
 import TestIntro from '../TestIntro';
 import TestPage from '../TestPage';
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 class App extends React.Component {

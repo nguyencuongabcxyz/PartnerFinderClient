@@ -1,5 +1,6 @@
 import React from "react";
 import './style.css';
+import { getPostedTimeAgo } from '../../../_helpers/dateTimeHelper';
 
 class PartnerFinderItem extends React.Component {
 
@@ -49,25 +50,25 @@ class PartnerFinderItem extends React.Component {
             <img src={this.props.partnerFinder.avatar} alt="avatar"/>
           </div>
           <div className="content">
-            <a className="header">{this.props.partnerFinder.name}</a>
+            <a href="#" className="header">{this.props.partnerFinder.name}</a>
             <div className="meta">
               <p><strong>Age: </strong>{this.props.partnerFinder.age}</p>
               <p><strong>Location: </strong>{this.props.partnerFinder.location}</p>
               <p><strong>Level: </strong>{this.convertLevel()}</p>
             </div>
             <div className="description">
-            <span>{splitedDescription.firstPart}</span><a style={{color: 'blue'}} id={`btn-more${userId}`} onClick={this.loadMore}>...show more</a>
-            <span id={`text-more${userId}`} style={{display: 'none'}}>{splitedDescription.secondPart}</span><a style={{display: 'none', color: 'blue'}} id={`btn-less${userId}`} onClick={this.loadLess}>...show less</a>
+            <span>{splitedDescription.firstPart}</span><a href="#" style={{color: 'blue'}} id={`btn-more${userId}`} onClick={this.loadMore}>...show more</a>
+            <span id={`text-more${userId}`} style={{display: 'none'}}>{splitedDescription.secondPart}</span><a href="#" style={{display: 'none', color: 'blue'}} id={`btn-less${userId}`} onClick={this.loadLess}>...show less</a>
             </div>
           </div>
           <div className="extra content">
-            <a className="btn btn-info btn-partner">
+            <button className="btn btn-info btn-partner">
                 Request partner
-            </a>
-            <a className="btn btn-secondary btn-partner">
+            </button>
+            <button className="btn btn-secondary btn-partner">
                 Ignore
-            </a>
-            <div>1h ago</div>
+            </button>
+            <div>{getPostedTimeAgo(this.props.partnerFinder.postedDate)}</div>
           </div>
         </div>
       </div>

@@ -1,21 +1,22 @@
 import './style.css';
-import React from 'react'
+import React from 'react';
+import { getPostedTimeAgo } from '../../../_helpers/dateTimeHelper';
 
 class QuestionItem extends React.Component {
     render() {
         return (
             <div className="item-content">
-                <div className="answer-number">5 answer</div>
+                <div className="answer-number">{this.props.questionPost.answerNumber} Answers</div>
                 <div className="question-body">
                 <div className="question-top">
-                    <a href="#">Using AWS Amplify to create a SNS endpoint. How to do so?</a>
+                    <a href="#">{this.props.questionPost.title}</a>
                 </div>
                 <div className="question-bottom">
-                    <a className="owner-block ui teal image label">
-                        <img src="http://localhost:5000/images/myavatar.jpg" />
-                        Cuong Nguyen
+                    <a href="#" className="owner-block ui teal image label">
+                        <img src={this.props.questionPost.avatar} alt="avatar" />
+                        {this.props.questionPost.name}
                     </a>
-                    <div style={{marginRight: '5px'}}>2h ago</div>
+                    <div style={{marginRight: '5px'}}>{getPostedTimeAgo(this.props.questionPost.updatedDate)}</div>
                 </div>
                 </div>
             </div>

@@ -32,8 +32,13 @@
     margin-right: 6px;
     border: 1px solid #00b894;
     border-radius: 5px;
+    text-align: center;
 }
 
 .owner-block {
     font-size: 10px !important;
+}
+
+.question-body {
+    width: 100%;
 }

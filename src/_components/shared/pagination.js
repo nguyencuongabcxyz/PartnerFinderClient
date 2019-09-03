@@ -20,19 +20,19 @@ class Pagination extends React.Component {
   }
 
   renderPagination = (currentPage, pageNumber) => {
-    if (pageNumber === 1) {
+    if (pageNumber === 1 || pageNumber === 0) {
       return null;
     } else if (pageNumber === 2) {
       if (currentPage === 1) {
         return (
           <ul className="pagination justify-content-center">
             <li className="page-item disabled">
-              <a className="page-link" href="#" tabIndex="-1">
+              <a href="#" className="page-link" tabIndex="-1">
                 Previous
               </a>
             </li>
             <li className="page-item active">
-              <a className="page-link" href="#">
+              <a href="#" className="page-link" >
                 1
               </a>
               <span className="sr-only">(current)</span>
@@ -134,7 +134,7 @@ class Pagination extends React.Component {
                 <span className="sr-only">(current)</span>
               </li>
               <li className="page-item disabled">
-                <a className="page-link" href="#" tabIndex="-1">
+                <a href="#" className="page-link" tabIndex="-1">
                   Next
                 </a>
               </li>

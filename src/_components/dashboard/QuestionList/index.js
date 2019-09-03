@@ -1,39 +1,49 @@
 import React from 'react'
 import './style.css';
 import QuestionItem from '../QuestionItem';
+import { connect } from 'react-redux';
+import { fetchManyQuestionPosts } from '../../../_actions/questionPostActions';
+import Pagination from '../../shared/pagination';
 
 class QuestionList extends React.Component {
+
+    sizePage = 6;
+
+    componentDidMount() {
+        console.log("render did mount!");
+        this.props.fetchManyQuestionPosts(0, this.sizePage);
+    }
+
+    renderQuestionPosts = () => {
+        return this.props.questionPosts.map(item => {
+            return (
+                <QuestionItem key={item.id} questionPost={item}/>
+            );
+        });
+    }
+
+    fetchQuestionPostsPagination = (index) => {
+        this.props.fetchManyQuestionPosts(index, this.sizePage)
+    }
+
     render() {
         return (
             <div id="question-list">
                 <h1 className="dashboard-title">Top questions</h1>
                 <div className="right-section-content">
-                    <QuestionItem />
-                    <QuestionItem />
-                    <QuestionItem />
-                    <QuestionItem />
-                    <QuestionItem />
+                    {this.renderQuestionPosts()}
                 </div>
-                <div className="paging-wrapper">
-                    <div className="paging-right">
-                        <nav aria-label="Page navigation example">
-                            <ul className="pagination justify-content-center">
-                                <li className="page-item disabled">
-                                    <a className="page-link" href="#" tabIndex="-1">Previous</a>
-                                </li>
-                                <li className="page-item"><a className="page-link" href="#">1</a></li>
-                                <li className="page-item"><a className="page-link" href="#">2</a></li>
-                                <li className="page-item"><a className="page-link" href="#">3</a></li>
-                                <li className="page-item">
-                                    <a className="page-link" href="#">Next</a>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
+                <Pagination callBack={this.fetchQuestionPostsPagination}  itemCount={this.props.count} sizePage={this.sizePage}/>
             </div>
         );
     }
 }
 
-export default QuestionList;
+const mapStateToProps = (state) => {
+    return {
+      questionPosts : state.questionPost.questionPosts,
+      count : state.questionPost.count
+    }
+}
+
+export default connect(mapStateToProps, {fetchManyQuestionPosts})(QuestionList);
