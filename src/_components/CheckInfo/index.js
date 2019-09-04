@@ -1,5 +1,5 @@
 import React from 'react'
-import PageLayout from '../PageLayout'
+import PageLayout from '../layout/PageLayout'
 import './style.css'
 import BasicButton from '../shared/BasicButton';
 import { Link } from 'react-router-dom';

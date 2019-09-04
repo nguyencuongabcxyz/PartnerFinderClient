@@ -9,12 +9,14 @@ import Pagination from '../../shared/pagination';
 
 class PartnerFinderList extends React.Component {
 
+    sizePage = 6;
+
     componentDidMount() {
-        this.props.fetchManyFinders(0, 6);
+        this.props.fetchManyFinders(0, this.sizePage);
     }
 
     fetchFindersPagination = (index) => {
-        this.props.fetchManyFinders(index, 6);
+        this.props.fetchManyFinders(index, this.sizePage);
     }
 
     renderPartnerFinderList = () => {
@@ -26,10 +28,6 @@ class PartnerFinderList extends React.Component {
     }
 
     render() {
-        let display = 'flex';
-        if(this.props.partnerFinders.length !== 0){
-            display = 'none';
-        }
         return (
             <div id="finder-list">
                 <h1 className="dashboard-title">
@@ -38,11 +36,11 @@ class PartnerFinderList extends React.Component {
                 <div id="filter">
                     <FilterForm />
                 </div>
-                <Spinner display={display} />
+                <Spinner condition={this.props.partnerFinders.length === 0}/>
                 <div id="partner-finder-list">
                     {this.renderPartnerFinderList()}
                 </div>
-                <Pagination callBack={this.fetchFindersPagination}  itemCount={this.props.count} sizePage={6}/>
+                <Pagination callBack={this.fetchFindersPagination}  itemCount={this.props.count} sizePage={this.sizePage}/>
             </div>
         );
     }

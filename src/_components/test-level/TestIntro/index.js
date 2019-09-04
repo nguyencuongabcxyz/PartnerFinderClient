@@ -1,8 +1,8 @@
 import React from 'react'
 import './style.css'
-import PageLayout from '../PageLayout';
-import BasicButton from '../shared/BasicButton';
-import history from '../../history';
+import PageLayout from '../../layout/PageLayout';
+import BasicButton from '../../shared/BasicButton';
+import history from '../../../history';
 
 const buttonCustomStyles = {
     background: '#F15D03',

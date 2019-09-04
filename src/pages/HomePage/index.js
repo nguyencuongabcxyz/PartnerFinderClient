@@ -4,9 +4,9 @@ import DownButton from '../../_components/shared/DownButton';
 import BasicButton from '../../_components/shared/BasicButton';
 import './home.css';
 import '../../assets/css/sharedHover.css'
-import Login from '../../_components/Login';
-import Register from '../../_components/Register';
-import Footer from '../../_components/Footer';
+import Login from '../../_components/auth/Login';
+import Register from '../../_components/auth/Register';
+import Footer from '../../_components/layout/Footer';
 import { removeModalBootstrap } from '../../_helpers/uiHelper';
 
 const scrollToTop = (e) => {

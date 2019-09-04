@@ -2,8 +2,11 @@ import React from 'react';
 import ClipLoader from 'react-spinners/ClipLoader';
 
 const Spinner = (props) => {
+    if(!props.condition){
+        return null;
+    }
     return (
-        <div style={{ display: `${props.display}`, marginTop: '30px', justifyContent: 'center' }}>
+        <div style={{display: 'flex', marginTop: '30px', justifyContent: 'center' }}>
         <ClipLoader
             sizeUnit={"px"}
             size={40}

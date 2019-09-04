@@ -30,6 +30,7 @@ class FeedbackList extends React.Component {
         return (
             <div id="feedback-list">
                 <h1 className="dashboard-title">Top feedback</h1>
+                <Spinner condition={this.props.feedbackPosts.length === 0}/>
                 <div className="right-section-content">
                     {this.renderFeedbackPosts()}
                 </div>

@@ -7,8 +7,8 @@ import { ProtectedRoute, PublicRoute } from '../../custom.route';
 import NotFound from '../../pages/NotFound';
 import ServerError from '../../pages/ServerError';
 import CheckInfo from '../CheckInfo';
-import TestIntro from '../TestIntro';
-import TestPage from '../TestPage';
+import TestIntro from '../test-level/TestIntro';
+import TestPage from '../test-level/TestPage';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 

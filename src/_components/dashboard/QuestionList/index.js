@@ -4,6 +4,7 @@ import QuestionItem from '../QuestionItem';
 import { connect } from 'react-redux';
 import { fetchManyQuestionPosts } from '../../../_actions/questionPostActions';
 import Pagination from '../../shared/pagination';
+import Spinner from '../../Spinner';
 
 class QuestionList extends React.Component {
 
@@ -30,6 +31,7 @@ class QuestionList extends React.Component {
         return (
             <div id="question-list">
                 <h1 className="dashboard-title">Top questions</h1>
+                <Spinner condition={this.props.questionPosts.length === 0}/>
                 <div className="right-section-content">
                     {this.renderQuestionPosts()}
                 </div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { registerUser } from '../../_actions/registrationActions';
-import '../../assets/css/loginRegisterForm.css';
+import { registerUser } from '../../../_actions/registrationActions';
+import '../../../assets/css/loginRegisterForm.css';
 import { toast } from 'react-toastify';
 import ClipLoader from 'react-spinners/ClipLoader';
 
@@ -9,7 +9,7 @@ import {
     SUCCESSFULL,
     FAILED,
     DUPLICATE
-} from '../../_constants/registrationResult'
+} from '../../../_constants/registrationResult'
 import RegisterForm from '../RegisterForm';
 
 class Register extends React.Component {

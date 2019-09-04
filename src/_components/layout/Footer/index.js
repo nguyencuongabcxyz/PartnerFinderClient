@@ -1,5 +1,5 @@
 import React from 'react';
-import BasicButton from '../../_components/shared/BasicButton';
+import BasicButton from '../../shared/BasicButton';
 import './style.css';
 
 const customStyleBasicButtonSection4 = {

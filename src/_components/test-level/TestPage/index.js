@@ -1,13 +1,13 @@
 import React from "react";
 import "./style.css";
-import PageLayout from "../PageLayout";
+import PageLayout from "../../layout/PageLayout";
 import ReactCountdownClock from "react-countdown-clock";
-import { levelTestService } from "../../_services/levelTestService";
-import { userService } from '../../_services/userService';
+import { levelTestService } from "../../../_services/levelTestService";
+import { userService } from '../../../_services/userService';
 import { Field, reduxForm } from 'redux-form';
-import { extractTokenService } from '../../_services/extractTokenService';
+import { extractTokenService } from '../../../_services/extractTokenService';
 import { Link } from 'react-router-dom'
-import Spinner from "../Spinner";
+import Spinner from "../../Spinner";
 
 class TestPage extends React.Component {
   state = {
