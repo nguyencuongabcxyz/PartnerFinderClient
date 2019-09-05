@@ -80,7 +80,7 @@ class FilterForm extends React.Component {
                     <div className="form-group filter-item col-lg-6">
                         <label>Level</label>
                         <Field className="custom-select" name="level" component="select">
-                            <option>Choose level</option>
+                            <option value="0">Choose level</option>
                             <option value="0">Beginner</option>
                             <option value="1">Intermidiate</option>
                             <option value="2">Advanced</option>

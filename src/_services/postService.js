@@ -7,7 +7,7 @@ const post = axios.create({
 
 const getManyQuestionPosts = async (index, size) => {
     try{
-        var response = await post.get(`/questionposts/${index}/${size}`);
+        var response = await post.get(`/questionposts?index=${index}&&size=${size}`);
         return response.data;
     }catch(e){
         history.push('servererror');
@@ -16,7 +16,7 @@ const getManyQuestionPosts = async (index, size) => {
 
 const getManyFeedbackPosts = async (index, size) => {
     try{
-        var response = await post.get(`/feedbackposts/${index}/${size}`);
+        var response = await post.get(`/feedbackposts?index=${index}&&size=${size}`);
         return response.data;
     }catch(e){
         history.push('servererror');

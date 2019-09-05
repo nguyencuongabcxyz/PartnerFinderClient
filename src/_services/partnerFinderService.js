@@ -7,7 +7,7 @@ const partnerFinder = axios.create({
 
 const getMany = async (index, size) => {
     try {
-        const response = await partnerFinder.get(`/${index}/${size}`);
+        const response = await partnerFinder.get(`?index=${index}&&size=${size}`);
         return response.data;
     } catch (e) {
         history.push('/servererror')
