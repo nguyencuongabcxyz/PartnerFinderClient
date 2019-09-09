@@ -1,5 +1,5 @@
 import React from 'react';
-import { Field, reduxForm } from 'redux-form';
+import { Field, reduxForm, change } from 'redux-form';
 import { connect } from 'react-redux';
 import './style.css';
 import location from '../../../assets/json-data/location.json';
@@ -31,11 +31,11 @@ class FilterForm extends React.Component {
             });
             return;
         }
-        const lowerCaseKey = key.toLowerCase();
+        const lowerCaseKey = key.toLowerCase();        
         let matchedCitys = [];
         location.citys.forEach(item => {
-            if (item.slug.includes(lowerCaseKey)) {
-                matchedCitys.push(item.name);
+            if (item.slug.toLowerCase().includes(lowerCaseKey)) {
+                matchedCitys.push(item.slug);
             }
         });
         this.setState({
@@ -59,7 +59,7 @@ class FilterForm extends React.Component {
     }
 
     setValueForLocationField = (value) => {
-        document.getElementById("location").value = value;
+        this.props.dispatch(change('filterForm', 'location', value));
         this.setState({
             suggestedList: []
         })
@@ -80,7 +80,7 @@ class FilterForm extends React.Component {
                     <div className="form-group filter-item col-lg-6">
                         <label>Level</label>
                         <Field className="custom-select" name="level" component="select">
-                            <option value="0">Choose level</option>
+                            <option value="-1">Choose level</option>
                             <option value="0">Beginner</option>
                             <option value="1">Intermidiate</option>
                             <option value="2">Advanced</option>
@@ -102,7 +102,14 @@ class FilterForm extends React.Component {
     }
 }
 
-export default reduxForm({
+FilterForm = reduxForm({
     form: 'filterForm'
 })(FilterForm);
+
+export default connect(state => ({
+    initialValues: {
+        location: '',
+        level: -1
+    }
+}))(FilterForm);
 

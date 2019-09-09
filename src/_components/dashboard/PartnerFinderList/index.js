@@ -2,7 +2,7 @@ import React from 'react'
 import PartnerFinderItem from '../PartnerFinderItem';
 import FilterForm from '../FilterForm';
 import { connect } from 'react-redux';
-import { fetchManyFinders } from '../../../_actions/partnerFinderActions';
+import { fetchManyFinders, fetchManyWithFilter } from '../../../_actions/partnerFinderActions';
 import './style.css'
 import Spinner from '../../Spinner';
 import Pagination from '../../shared/pagination';
@@ -27,6 +27,11 @@ class PartnerFinderList extends React.Component {
         })
     }
 
+    onSubmit = (formValues) => {
+        console.log(formValues);
+        this.props.fetchManyWithFilter(formValues, 0, 6);
+    }
+
     render() {
         return (
             <div id="finder-list">
@@ -34,7 +39,7 @@ class PartnerFinderList extends React.Component {
                     People looking for partner
                 </h1>
                 <div id="filter">
-                    <FilterForm />
+                    <FilterForm onSubmit={this.onSubmit}/>
                 </div>
                 <Spinner condition={this.props.partnerFinders.length === 0}/>
                 <div id="partner-finder-list">
@@ -53,5 +58,5 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, {fetchManyFinders})(PartnerFinderList);
+export default connect(mapStateToProps, {fetchManyFinders, fetchManyWithFilter})(PartnerFinderList);
 

@@ -39,7 +39,6 @@ class Register extends React.Component {
     }
 
     render() {
-
         this.handleRegistrationResult();
         return (
             <div>
