@@ -15,7 +15,6 @@ const getMany = async (index, size) => {
 }
 
 const getManyWithFilter = async ({level, location}, index, size) => {
-    console.log(location, level);
     try{
         const response = await partnerFinder.get(`/filter?location=${location}&&level=${level}&&index=${index}&&size=${size}`)
         return response.data;

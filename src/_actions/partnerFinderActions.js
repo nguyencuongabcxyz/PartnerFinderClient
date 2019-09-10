@@ -18,7 +18,6 @@ export const fetchManyFinders = (index, size) => async (dispatch) => {
 }
 
 export const fetchManyWithFilter = (filterData, index, size) => async (dispatch) => {
-    console.log(filterData);
     var result = await partnerFinderService.getManyWithFilter(filterData, index, size);
     if(result){
         dispatch({
