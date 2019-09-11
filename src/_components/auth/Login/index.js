@@ -13,7 +13,12 @@ class Login extends React.Component {
         this.props.loginUser(formValues.userName, formValues.password);
     }
 
+    componentDidMount
+
     handleAuthenticationResult() {
+        if(!document.getElementById('spinner-login')){
+            return;
+        }
         switch (this.props.auth.statusCode) {
             case 400:
                 toast.warn('Incorrect username or password!');

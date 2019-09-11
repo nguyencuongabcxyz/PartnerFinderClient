@@ -11,9 +11,20 @@ import TestIntro from '../test-level/TestIntro';
 import TestPage from '../test-level/TestPage';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import ShowingUserInfo from '../user-info/ShowingUserInfo';
+import axios from 'axios';
 
 class App extends React.Component {
   render() {
+    axios.interceptors.response.use(response => {
+      return response;
+    }, error => {
+      if(error.response.status === 401){
+        localStorage.removeItem('token');
+        history.push("/");
+      }
+      return error;
+    });
     return (
       <Router history={history}>
         <div>
@@ -22,6 +33,7 @@ class App extends React.Component {
           <ProtectedRoute exact path="/checkinfo" component={CheckInfo} />
           <ProtectedRoute exact path="/testintro" component={TestIntro} />
           <ProtectedRoute exact path="/testpage" component={TestPage} />
+          <ProtectedRoute exact path="/userinfo" component={ShowingUserInfo} />
           <Route exact path="/notfound" component={NotFound} />
           <Route exact path="/servererror" component={ServerError}/>
           <ToastContainer autoClose={3000} />
