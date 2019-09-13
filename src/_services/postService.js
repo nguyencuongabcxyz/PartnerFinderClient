@@ -1,26 +1,13 @@
-import axios from 'axios';
-import history from '../history';
-
-const post = axios.create({
-    baseURL : `${process.env.REACT_APP_BASE_URL}/posts`
-});
+import apiClient from '../interceptor';
 
 const getManyQuestionPosts = async (index, size) => {
-    try{
-        var response = await post.get(`/questionposts?index=${index}&&size=${size}`);
-        return response.data;
-    }catch(e){
-        history.push('servererror');
-    }
+    var response = await apiClient.get(`/posts/questionposts?index=${index}&&size=${size}`);
+    return response.data;
 }
 
 const getManyFeedbackPosts = async (index, size) => {
-    try{
-        var response = await post.get(`/feedbackposts?index=${index}&&size=${size}`);
-        return response.data;
-    }catch(e){
-        history.push('servererror');
-    }
+    var response = await apiClient.get(`/posts/feedbackposts?index=${index}&&size=${size}`);
+    return response.data;
 }
 
 export const postService = {

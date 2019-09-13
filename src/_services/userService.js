@@ -1,37 +1,22 @@
-import axios from 'axios';
-import history from '../history';
-
-const users = axios.create({
-    baseURL: `${process.env.REACT_APP_BASE_URL}/users`
-});
+import apiClient from '../interceptor';
 
 const checkUserInfoAfterLogin = async (userId) => {
-    try {
-        var response = await users.get(`${userId}/checkinfo`);
-        return response.data;
-    } catch (e) {
-        if(!e.response){
-            history.push('/servererror')
-        }else if(e.response.status === 400){
-            history.push('/notfound');
-        }
-        history.push('/servererror');
-    }
+    var response = await apiClient.get(`users/${userId}/checkinfo`);
+    return response.data;
 }
 
 const updateLevel = async (userId, data) => {
-    try {
-        var response = await users.patch(`${userId}/updatelevel`, data);
-        return response.data;
-    }catch(e) {
-        if(e.response.status === 500){
-            history.push('/servererror')
-        }
-        return history.push('/notfound')
-    }
+    var response = await apiClient.patch(`users/${userId}/updatelevel`, data);
+    return response.data;
+}
+
+const getOne = async (userId) => {
+    var response = await apiClient.get(`users/${userId}`);
+    return response.data;
 }
 
 export const userService = {
     checkUserInfoAfterLogin,
-    updateLevel
+    updateLevel,
+    getOne
 }

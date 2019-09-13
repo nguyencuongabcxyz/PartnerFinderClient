@@ -1,36 +1,13 @@
-import axios from "axios";
-import history from '../history';
-
-const partnerFinder = axios.create({
-    baseURL: `${process.env.REACT_APP_BASE_URL}/findingpartnerusers`
-});
-
-partnerFinder.interceptors.response.use((response) => {
-    return response;
-}, (error) => {
-    if(error.response.status === 401){
-        localStorage.removeItem('token');
-        history.push('/');
-    }
-    return error;
-})
+import apiClient from '../interceptor';
 
 const getMany = async (index, size) => {
-    try {
-        const response = await partnerFinder.get(`?index=${index}&&size=${size}`);
-        return response.data;
-    } catch (e) {
-        history.push('/servererror')
-    }
+    const response = await apiClient.get(`/findingpartnerusers/?index=${index}&&size=${size}`);
+    return response.data;
 }
 
 const getManyWithFilter = async ({level, location}, index, size) => {
-    try{
-        const response = await partnerFinder.get(`/filter?location=${location}&&level=${level}&&index=${index}&&size=${size}`)
-        return response.data;
-    } catch(e) {
-        history.push('/servererror')
-    }
+    const response = await apiClient.get(`/findingpartnerusers/filter?location=${location}&&level=${level}&&index=${index}&&size=${size}`)
+    return response.data;
 }
 
 export const partnerFinderService = {

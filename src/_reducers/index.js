@@ -5,6 +5,7 @@ import registrationReducer from './registrationReducer';
 import partnerFinderReducer from './partnerFinderReducer';
 import questionPostReducer from './questionPostReducer';
 import feedbackPostReducer from './feedbackPostReducer';
+import userInfoReducer from './userInfoReducer';
 
 export default combineReducers({
     form: formReducer,
@@ -12,6 +13,7 @@ export default combineReducers({
     registrationResult: registrationReducer,
     partnerFinder: partnerFinderReducer,
     questionPost: questionPostReducer,
-    feedbackPost: feedbackPostReducer
+    feedbackPost: feedbackPostReducer,
+    userInfo: userInfoReducer
 });
 

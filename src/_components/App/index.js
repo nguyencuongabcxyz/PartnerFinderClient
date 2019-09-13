@@ -13,6 +13,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ShowingUserInfo from '../user-info/ShowingUserInfo';
 import axios from 'axios';
+import UpdatingUserInfo from '../user-info/UpdatingUserInfo';
 
 class App extends React.Component {
   render() {
@@ -34,6 +35,7 @@ class App extends React.Component {
           <ProtectedRoute exact path="/testintro" component={TestIntro} />
           <ProtectedRoute exact path="/testpage" component={TestPage} />
           <ProtectedRoute exact path="/userinfo" component={ShowingUserInfo} />
+          <ProtectedRoute exact path="/updateinfo" component={UpdatingUserInfo} />
           <Route exact path="/notfound" component={NotFound} />
           <Route exact path="/servererror" component={ServerError}/>
           <ToastContainer autoClose={3000} />
