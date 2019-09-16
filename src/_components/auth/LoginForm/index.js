@@ -48,7 +48,6 @@ class LoginForm extends React.Component {
 
 const validate = (formValues) => {
     const errors = {};
-
     if (!formValues.userName) {
         errors.userName = 'You must enter a username!';
     }
