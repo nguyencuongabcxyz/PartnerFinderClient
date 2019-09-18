@@ -6,6 +6,7 @@ import { fetchOneUserInfo } from '../../../_actions/userInfoActions'
 import PageLayout from '../../layout/PageLayout';
 import { extractTokenService } from '../../../_services/extractTokenService';
 import { userService } from '../../../_services/userService';
+import ScreenLoader from '../../shared/ScreenLoader';
 
 class ShowingUserInfo extends React.Component {
 
@@ -54,16 +55,19 @@ class ShowingUserInfo extends React.Component {
 
     async componentDidMount() {
         const userId = extractTokenService.extractUserId();
-        const {completedInfoPercentage} = await userService.checkUserInfoAfterLogin(userId);
+        const userInfo = await userService.checkUserInfoAfterLogin(userId);
+        if(userInfo){
         this.setState({
-            completedInfoPercentage: completedInfoPercentage
+            completedInfoPercentage: userInfo.completedInfoPercentage
         })
+    }
         this.props.fetchOneUserInfo(userId);
     }
 
     render() {
         return (
             <PageLayout>
+                {this.props.fetching && <ScreenLoader/>}
                 <div id="user-info" className="row">
                     <div id="left-section" className="col-lg-4">
                         <div id="avatar-block">
@@ -134,7 +138,8 @@ class ShowingUserInfo extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        userInfo: state.userInfo
+        userInfo: state.userInfo.data,
+        fetching: state.userInfo.fetching
     }
 }
 

@@ -50,6 +50,7 @@ class UserInfoForm extends React.Component {
         return (
             <form onSubmit={this.props.handleSubmit}>
                 <h1 id="user-form-title">Update information</h1>
+                <Field name="userId" component={this.renderInputText} type="hidden"/>
                 <Field name="name" component={this.renderInputText} label="Name" placeholder="Enter name"/>
                 <LocationInput setValue={this.setValue} additionalClasses="info-group"/>
                 <Field type="number" name="age" component={this.renderInputText} label="Age" placeholder="Enter a number"/>
@@ -83,5 +84,6 @@ const validate = (formValues) => {
 
 export default reduxForm({
     form: 'userInfoForm',
-    validate
+    validate,
+    enableReinitialize : true
 })(UserInfoForm);

@@ -16,7 +16,7 @@ apiClient.interceptors.response.use((response) => {
     return response;
 }, (error) => {
     if (!error.response) {
-        history.push('/notfound');
+        history.push('/servererror');
     }else{
     switch (error.response.status) {
         case 401:

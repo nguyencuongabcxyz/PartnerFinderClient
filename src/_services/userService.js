@@ -15,8 +15,14 @@ const getOne = async (userId) => {
     return response.data;
 }
 
+const updateInfo = async (userId, userInfo) => {
+    var response = await apiClient.put(`users/${userId}`, userInfo);
+    return response.data;
+}
+
 export const userService = {
     checkUserInfoAfterLogin,
     updateLevel,
-    getOne
+    getOne,
+    updateInfo
 }
