@@ -2,8 +2,8 @@ import React from 'react'
 
 const ScreenLoader = () => {
     return (
-        <div class="ui active dimmer" style={{position: "fixed"}}>
-            <div class="ui text loader">Loading...</div>
+        <div className="ui active dimmer" style={{position: "fixed"}}>
+            <div className="ui text loader">Loading...</div>
         </div>
     );
 };
