@@ -55,7 +55,7 @@ class ShowingUserInfo extends React.Component {
 
     async componentDidMount() {
         const userId = extractTokenService.extractUserId();
-        const userInfo = await userService.checkUserInfoAfterLogin(userId);
+        const userInfo = await userService.checkUserInfoAfterLogin();
         if(userInfo){
         this.setState({
             completedInfoPercentage: userInfo.completedInfoPercentage

@@ -4,7 +4,6 @@ import './style.css'
 import BasicButton from '../shared/BasicButton';
 import { Link } from 'react-router-dom';
 import { userService } from '../../_services/userService';
-import { extractTokenService } from '../../_services/extractTokenService';
 import history from '../../history';
 
 class CheckInfo extends React.Component {
@@ -23,7 +22,7 @@ class CheckInfo extends React.Component {
     }
 
     async componentDidMount() {
-        const checkUserResult = await userService.checkUserInfoAfterLogin(extractTokenService.extractUserId())
+        const checkUserResult = await userService.checkUserInfoAfterLogin()
         if(checkUserResult){
         this.setState({
             completedInfoPercentage: checkUserResult.completedInfoPercentage,

@@ -54,7 +54,7 @@ export const loginUser = (userName, password) => async (dispatch) => {
             break;
         case 200:
             dispatch(loginSuccess(result))
-            const checkUserInfoResult = await userService.checkUserInfoAfterLogin(result.userId);
+            const checkUserInfoResult = await userService.checkUserInfoAfterLogin();
             if (checkUserInfoResult.completedInfoPercentage !== 100 || !checkUserInfoResult.isHavingLevel) {
                 history.push('/checkinfo');
             } else {

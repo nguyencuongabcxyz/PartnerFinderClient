@@ -5,7 +5,6 @@ import ReactCountdownClock from "react-countdown-clock";
 import { levelTestService } from "../../../_services/levelTestService";
 import { userService } from '../../../_services/userService';
 import { Field, reduxForm } from 'redux-form';
-import { extractTokenService } from '../../../_services/extractTokenService';
 import { Link } from 'react-router-dom'
 import Spinner from "../../Spinner";
 
@@ -74,7 +73,7 @@ class TestPage extends React.Component {
       questionObject.answerId = formValues[q];
       questionArray.push(questionObject);
     }
-    var response = await userService.updateLevel(extractTokenService.extractUserId(), questionArray);
+    var response = await userService.updateLevel(questionArray);
     this.handleResponse(response);
   }
 

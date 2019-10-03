@@ -1,17 +1,21 @@
 import React from "react";
+import { connect } from "react-redux";
+
 import "./style.css";
 import UserInfoForm from "../UserInfoForm";
 import PageLayout from "../../layout/PageLayout";
-import { connect } from "react-redux";
 import {
   fetchOneUserInfo,
-  updateOneUserInfo
+  updateOneUserInfo,
+  updateMediaProfile
 } from "../../../_actions/userInfoActions";
 import { extractTokenService } from "../../../_services/extractTokenService";
 import ScreenLoader from "../../shared/ScreenLoader";
 import { imageService } from "../../../_services/imageService";
 import { videoService } from "../../../_services/videoService";
 import { audioService } from "../../../_services/audioService";
+
+import { mediaUrl } from "../../../_constants/mediaBaseUrl";
 
 class UpdatingUserInfo extends React.Component {
   componentDidMount() {
@@ -20,15 +24,18 @@ class UpdatingUserInfo extends React.Component {
   }
 
   submitUserInfo = formValues => {
-    var userId = extractTokenService.extractUserId();
-    this.props.updateOneUserInfo(userId, formValues);
+    this.props.updateOneUserInfo(formValues);
   };
 
   uploadImage = async e => {
     const file = e.target.files[0];
     const result = await imageService.uploadImageToMediaServer(file);
     if (result && result.successfull) {
-        console.log('successfull!');
+        const avatarUrl = mediaUrl.IMAGE_BASE_URL + result.name;
+        const mediaProfile = {
+          avatar: avatarUrl
+        };
+        this.props.updateMediaProfile(mediaProfile);
     }
     else{
         console.log('Failed!');
@@ -39,7 +46,11 @@ class UpdatingUserInfo extends React.Component {
     const file = e.target.files[0];
     const result = await videoService.uploadVideoToMediaServer(file);
     if (result && result.successfull) {
-        console.log('successfull!');
+        const videoUrl = mediaUrl.VIDEO_BASE_URL +  result.name;
+        const mediaProfile = {
+          video: videoUrl
+        };
+        this.props.updateMediaProfile(mediaProfile);
     }
     else{
         console.log('Failed!');
@@ -50,7 +61,11 @@ class UpdatingUserInfo extends React.Component {
     const file = e.target.files[0];
     const result = await audioService.uploadAudioToMediaServer(file);
     if (result && result.successfull) {
-        console.log('successfull!');
+        const audioUrl = mediaUrl.AUDIO_BASE_URL + result.name;
+        const mediaProfile = {
+          voiceAudio: audioUrl
+        };
+        this.props.updateMediaProfile(mediaProfile);
     }
     else{
         console.log('Failed!');
@@ -139,6 +154,7 @@ export default connect(
   mapStateToProps,
   {
     fetchOneUserInfo,
-    updateOneUserInfo
+    updateOneUserInfo,
+    updateMediaProfile
   }
 )(UpdatingUserInfo);

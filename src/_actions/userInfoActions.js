@@ -4,11 +4,12 @@ import { toast } from 'react-toastify';
 
 import {
     FETCH_ONE,
-    UPDATE_ONE
+    UPDATE_ONE,
+    UPDATE_MEDIA_PROFILE
 } from '../_constants/userInfoConstants';
 
 export const fetchOneUserInfo = (userId) =>  async (dispatch) => {
-    var result = await userService.getOne(userId);
+    const result = await userService.getOne(userId);
     if (result){
         dispatch({
             type: FETCH_ONE,
@@ -18,12 +19,12 @@ export const fetchOneUserInfo = (userId) =>  async (dispatch) => {
     }
 }
 
-export const updateOneUserInfo  = (userId, userInfo) => async (dispatch) => {
+export const updateOneUserInfo  = (userInfo) => async (dispatch) => {
     dispatch({
         type: 'UPDATING',
         updating: true,
     })
-    var result = await userService.updateInfo(userId, userInfo);
+    const result = await userService.updateInfo(userInfo);
     if (result){
         dispatch({
             type: UPDATE_ONE,
@@ -34,3 +35,15 @@ export const updateOneUserInfo  = (userId, userInfo) => async (dispatch) => {
         history.push("/userinfo");
     }
 }
+
+export const updateMediaProfile = (mediaProfile) => async (dispatch) => {
+    const result = await userService.updateMediaProfile(mediaProfile);
+    if(result) {
+        dispatch({
+            type: UPDATE_MEDIA_PROFILE,
+            data: result,
+            updating: false,
+        })
+    }
+}
+
