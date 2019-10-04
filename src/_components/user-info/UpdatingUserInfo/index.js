@@ -29,6 +29,7 @@ class UpdatingUserInfo extends React.Component {
 
   uploadImage = async e => {
     const file = e.target.files[0];
+    e.target.value = '';
     const result = await imageService.uploadImageToMediaServer(file);
     if (result && result.successfull) {
         const avatarUrl = mediaUrl.IMAGE_BASE_URL + result.name;
@@ -44,6 +45,7 @@ class UpdatingUserInfo extends React.Component {
 
   uploadVideo = async e => {
     const file = e.target.files[0];
+    e.target.value = '';
     const result = await videoService.uploadVideoToMediaServer(file);
     if (result && result.successfull) {
         const videoUrl = mediaUrl.VIDEO_BASE_URL +  result.name;
@@ -59,6 +61,7 @@ class UpdatingUserInfo extends React.Component {
 
   uploadAudio = async e => {
     const file = e.target.files[0];
+    e.target.value = '';
     const result = await audioService.uploadAudioToMediaServer(file);
     if (result && result.successfull) {
         const audioUrl = mediaUrl.AUDIO_BASE_URL + result.name;
@@ -86,6 +89,7 @@ class UpdatingUserInfo extends React.Component {
                   <img src={userInfo.avatar} alt="avatar" />
                 </div>
               </div>
+              <label for="avatar" className="custom-file-upload">Change avatar</label>
               <input
                 type="file"
                 id="avatar"
@@ -102,6 +106,7 @@ class UpdatingUserInfo extends React.Component {
               <video src={userInfo.video} controls>
                 Your browser does not support the video tag.
               </video>
+              <label for="video" className="custom-file-upload">Change video</label>
               <input
                 type="file"
                 id="video"
@@ -119,6 +124,7 @@ class UpdatingUserInfo extends React.Component {
               <audio src={userInfo.voiceAudio} controls>
                 Your browser does not support the audio tag.
               </audio>
+              <label for="voiceAudio" className="custom-file-upload">Change audio</label>
               <input
                 type="file"
                 id="voiceAudio"
