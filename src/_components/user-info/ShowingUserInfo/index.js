@@ -54,14 +54,46 @@ class ShowingUserInfo extends React.Component {
     }
 
     async componentDidMount() {
-        const userId = extractTokenService.extractUserId();
-        const userInfo = await userService.checkUserInfoAfterLogin();
-        if(userInfo){
-        this.setState({
-            completedInfoPercentage: userInfo.completedInfoPercentage
-        })
-    }
+        const paramUserId = this._getUserIdFromParams();
+        const tokenUserId = extractTokenService.extractUserId();
+        let userId = paramUserId ? paramUserId : tokenUserId;
+        if (this._checkIsOwnProfile()){
+            const userInfo = await userService.checkUserInfoAfterLogin();
+            if (userInfo){
+            this.setState({
+                completedInfoPercentage: userInfo.completedInfoPercentage
+            })
+            }
+        }
         this.props.fetchOneUserInfo(userId);
+    }
+
+    _checkIsOwnProfile = () => {
+        const paramUserId = this._getUserIdFromParams();
+        const tokenUserId = extractTokenService.extractUserId();
+        if (!paramUserId || paramUserId === tokenUserId) return true;
+        return false;
+    }
+
+    _getUserIdFromParams = () => {
+        const otherUserId = this.props.match.params.id;
+        if(!otherUserId) return null;
+        return otherUserId;
+    }
+
+    _renderUpdateProfileBox = () => {
+        return this._checkIsOwnProfile() ? (
+            <div id="completed-info">
+            <div className="card-body">
+                <h5 className="card-title">{this.state.completedInfoPercentage}% your information have been updated!</h5>
+                <div className="progress">
+                    <div className="progress-bar bg-danger" style={{width: `${this.state.completedInfoPercentage}%`}} role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <p className="card-text">Update your information to help you impress other people and get a high chance to meet your ideal partner</p>
+                <Link to={"/updateinfo"} className="right-btn btn btn-warning" >Update information</Link>
+            </div>
+        </div>
+        ) : null;
     }
 
     render() {
@@ -106,16 +138,7 @@ class ShowingUserInfo extends React.Component {
                                     {this.renderLevelStar()}
                                 </div>
                             </div>
-                            <div id="completed-info">
-                                <div className="card-body">
-                                    <h5 className="card-title">{this.state.completedInfoPercentage}% your information have been updated!</h5>
-                                    <div className="progress">
-                                        <div className="progress-bar bg-danger" style={{width: `${this.state.completedInfoPercentage}%`}} role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                    <p className="card-text">Update your information to help you impress other people and get a high chance to meet your ideal partner</p>
-                                    <Link to={"/updateinfo"} className="right-btn btn btn-warning" >Update information</Link>
-                                </div>
-                            </div>
+                            {this._renderUpdateProfileBox()}
                         </div>
                         <div id="about-section">
                             <h2>More information</h2>

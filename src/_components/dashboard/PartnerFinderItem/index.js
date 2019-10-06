@@ -1,6 +1,7 @@
 import React from "react";
 import './style.css';
 import { getPostedTimeAgo } from '../../../_helpers/dateTimeHelper';
+import { Link } from 'react-router-dom';
 
 class PartnerFinderItem extends React.Component {
 
@@ -50,7 +51,7 @@ class PartnerFinderItem extends React.Component {
             <img src={this.props.partnerFinder.avatar} alt="avatar"/>
           </div>
           <div className="content">
-            <a href="#" className="header">{this.props.partnerFinder.name}</a>
+            <Link to={`/userinfo/${userId}`} className="header">{this.props.partnerFinder.name}</Link>
             <div className="meta">
               <p><strong>Age: </strong>{this.props.partnerFinder.age}</p>
               <p><strong>Location: </strong>{this.props.partnerFinder.location}</p>

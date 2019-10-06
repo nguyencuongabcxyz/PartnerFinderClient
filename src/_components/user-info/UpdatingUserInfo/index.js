@@ -33,6 +33,7 @@ class UpdatingUserInfo extends React.Component {
     const result = await imageService.uploadImageToMediaServer(file);
     if (result && result.successfull) {
         const avatarUrl = mediaUrl.IMAGE_BASE_URL + result.name;
+        console.log(avatarUrl);
         const mediaProfile = {
           avatar: avatarUrl
         };
@@ -89,7 +90,7 @@ class UpdatingUserInfo extends React.Component {
                   <img src={userInfo.avatar} alt="avatar" />
                 </div>
               </div>
-              <label for="avatar" className="custom-file-upload">Change avatar</label>
+              <label htmlFor="avatar" className="custom-file-upload">Change avatar</label>
               <input
                 type="file"
                 id="avatar"
@@ -106,7 +107,7 @@ class UpdatingUserInfo extends React.Component {
               <video src={userInfo.video} controls>
                 Your browser does not support the video tag.
               </video>
-              <label for="video" className="custom-file-upload">Change video</label>
+              <label htmlFor="video" className="custom-file-upload">Change video</label>
               <input
                 type="file"
                 id="video"
@@ -124,7 +125,7 @@ class UpdatingUserInfo extends React.Component {
               <audio src={userInfo.voiceAudio} controls>
                 Your browser does not support the audio tag.
               </audio>
-              <label for="voiceAudio" className="custom-file-upload">Change audio</label>
+              <label htmlFor="voiceAudio" className="custom-file-upload">Change audio</label>
               <input
                 type="file"
                 id="voiceAudio"

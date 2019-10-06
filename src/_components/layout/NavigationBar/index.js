@@ -2,6 +2,7 @@ import React from "react";
 import "./style.css";
 import { connect } from "react-redux";
 import { logoutUser } from "../../../_actions/authActions";
+import { Link } from 'react-router-dom';
 
 class NavigationBar extends React.Component {
 
@@ -26,11 +27,14 @@ class NavigationBar extends React.Component {
   };
   render() {
     return (
-      <nav id="navigation-bar" className="navbar navbar-expand-lg navbar-light bg-light justify-content-between">
-        <a className="navbar-brand" href="#">
+      <nav
+        id="navigation-bar"
+        className="navbar navbar-expand-lg navbar-light bg-light justify-content-between"
+      >
+        <Link className="navbar-brand" to="/">
           <img alt="page-logo" src="/Images/HomePage/logo.svg" />
           <p id="page-name">PartnerFinder</p>
-        </a>
+        </Link>
         <button
           className="navbar-toggler"
           type="button"
@@ -95,16 +99,16 @@ class NavigationBar extends React.Component {
                 />
               </a>
               <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a className="dropdown-item" href="#">
-              <i className="user circle icon"></i>Information
-                </a>
+                <Link className="dropdown-item" to="/userinfo">
+                  <i className="user circle icon"></i>Information
+                </Link>
                 <a className="dropdown-item" href="#">
-                <i className="lock icon"></i>Account
+                  <i className="lock icon"></i>Account
                 </a>
                 <div className="dropdown-divider"></div>
-                <a className="dropdown-item" href="#" onClick={this.onLogout}>
-                <span className="glyphicon glyphicon-log-out"></span>Logout
-                </a>
+                <Link className="dropdown-item" to="" onClick={this.onLogout}>
+                  <span className="glyphicon glyphicon-log-out"></span>Logout
+                </Link>
               </div>
             </li>
           </ul>

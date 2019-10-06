@@ -35,6 +35,7 @@ class App extends React.Component {
           <ProtectedRoute exact path="/testintro" component={TestIntro} />
           <ProtectedRoute exact path="/testpage" component={TestPage} />
           <ProtectedRoute exact path="/userinfo" component={ShowingUserInfo} />
+          <ProtectedRoute exact path="/userinfo/:id" component={ShowingUserInfo} />
           <ProtectedRoute exact path="/updateinfo" component={UpdatingUserInfo} />
           <Route exact path="/notfound" component={NotFound} />
           <Route exact path="/servererror" component={ServerError}/>
