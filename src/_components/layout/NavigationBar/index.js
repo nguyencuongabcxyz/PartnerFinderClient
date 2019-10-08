@@ -48,38 +48,28 @@ class NavigationBar extends React.Component {
         </button>
 
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <form className="form-inline my-2 my-lg-0">
-            <input
-              className="form-control mr-sm-2"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-            />
-            <button
-              className="btn btn-search btn-outline-success my-2 my-sm-0"
-              type="submit"
-            >
-              Search
-            </button>
-          </form>
           <ul className="navbar-nav mr-auto">
             <li className="nav-item active">
               <a className="nav-link func-link" href="#">
+              <i class="nav-icon question circle outline icon"></i>
                 Ask question
               </a>
             </li>
             <li className="nav-item">
               <a className="nav-link func-link" href="#">
+              <i class="nav-icon smile outline icon"></i>
                 Get feedback
               </a>
             </li>
             <li className="nav-item">
               <a className="nav-link func-link" href="#">
+              <i class="nav-icon comment alternate outline icon"></i>
                 Message
               </a>
             </li>
             <li className="nav-item">
               <a className="nav-link func-link" href="#">
+              <i class="nav-icon bell outline icon"></i>
                 Notification
               </a>
             </li>
@@ -93,10 +83,7 @@ class NavigationBar extends React.Component {
                 aria-haspopup="true"
                 aria-expanded="false"
               >
-                <img
-                  alt="seting_icon"
-                  src="/Images/HomePage/setting_icon.svg"
-                />
+                <i class="nav-icon cog icon"></i>
               </a>
               <div className="dropdown-menu" aria-labelledby="navbarDropdown">
                 <Link className="dropdown-item" to="/userinfo">
