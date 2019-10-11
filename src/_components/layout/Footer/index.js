@@ -5,7 +5,7 @@ import './style.css';
 const customStyleBasicButtonSection4 = {
     background: 'none',
     border: '1px solid',
-    color: '#4f4f4f',
+    color: 'white',
 }
 
 const Footer = () => {

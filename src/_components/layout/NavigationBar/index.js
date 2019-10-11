@@ -8,15 +8,25 @@ class NavigationBar extends React.Component {
 
   componentDidMount() {
     window.addEventListener("scroll", function (event) {
-        var scroll = this.scrollY;
-        var navBar = this.document.getElementById('navigation-bar');
+        const scroll = this.scrollY;
+        const navBar = this.document.getElementById('navigation-bar');
+        const pageName = this.document.getElementById('page-name');
+        const funcLinks = this.document.getElementsByClassName('func-link');
         if(navBar){
         if(scroll !== 0) {
-            navBar.style.height = '78px';
-            navBar.style.setProperty('background-color', '#ffeaa7', 'important')
+            navBar.style.height = '80px';
+            navBar.style.setProperty('background-color', 'white', 'important')
+            pageName.style.setProperty('color', "#4f4f4f");
+            for(let i = 0; i < funcLinks.length; i++) {
+              funcLinks[i].style.setProperty('color', '#4f4f4f', 'important');
+            }
         }else{
-            navBar.style.height = '65px';
-            navBar.style.setProperty('background-color', '#f8f9fa', 'important')
+            navBar.style.height = '75px';
+            navBar.style.setProperty('background-color', '#1D4661', 'important');
+            pageName.style.setProperty('color', "white");
+            for(let i = 0; i < funcLinks.length; i++) {
+              funcLinks[i].style.setProperty('color', '#fff', 'important');
+            }
         }
       }
     });
@@ -75,7 +85,7 @@ class NavigationBar extends React.Component {
             </li>
             <li className="nav-item dropdown">
               <a
-                className="nav-link dropdown-toggle right-link"
+                className="nav-link dropdown-toggle right-link func-link"
                 href="#"
                 id="navbarDropdown"
                 role="button"

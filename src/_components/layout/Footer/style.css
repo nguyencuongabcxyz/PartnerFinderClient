@@ -1,9 +1,9 @@
 #footer-content{
     margin-top: 15vh;
-    background: #ffeaa7;
+    background: #1D4661;
     padding-top: 10vh;
     padding-bottom: 10vh;
-    color: #4F4F4F;
+    color: white;
     position: relative;
 }
 
@@ -36,7 +36,7 @@
     display: block;
     margin-bottom: 10px;
     text-decoration: none;
-    color: #4F4F4F;
+    color: white;
     max-width: max-content;
 }
 
