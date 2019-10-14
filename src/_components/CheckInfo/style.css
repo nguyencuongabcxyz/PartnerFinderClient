@@ -1,14 +1,22 @@
+#check-info {
+    margin-bottom: 100px;
+}
+
 #check-info h1{
     text-align: center;
     margin-top: 80px;
-    font-size: 58px;
+    font-size: 50px;
     line-height: 70px;
+    font-family: '';
+    font-family: 'Open Sans', sans-serif;
+    text-transform: uppercase;
 }
 
 #check-info > p {
     text-align: center;
     font-size: 22px;
     line-height: 32px;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .card {
@@ -35,6 +43,15 @@
     font-size: 18px;
     font-weight: bold;
     background: wheat;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.card-title {
+    font-family: 'Open Sans', sans-serif;
+}
+
+.card-text {
+    font-family: 'Open Sans', sans-serif;
 }
 
 .card.hidden {
@@ -47,4 +64,5 @@
     text-align: center;
     margin-top: 20vh;
     margin-bottom: 15px;
+    font-family: 'Open Sans', sans-serif;
 }

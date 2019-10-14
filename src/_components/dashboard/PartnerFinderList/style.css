@@ -1,12 +1,18 @@
 .paging {
     margin-top: 20px;
+    box-shadow: 0px 1px 5px rgba(0,0,0,0.38);
+    width: fit-content;
+    border-radius: 5px;
+    margin: 15px auto;
 }
 
 #filter {
     padding: 15px;
-    background: #f5f6fa;
+    background: white;
     margin-bottom: 15px;
     border-radius: 4px;
+    border: 1px solid wheat;
+    box-shadow: 0px 1px 5px rgba(0,0,0,0.38);
 }
 #partner-finder-list {
     display: grid;

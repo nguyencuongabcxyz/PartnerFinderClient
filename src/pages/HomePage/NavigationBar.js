@@ -13,7 +13,7 @@ const NavigationBar = () => {
         fontSize:  '22px',
         fontWeight: 'bold',
         color: 'white',
-        fontFamily: 'Dancing Script, cursive'
+        fontFamily: 'Open Sans, sans-serif'
     }
     const buttonSectionStyles = {
         display: 'flex',

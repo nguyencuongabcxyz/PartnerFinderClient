@@ -1,13 +1,19 @@
 #update-info {
     padding: 40px 15% 0;
+    display: flex;
 }
 
 input[type="file"] {
     display: none;
 }
 .custom-file-upload {
-    border: 1px solid #ccc;
-    display: inline-block;
+    border: 1px solid wheat;
+    border-radius: 5px;
+    margin: 0 auto;
+    width: 170px;
+    display: block;
     padding: 6px 12px;
     cursor: pointer;
+    background-color: #F8B906;
+    margin-top: 10px;
 }

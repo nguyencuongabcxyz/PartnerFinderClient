@@ -18,9 +18,9 @@ const scrollToTop = (e) => {
 }
 
 const customStyleBasicButtonSection1 = {
-    background: '#F15D03',
+    background : '#F8B906',
     border: 'none',
-    color: '#FFFFFF',
+    color: 'black',
 }
 const Home = () => {
     removeModalBootstrap();
@@ -32,7 +32,7 @@ const Home = () => {
                 <Register />
                 <div id="center-intro">
                     <h1 id="sologan">Let's find your partner</h1>
-                    <h2 id="sub-sologan">Let <span style={{ color: '#FFB906', fontFamily: 'Pacifico, cursive', fontSize: '28px' }}>PartnerFinder</span> help you enhance your english skills</h2>
+                    <h2 id="sub-sologan">Let <span style={{ color: '#FFB906', fontFamily: 'Open Sans, sans-serif', fontSize: '28px', fontWeight: '600' }}>PartnerFinder</span> help you enhance your english skills</h2>
                     <BasicButton isLoginButton={true} customStyles={customStyleBasicButtonSection1} content="Join us now" />
                 </div>
                 <DownButton link="section2" textColor="white" headContent="See how" tailContent="can help you" />

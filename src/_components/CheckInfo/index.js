@@ -14,7 +14,7 @@ class CheckInfo extends React.Component {
     }
 
     customStyleButton = {
-        background : '#FFEAA7',
+        background : '#F8B906',
         border: 'none',
         color: 'black',
         display: 'block',
@@ -60,7 +60,7 @@ class CheckInfo extends React.Component {
                             <div className="progress-bar bg-danger" style={{width: `${this.state.completedInfoPercentage}%`}} role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
                             <p className="card-text">Update your information to help you impress other people and get a high chance to meet your ideal partner</p>
-                            <Link to={"/updateuser"} className="right-btn btn btn-warning" >Update information</Link>
+                            <Link to={"/updateinfo"} className="right-btn btn btn-warning" >Update information</Link>
                         </div>
                     </div>
                     </div>

@@ -100,8 +100,8 @@ class ShowingUserInfo extends React.Component {
         return (
             <PageLayout>
                 {this.props.fetching && <ScreenLoader/>}
-                <div id="user-info" className="row">
-                    <div id="left-section" className="col-lg-4">
+                <div id="user-info" >
+                    <div className="ui-left-section" >
                         <div id="avatar-block">
                             <div className='square-box'>
                                 <div className='square-content'>
@@ -124,7 +124,7 @@ class ShowingUserInfo extends React.Component {
                         </audio>
                         </div>
                     </div>
-                    <div id="right-section" className="col-lg-8">
+                    <div className="ui-right-section" >
                         <div id="top-info-wrapper">
                             <div id="overall-info">
                                 <h2>{this.props.userInfo.name}</h2>

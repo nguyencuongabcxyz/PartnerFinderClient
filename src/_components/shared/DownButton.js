@@ -14,11 +14,12 @@ const DownButton = ({headContent, tailContent, textColor, link}) => {
     const textStyle = {
         color: textColor,
         fontSize: '18px',
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        fontFamily: 'Open Sans, sans-serif'
     }
     return(
         <div className="down-button">
-            <p style={textStyle}>{headContent}<span style={{color: '#FFB906', fontFamily: 'Pacifico, cursive', fontSize:'20px'}}> PartnerFinder </span>{tailContent}</p>
+            <p style={textStyle}>{headContent}<span style={{color: '#FFB906', fontFamily: 'Open Sans, sans-serif', fontSize:'20px'}}> PartnerFinder </span>{tailContent}</p>
             <div style={{position: 'relative', height: '50px'}}>
             <img onClick={(e)=>scrollToSection(link, e)} style={{cursor: 'pointer', position: 'absolute', left: 'calc(50vw - 35px)'}} height="50px" width="50px" alt="down_img" src="/images/HomePage/Vector.svg"></img>
             </div>

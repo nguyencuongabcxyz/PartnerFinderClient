@@ -1,6 +1,7 @@
 import './style.css';
 import React from 'react';
 import { getPostedTimeAgo } from '../../../_helpers/dateTimeHelper';
+import { Link } from 'react-router-dom';
 
 class FeedbackItem extends React.Component {
 
@@ -20,23 +21,24 @@ class FeedbackItem extends React.Component {
     }
 
     render(){
+        const { answerNumber, title, userId, avatar, name, updatedDate} = this.props.feedbackPost;
         return(
             <div>
                 <div className="item-content">
                     <div>
-                <div className="answer-number">{this.props.feedbackPost.answerNumber} answers</div>
+                <div className="answer-number">{answerNumber} answers</div>
                 {this.renderFeedbackType()}
                 </div>
                 <div className="question-body">
                 <div className="question-top">
-                    <a href="#">{this.props.feedbackPost.title}</a>
+                    <a href="#">{title}</a>
                 </div>
                 <div className="question-bottom">
-                    <a href="#" className="owner-block ui teal image label">
-                        <img src={this.props.feedbackPost.avatar} alt="avatar" />
-                        {this.props.feedbackPost.name}
-                    </a>
-                    <div style={{marginRight: '5px'}}>{getPostedTimeAgo(this.props.feedbackPost.updatedDate)}</div>
+                    <Link to={`/userinfo/${userId}`} className="owner-block ui teal image label">
+                        <img src={avatar} alt="avatar" />
+                        {name}
+                    </Link>
+                    <div style={{marginRight: '5px'}}>{getPostedTimeAgo(updatedDate)}</div>
                 </div>
                 </div>
             </div>

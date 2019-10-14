@@ -2,8 +2,8 @@
 #section1{
     height: 100vh;
     background-image: linear-gradient(
-        rgba(25, 0, 0, 0.7),
-        rgba(0, 0, 0, 0.7)
+        rgba(10, 0, 0, 0.9),
+        rgba(8, 7, 7, 0.6)
       ),url("/images/HomePage/background_home1.jpg");
     background-size: cover; 
     background-attachment: fixed;
@@ -24,8 +24,9 @@
     line-height: 79px;
     text-align: center;
     margin-bottom: 45px;
-    font-family: 'Dancing Script', cursive;
+    font-family: 'Spectral', serif;
     padding: 0 15px;
+    font-weight: 700;
 }
 
 #sub-sologan {
@@ -34,6 +35,7 @@
     line-height: 34px;
     text-align: center;
     margin-bottom: 35px;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .down-button{
@@ -68,13 +70,14 @@
     line-height: 68px;
     text-align: center;
     padding-top: 30px;
-    font-family: 'Dancing Script', cursive;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
 }
 
 .section-title span{
     color: #FFB906;
-    font-family: Pacifico, cursive;
-    font-weight: bold;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
 }
 
 .section-block {
@@ -89,10 +92,11 @@
 .section-block h2{
     color: #4f4f4f;
     font-size: 26px;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .section-block p{
-    font-family: 'Arimo', sans-serif;
+    font-family: 'Roboto', sans-serif;
     margin-top: 30px;
     text-align: center;
     color: #4F4F4F;
@@ -128,10 +132,15 @@
     font-size: 22px;
     max-width: 40vh;
     color: #F15D03;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .guide-block p{
     max-width: 40vh;
+    font-family: 'Roboto', sans-serif;
+    line-height: 26px;
+    font-size: 16px;
+    color: #4F4F4F;
 }
 
 .guide-block h2 span{

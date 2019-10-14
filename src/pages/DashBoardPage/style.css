@@ -1,14 +1,17 @@
 #dashboard-page {
     padding: 0 15% 0;
+    background-color: #F2F3F7;
 }
 
 .dashboard-title {
-    text-align: center;
-    font-size: 28px;
-    font-weight: bold;
+    text-align: left;
+    font-size: 20px;
+    font-weight: 600;
     margin-bottom: 50px;
     color: #4f4f4f;
-    padding-top: 35px;
+    padding-top: 10px;
+    font-family: 'Open Sans', sans-serif;
+    text-transform: uppercase;
 }
 
 .paging-right {
@@ -18,4 +21,14 @@
 .paging-wrapper {
     display: flex;
     justify-content: flex-end;
+}
+
+#db-left-section {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+#db-right-section {
+    margin-top: 50px;
+    margin-bottom: 50px;
 }

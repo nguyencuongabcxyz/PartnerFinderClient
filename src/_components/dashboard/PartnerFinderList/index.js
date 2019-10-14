@@ -41,9 +41,6 @@ class PartnerFinderList extends React.Component {
         let resultDisplay = this.state.filter ? 'block' : 'none';
         return (
             <div id="finder-list">
-                <h1 className="dashboard-title">
-                    People looking for partner
-                </h1>
                 <div id="filter">
                     <FilterForm onSubmit={this.onSubmit}/>
                 </div>

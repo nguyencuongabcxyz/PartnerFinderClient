@@ -82,15 +82,18 @@ class UpdatingUserInfo extends React.Component {
       <PageLayout>
         {this.props.fetching && <ScreenLoader />}
         {this.props.updating && <ScreenLoader />}
-        <div id="update-info" className="row">
-          <div id="left-section" className="col-lg-4">
+        <div id="update-info">
+          <div className="ui-left-section">
             <div id="avatar-block">
               <div className="square-box">
                 <div className="square-content">
                   <img src={userInfo.avatar} alt="avatar" />
                 </div>
               </div>
-              <label htmlFor="avatar" className="custom-file-upload">Change avatar</label>
+              <label htmlFor="avatar" className="custom-file-upload">
+                <i className="icon cloud upload upload-icon"></i>
+                Change avatar
+              </label>
               <input
                 type="file"
                 id="avatar"
@@ -107,7 +110,10 @@ class UpdatingUserInfo extends React.Component {
               <video src={userInfo.video} controls>
                 Your browser does not support the video tag.
               </video>
-              <label htmlFor="video" className="custom-file-upload">Change video</label>
+              <label htmlFor="video" className="custom-file-upload">
+              <i className="icon cloud upload upload-icon"></i>
+                Change video
+                </label>
               <input
                 type="file"
                 id="video"
@@ -125,7 +131,10 @@ class UpdatingUserInfo extends React.Component {
               <audio src={userInfo.voiceAudio} controls>
                 Your browser does not support the audio tag.
               </audio>
-              <label htmlFor="voiceAudio" className="custom-file-upload">Change audio</label>
+              <label htmlFor="voiceAudio" className="custom-file-upload">
+              <i className="icon cloud upload upload-icon"></i>
+                Change audio
+                </label>
               <input
                 type="file"
                 id="voiceAudio"
@@ -137,7 +146,7 @@ class UpdatingUserInfo extends React.Component {
               />
             </div>
           </div>
-          <div id="right-section" className="col-lg-8">
+          <div className="ui-right-section" >
             <UserInfoForm
               onSubmit={this.submitUserInfo}
               initialValues={userInfo}

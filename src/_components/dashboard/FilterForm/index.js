@@ -13,6 +13,7 @@ class FilterForm extends React.Component {
     render() {
         return (
             <form onSubmit={this.props.handleSubmit}>
+                <h1 className="dashboard-title">People looking for partners</h1>
                 <div className="row">
                     <div className="form-group filter-item col-lg-6">
                         <label>Level</label>
@@ -25,7 +26,7 @@ class FilterForm extends React.Component {
                     </div>
                     <LocationInput setValue={this.setValue} additionalClasses="col-lg-6"/>
                 </div>
-                <button type="submit" className="btn btn-info btn-filter">Filter</button>
+                <button type="submit" className="btn btn-warning btn-filter">Filter</button>
             </form>
         );
     }

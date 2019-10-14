@@ -9,7 +9,8 @@ const BasicButton = ({ content, customStyles, isLoginButton, onClick }) => {
         fontSize: '22px',
         lineHeight: '18px',
         fontWeight: 'bold',
-        padding: '0px 10px 0px 10px'
+        padding: '0px 10px 0px 10px',
+        fontFamily: 'Open Sans, sans-serif',
     }
     const buttonStyle = { ...defaultStyle, ...customStyles };
     if (isLoginButton) {

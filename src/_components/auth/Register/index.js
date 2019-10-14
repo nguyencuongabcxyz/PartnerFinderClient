@@ -20,6 +20,9 @@ class Register extends React.Component {
     }
 
     handleRegistrationResult() {
+        if(!document.getElementById('spinner-register')){
+            return;
+        }
         switch (this.props.registrationResult) {
             case DUPLICATE:
                 toast.warn("This user name is already taken!");

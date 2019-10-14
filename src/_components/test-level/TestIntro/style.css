@@ -1,14 +1,20 @@
+#text-intro {
+    margin-bottom: 100px;
+}
 #text-intro h1 {
     text-align: center;
-    font-size: 58px;
+    font-size: 50px;
     line-height: 70px;
     margin-top: 80px;
+    font-family: 'Open Sans', sans-serif;
+    text-transform: uppercase;
 }
 
 #content-intro {
     margin: 100px 20%;
     padding: 40px 5%;
     background: wheat;
+    font-family: 'Roboto', sans-serif;
 }
 
 #content-intro ul {

@@ -51,13 +51,13 @@ class TestPage extends React.Component {
             Your browser does not support the audio tag.
           </audio>
           </div>
-          <label><Field type="radio" component="input" name={`q${q.id}`} value={q.answerOptions[0].id.toString()} />{q.answerOptions[0].content}</label>
+          <label className="answer-label"><Field type="radio" component="input" name={`q${q.id}`} value={q.answerOptions[0].id.toString()} />{q.answerOptions[0].content}</label>
           <br />
-          <label><Field type="radio" component="input" name={`q${q.id}`} value={q.answerOptions[1].id.toString()} />{q.answerOptions[1].content}</label>
+          <label className="answer-label"><Field type="radio" component="input" name={`q${q.id}`} value={q.answerOptions[1].id.toString()} />{q.answerOptions[1].content}</label>
           <br />
-          <label><Field type="radio" component="input" name={`q${q.id}`} value={q.answerOptions[2].id.toString()} />{q.answerOptions[2].content}</label>
+          <label className="answer-label"><Field type="radio" component="input" name={`q${q.id}`} value={q.answerOptions[2].id.toString()} />{q.answerOptions[2].content}</label>
           <br />
-          <label><Field type="radio" component="input" name={`q${q.id}`} value={q.answerOptions[3].id.toString()} />{q.answerOptions[3].content}</label>
+          <label className="answer-label"><Field type="radio" component="input" name={`q${q.id}`} value={q.answerOptions[3].id.toString()} />{q.answerOptions[3].content}</label>
           <br />
         </div>
       );
