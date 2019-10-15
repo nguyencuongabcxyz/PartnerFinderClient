@@ -60,26 +60,26 @@ class NavigationBar extends React.Component {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav mr-auto">
             <li className="nav-item active">
-              <a className="nav-link func-link" href="#">
-              <i class="nav-icon question circle outline icon"></i>
+              <Link to={"/asking-question"} className="nav-link func-link">
+              <i className="nav-icon question circle outline icon"></i>
                 Ask question
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
               <a className="nav-link func-link" href="#">
-              <i class="nav-icon smile outline icon"></i>
+              <i className="nav-icon smile outline icon"></i>
                 Get feedback
               </a>
             </li>
             <li className="nav-item">
               <a className="nav-link func-link" href="#">
-              <i class="nav-icon comment alternate outline icon"></i>
+              <i className="nav-icon comment alternate outline icon"></i>
                 Message
               </a>
             </li>
             <li className="nav-item">
               <a className="nav-link func-link" href="#">
-              <i class="nav-icon bell outline icon"></i>
+              <i className="nav-icon bell outline icon"></i>
                 Notification
               </a>
             </li>
@@ -93,7 +93,7 @@ class NavigationBar extends React.Component {
                 aria-haspopup="true"
                 aria-expanded="false"
               >
-                <i class="nav-icon cog icon"></i>
+                <i className="nav-icon cog icon"></i>
               </a>
               <div className="dropdown-menu" aria-labelledby="navbarDropdown">
                 <Link className="dropdown-item" to="/userinfo">

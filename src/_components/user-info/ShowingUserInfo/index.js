@@ -92,7 +92,7 @@ class ShowingUserInfo extends React.Component {
                 <p className="card-text">Update your information to help you impress other people and get a high chance to meet your ideal partner</p>
                 <Link to={"/updateinfo"} className="right-btn btn btn-warning" >Update information</Link>
             </div>
-        </div>
+            </div>
         ) : null;
     }
 
@@ -115,13 +115,6 @@ class ShowingUserInfo extends React.Component {
                             <video src={this.props.userInfo.video} controls>
                                 Your browser does not support the video tag.
                         </video>
-                        </div>
-                        <div id="audio-block">
-                            <h4 className="block-title">Introduction audio</h4>
-                            <div className="foot-line"></div>
-                            <audio src={this.props.userInfo.voiceAudio} controls>
-                                Your browser does not support the audio tag.
-                        </audio>
                         </div>
                     </div>
                     <div className="ui-right-section" >

@@ -16,8 +16,22 @@ import { videoService } from "../../../_services/videoService";
 import { audioService } from "../../../_services/audioService";
 
 import { mediaUrl } from "../../../_constants/mediaBaseUrl";
+import UploadProgress from "../../shared/UploadProgress";
+import { toast } from 'react-toastify';
 
 class UpdatingUserInfo extends React.Component {
+
+  uploadProgressStyles = {
+    marginTop: '10px',
+  }
+
+  state = {
+    imageUploadPercent: 0,
+    videoUploadPercent: 0,
+    isHiddenImageProgress: true,
+    isHiddenVideoProgress: true,
+  };
+
   componentDidMount() {
     var userId = extractTokenService.extractUserId();
     this.props.fetchOneUserInfo(userId);
@@ -27,63 +41,88 @@ class UpdatingUserInfo extends React.Component {
     this.props.updateOneUserInfo(formValues);
   };
 
-  uploadImage = async e => {
-    const file = e.target.files[0];
-    e.target.value = '';
-    const result = await imageService.uploadImageToMediaServer(file);
-    if (result && result.successfull) {
-        const avatarUrl = mediaUrl.IMAGE_BASE_URL + result.name;
-        console.log(avatarUrl);
-        const mediaProfile = {
-          avatar: avatarUrl
-        };
-        this.props.updateMediaProfile(mediaProfile);
+  getImageUploadingPercentage = percentage => {
+    this.setState({
+      imageUploadPercent: percentage
+    });
+    if(percentage === 100) {
+      setTimeout(() => {
+        this.setState({
+          isHiddenImageProgress: true,
+        })
+      }, 3000)
     }
-    else{
-        console.log('Failed!');
+  };
+
+  getVideoUploadingPercentage = percentage => {
+    this.setState({ videoUploadPercent: percentage });
+    if(percentage === 100) {
+      setTimeout(() => {
+        this.setState({
+          isHiddenVideoProgress: true,
+        })
+      }, 3000)
+    }
+  };
+
+  uploadImage = async e => {
+    // show progress bar
+    this.setState({
+      isHiddenImageProgress: false
+    });
+    const file = e.target.files[0];
+    e.target.value = "";
+    const result = await imageService.uploadImageToMediaServer(
+      file,
+      this.getImageUploadingPercentage
+    );
+    if (result && result.successfull) {
+      const avatarUrl = mediaUrl.IMAGE_BASE_URL + result.name;
+      const mediaProfile = {
+        avatar: avatarUrl
+      };
+      this.props.updateMediaProfile(mediaProfile);
+    } else {
+      toast.error("Upload failed!");
     }
   };
 
   uploadVideo = async e => {
+    // show progress bar
+    this.setState({
+      isHiddenVideoProgress: false
+    });
     const file = e.target.files[0];
-    e.target.value = '';
-    const result = await videoService.uploadVideoToMediaServer(file);
+    e.target.value = "";
+    const result = await videoService.uploadVideoToMediaServer(
+      file,
+      this.getVideoUploadingPercentage
+    );
     if (result && result.successfull) {
-        const videoUrl = mediaUrl.VIDEO_BASE_URL +  result.name;
-        const mediaProfile = {
-          video: videoUrl
-        };
-        this.props.updateMediaProfile(mediaProfile);
-    }
-    else{
-        console.log('Failed!');
-    }
-  };
-
-  uploadAudio = async e => {
-    const file = e.target.files[0];
-    e.target.value = '';
-    const result = await audioService.uploadAudioToMediaServer(file);
-    if (result && result.successfull) {
-        const audioUrl = mediaUrl.AUDIO_BASE_URL + result.name;
-        const mediaProfile = {
-          voiceAudio: audioUrl
-        };
-        this.props.updateMediaProfile(mediaProfile);
-    }
-    else{
-        console.log('Failed!');
+      const videoUrl = mediaUrl.VIDEO_BASE_URL + result.name;
+      const mediaProfile = {
+        video: videoUrl
+      };
+      this.props.updateMediaProfile(mediaProfile);
+    } else {
+      toast.error("Upload failed!");
     }
   };
 
   render() {
     const { userInfo } = this.props;
+    const {
+      imageUploadPercent,
+      videoUploadPercent,
+      isHiddenImageProgress,
+      isHiddenVideoProgress
+    } = this.state;
     return (
       <PageLayout>
         {this.props.fetching && <ScreenLoader />}
         {this.props.updating && <ScreenLoader />}
         <div id="update-info">
-          <div className="ui-left-section">
+          <div className="ui-left-section upload-media-section">
             <div id="avatar-block">
               <div className="square-box">
                 <div className="square-content">
@@ -103,6 +142,11 @@ class UpdatingUserInfo extends React.Component {
                   this.uploadImage(e);
                 }}
               />
+              <UploadProgress
+                percentage={imageUploadPercent}
+                isHidden={isHiddenImageProgress}
+                customStyles={this.uploadProgressStyles}
+              />
             </div>
             <div id="video-block">
               <h4 className="block-title">Introduction video</h4>
@@ -111,9 +155,9 @@ class UpdatingUserInfo extends React.Component {
                 Your browser does not support the video tag.
               </video>
               <label htmlFor="video" className="custom-file-upload">
-              <i className="icon cloud upload upload-icon"></i>
+                <i className="icon cloud upload upload-icon"></i>
                 Change video
-                </label>
+              </label>
               <input
                 type="file"
                 id="video"
@@ -124,29 +168,14 @@ class UpdatingUserInfo extends React.Component {
                   this.uploadVideo(e);
                 }}
               />
-            </div>
-            <div id="audio-block">
-              <h4 className="block-title">Introduction audio</h4>
-              <div className="foot-line"></div>
-              <audio src={userInfo.voiceAudio} controls>
-                Your browser does not support the audio tag.
-              </audio>
-              <label htmlFor="voiceAudio" className="custom-file-upload">
-              <i className="icon cloud upload upload-icon"></i>
-                Change audio
-                </label>
-              <input
-                type="file"
-                id="voiceAudio"
-                name="voiceAudio"
-                accept="audio/mp3"
-                onChange={e => {
-                  this.uploadAudio(e);
-                }}
+              <UploadProgress
+                percentage={videoUploadPercent}
+                isHidden={isHiddenVideoProgress}
+                customStyles={this.uploadProgressStyles}
               />
             </div>
           </div>
-          <div className="ui-right-section" >
+          <div className="ui-right-section">
             <UserInfoForm
               onSubmit={this.submitUserInfo}
               initialValues={userInfo}

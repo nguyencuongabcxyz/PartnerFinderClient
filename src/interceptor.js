@@ -32,7 +32,6 @@ apiClient.interceptors.response.use((response) => {
             break;
         case 400:
             history.push('/notfound');
-            console.log('abc');
             break;
         default:
             history.push('/notfound');

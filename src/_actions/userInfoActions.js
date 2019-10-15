@@ -44,6 +44,7 @@ export const updateMediaProfile = (mediaProfile) => async (dispatch) => {
             data: result,
             updating: false,
         })
+        toast.success("Upload successfully!");
     }
 }
 

@@ -76,8 +76,11 @@ class UserInfoForm extends React.Component {
 
 const validate = (formValues) => {
     const errors = {};
-    if(formValues.name && formValues.name.length > 20){
+    if (formValues.name && formValues.name.length > 20){
         errors.name = 'Name must be less than 20 characters!';
+    }
+    if (!formValues.name){
+        errors.name = 'Name is required!';
     }
     return errors;
 };
