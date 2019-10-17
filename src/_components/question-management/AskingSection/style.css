@@ -1,0 +1,18 @@
+.c-step {
+    cursor: pointer !important;
+}
+
+.c-step:hover{
+    background-color: #F8EFBA !important;
+}
+
+.active-step {
+    background-color: #F8EFBA !important;
+}
+.step-wrapper {
+    display: none;
+}
+
+.active-wrapper {
+    display: block;
+}

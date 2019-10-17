@@ -1,0 +1,19 @@
+.cs-card {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 20px !important;
+}
+
+.cs-add-image-left {
+    width: 70%;
+}
+
+.cs-add-image-right {
+    display: flex;
+    align-items: center;
+}
+
+.cs-add-btn {
+    font-weight: 600;
+}

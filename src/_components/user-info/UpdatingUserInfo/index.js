@@ -13,11 +13,11 @@ import { extractTokenService } from "../../../_services/extractTokenService";
 import ScreenLoader from "../../shared/ScreenLoader";
 import { imageService } from "../../../_services/imageService";
 import { videoService } from "../../../_services/videoService";
-import { audioService } from "../../../_services/audioService";
 
 import { mediaUrl } from "../../../_constants/mediaBaseUrl";
 import UploadProgress from "../../shared/UploadProgress";
 import { toast } from 'react-toastify';
+import UploadButton from "../../shared/UploadButton";
 
 class UpdatingUserInfo extends React.Component {
 
@@ -129,18 +129,11 @@ class UpdatingUserInfo extends React.Component {
                   <img src={userInfo.avatar} alt="avatar" />
                 </div>
               </div>
-              <label htmlFor="avatar" className="custom-file-upload">
-                <i className="icon cloud upload upload-icon"></i>
-                Change avatar
-              </label>
-              <input
-                type="file"
-                id="avatar"
-                name="avatar"
-                accept="image/png, image/jpeg"
-                onChange={e => {
-                  this.uploadImage(e);
-                }}
+              <UploadButton
+                content="Change avatar"
+                acceptType="image/png, image/jpeg"
+                id="image"
+                callback={this.uploadImage}
               />
               <UploadProgress
                 percentage={imageUploadPercent}
@@ -154,19 +147,11 @@ class UpdatingUserInfo extends React.Component {
               <video src={userInfo.video} controls>
                 Your browser does not support the video tag.
               </video>
-              <label htmlFor="video" className="custom-file-upload">
-                <i className="icon cloud upload upload-icon"></i>
-                Change video
-              </label>
-              <input
-                type="file"
+              <UploadButton
+                content="Change video"
+                acceptType="video/mp4"
                 id="video"
-                name="video"
-                accept="video/mp4"
-                onClick={() => {}}
-                onChange={e => {
-                  this.uploadVideo(e);
-                }}
+                callback={this.uploadVideo}
               />
               <UploadProgress
                 percentage={videoUploadPercent}

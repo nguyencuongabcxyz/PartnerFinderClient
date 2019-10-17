@@ -14,9 +14,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import ShowingUserInfo from '../user-info/ShowingUserInfo';
 import axios from 'axios';
 import UpdatingUserInfo from '../user-info/UpdatingUserInfo';
-import TitleSection from '../question-management/AskingSection/TitleSection';
-import ContentSection from '../question-management/AskingSection/ContentSection';
-import PreviewSection from '../question-management/AskingSection/PreviewSection';
 import QuestionManagement from '../question-management';
 
 class App extends React.Component {
@@ -41,8 +38,7 @@ class App extends React.Component {
           <ProtectedRoute exact path="/userinfo" component={ShowingUserInfo} />
           <ProtectedRoute exact path="/userinfo/:id" component={ShowingUserInfo} />
           <ProtectedRoute exact path="/updateinfo" component={UpdatingUserInfo} />
-          <ProtectedRoute path="/asking-question" component={QuestionManagement} >
-          </ProtectedRoute>
+          <ProtectedRoute path="/asking-question" component={QuestionManagement} />
           <Route exact path="/notfound" component={NotFound} />
           <Route exact path="/servererror" component={ServerError}/>
           <ToastContainer autoClose={3000} />
