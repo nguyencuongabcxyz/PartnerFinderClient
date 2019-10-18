@@ -6,6 +6,7 @@ import { imageService } from "../../../../_services/imageService";
 import { mediaUrl } from "../../../../_constants/mediaBaseUrl";
 import UploadProgress from "../../../shared/UploadProgress";
 import { toast } from 'react-toastify';
+import CustomEditor from "../../../shared/CustomEditor";
 
 class ContentSection extends React.Component {
   state = {
@@ -51,6 +52,12 @@ class ContentSection extends React.Component {
       toast.error("Upload failed!");
     }
   };
+
+  addImageToEditorContent = () => {
+    const imageUrlTxt = document.getElementById("image-url-txt").value;
+    const imageTextHtml = `<p><img alt="" src="${imageUrlTxt}" style="max-height:500px; max-width:600px" /></p>`
+    this._customEditor.concatData(imageTextHtml);
+  }
 
   render() {
       const {isHiddenImageProgress, imageUploadPercent} = this.state;
@@ -124,14 +131,23 @@ class ContentSection extends React.Component {
               </div>
               </div>
               <div className="cs-add-image-right">
-                  <button className="negative ui button"><i className="ui icon save outline"></i>Add image</button>
+                  <button className="negative ui button" onClick={this.addImageToEditorContent}><i className="ui icon save outline"></i>Add image</button>
               </div>
             </div>
           </div>
           <div className="collapse" id="add-link-collapse">
-            <div className="card card-body">abcyz</div>
+            <div className="card card-body">
+
+            </div>
           </div>
-          <CKEditor />
+          <CustomEditor
+          ref={(el) => { this._customEditor = el; }}
+          config={
+              {
+                  height: '600px'
+              }
+          }
+           />
         </div>
         <div></div>
       </div>
