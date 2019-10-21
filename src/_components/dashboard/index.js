@@ -8,7 +8,7 @@ import QuestionList from '../../_components/dashboard/QuestionList';
 import FeedbackList from '../../_components/dashboard/FeedbackList';
 import './style.css'
 
-class DashBoardPage extends React.Component {
+class DashBoard extends React.Component {
 
     render() {
         removeModalBootstrap();
@@ -28,4 +28,4 @@ class DashBoardPage extends React.Component {
     }
 }
 
-export default connect(null, { logoutUser })(DashBoardPage);
+export default connect(null, { logoutUser })(DashBoard);

@@ -1,8 +1,3 @@
-#dashboard-page {
-    padding: 0 15% 0;
-    background-color: #F2F3F7;
-}
-
 .dashboard-title {
     text-align: left;
     font-size: 20px;
@@ -24,11 +19,9 @@
 }
 
 #db-left-section {
-    margin-top: 50px;
     margin-bottom: 50px;
 }
 
 #db-right-section {
-    margin-top: 50px;
     margin-bottom: 50px;
 }

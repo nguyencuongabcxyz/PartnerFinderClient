@@ -1,12 +1,11 @@
 import React from "react";
 import "./style.css";
-import CKEditor from "ckeditor4-react";
-import UploadButton from "../../../shared/UploadButton";
-import { imageService } from "../../../../_services/imageService";
-import { mediaUrl } from "../../../../_constants/mediaBaseUrl";
-import UploadProgress from "../../../shared/UploadProgress";
+import UploadButton from "../../shared/UploadButton";
+import { imageService } from "../../../_services/imageService";
+import { mediaUrl } from "../../../_constants/mediaBaseUrl";
+import UploadProgress from "../../shared/UploadProgress";
 import { toast } from 'react-toastify';
-import CustomEditor from "../../../shared/CustomEditor";
+import CustomEditor from "../../shared/CustomEditor";
 
 class ContentSection extends React.Component {
   state = {
@@ -17,7 +16,9 @@ class ContentSection extends React.Component {
   uploadButtonStyles = {
       margin: 0,
       backgroundColor: 'white',
-      border: '2px #B33771 solid'
+      border: '1px #00B5AD solid',
+      color: '#00B5AD',
+      width: '200px'
   }
 
   getImageUploadingPercentage = percentage => {
@@ -59,6 +60,11 @@ class ContentSection extends React.Component {
     this._customEditor.concatData(imageTextHtml);
   }
 
+  setPreviewContent = (content) => {
+    const { setPreviewContent } = this.props;
+    setPreviewContent(content);
+  }
+
   render() {
       const {isHiddenImageProgress, imageUploadPercent} = this.state;
     return (
@@ -97,16 +103,6 @@ class ContentSection extends React.Component {
             >
               Add image
             </button>
-            <button
-              className="ui primary basic button"
-              type="button"
-              data-toggle="collapse"
-              data-target="#add-link-collapse"
-              aria-expanded="false"
-              aria-controls="collapseExample"
-            >
-              Add link
-            </button>
           </p>
           <div className="collapse" id="add-image-collapse">
             <div className="card card-body cs-card">
@@ -119,7 +115,7 @@ class ContentSection extends React.Component {
                 <label>Upload</label>
                 <UploadButton
                   id="cs-image"
-                  content="Upload image"
+                  content="Upload local image"
                   acceptType="image/png, image/jpeg"
                   callback={this.uploadImage}
                   customStyles={this.uploadButtonStyles}
@@ -131,17 +127,13 @@ class ContentSection extends React.Component {
               </div>
               </div>
               <div className="cs-add-image-right">
-                  <button className="negative ui button" onClick={this.addImageToEditorContent}><i className="ui icon save outline"></i>Add image</button>
+                  <button className="negative ui button" onClick={this.addImageToEditorContent}><i className="ui icon save outline"></i>Add image to content</button>
               </div>
-            </div>
-          </div>
-          <div className="collapse" id="add-link-collapse">
-            <div className="card card-body">
-
             </div>
           </div>
           <CustomEditor
           ref={(el) => { this._customEditor = el; }}
+          setPreviewContent={this.setPreviewContent}
           config={
               {
                   height: '600px'

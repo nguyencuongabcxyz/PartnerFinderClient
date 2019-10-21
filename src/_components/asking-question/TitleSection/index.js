@@ -3,7 +3,9 @@ import React from 'react';
 import './style.css';
 
 class TitleSection extends React.Component {
+
     render() {
+        const { setPreviewTitle } = this.props;
         return (
             <div className="title-section">
                 <h1>What's your question title?</h1>
@@ -18,7 +20,7 @@ class TitleSection extends React.Component {
                 
                 <div className="form-group">
                     <label>Title</label>
-                    <input className="form-control" placeholder="Enter your question title"/>
+                    <input className="form-control" id="ts-txt-title" onChange={(e) => { setPreviewTitle(e.target.value) }} placeholder="Enter your question title"/>
                 </div>
             </div>
         );

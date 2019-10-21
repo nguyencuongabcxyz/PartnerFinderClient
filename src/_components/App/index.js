@@ -1,7 +1,6 @@
 import React from 'react';
 import { Router, Route } from 'react-router-dom';
 import Home from '../../pages/HomePage';
-import DashBoardPage from '../../pages/DashBoardPage';
 import history from '../../history';
 import { ProtectedRoute, PublicRoute } from '../../custom.route';
 import NotFound from '../../pages/NotFound';
@@ -14,7 +13,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import ShowingUserInfo from '../user-info/ShowingUserInfo';
 import axios from 'axios';
 import UpdatingUserInfo from '../user-info/UpdatingUserInfo';
-import QuestionManagement from '../question-management';
+import AskingQuestion from '../asking-question';
+import DashBoard from '../dashboard';
 
 class App extends React.Component {
   render() {
@@ -31,14 +31,14 @@ class App extends React.Component {
       <Router history={history}>
         <div>
           <PublicRoute exact path="/" component={Home} />
-          <ProtectedRoute exact path="/dashboard" component={DashBoardPage} />
+          <ProtectedRoute exact path="/dashboard" component={DashBoard} />
           <ProtectedRoute exact path="/checkinfo" component={CheckInfo} />
           <ProtectedRoute exact path="/testintro" component={TestIntro} />
           <ProtectedRoute exact path="/testpage" component={TestPage} />
           <ProtectedRoute exact path="/userinfo" component={ShowingUserInfo} />
           <ProtectedRoute exact path="/userinfo/:id" component={ShowingUserInfo} />
           <ProtectedRoute exact path="/updateinfo" component={UpdatingUserInfo} />
-          <ProtectedRoute path="/asking-question" component={QuestionManagement} />
+          <ProtectedRoute path="/asking-question" component={AskingQuestion} />
           <Route exact path="/notfound" component={NotFound} />
           <Route exact path="/servererror" component={ServerError}/>
           <ToastContainer autoClose={3000} />

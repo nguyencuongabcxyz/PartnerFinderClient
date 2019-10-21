@@ -23,6 +23,11 @@ class PreviewSection extends React.Component {
             <i className="icon check circle outline"></i>You can still edit your question after submiting
           </p>
         </div>
+        <div id="ps-preview-question">
+          <h2 id="ps-preview-title"> </h2>
+          <div id="ps-preview-content">
+          </div>
+        </div>
       </div>
     );
   }

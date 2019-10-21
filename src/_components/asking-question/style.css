@@ -1,0 +1,33 @@
+.asking-question {
+    border-radius: 4px;
+    padding: 15px;
+    background-color: white;
+    box-shadow: 0px 1px 5px rgba(0,0,0,0.38);
+    min-height: 60vh;
+}
+.c-step {
+    cursor: pointer !important;
+}
+
+.c-step:hover{
+    background-color: #F8EFBA !important;
+}
+
+.active-step {
+    background-color: #F8EFBA !important;
+}
+.step-wrapper {
+    display: none;
+}
+
+.active-wrapper {
+    display: block;
+}
+
+#aq-action-button {
+    margin-top: 50px;
+}
+
+.aq-btn-hidden {
+    display: none !important;
+}

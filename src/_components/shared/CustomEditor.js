@@ -17,9 +17,11 @@ class CustomEditor extends React.Component {
     }
 
     onChange = (evt) => {
+        const { setPreviewContent } = this.props;
         this.setState({
             data: evt.editor.getData(),
         });
+        setPreviewContent(this.state.data);
     }
 
     render(){
