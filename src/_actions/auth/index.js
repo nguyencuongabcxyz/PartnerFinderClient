@@ -1,15 +1,15 @@
-import { authService } from '../_services/authService';
-import { removeModalBootstrap } from '../_helpers/uiHelper';
+import { authService } from '../../_services/authService';
+import { removeModalBootstrap } from '../../_helpers/uiHelper';
 
-import history from '../history';
+import history from '../../history';
 import {
     LOGIN_SUCCESS,
     LOGIN_BAD_REQUEST,
     LOGIN_FORBIDDEN,
     LOGIN_SERVER_ERROR,
     LOGOUT,
-} from '../_constants/authConstants'
-import { userService } from '../_services/userService';
+} from './type'
+import { userService } from '../../_services/userService';
 
 const loginSuccess = (data) => {
     return {

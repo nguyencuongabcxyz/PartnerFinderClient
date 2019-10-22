@@ -1,7 +1,7 @@
 import React from "react";
 import "./style.css";
 import { connect } from "react-redux";
-import { logoutUser } from "../../../_actions/authActions";
+import { logoutUser } from "../../../_actions/auth";
 import { Link } from 'react-router-dom';
 
 class NavigationBar extends React.Component {

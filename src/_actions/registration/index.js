@@ -1,16 +1,16 @@
-import { authService } from '../_services/authService';
+import { authService } from '../../_services/authService';
 
 import {
     REGISTER_SUCCESS,
     REGISTER_DUPLICATE,
     REGISTER_FAILURE
-}from '../_constants/registrationConstants'
+}from './type'
 
 import {
     FAILED,
     DUPLICATE,
     SUCCESSFULL
-} from '../_constants/registrationResult'
+} from '../../_constants/registrationResult'
 
 const registerFailureWithDuplicate = () => {
     return {

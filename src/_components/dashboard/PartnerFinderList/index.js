@@ -2,7 +2,7 @@ import React from 'react'
 import PartnerFinderItem from '../PartnerFinderItem';
 import FilterForm from '../FilterForm';
 import { connect } from 'react-redux';
-import { fetchManyFinders, fetchManyWithFilter } from '../../../_actions/partnerFinderActions';
+import { fetchManyFinders, fetchManyWithFilter } from '../../../_actions/partner-finder';
 import './style.css'
 import Spinner from '../../Spinner';
 import Pagination from '../../shared/pagination';

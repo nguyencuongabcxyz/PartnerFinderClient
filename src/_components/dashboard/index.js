@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { logoutUser } from '../../_actions/authActions';
+import { logoutUser } from '../../_actions/auth';
 import { removeModalBootstrap } from '../../_helpers/uiHelper';
 import PageLayout from '../../_components/layout/PageLayout';
 import PartnerFinderList from '../../_components/dashboard/PartnerFinderList';

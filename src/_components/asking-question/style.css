@@ -31,3 +31,7 @@
 .aq-btn-hidden {
     display: none !important;
 }
+
+#aq-error-section {
+    margin-top: 20px;
+}

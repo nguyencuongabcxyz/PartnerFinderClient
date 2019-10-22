@@ -2,7 +2,7 @@ import React from 'react'
 import './style.css';
 import QuestionItem from '../QuestionItem';
 import { connect } from 'react-redux';
-import { fetchManyQuestionPosts } from '../../../_actions/questionPostActions';
+import { fetchManyQuestionPosts } from '../../../_actions/question-post';
 import Pagination from '../../shared/pagination';
 import Spinner from '../../Spinner';
 

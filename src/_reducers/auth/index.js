@@ -4,7 +4,7 @@ import {
     LOGIN_FORBIDDEN,
     LOGIN_SERVER_ERROR,
     LOGOUT
-} from '../_constants/authConstants'
+} from '../../_actions/auth/type'
 
 
 const INITIAL_STATE = {

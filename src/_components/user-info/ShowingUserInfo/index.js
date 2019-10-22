@@ -2,7 +2,7 @@ import React from 'react';
 import './style.css';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { fetchOneUserInfo } from '../../../_actions/userInfoActions'
+import { fetchOneUserInfo } from '../../../_actions/user-info'
 import PageLayout from '../../layout/PageLayout';
 import { extractTokenService } from '../../../_services/extractTokenService';
 import { userService } from '../../../_services/userService';

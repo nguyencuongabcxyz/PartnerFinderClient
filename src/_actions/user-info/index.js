@@ -1,12 +1,12 @@
-import { userService } from '../_services/userService';
-import history from '../history';
+import { userService } from '../../_services/userService';
+import history from '../../history';
 import { toast } from 'react-toastify';
 
 import {
     FETCH_ONE,
     UPDATE_ONE,
     UPDATE_MEDIA_PROFILE
-} from '../_constants/userInfoConstants';
+} from './type';
 
 export const fetchOneUserInfo = (userId) =>  async (dispatch) => {
     const result = await userService.getOne(userId);

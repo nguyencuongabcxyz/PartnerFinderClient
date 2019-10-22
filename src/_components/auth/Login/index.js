@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { loginUser } from '../../../_actions/authActions';
+import { loginUser } from '../../../_actions/auth';
 import { toast } from 'react-toastify';
 import '../../../assets/css/loginRegisterForm.css';
 import LoginForm from '../LoginForm';

@@ -8,7 +8,7 @@ import {
   fetchOneUserInfo,
   updateOneUserInfo,
   updateMediaProfile
-} from "../../../_actions/userInfoActions";
+} from "../../../_actions/user-info";
 import { extractTokenService } from "../../../_services/extractTokenService";
 import ScreenLoader from "../../shared/ScreenLoader";
 import { imageService } from "../../../_services/imageService";

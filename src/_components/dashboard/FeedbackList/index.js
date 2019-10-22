@@ -2,7 +2,7 @@ import React from 'react'
 import './style.css';
 import FeedbackItem from '../FeedbackItem';
 import { connect } from 'react-redux';
-import { fetchManyFeedbackPosts } from '../../../_actions/feedbackPostAction';
+import { fetchManyFeedbackPosts } from '../../../_actions/feedback-post';
 import Pagination from '../../shared/pagination';
 import Spinner from '../../Spinner';
 

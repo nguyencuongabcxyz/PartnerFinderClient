@@ -2,13 +2,13 @@ import {
     REGISTER_SUCCESS,
     REGISTER_DUPLICATE,
     REGISTER_FAILURE,
-} from '../_constants/registrationConstants'
+} from '../../_actions/registration/type'
 
 import {
     FAILED,
     SUCCESSFULL,
     DUPLICATE
-} from '../_constants/registrationResult'
+} from '../../_constants/registrationResult'
 
 export default (state = null, action) => {
     switch(action.type) {

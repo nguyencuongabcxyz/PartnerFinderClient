@@ -2,7 +2,7 @@ import {
     FETCH_ONE,
     UPDATE_ONE,
     UPDATE_MEDIA_PROFILE
-} from '../_constants/userInfoConstants'
+} from '../../_actions/user-info/type'
 
 const INITIAL_STATE = {
     data : {},

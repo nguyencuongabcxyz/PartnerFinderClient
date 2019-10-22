@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { registerUser } from '../../../_actions/registrationActions';
+import { registerUser } from '../../../_actions/registration';
 import '../../../assets/css/loginRegisterForm.css';
 import { toast } from 'react-toastify';
 import ClipLoader from 'react-spinners/ClipLoader';

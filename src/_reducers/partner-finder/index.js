@@ -2,7 +2,7 @@ import {
     FETCH_MANY,
     FETCH_MANY_WITH_FILTER,
     IGNORE
-} from '../_constants/partnerFinderConstants';
+} from '../../_actions/partner-finder/type';
 
 const INITIAL_STATE = {
     partnerFinders : [],
