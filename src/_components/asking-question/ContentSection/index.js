@@ -1,7 +1,7 @@
 import React from "react";
 import "./style.css";
 import UploadButton from "../../shared/UploadButton";
-import { imageService } from "../../../_services/imageService";
+import { ImageService } from "../../../_services/image";
 import { mediaUrl } from "../../../_constants/mediaBaseUrl";
 import UploadProgress from "../../shared/UploadProgress";
 import { toast } from 'react-toastify';
@@ -40,7 +40,7 @@ class ContentSection extends React.Component {
     });
     const file = e.target.files[0];
     e.target.value = "";
-    const result = await imageService.uploadImageToMediaServer(
+    const result = await ImageService.uploadImageToMediaServer(
       file,
       this.getImageUploadingPercentage
     );

@@ -1,4 +1,4 @@
-import mediaApi from '../media.interceptor';
+import mediaApi from '../../media.interceptor';
 
 const uploadAudioToMediaServer = async (file, callback) => {
     const formData = new FormData();
@@ -12,6 +12,6 @@ const uploadAudioToMediaServer = async (file, callback) => {
     return response.data;
 }
 
-export const audioService = {
+export const AudioService = {
      uploadAudioToMediaServer,
 }

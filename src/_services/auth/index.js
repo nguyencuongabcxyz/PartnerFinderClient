@@ -67,7 +67,7 @@ const handleAuthentication = response => {
     }
 };
 
-export const authService = {
+export const AuthService = {
     login,
     logout,
     register

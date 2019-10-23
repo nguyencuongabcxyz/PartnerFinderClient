@@ -2,8 +2,8 @@ import React from "react";
 import "./style.css";
 import PageLayout from "../../layout/PageLayout";
 import ReactCountdownClock from "react-countdown-clock";
-import { levelTestService } from "../../../_services/levelTestService";
-import { userService } from '../../../_services/userService';
+import { LevelTestService } from "../../../_services/level-test";
+import { UserService } from '../../../_services/user';
 import { Field, reduxForm } from 'redux-form';
 import { Link } from 'react-router-dom'
 import Spinner from "../../Spinner";
@@ -23,7 +23,7 @@ class TestPage extends React.Component {
   }
 
   async componentDidMount() {
-    let levelTest = await levelTestService.getRandomTest();
+    let levelTest = await LevelTestService.getRandomTest();
     if (levelTest) {
       this.setState({
         levelTest: levelTest
@@ -73,7 +73,7 @@ class TestPage extends React.Component {
       questionObject.answerId = formValues[q];
       questionArray.push(questionObject);
     }
-    var response = await userService.updateLevel(questionArray);
+    var response = await UserService.updateLevel(questionArray);
     this.handleResponse(response);
   }
 

@@ -1,4 +1,4 @@
-import apiClient from '../interceptor';
+import apiClient from '../../interceptor';
 
 const getMany = async (index, size) => {
     const response = await apiClient.get(`/findingpartnerusers/?index=${index}&&size=${size}`);
@@ -10,7 +10,7 @@ const getManyWithFilter = async ({level, location}, index, size) => {
     return response.data;
 }
 
-export const partnerFinderService = {
+export const PartnerFinderService = {
     getMany,
     getManyWithFilter
 }

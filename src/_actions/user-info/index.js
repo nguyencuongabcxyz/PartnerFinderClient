@@ -1,4 +1,4 @@
-import { userService } from '../../_services/userService';
+import { UserService } from '../../_services/user';
 import history from '../../history';
 import { toast } from 'react-toastify';
 
@@ -9,7 +9,7 @@ import {
 } from './type';
 
 export const fetchOneUserInfo = (userId) =>  async (dispatch) => {
-    const result = await userService.getOne(userId);
+    const result = await UserService.getOne(userId);
     if (result){
         dispatch({
             type: FETCH_ONE,
@@ -24,7 +24,7 @@ export const updateOneUserInfo  = (userInfo) => async (dispatch) => {
         type: 'UPDATING',
         updating: true,
     })
-    const result = await userService.updateInfo(userInfo);
+    const result = await UserService.updateInfo(userInfo);
     if (result){
         dispatch({
             type: UPDATE_ONE,
@@ -37,7 +37,7 @@ export const updateOneUserInfo  = (userInfo) => async (dispatch) => {
 }
 
 export const updateMediaProfile = (mediaProfile) => async (dispatch) => {
-    const result = await userService.updateMediaProfile(mediaProfile);
+    const result = await UserService.updateMediaProfile(mediaProfile);
     if(result) {
         dispatch({
             type: UPDATE_MEDIA_PROFILE,

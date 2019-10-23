@@ -3,7 +3,7 @@ import PageLayout from '../layout/PageLayout'
 import './style.css'
 import BasicButton from '../shared/BasicButton';
 import { Link } from 'react-router-dom';
-import { userService } from '../../_services/userService';
+import { UserService } from '../../_services/user';
 import history from '../../history';
 
 class CheckInfo extends React.Component {
@@ -22,7 +22,7 @@ class CheckInfo extends React.Component {
     }
 
     async componentDidMount() {
-        const checkUserResult = await userService.checkUserInfoAfterLogin()
+        const checkUserResult = await UserService.checkUserInfoAfterLogin()
         if(checkUserResult){
         this.setState({
             completedInfoPercentage: checkUserResult.completedInfoPercentage,

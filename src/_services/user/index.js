@@ -1,4 +1,4 @@
-import apiClient from '../interceptor';
+import apiClient from '../../interceptor';
 
 const checkUserInfoAfterLogin = async () => {
     var response = await apiClient.get(`users/check-info`);
@@ -25,7 +25,7 @@ const updateMediaProfile = async (mediaProfile) => {
     return response.data;
 }
 
-export const userService = {
+export const UserService = {
     checkUserInfoAfterLogin,
     updateLevel,
     getOne,

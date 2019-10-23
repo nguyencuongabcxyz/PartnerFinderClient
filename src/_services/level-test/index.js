@@ -1,10 +1,10 @@
-import apiClient from '../interceptor';
+import apiClient from '../../interceptor';
 
 const getRandomTest = async () => {
   const response = await apiClient.get("/levelTests/random");
   return response.data;
 };
 
-export const levelTestService = {
+export const LevelTestService = {
     getRandomTest
 }

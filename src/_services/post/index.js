@@ -1,4 +1,4 @@
-import apiClient from '../interceptor';
+import apiClient from '../../interceptor';
 
 const getManyQuestionPosts = async (index, size) => {
     var response = await apiClient.get(`/posts/question-posts?index=${index}&&size=${size}`);
@@ -10,7 +10,7 @@ const getManyFeedbackPosts = async (index, size) => {
     return response.data;
 }
 
-export const postService = {
+export const PostService = {
     getManyQuestionPosts,
     getManyFeedbackPosts
 }

@@ -9,10 +9,10 @@ import {
   updateOneUserInfo,
   updateMediaProfile
 } from "../../../_actions/user-info";
-import { extractTokenService } from "../../../_services/extractTokenService";
+import { TokenService } from "../../../_services/token";
 import ScreenLoader from "../../shared/ScreenLoader";
-import { imageService } from "../../../_services/imageService";
-import { videoService } from "../../../_services/videoService";
+import { ImageService } from "../../../_services/image";
+import { VideoService } from "../../../_services/video";
 
 import { mediaUrl } from "../../../_constants/mediaBaseUrl";
 import UploadProgress from "../../shared/UploadProgress";
@@ -33,7 +33,7 @@ class UpdatingUserInfo extends React.Component {
   };
 
   componentDidMount() {
-    var userId = extractTokenService.extractUserId();
+    var userId = TokenService.extractUserId();
     this.props.fetchOneUserInfo(userId);
   }
 
@@ -72,7 +72,7 @@ class UpdatingUserInfo extends React.Component {
     });
     const file = e.target.files[0];
     e.target.value = "";
-    const result = await imageService.uploadImageToMediaServer(
+    const result = await ImageService.uploadImageToMediaServer(
       file,
       this.getImageUploadingPercentage
     );
@@ -94,7 +94,7 @@ class UpdatingUserInfo extends React.Component {
     });
     const file = e.target.files[0];
     e.target.value = "";
-    const result = await videoService.uploadVideoToMediaServer(
+    const result = await VideoService.uploadVideoToMediaServer(
       file,
       this.getVideoUploadingPercentage
     );

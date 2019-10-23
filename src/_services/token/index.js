@@ -6,6 +6,6 @@ const extractUserId = () => {
     return userInfo.userId;
 }
 
-export const extractTokenService = {
+export const TokenService = {
     extractUserId
 }

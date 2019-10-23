@@ -1,4 +1,4 @@
-import mediaApi from '../media.interceptor';
+import mediaApi from '../../media.interceptor';
 
 const uploadImageToMediaServer = async (file, callback) => {
     const formData = new FormData();
@@ -12,6 +12,6 @@ const uploadImageToMediaServer = async (file, callback) => {
     return response.data;
 }
 
-export const imageService = {
+export const ImageService = {
      uploadImageToMediaServer,
 }

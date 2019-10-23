@@ -4,10 +4,10 @@ import {
     IGNORE
 } from './type'
 
-import { partnerFinderService } from '../../_services/partnerFinderService'
+import { PartnerFinderService } from '../../_services/partner-finder'
 
 export const fetchManyFinders = (index, size) => async (dispatch) => {
-    var result = await partnerFinderService.getMany(index, size);
+    var result = await PartnerFinderService.getMany(index, size);
     if(result){
     dispatch({
         type: FETCH_MANY,
@@ -18,7 +18,7 @@ export const fetchManyFinders = (index, size) => async (dispatch) => {
 }
 
 export const fetchManyWithFilter = (filterData, index, size) => async (dispatch) => {
-    var result = await partnerFinderService.getManyWithFilter(filterData, index, size);
+    var result = await PartnerFinderService.getManyWithFilter(filterData, index, size);
     if(result){
         dispatch({
             type: FETCH_MANY_WITH_FILTER, 

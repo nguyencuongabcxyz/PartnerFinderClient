@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchOneUserInfo } from '../../../_actions/user-info'
 import PageLayout from '../../layout/PageLayout';
-import { extractTokenService } from '../../../_services/extractTokenService';
-import { userService } from '../../../_services/userService';
+import { TokenService } from '../../../_services/token';
+import { UserService } from '../../../_services/user';
 import ScreenLoader from '../../shared/ScreenLoader';
 
 class ShowingUserInfo extends React.Component {
@@ -55,10 +55,10 @@ class ShowingUserInfo extends React.Component {
 
     async componentDidMount() {
         const paramUserId = this._getUserIdFromParams();
-        const tokenUserId = extractTokenService.extractUserId();
+        const tokenUserId = TokenService.extractUserId();
         let userId = paramUserId ? paramUserId : tokenUserId;
         if (this._checkIsOwnProfile()){
-            const userInfo = await userService.checkUserInfoAfterLogin();
+            const userInfo = await UserService.checkUserInfoAfterLogin();
             if (userInfo){
             this.setState({
                 completedInfoPercentage: userInfo.completedInfoPercentage
@@ -70,7 +70,7 @@ class ShowingUserInfo extends React.Component {
 
     _checkIsOwnProfile = () => {
         const paramUserId = this._getUserIdFromParams();
-        const tokenUserId = extractTokenService.extractUserId();
+        const tokenUserId = TokenService.extractUserId();
         if (!paramUserId || paramUserId === tokenUserId) return true;
         return false;
     }

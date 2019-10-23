@@ -1,4 +1,4 @@
-import { authService } from '../../_services/authService';
+import { AuthService } from '../../_services/auth';
 
 import {
     REGISTER_SUCCESS,
@@ -31,7 +31,7 @@ const registerSuccess = () => {
 }
 
 export const registerUser = (userInfo) => async (dispatch) => {
-    const result = await authService.register(userInfo);
+    const result = await AuthService.register(userInfo);
     switch(result.registrationResult){
         case FAILED:
             dispatch(registerFailure());

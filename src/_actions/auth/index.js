@@ -1,4 +1,4 @@
-import { authService } from '../../_services/authService';
+import { AuthService } from '../../_services/auth';
 import { removeModalBootstrap } from '../../_helpers/uiHelper';
 
 import history from '../../history';
@@ -9,7 +9,7 @@ import {
     LOGIN_SERVER_ERROR,
     LOGOUT,
 } from './type'
-import { userService } from '../../_services/userService';
+import { UserService } from '../../_services/user';
 
 const loginSuccess = (data) => {
     return {
@@ -41,7 +41,7 @@ const loginFailureWithServerError = () => {
 }
 
 export const loginUser = (userName, password) => async (dispatch) => {
-    const result = await authService.login(userName, password);
+    const result = await AuthService.login(userName, password);
     switch (result.statusCode) {
         case 400:
             dispatch(loginFailureWithBadRequest());
@@ -54,7 +54,7 @@ export const loginUser = (userName, password) => async (dispatch) => {
             break;
         case 200:
             dispatch(loginSuccess(result))
-            const checkUserInfoResult = await userService.checkUserInfoAfterLogin();
+            const checkUserInfoResult = await UserService.checkUserInfoAfterLogin();
             if (checkUserInfoResult.completedInfoPercentage !== 100 || !checkUserInfoResult.isHavingLevel) {
                 history.push('/checkinfo');
             } else {
@@ -68,7 +68,7 @@ export const loginUser = (userName, password) => async (dispatch) => {
 };
 
 export const logoutUser = () => {
-    authService.logout();
+    AuthService.logout();
     history.push('/');
     return {
         type: LOGOUT
