@@ -15,6 +15,7 @@ import axios from 'axios';
 import UpdatingUserInfo from '../user-info/UpdatingUserInfo';
 import AskingQuestion from '../asking-question';
 import DashBoard from '../dashboard';
+import QuestionDetail from '../question-detail';
 
 class App extends React.Component {
   render() {
@@ -39,6 +40,7 @@ class App extends React.Component {
           <ProtectedRoute exact path="/userinfo/:id" component={ShowingUserInfo} />
           <ProtectedRoute exact path="/updateinfo" component={UpdatingUserInfo} />
           <ProtectedRoute path="/asking-question" component={AskingQuestion} />
+          <ProtectedRoute path="/question-detail/:id" component={QuestionDetail} />
           <Route exact path="/notfound" component={NotFound} />
           <Route exact path="/servererror" component={ServerError}/>
           <ToastContainer autoClose={3000} />

@@ -2,7 +2,7 @@ import React from 'react'
 import './style.css';
 import QuestionItem from '../QuestionItem';
 import { connect } from 'react-redux';
-import { fetchManyQuestionPosts } from '../../../_actions/question-post';
+import { fetchManyQuestionPosts } from '../../../_actions/dashboard-post/db-question-post';
 import Pagination from '../../shared/pagination';
 import Spinner from '../../Spinner';
 
@@ -43,8 +43,8 @@ class QuestionList extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-      questionPosts : state.questionPost.questionPosts,
-      count : state.questionPost.count
+      questionPosts : state.dbQuestionPost.questionPosts,
+      count : state.dbQuestionPost.count
     }
 }
 

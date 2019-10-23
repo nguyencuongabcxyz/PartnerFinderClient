@@ -18,7 +18,6 @@ class TestPage extends React.Component {
   };
 
   submitForm = () => {
-    console.log("submit!1");
     this._form.dispatchEvent(new Event("submit"));
   }
 

@@ -1,6 +1,9 @@
 import React from "react";
+import { connect } from 'react-redux';
 
 import "./style.css";
+
+import { createQuestionPost } from '../../_actions/post/question-post';
 
 import TitleSection from "./TitleSection";
 import ContentSection from "./ContentSection";
@@ -68,7 +71,6 @@ class AskingQuestion extends React.Component {
   };
 
   showContentError = (error) => {
-    console.log("dsfklasdjfaOIUOOUOWUOURTUOURCONTENT!");
     const contentError = document.getElementById('aq-error-content');
     if (!contentError) return;
     if (!error) {
@@ -80,7 +82,6 @@ class AskingQuestion extends React.Component {
   }
 
   showTitleError = (error) => {
-    console.log("dsfklasdjfaOIUOOUOWUOURTUOURTITLE!");
     const titleError = document.getElementById('aq-error-title');
     if (!titleError) return;
     if (!error) {
@@ -89,6 +90,16 @@ class AskingQuestion extends React.Component {
     }
     titleError.innerHTML = error;
     titleError.style.display = 'block';
+  }
+
+  submitCreateForm = () => {
+    if (this._askingQuestionForm) {
+      this._askingQuestionForm.ref.current.wrapped.current.submitForm();
+    }
+  }
+
+  onSubmit = (formValues) => {
+    this.props.createQuestionPost(formValues);
   }
 
   render() {
@@ -166,15 +177,16 @@ class AskingQuestion extends React.Component {
           <div id="aq-action-button">
             <button className={`ui teal basic button ${this.state.index === 0 ? 'aq-btn-hidden' : ''}`} onClick={() => { this.switchStep(this.state.index - 1) }}><i className="ui icon angle double left"></i>Previous</button>
             <button className={`ui teal basic button ${this.state.index === 2 ? 'aq-btn-hidden' : ''}`} onClick={() => { this.switchStep(this.state.index + 1) }}>Next<i className="ui icon angle double right"></i></button>
-            <button className={`ui red basic button ${this.state.index === 2  ? '' : 'aq-btn-hidden'}`}>Submit</button>
+            <button className={`ui red basic button ${this.state.index === 2  ? '' : 'aq-btn-hidden'}`} onClick={() => {this.submitCreateForm()}}>Submit</button>
           </div>
           <div id="aq-error-section">
-          <div class="ui red message" style={{display: 'none'}} id="aq-error-title"></div>
-          <div class="ui red message" style={{display: 'none'}} id="aq-error-content"></div>
+          <div className="ui red message" style={{display: 'none'}} id="aq-error-title"></div>
+          <div className="ui red message" style={{display: 'none'}} id="aq-error-content"></div>
           </div>
         </div>
-        <div>
+        <div style={{display: 'none'}}>
           <AskingQuestionForm
+            onSubmit={this.onSubmit}
             ref={el => {
               this._askingQuestionForm = el;
             }}
@@ -187,4 +199,4 @@ class AskingQuestion extends React.Component {
   }
 }
 
-export default AskingQuestion;
+export default connect(null, {createQuestionPost})(AskingQuestion);

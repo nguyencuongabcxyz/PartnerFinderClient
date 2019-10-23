@@ -1,4 +1,4 @@
-import {FETCH_MANY_FEEDBACK_POSTS, FETCH_ONE_FEEDBACK_POST} from '../../_actions/feedback-post/type';
+import {FETCH_MANY_DB_FEEDBACK_POSTS} from '../../../_actions/dashboard-post/db-feedback-post/type';
 
 const INITIAL_STATE = {
     feedbackPosts : [],
@@ -7,7 +7,7 @@ const INITIAL_STATE = {
 
 export default (state = INITIAL_STATE, action) => {
     switch(action.type){
-        case FETCH_MANY_FEEDBACK_POSTS:
+        case FETCH_MANY_DB_FEEDBACK_POSTS:
             return {...state, feedbackPosts: action.feedbackPosts, count: action.count}
         default : 
         return state;

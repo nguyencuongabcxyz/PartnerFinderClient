@@ -10,7 +10,13 @@ const getManyFeedbackPosts = async (index, size) => {
     return response.data;
 }
 
+const createQuestionPost = async (questionPost) => {
+    var response = await apiClient.post('/posts/question-post', questionPost);
+    return response.data;
+}
+
 export const PostService = {
     getManyQuestionPosts,
-    getManyFeedbackPosts
+    getManyFeedbackPosts,
+    createQuestionPost
 }

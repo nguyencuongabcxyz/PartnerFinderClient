@@ -2,7 +2,7 @@ import React from 'react'
 import './style.css';
 import FeedbackItem from '../FeedbackItem';
 import { connect } from 'react-redux';
-import { fetchManyFeedbackPosts } from '../../../_actions/feedback-post';
+import { fetchManyFeedbackPosts } from '../../../_actions/dashboard-post/db-feedback-post';
 import Pagination from '../../shared/pagination';
 import Spinner from '../../Spinner';
 
@@ -42,8 +42,8 @@ class FeedbackList extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        feedbackPosts : state.feedbackPost.feedbackPosts,
-        count : state.feedbackPost.count
+        feedbackPosts : state.dbFeedbackPost.feedbackPosts,
+        count : state.dbFeedbackPost.count
     }
 }
 

@@ -26,6 +26,10 @@ class AskingQuestionForm extends React.Component {
         );
     }
 
+    submitForm = () => {
+        this._form.dispatchEvent(new Event("submit"));
+    }
+
     setValueForTitle = (title) => {
         this.props.dispatch(change('asking-form', 'title', title));
     }
@@ -36,7 +40,7 @@ class AskingQuestionForm extends React.Component {
 
     render() {
         return (
-            <form onSubmit={this.props.handleSubmit}>
+            <form id="create-question-form" onSubmit={this.props.handleSubmit} ref={(el) => { this._form = el; }}>
                 <Field name="title" component={this.renderTitleInput} />
                 <Field name="content" component={this.renderContentInput} />
             </form>
