@@ -5,13 +5,13 @@ import { Link } from 'react-router-dom';
 
 class QuestionItem extends React.Component {
     render() {
-        const { answerNumber, title, userId, avatar, name, updatedDate } = this.props.questionPost; 
+        const { answerNumber, title, userId, avatar, name, updatedDate, id } = this.props.questionPost; 
         return (
             <div className="item-content">
                 <div className="answer-number">{answerNumber} Answers</div>
                 <div className="question-body">
                 <div className="question-top">
-                    <a href="#">{title}</a>
+                    <Link to={`/question-detail/${id}`}>{title}</Link>
                 </div>
                 <div className="question-bottom">
                     <Link to={`/userinfo/${userId}`} className="owner-block ui teal image label">
