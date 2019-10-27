@@ -51,3 +51,18 @@
 #qd-vote-button{
     margin-top: 20px;
 }
+
+#qd-main-reply-comment{
+    margin-top: 30px;
+}
+
+.qd-c-avatar{
+    width: 35px !important;
+    height: 35px !important;
+    object-fit: cover !important;
+    border-radius: 50% !important;
+}
+
+.qd-btn-reply{
+    margin-top: 10px !important;
+}

@@ -29,6 +29,7 @@ class CustomEditor extends React.Component {
         const { data } = this.state;
         return(
             <CKEditor
+            onBeforeLoad={ ( CKEDITOR ) => ( CKEDITOR.disableAutoInline = true ) }
             config={config}
             data={data}
             onChange={this.onChange} 

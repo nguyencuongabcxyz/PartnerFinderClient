@@ -7,6 +7,7 @@ import dbQuestionPostReducer from './dashboard-post/db-question-post';
 import dbFeedbackPostReducer from './dashboard-post/db-feedback-post';
 import questionPostReducer from './post/question-post';
 import userInfoReducer from './user-info';
+import commentReducer from './comment';
 
 export default combineReducers({
     form: formReducer,
@@ -16,6 +17,7 @@ export default combineReducers({
     dbQuestionPost: dbQuestionPostReducer,
     dbFeedbackPost: dbFeedbackPostReducer,
     questionPost: questionPostReducer,
-    userInfo: userInfoReducer
+    userInfo: userInfoReducer,
+    comment: commentReducer
 });
 

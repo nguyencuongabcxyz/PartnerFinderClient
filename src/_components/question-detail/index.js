@@ -3,15 +3,96 @@ import { connect } from "react-redux";
 
 import "./style.css";
 import PageLayout from "../layout/PageLayout";
+import CustomEditor from "../shared/CustomEditor";
+import {
+  getPostedTimeAgo
+} from '../../_helpers/dateTimeHelper'
 
 import { fetchOneQuestionPost } from "../../_actions/post/question-post";
+import { fetchManyComments } from '../../_actions/comment';
 import Spinner from "../Spinner";
 
 class QuestionDetail extends React.Component {
+
+  editorConfig = {
+    extraPlugins : 'autogrow',
+    autoGrow_maxHeight : 600,
+  }
+
   componentDidMount() {
     const { id } = this.props.match.params;
     this.props.fetchOneQuestionPost(id);
+    this.props.fetchManyComments(id);
   }
+
+  renderSubComments = (subComments) => {
+    return subComments.map(comment => {
+      const { avatar, name, createdDate, content, id, parentId } = comment;
+      return (
+        <div className="comment" key={id}>
+        <a className="avatar">
+          <img alt="avatar" className="qd-c-avatar" src={avatar} />
+        </a>
+        <div className="content">
+          <a className="author">{name}</a>
+          <div className="metadata">
+            <span className="date">{getPostedTimeAgo(createdDate)}</span>
+          </div>
+          <div className="text">
+            <p>
+              {content}
+            </p>
+          </div>
+          <div className="actions">
+          <a className="reply">Like</a>
+          <a className="reply" data-toggle="collapse" href={`#comment-box-${parentId}`} role="button" aria-expanded="false" aria-controls={`comment-box-${parentId}`}>Reply</a>
+          </div>
+        </div>
+      </div>
+      );
+    });
+  }
+
+  renderComments = () => {
+    const { comments } = this.props;
+    return comments.map(comment => {
+      const { avatar, name, createdDate, content, subComments, id } = comment;
+      return (
+        <div className="comment" key={id}>
+          <a className="avatar">
+            <img alt="avatar" className="qd-c-avatar" src={avatar} />
+          </a>
+          <div className="content">
+            <a className="author">{name}</a>
+            <div className="metadata">
+              <span className="date">{getPostedTimeAgo(createdDate)}</span>
+            </div>
+            <div className="text">
+              <p>{content}</p>
+            </div>
+            <div className="actions">
+              <a className="reply">Like</a>
+              <a className="reply" data-toggle="collapse" href={`#comment-box-${id}`} role="button" aria-expanded="false" aria-controls={`comment-box-${id}`}>Reply</a>
+            </div>
+          </div>
+          <div className="comments">{this.renderSubComments(subComments)}</div>
+          <div className="collapse" id={`comment-box-${id}`}>
+            <div id="qd-sub-reply-comment">
+              <CustomEditor
+                config={this.editorConfig}
+                data=""
+                setPreviewContent={() => {}}
+              />
+              <button className="brown ui button qd-btn-reply">
+                <i className="ui icon edit"></i>Reply
+              </button>
+            </div>
+          </div>
+        </div>
+      );
+    });
+  }
+
   render() {
     const { questionPost } = this.props;
     const { title, content, avatar, name } = questionPost || {};
@@ -69,89 +150,15 @@ class QuestionDetail extends React.Component {
             <div id="qd-comment-section">
               <div className="ui comments">
                 <h3 className="ui dividing header">Comments</h3>
-                <div className="comment">
-                  <a className="avatar">
-                    <img src={avatar} />
-                  </a>
-                  <div className="content">
-                    <a className="author">Matt</a>
-                    <div className="metadata">
-                      <span className="date">Today at 5:42PM</span>
-                    </div>
-                    <div className="text">How artistic!</div>
-                    <div className="actions">
-                    <a className="reply">Like</a>
-                      <a className="reply">Reply</a>
-                    </div>
-                  </div>
+                {this.renderComments()}
+                <div id="qd-main-reply-comment">
+                  <CustomEditor
+                  config={this.editorConfig}
+                  data=""
+                  setPreviewContent={() => {}}
+                   />
+                   <button className="brown ui button qd-btn-reply"><i className="ui icon edit"></i>Add comment</button>
                 </div>
-                <div className="comment">
-                  <a className="avatar">
-                    <img src={avatar} />
-                  </a>
-                  <div className="content">
-                    <a className="author">Elliot Fu</a>
-                    <div className="metadata">
-                      <span className="date">Yesterday at 12:30AM</span>
-                    </div>
-                    <div className="text">
-                      <p>
-                        This has been very useful for my research. Thanks as
-                        well!
-                      </p>
-                    </div>
-                    <div className="actions">
-                    <a className="reply">Like</a>
-                      <a className="reply">Reply</a>
-                    </div>
-                  </div>
-                  <div className="comments">
-                    <div className="comment">
-                      <a className="avatar">
-                        <img src={avatar} />
-                      </a>
-                      <div className="content">
-                        <a className="author">Jenny Hess</a>
-                        <div className="metadata">
-                          <span className="date">Just now</span>
-                        </div>
-                        <div className="text">
-                          Elliot you are always so right :)
-                        </div>
-                        <div className="actions">
-                        <a className="reply">Like</a>
-                          <a className="reply">Reply</a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="comment">
-                  <a className="avatar">
-                    <img src={avatar} />
-                  </a>
-                  <div className="content">
-                    <a className="author">Joe Henderson</a>
-                    <div className="metadata">
-                      <span className="date">5 days ago</span>
-                    </div>
-                    <div className="text">
-                      Dude, this is awesome. Thanks so much
-                    </div>
-                    <div className="actions">
-                    <a className="reply">Like</a>
-                      <a className="reply">Reply</a>
-                    </div>
-                  </div>
-                </div>
-                <form className="ui reply form">
-                  <div className="field">
-                    <textarea></textarea>
-                  </div>
-                  <div className="ui blue labeled submit icon button">
-                    <i className="icon edit"></i> Add Reply
-                  </div>
-                </form>
               </div>
             </div>
           </div>
@@ -166,13 +173,18 @@ class QuestionDetail extends React.Component {
 
 const mapStateToProps = (state, ownProps) => {
   const { questionPosts } = state.questionPost;
+  const { comments } = state.comment;
   const { id } = ownProps.match.params;
   return {
-    questionPost: questionPosts[id]
+    questionPost: questionPosts[id],
+    comments : Object.values(comments)
   };
 };
 
 export default connect(
   mapStateToProps,
-  { fetchOneQuestionPost }
+  { 
+    fetchOneQuestionPost,
+    fetchManyComments
+  }
 )(QuestionDetail);
