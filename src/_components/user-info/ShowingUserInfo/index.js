@@ -90,7 +90,7 @@ class ShowingUserInfo extends React.Component {
                     <div className="progress-bar bg-danger" style={{width: `${this.state.completedInfoPercentage}%`}} role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
                 <p className="card-text">Update your information to help you impress other people and get a high chance to meet your ideal partner</p>
-                <Link to={"/updateinfo"} className="right-btn btn btn-warning" >Update information</Link>
+                <Link to={"/update-info"} className="right-btn btn btn-warning" >Update information</Link>
             </div>
             </div>
         ) : null;

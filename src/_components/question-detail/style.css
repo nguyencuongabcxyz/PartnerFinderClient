@@ -57,10 +57,21 @@
 }
 
 .qd-c-avatar{
-    width: 35px !important;
-    height: 35px !important;
+    width: 30px !important;
+    height: 30px !important;
     object-fit: cover !important;
     border-radius: 50% !important;
+}
+
+.qd-c-sub-avatar{
+    width: 25px !important;
+    height: 25px !important;
+    object-fit: cover !important;
+    border-radius: 50% !important;
+}
+
+.qd-c-sub-comments{
+    margin-left: 2em !important;
 }
 
 .qd-btn-reply{

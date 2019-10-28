@@ -1,10 +1,12 @@
 import {
-    FETCH_MANY_COMMENTS
+    FETCH_MANY_COMMENTS,
+    ADD_ONE_PARENT_COMMENT,
+    ADD_ONE_SUB_COMMENT
 } from './type';
 
 import {
     CommentService
- } from '../../_services/comment'
+ } from '../../_services/comment';
 
 export const fetchManyComments = (postId) => async (dispatch) => {
     const data = await CommentService.getManyByPostId(postId);
@@ -13,5 +15,25 @@ export const fetchManyComments = (postId) => async (dispatch) => {
             type: FETCH_MANY_COMMENTS,
             comments: data,
         })
+    }
+}
+
+export const addParentComment = (postId, content) => async (dispatch) => {
+    const data = await CommentService.addParentComment(postId, content);
+    if (data){
+        dispatch({
+            type: ADD_ONE_PARENT_COMMENT,
+            comment: data,
+        });
+    }
+}
+
+export const addSubComment = (parentId, content) => async (dispatch) => {
+    const data = await CommentService.addSubComment(parentId, content);
+    if (data){
+        dispatch({
+            type: ADD_ONE_SUB_COMMENT,
+            comment: data,
+        });
     }
 }

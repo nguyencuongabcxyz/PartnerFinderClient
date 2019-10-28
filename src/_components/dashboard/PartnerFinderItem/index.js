@@ -51,7 +51,7 @@ class PartnerFinderItem extends React.Component {
             <img src={this.props.partnerFinder.avatar} alt="avatar"/>
           </div>
           <div className="content">
-            <Link to={`/userinfo/${userId}`} className="header">{this.props.partnerFinder.name}</Link>
+            <Link to={`/user-info/${userId}`} className="header">{this.props.partnerFinder.name}</Link>
             <div className="meta">
               <p><strong>Age: </strong>{this.props.partnerFinder.age}</p>
               <p><strong>Location: </strong>{this.props.partnerFinder.location}</p>

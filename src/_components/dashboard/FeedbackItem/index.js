@@ -34,7 +34,7 @@ class FeedbackItem extends React.Component {
                     <a href="#">{title}</a>
                 </div>
                 <div className="question-bottom">
-                    <Link to={`/userinfo/${userId}`} className="owner-block ui teal image label">
+                    <Link to={`/user-info/${userId}`} className="owner-block ui teal image label">
                         <img src={avatar} alt="avatar" />
                         {name}
                     </Link>

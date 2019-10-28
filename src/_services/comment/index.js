@@ -5,7 +5,27 @@ const getManyByPostId = async (postId) => {
     return response.data;
 }
 
+const addParentComment = async (postId, content) => {
+    var data = {
+        postId,
+        content,
+    }
+    const response = await apiClient.post('/comments', data);
+    return response.data;
+}
+
+const addSubComment = async (parentId, content) => {
+    var data = {
+        parentId,
+        content,
+    }
+    const response = await apiClient.post('/comments', data);
+    return response.data;
+}
+
 export const CommentService = {
-    getManyByPostId
+    getManyByPostId,
+    addParentComment,
+    addSubComment
 }
 

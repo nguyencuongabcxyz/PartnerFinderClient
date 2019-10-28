@@ -33,12 +33,12 @@ class App extends React.Component {
         <div>
           <PublicRoute exact path="/" component={Home} />
           <ProtectedRoute exact path="/dashboard" component={DashBoard} />
-          <ProtectedRoute exact path="/checkinfo" component={CheckInfo} />
-          <ProtectedRoute exact path="/testintro" component={TestIntro} />
-          <ProtectedRoute exact path="/testpage" component={TestPage} />
-          <ProtectedRoute exact path="/userinfo" component={ShowingUserInfo} />
-          <ProtectedRoute exact path="/userinfo/:id" component={ShowingUserInfo} />
-          <ProtectedRoute exact path="/updateinfo" component={UpdatingUserInfo} />
+          <ProtectedRoute exact path="/check-info" component={CheckInfo} />
+          <ProtectedRoute exact path="/test-intro" component={TestIntro} />
+          <ProtectedRoute exact path="/test-page" component={TestPage} />
+          <ProtectedRoute exact path="/user-info" component={ShowingUserInfo} />
+          <ProtectedRoute exact path="/user-info/:id" component={ShowingUserInfo} />
+          <ProtectedRoute exact path="/update-info" component={UpdatingUserInfo} />
           <ProtectedRoute path="/asking-question" component={AskingQuestion} />
           <ProtectedRoute path="/question-detail/:id" component={QuestionDetail} />
           <Route exact path="/notfound" component={NotFound} />

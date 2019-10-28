@@ -32,7 +32,7 @@ export const updateOneUserInfo  = (userInfo) => async (dispatch) => {
             updating: false,
         })
         toast.success("Update successfully!");
-        history.push("/userinfo");
+        history.push("/user-info");
     }
 }
 

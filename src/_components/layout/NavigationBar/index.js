@@ -96,7 +96,7 @@ class NavigationBar extends React.Component {
                 <i className="nav-icon cog icon"></i>
               </a>
               <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                <Link className="dropdown-item" to="/userinfo">
+                <Link className="dropdown-item" to="/user-info">
                   <i className="user circle icon"></i>Information
                 </Link>
                 <a className="dropdown-item" href="#">

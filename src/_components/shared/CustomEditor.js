@@ -24,6 +24,20 @@ class CustomEditor extends React.Component {
         setPreviewContent(this.state.data);
     }
 
+    // Function to support comment feature 
+    addParentComment = (postId) => {
+        const { submitData } = this.props;
+        const { data } = this.state;
+        submitData(postId, data);
+    }
+
+    addSubComment = (parentId) => {
+        const { submitData } = this.props;
+        const { data } = this.state;
+        submitData(parentId, data);
+    }
+
+
     render(){
         const { config, styles } = this.props;
         const { data } = this.state;

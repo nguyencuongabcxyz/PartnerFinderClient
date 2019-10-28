@@ -1,5 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
+import $ from 'jquery';
+import { Link } from 'react-router-dom';
 
 import "./style.css";
 import PageLayout from "../layout/PageLayout";
@@ -9,7 +11,11 @@ import {
 } from '../../_helpers/dateTimeHelper'
 
 import { fetchOneQuestionPost } from "../../_actions/post/question-post";
-import { fetchManyComments } from '../../_actions/comment';
+import { 
+    fetchManyComments,
+    addSubComment,
+    addParentComment
+} from '../../_actions/comment';
 import Spinner from "../Spinner";
 
 class QuestionDetail extends React.Component {
@@ -25,23 +31,47 @@ class QuestionDetail extends React.Component {
     this.props.fetchManyComments(id);
   }
 
+  resetSubCommentBox = (id) => {
+    this[`_customSubEditor${id}`].setData('');  
+    $(`#comment-box-${id}`).collapse('hide');
+  }
+
+  resetMainCommentBox = (id) => {
+    this[`_customParentEditor${id}`].setData('');
+  }
+
+  triggerAddSubCommentFunc = (parentId) => {
+    this[`_customSubEditor${parentId}`].addSubComment(parentId);
+    this.resetSubCommentBox(parentId);
+  }
+
+  addSubComment = (parentId, content) => {
+      this.props.addSubComment(parentId, content);
+  }
+
+  triggerAddParentCommentFunc = (postId) => {
+    this[`_customParentEditor${postId}`].addParentComment(postId);
+    this.resetMainCommentBox(postId);
+  }
+
+  addParentComment = (postId, content) => {
+      this.props.addParentComment(postId, content);
+  }
+
   renderSubComments = (subComments) => {
     return subComments.map(comment => {
-      const { avatar, name, createdDate, content, id, parentId } = comment;
+      const { avatar, name, createdDate, content, id, parentId, userId } = comment;
       return (
         <div className="comment" key={id}>
-        <a className="avatar">
-          <img alt="avatar" className="qd-c-avatar" src={avatar} />
-        </a>
+        <Link to={`/user-info/${userId}`} className="avatar">
+          <img alt="avatar" className="qd-c-sub-avatar" src={avatar} />
+        </Link>
         <div className="content">
-          <a className="author">{name}</a>
+          <Link to={`/user-info/${userId}`} className="author">{name}</Link>
           <div className="metadata">
             <span className="date">{getPostedTimeAgo(createdDate)}</span>
           </div>
-          <div className="text">
-            <p>
-              {content}
-            </p>
+          <div className="text" id={`sub-comment-${id}`} dangerouslySetInnerHTML={{ __html: content }}>
           </div>
           <div className="actions">
           <a className="reply">Like</a>
@@ -56,34 +86,34 @@ class QuestionDetail extends React.Component {
   renderComments = () => {
     const { comments } = this.props;
     return comments.map(comment => {
-      const { avatar, name, createdDate, content, subComments, id } = comment;
+      const { avatar, name, createdDate, content, subComments, id, userId } = comment;
       return (
         <div className="comment" key={id}>
-          <a className="avatar">
+          <Link to={`/user-info/${userId}`} className="avatar">
             <img alt="avatar" className="qd-c-avatar" src={avatar} />
-          </a>
+          </Link>
           <div className="content">
-            <a className="author">{name}</a>
+            <Link to={`/user-info/${userId}`} className="author">{name}</Link>
             <div className="metadata">
               <span className="date">{getPostedTimeAgo(createdDate)}</span>
             </div>
-            <div className="text">
-              <p>{content}</p>
+            <div className="text" id={`main-comment-${id}`} dangerouslySetInnerHTML={{ __html: content }}>
             </div>
             <div className="actions">
               <a className="reply">Like</a>
               <a className="reply" data-toggle="collapse" href={`#comment-box-${id}`} role="button" aria-expanded="false" aria-controls={`comment-box-${id}`}>Reply</a>
             </div>
           </div>
-          <div className="comments">{this.renderSubComments(subComments)}</div>
+          <div className="comments qd-c-sub-comments">{this.renderSubComments(subComments)}</div>
           <div className="collapse" id={`comment-box-${id}`}>
             <div id="qd-sub-reply-comment">
               <CustomEditor
+                ref={(el) => { this[`_customSubEditor${id}`] = el; }}
                 config={this.editorConfig}
-                data=""
                 setPreviewContent={() => {}}
+                submitData={this.addSubComment}
               />
-              <button className="brown ui button qd-btn-reply">
+              <button className="brown ui button qd-btn-reply" onClick={() => {this.triggerAddSubCommentFunc(id)}}>
                 <i className="ui icon edit"></i>Reply
               </button>
             </div>
@@ -95,7 +125,7 @@ class QuestionDetail extends React.Component {
 
   render() {
     const { questionPost } = this.props;
-    const { title, content, avatar, name } = questionPost || {};
+    const { title, content, avatar, name, id, userId, answerNumber, updatedDate } = questionPost || {};
     return (
       <PageLayout>
         <div className="question-detail">
@@ -106,15 +136,15 @@ class QuestionDetail extends React.Component {
               <div id="qd-label-section">
                 <div className="ui label">
                   Asked
-                  <div className="detail">2h ago</div>
+                  <div className="detail">{getPostedTimeAgo(updatedDate)}</div>
                 </div>
                 <div className="ui label">
                   Comments
-                  <div className="detail">6</div>
+                  <div className="detail">{answerNumber}</div>
                 </div>
                 <div className="ui label">
                   Vote
-                  <div className="detail">6</div>
+                  <div className="detail">{answerNumber}</div>
                 </div>
               </div>
               <div
@@ -128,14 +158,14 @@ class QuestionDetail extends React.Component {
                   <a className="ui teal tag label">daily</a>
                 </div>
                 <div id="qd-question-user">
-                  <a className="ui label qd-avatar-label">
+                  <Link to={`/user-info/${userId}`} className="ui label qd-avatar-label">
                     <img
                       alt="avatar"
                       className="ui right spaced avatar image"
                       src={avatar}
                     />
                     {name}
-                  </a>
+                  </Link>
                   <div id="qd-vote-button">
                     <button className="ui icon button red">
                       <i className="thumbs up icon"></i>
@@ -153,11 +183,13 @@ class QuestionDetail extends React.Component {
                 {this.renderComments()}
                 <div id="qd-main-reply-comment">
                   <CustomEditor
+                  ref={(el) => { this[`_customParentEditor${id}`] = el; }}
                   config={this.editorConfig}
                   data=""
                   setPreviewContent={() => {}}
+                  submitData={this.addParentComment}
                    />
-                   <button className="brown ui button qd-btn-reply"><i className="ui icon edit"></i>Add comment</button>
+                   <button className="brown ui button qd-btn-reply" onClick={() => {this.triggerAddParentCommentFunc(id)}}><i className="ui icon edit"></i>Add comment</button>
                 </div>
               </div>
             </div>
@@ -185,6 +217,8 @@ export default connect(
   mapStateToProps,
   { 
     fetchOneQuestionPost,
-    fetchManyComments
+    fetchManyComments,
+    addSubComment,
+    addParentComment
   }
 )(QuestionDetail);

@@ -47,7 +47,7 @@ class CheckInfo extends React.Component {
                         <div className="card-body">
                             <h5 className="card-title">Take a test to get your level</h5>
                             <p className="card-text">With our random tests, we help you determine your level so that you can easily find out your appropriate partner.Or you can set your later by updating your information</p>
-                            <Link to={"/testintro"} className="right-btn btn btn-warning" >Take a test</Link>
+                            <Link to={"/test-intro"} className="right-btn btn btn-warning" >Take a test</Link>
                         </div>
                     </div>
                     <div className={infoCardClasses}>
@@ -60,7 +60,7 @@ class CheckInfo extends React.Component {
                             <div className="progress-bar bg-danger" style={{width: `${this.state.completedInfoPercentage}%`}} role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
                             <p className="card-text">Update your information to help you impress other people and get a high chance to meet your ideal partner</p>
-                            <Link to={"/updateinfo"} className="right-btn btn btn-warning" >Update information</Link>
+                            <Link to={"/update-info"} className="right-btn btn btn-warning" >Update information</Link>
                         </div>
                     </div>
                     </div>

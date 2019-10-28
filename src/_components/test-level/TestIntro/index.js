@@ -28,7 +28,7 @@ const TestIntro = () => {
                     <li>After submit this test, we will automatically set your level based on test result.</li>
                 </ul>
                 </div>
-                <BasicButton onClick={() => {history.push('/testpage')}} content="Start" customStyles={buttonCustomStyles} />
+                <BasicButton onClick={() => {history.push('/test-page')}} content="Start" customStyles={buttonCustomStyles} />
             </div>
         </PageLayout>
     );
