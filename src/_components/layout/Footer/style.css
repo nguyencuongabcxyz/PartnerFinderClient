@@ -58,6 +58,10 @@
     margin-bottom: 10px;
 }
 
+.footer-c-icon{
+    font-size: 20px !important;
+}
+
 /*Responsive for footer*/
 @media(max-width: 620px) {
     #footer-flex-container{

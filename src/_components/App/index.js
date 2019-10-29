@@ -16,6 +16,7 @@ import UpdatingUserInfo from '../user-info/UpdatingUserInfo';
 import AskingQuestion from '../asking-question';
 import DashBoard from '../dashboard';
 import QuestionDetail from '../question-detail';
+import GettingFeedback from '../getting-feedback';
 
 class App extends React.Component {
   render() {
@@ -39,7 +40,8 @@ class App extends React.Component {
           <ProtectedRoute exact path="/user-info" component={ShowingUserInfo} />
           <ProtectedRoute exact path="/user-info/:id" component={ShowingUserInfo} />
           <ProtectedRoute exact path="/update-info" component={UpdatingUserInfo} />
-          <ProtectedRoute path="/asking-question" component={AskingQuestion} />
+          <ProtectedRoute exact path="/asking-question" component={AskingQuestion} />
+          <ProtectedRoute exact path="/getting-feedback" component={GettingFeedback} />
           <ProtectedRoute path="/question-detail/:id" component={QuestionDetail} />
           <Route exact path="/notfound" component={NotFound} />
           <Route exact path="/servererror" component={ServerError}/>

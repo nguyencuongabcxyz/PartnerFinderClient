@@ -20,10 +20,10 @@ const Footer = () => {
                 <div id="center-part">
                     <h2>Contact us</h2>
                     <div id="contact-item">
-                        <a href="https://www.facebook.com/profile.php?id=100005185776957"><img alt="contact-icon" src="/Images/HomePage/facebook.svg"></img>Facebook</a>
-                        <a href="https://www.instagram.com/nguyencuong1111/"><img alt="contact-icon" src="/Images/HomePage/instagram.svg"></img>Instagram</a>
-                        <p><img alt="contact-icon" src="/Images/HomePage/email.svg"></img>nguyencuongoc@gmail.com</p>
-                        <p><img alt="contact-icon" src="/Images/HomePage/phone.svg"></img>+84969087853</p>
+                        <a href="https://www.facebook.com/profile.php?id=100005185776957"><i className="ui icon facebook footer-c-icon"></i>Facebook</a>
+                        <a href="https://www.instagram.com/nguyencuong1111/"><i className="ui icon instagram footer-c-icon"></i>Instagram</a>
+                        <p><i className="ui icon envelope footer-c-icon"></i>nguyencuongoc@gmail.com</p>
+                        <p><i className="ui icon phone square footer-c-icon"></i>+84969087853</p>
                     </div>
                 </div>
                 <div id="third-part">

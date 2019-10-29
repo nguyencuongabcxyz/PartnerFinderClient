@@ -13,41 +13,13 @@ import AskingQuestionForm from "./AskingQuestionForm";
 
 class AskingQuestion extends React.Component {
   state = {
-    isActiveTitle: true,
-    isActiveContent: false,
-    isActivePreview: false,
-    index: 0,
+    activeTab: 0,
   };
 
   switchStep = index => {
-    switch (index) {
-      case 0:
-        this.setState({
-          isActiveTitle: true,
-          isActiveContent: false,
-          isActivePreview: false,
-          index: 0,
-        });
-        break;
-      case 1:
-        this.setState({
-          isActiveTitle: false,
-          isActiveContent: true,
-          isActivePreview: false,
-          index: 1,
-        });
-        break;
-      case 2:
-        this.setState({
-          isActiveTitle: false,
-          isActiveContent: false,
-          isActivePreview: true,
-          index: 2,
-        });
-        break;
-      default:
-        break;
-    }
+    this.setState({
+      activeTab: index,
+    })
   };
 
   setPreviewTitle = title => {
@@ -103,15 +75,15 @@ class AskingQuestion extends React.Component {
   }
 
   render() {
-    const { isActiveTitle, isActiveContent, isActivePreview } = this.state;
+    const { activeTab } = this.state;
     const titleClassName = `${
-      isActiveContent || isActivePreview ? "completed" : "active"
-    } step c-step ${isActiveTitle ? "active-step" : ""}`;
+      activeTab > 0 ? "completed" : "active"
+    } step c-step ${activeTab === 0 ? "active-step" : ""}`;
     const contentClassName = `${
-      isActivePreview ? "completed" : "active"
-    } step c-step ${isActiveContent ? "active-step" : ""}`;
+      activeTab > 1 ? "completed" : "active"
+    } step c-step ${activeTab === 1 ? "active-step" : ""}`;
     const previewClassName = `active step c-step ${
-      isActivePreview ? "active-step" : ""
+      activeTab === 2 ? "active-step" : ""
     }`;
     return (
       <PageLayout>
@@ -154,14 +126,14 @@ class AskingQuestion extends React.Component {
 
           <div
             id="title-section-wrapper"
-            className={`step-wrapper ${isActiveTitle ? "active-wrapper" : ""}`}
+            className={`step-wrapper ${activeTab === 0 ? "active-wrapper" : ""}`}
           >
             <TitleSection setPreviewTitle={this.setPreviewTitle} />
           </div>
           <div
             id="content-section-wrapper"
             className={`step-wrapper ${
-              isActiveContent ? "active-wrapper" : ""
+              activeTab === 1 ? "active-wrapper" : ""
             }`}
           >
             <ContentSection setPreviewContent={this.setPreviewContent} />
@@ -169,15 +141,15 @@ class AskingQuestion extends React.Component {
           <div
             id="preview-section-wrapper"
             className={`step-wrapper ${
-              isActivePreview ? "active-wrapper" : ""
+              activeTab === 2 ? "active-wrapper" : ""
             }`}
           >
             <PreviewSection />
           </div>
           <div id="aq-action-button">
-            <button className={`ui teal basic button ${this.state.index === 0 ? 'aq-btn-hidden' : ''}`} onClick={() => { this.switchStep(this.state.index - 1) }}><i className="ui icon angle double left"></i>Previous</button>
-            <button className={`ui teal basic button ${this.state.index === 2 ? 'aq-btn-hidden' : ''}`} onClick={() => { this.switchStep(this.state.index + 1) }}>Next<i className="ui icon angle double right"></i></button>
-            <button className={`ui red basic button ${this.state.index === 2  ? '' : 'aq-btn-hidden'}`} onClick={() => {this.submitCreateForm()}}>Submit</button>
+            <button className={`ui teal basic button ${this.state.activeTab === 0 ? 'aq-btn-hidden' : ''}`} onClick={() => { this.switchStep(this.state.activeTab - 1) }}><i className="ui icon angle double left"></i>Previous</button>
+            <button className={`ui teal basic button ${this.state.activeTab === 2 ? 'aq-btn-hidden' : ''}`} onClick={() => { this.switchStep(this.state.activeTab + 1) }}>Next<i className="ui icon angle double right"></i></button>
+            <button className={`ui red basic button ${this.state.activeTab === 2  ? '' : 'aq-btn-hidden'}`} onClick={() => {this.submitCreateForm()}}>Submit</button>
           </div>
           <div id="aq-error-section">
           <div className="ui red message" style={{display: 'none'}} id="aq-error-title"></div>
