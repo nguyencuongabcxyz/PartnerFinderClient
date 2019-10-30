@@ -13,8 +13,10 @@ import AskingQuestionForm from "./AskingQuestionForm";
 
 class AskingQuestion extends React.Component {
   state = {
-    activeTab: 0,
+    activeTab: 1,
   };
+
+  tabNums = 3
 
   switchStep = index => {
     this.setState({
@@ -23,7 +25,7 @@ class AskingQuestion extends React.Component {
   };
 
   setPreviewTitle = title => {
-    document.getElementById("ps-preview-title").innerHTML = title;
+    document.getElementById("question-preview-title").innerHTML = title;
     // Set value for hidden form
     if (this._askingQuestionForm) {
       this._askingQuestionForm.ref.current.wrapped.current.setValueForTitle(
@@ -33,7 +35,7 @@ class AskingQuestion extends React.Component {
   };
 
   setPreviewContent = content => {
-    document.getElementById("ps-preview-content").innerHTML = content;
+    document.getElementById("question-preview-content").innerHTML = content;
     // Set value for hidden form
     if (this._askingQuestionForm) {
       this._askingQuestionForm.ref.current.wrapped.current.setValueForContent(
@@ -77,13 +79,13 @@ class AskingQuestion extends React.Component {
   render() {
     const { activeTab } = this.state;
     const titleClassName = `${
-      activeTab > 0 ? "completed" : "active"
-    } step c-step ${activeTab === 0 ? "active-step" : ""}`;
-    const contentClassName = `${
       activeTab > 1 ? "completed" : "active"
     } step c-step ${activeTab === 1 ? "active-step" : ""}`;
+    const contentClassName = `${
+      activeTab > 2 ? "completed" : "active"
+    } step c-step ${activeTab === 2 ? "active-step" : ""}`;
     const previewClassName = `active step c-step ${
-      activeTab === 2 ? "active-step" : ""
+      activeTab === 3 ? "active-step" : ""
     }`;
     return (
       <PageLayout>
@@ -92,48 +94,48 @@ class AskingQuestion extends React.Component {
             <div
               className={titleClassName}
               onClick={() => {
-                this.switchStep(0);
+                this.switchStep(1);
               }}
             >
               <div className="content">
                 <div className="title">Title</div>
-                <div className="description">Enter your question's title</div>
+                <div className="description">Enter your title</div>
               </div>
             </div>
             <div
               className={contentClassName}
               onClick={() => {
-                this.switchStep(1);
+                this.switchStep(2);
               }}
             >
               <div className="content">
                 <div className="title">Content</div>
-                <div className="description">Enter your question's content</div>
+                <div className="description">Enter your content</div>
               </div>
             </div>
             <div
               className={previewClassName}
               onClick={() => {
-                this.switchStep(2);
+                this.switchStep(3);
               }}
             >
               <div className="content">
                 <div className="title">Preview</div>
-                <div className="description">Preview your question</div>
+                <div className="description">Preview your post</div>
               </div>
             </div>
           </div>
 
           <div
             id="title-section-wrapper"
-            className={`step-wrapper ${activeTab === 0 ? "active-wrapper" : ""}`}
+            className={`step-wrapper ${activeTab === 1 ? "active-wrapper" : ""}`}
           >
             <TitleSection setPreviewTitle={this.setPreviewTitle} />
           </div>
           <div
             id="content-section-wrapper"
             className={`step-wrapper ${
-              activeTab === 1 ? "active-wrapper" : ""
+              activeTab === 2 ? "active-wrapper" : ""
             }`}
           >
             <ContentSection setPreviewContent={this.setPreviewContent} />
@@ -141,15 +143,15 @@ class AskingQuestion extends React.Component {
           <div
             id="preview-section-wrapper"
             className={`step-wrapper ${
-              activeTab === 2 ? "active-wrapper" : ""
+              activeTab === 3 ? "active-wrapper" : ""
             }`}
           >
             <PreviewSection />
           </div>
           <div id="aq-action-button">
-            <button className={`ui teal basic button ${this.state.activeTab === 0 ? 'aq-btn-hidden' : ''}`} onClick={() => { this.switchStep(this.state.activeTab - 1) }}><i className="ui icon angle double left"></i>Previous</button>
-            <button className={`ui teal basic button ${this.state.activeTab === 2 ? 'aq-btn-hidden' : ''}`} onClick={() => { this.switchStep(this.state.activeTab + 1) }}>Next<i className="ui icon angle double right"></i></button>
-            <button className={`ui red basic button ${this.state.activeTab === 2  ? '' : 'aq-btn-hidden'}`} onClick={() => {this.submitCreateForm()}}>Submit</button>
+            <button className={`ui teal basic button ${this.state.activeTab === 1 ? 'aq-btn-hidden' : ''}`} onClick={() => { this.switchStep(this.state.activeTab - 1) }}><i className="ui icon angle double left"></i>Previous</button>
+            <button className={`ui teal basic button ${(this.state.activeTab === this.tabNums) ? 'aq-btn-hidden' : ''}`} onClick={() => { this.switchStep(this.state.activeTab + 1) }}>Next<i className="ui icon angle double right"></i></button>
+            <button className={`ui red basic button ${this.state.activeTab === this.tabNums  ? '' : 'aq-btn-hidden'}`} onClick={() => {this.submitCreateForm()}}>Submit</button>
           </div>
           <div id="aq-error-section">
           <div className="ui red message" style={{display: 'none'}} id="aq-error-title"></div>

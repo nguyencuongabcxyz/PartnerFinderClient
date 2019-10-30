@@ -11,6 +11,7 @@ class ContentSection extends React.Component {
   state = {
     imageUploadPercent: 0,
     isHiddenImageProgress: true,
+    currentImageName: ''
   };
 
   uploadButtonStyles = {
@@ -35,10 +36,12 @@ class ContentSection extends React.Component {
   };
 
   uploadImage = async e => {
-    this.setState({
-        isHiddenImageProgress: false,
-    });
     const file = e.target.files[0];
+    if(this.state.currentImageName === file.name) return;
+    this.setState({
+      isHiddenImageProgress: false,
+      currentImageName: file.name,
+    });
     e.target.value = "";
     const result = await ImageService.uploadImageToMediaServer(
       file,
@@ -82,12 +85,8 @@ class ContentSection extends React.Component {
             the below box
           </p>
           <p>
-            <i className="icon check circle outline"></i>Click "Add Image"
+            <i className="icon check circle outline"></i>Click <button disabled className="ui primary basic button">Add image</button>
             button to add image right under your current pointer
-          </p>
-          <p>
-            <i className="icon check circle outline"></i>Click "Add Media"
-            button to add audio or video for your question
           </p>
         </div>
         <div className="form-group">

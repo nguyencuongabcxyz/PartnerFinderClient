@@ -17,7 +17,6 @@ class AskingQuestionForm extends React.Component {
     renderContentInput = ({input, meta}) => {
         const { renderContentError } = this.props;
         const { error } = meta;
-        console.log(meta);
         renderContentError(error);
         return (
             <div>

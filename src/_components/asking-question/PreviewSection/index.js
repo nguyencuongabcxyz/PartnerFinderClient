@@ -17,15 +17,15 @@ class PreviewSection extends React.Component {
             <i className="icon check circle outline"></i>You can go back to change your content or title
           </p>
           <p>
-            <i className="icon check circle outline"></i>Click submit when you want to submit this question
+            <i className="icon check circle outline"></i>Click <button disabled className="ui red basic button">Submit</button> when you want to submit this question
           </p>
           <p>
             <i className="icon check circle outline"></i>You can still edit your question after submiting
           </p>
         </div>
-        <div id="ps-preview-question">
-          <h2 id="ps-preview-title"> </h2>
-          <div id="ps-preview-content">
+        <div className="ps-preview-question">
+          <h2 id="question-preview-title" className="ps-preview-title"> </h2>
+          <div id="question-preview-content" className="ps-preview-content">
           </div>
         </div>
       </div>

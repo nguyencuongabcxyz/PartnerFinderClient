@@ -66,22 +66,22 @@ class NavigationBar extends React.Component {
               </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link func-link" href="#">
+              <Link className="nav-link func-link" to={"/getting-feedback"}>
               <i className="nav-icon smile outline icon"></i>
                 Get feedback
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link func-link" href="#">
+              <Link className="nav-link func-link" to="#">
               <i className="nav-icon comment alternate outline icon"></i>
                 Message
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link func-link" href="#">
+              <Link className="nav-link func-link" to="#">
               <i className="nav-icon bell outline icon"></i>
                 Notification
-              </a>
+              </Link>
             </li>
             <li className="nav-item dropdown">
               <a
