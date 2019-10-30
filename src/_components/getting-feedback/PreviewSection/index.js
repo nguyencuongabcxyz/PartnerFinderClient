@@ -3,6 +3,7 @@ import React from 'react';
 import './style.css';
 
 class PreviewSection extends React.Component {
+
     render() {
         return (
           <div className="preview-section">
@@ -31,13 +32,21 @@ class PreviewSection extends React.Component {
               <h2 id="feedback-preview-title" className="ps-preview-title">
                 {" "}
               </h2>
-              <video controls>
-                Your browser does not support the video tag.
-              </video>
+              <div id="feedback-preview-type">
+                <span className="ui orange label">Written</span>
+                <span className="ui orange label">Spoken</span>
+              </div>
               <div
                 id="feedback-preview-content"
                 className="ps-preview-content"
               ></div>
+              <div id="feedback-preview-script" className="ui floating message teal">
+              </div>
+              <div id="feedback-video-wrapper" className="hidden">
+              <video id="feedback-preview-video" controls>
+                Your browser does not support the video tag.
+              </video>
+              </div>
             </div>
           </div>
         );

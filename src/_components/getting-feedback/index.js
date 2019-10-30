@@ -21,7 +21,7 @@ class GettingFeedback extends React.Component {
   };
 
   setPreviewTitle = title => {
-    document.getElementById("feedback-preview-title").innerHTML = title;
+    document.getElementById("feedback-preview-title").innerHTML = title;document.getElementById("feedback-preview-title").innerHTML = title;
     // Set value for hidden form
     if (this._feedbackForm) {
       this._feedbackForm.ref.current.wrapped.current.setValueForTitle(
@@ -32,6 +32,7 @@ class GettingFeedback extends React.Component {
 
   setPreviewContent = content => {
     document.getElementById("feedback-preview-content").innerHTML = content;
+    
     // Set value for hidden form
     if (this._feedbackForm) {
       this._feedbackForm.ref.current.wrapped.current.setValueForContent(
@@ -50,6 +51,9 @@ class GettingFeedback extends React.Component {
   }
 
   setPreviewVideo = video => {
+    document.getElementById("feedback-video-wrapper").classList.remove('hidden');
+    var previewVideo = document.getElementById('feedback-preview-video');
+    previewVideo.src = video;
     // Set value for hidden form
     if (this._feedbackForm) {
       this._feedbackForm.ref.current.wrapped.current.setValueForVideo(
@@ -59,6 +63,8 @@ class GettingFeedback extends React.Component {
   }
 
   setPreviewScript = script => {
+    script = script.replace(/\n\r?/g, '<br />');
+    document.getElementById("feedback-preview-script").innerHTML = script;
     // Set value for hidden form
     if (this._feedbackForm) {
       this._feedbackForm.ref.current.wrapped.current.setValueForScript(

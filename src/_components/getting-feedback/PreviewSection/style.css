@@ -1,0 +1,23 @@
+#feedback-video-wrapper{
+    max-width: 850px;
+}
+
+#feedback-preview-video{
+    width: 100%;
+}
+
+#feedback-preview-type{
+    margin-bottom: 50px;
+}
+
+#feedback-preview-content{
+    margin-bottom: 40px;
+    max-width: 900px;
+}
+
+#feedback-preview-script{
+    max-width: 850px;
+    margin: 30px 0;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 15px;
+}
