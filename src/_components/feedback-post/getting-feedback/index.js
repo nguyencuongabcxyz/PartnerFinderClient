@@ -250,7 +250,7 @@ class GettingFeedback extends React.Component {
             ></div>
           </div>
         </div>
-        <div>
+        <div style={{display: 'none'}}>
           <GettingFeedbackForm
             onSubmit={this.onSubmit}
             ref={el => {

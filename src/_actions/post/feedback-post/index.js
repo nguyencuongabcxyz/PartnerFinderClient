@@ -1,4 +1,5 @@
 import { PostService } from '../../../_services/post';
+import history from '../../../history';
 
 import {
     FETCH_ONE_FEEDBACK_POST,
@@ -12,6 +13,7 @@ export const createFeedbackPost = (feedbackPost) => async (dispatch) => {
             type: CREATE_FEEDBACK_POST,
             feedbackPost: result,
         });
+        history.push(`/feedback-detail/${result.id}`)
     }
 }
 

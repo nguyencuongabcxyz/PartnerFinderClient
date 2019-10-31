@@ -21,7 +21,7 @@ class FeedbackItem extends React.Component {
     }
 
     render(){
-        const { answerNumber, title, userId, avatar, name, updatedDate} = this.props.feedbackPost;
+        const { answerNumber, title, userId, avatar, name, updatedDate, id} = this.props.feedbackPost;
         return(
             <div>
                 <div className="item-content">
@@ -31,7 +31,7 @@ class FeedbackItem extends React.Component {
                 </div>
                 <div className="question-body">
                 <div className="question-top">
-                    <a href="#">{title}</a>
+                    <Link to={`/feedback-detail/${id}`}>{title}</Link>
                 </div>
                 <div className="question-bottom">
                     <Link to={`/user-info/${userId}`} className="owner-block ui teal image label">

@@ -4,7 +4,7 @@ import {
 } from '../../../_actions/post/feedback-post/type';
 
 const INITIAL_STATE = {
-    questionPosts: {},
+    feedbackPosts: {},
     count: 0
 }
 
@@ -15,6 +15,11 @@ export default (state = INITIAL_STATE, action) => {
                 ...state,
                 feedbackPosts: { [action.feedbackPost.id]: action.feedbackPost }
             };
+        case FETCH_ONE_FEEDBACK_POST:
+            return {
+                ...state,
+                feedbackPosts: { [action.feedbackPost.id]: action.feedbackPost }
+            }
         default:
             return state;
     }

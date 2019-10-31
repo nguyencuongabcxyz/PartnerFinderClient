@@ -17,6 +17,7 @@ import DashBoard from '../dashboard';
 import QuestionDetail from '../question-post/QuestionDetail';
 import AskingQuestion from '../question-post/asking-question';
 import GettingFeedback from '../feedback-post/getting-feedback';
+import FeedbackDetail from '../feedback-post/FeedbackDetail';
 
 class App extends React.Component {
   render() {
@@ -43,6 +44,7 @@ class App extends React.Component {
           <ProtectedRoute exact path="/asking-question" component={AskingQuestion} />
           <ProtectedRoute exact path="/getting-feedback" component={GettingFeedback} />
           <ProtectedRoute path="/question-detail/:id" component={QuestionDetail} />
+          <ProtectedRoute path="/feedback-detail/:id" component={FeedbackDetail} />
           <Route exact path="/notfound" component={NotFound} />
           <Route exact path="/servererror" component={ServerError}/>
           <ToastContainer autoClose={3000} />
