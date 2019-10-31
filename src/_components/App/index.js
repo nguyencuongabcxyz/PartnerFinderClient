@@ -13,10 +13,10 @@ import 'react-toastify/dist/ReactToastify.css';
 import ShowingUserInfo from '../user-info/ShowingUserInfo';
 import axios from 'axios';
 import UpdatingUserInfo from '../user-info/UpdatingUserInfo';
-import AskingQuestion from '../asking-question';
 import DashBoard from '../dashboard';
-import QuestionDetail from '../question-detail';
-import GettingFeedback from '../getting-feedback';
+import QuestionDetail from '../question-post/QuestionDetail';
+import AskingQuestion from '../question-post/asking-question';
+import GettingFeedback from '../feedback-post/getting-feedback';
 
 class App extends React.Component {
   render() {

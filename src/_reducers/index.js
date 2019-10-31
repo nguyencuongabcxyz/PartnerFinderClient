@@ -6,6 +6,7 @@ import partnerFinderReducer from './partner-finder';
 import dbQuestionPostReducer from './dashboard-post/db-question-post';
 import dbFeedbackPostReducer from './dashboard-post/db-feedback-post';
 import questionPostReducer from './post/question-post';
+import feedbackPostReducer from './post/feedback-post';
 import userInfoReducer from './user-info';
 import commentReducer from './comment';
 
@@ -17,6 +18,7 @@ export default combineReducers({
     dbQuestionPost: dbQuestionPostReducer,
     dbFeedbackPost: dbFeedbackPostReducer,
     questionPost: questionPostReducer,
+    feedbackPost: feedbackPostReducer,
     userInfo: userInfoReducer,
     comment: commentReducer
 });

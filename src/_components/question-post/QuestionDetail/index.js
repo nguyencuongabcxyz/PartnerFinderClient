@@ -4,19 +4,19 @@ import $ from 'jquery';
 import { Link } from 'react-router-dom';
 
 import "./style.css";
-import PageLayout from "../layout/PageLayout";
-import CustomEditor from "../shared/CustomEditor";
+import PageLayout from "../../layout/PageLayout";
+import CustomEditor from "../../shared/CustomEditor";
 import {
   getPostedTimeAgo
-} from '../../_helpers/dateTimeHelper'
+} from '../../../_helpers/dateTimeHelper'
 
-import { fetchOneQuestionPost } from "../../_actions/post/question-post";
+import { fetchOneQuestionPost } from "../../../_actions/post/question-post";
 import { 
     fetchManyComments,
     addSubComment,
     addParentComment
-} from '../../_actions/comment';
-import Spinner from "../Spinner";
+} from '../../../_actions/comment';
+import Spinner from "../../Spinner";
 
 class QuestionDetail extends React.Component {
 

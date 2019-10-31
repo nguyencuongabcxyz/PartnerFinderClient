@@ -1,14 +1,16 @@
 import React from 'react';
 
 import './style.css';
-import UploadButton from '../../shared/UploadButton';
-import UploadProgress from '../../shared/UploadProgress';
-import CustomEditor from '../../shared/CustomEditor';
-import { ImageService } from "../../../_services/image";
-import { VideoService } from "../../../_services/video";
-import { mediaUrl } from "../../../_constants/mediaBaseUrl";
+import UploadButton from '../../../shared/UploadButton';
+import UploadProgress from '../../../shared/UploadProgress';
+import CustomEditor from '../../../shared/CustomEditor';
+import { ImageService } from "../../../../_services/image";
+import { VideoService } from "../../../../_services/video";
+import { mediaUrl } from "../../../../_constants/mediaBaseUrl";
 import { toast } from 'react-toastify';
 import $ from 'jquery';
+
+import { FEEDBACK_TYPE }  from '../../../../_constants/common';
 
 class ContentSection extends React.Component {
   state = {
@@ -114,14 +116,16 @@ class ContentSection extends React.Component {
   };
 
   setType = type => {
-    const { setPreviewType } = this.props;
+    const { setPreviewType, setPreviewVideo } = this.props;
     setPreviewType(type);
+    if(type !== FEEDBACK_TYPE.SPOKEN)
+    setPreviewVideo('');
     this.setTypeColor(type);
     this.hideOtherCollapseType(type);
   };
 
   setTypeColor = type => {
-    for (let i = 0; i < this.typeNums; i++) {
+    for (let i = 1; i < this.typeNums + 1; i++) {
       const typeElement = document.getElementById(`cs-btn-post-type${i}`);
       typeElement.classList.remove("orange");
     }
@@ -130,7 +134,7 @@ class ContentSection extends React.Component {
   };
 
   hideOtherCollapseType = type => {
-    for (let i = 0; i < this.typeNums; i++) {
+    for (let i = 1; i < this.typeNums + 1; i++) {
       if (i !== type) {
         $(`#cs-type-collapse${i}`).collapse("hide");
       }
@@ -179,20 +183,6 @@ class ContentSection extends React.Component {
           <label>Choose post type:</label>
           <a
             data-toggle="collapse"
-            href={`#cs-type-collapse${0}`}
-            role="button"
-            aria-expanded="false"
-            aria-controls={`cs-type-collapse${0}`}
-            className="ui label cs-feedback-type"
-            id={`cs-btn-post-type${0}`}
-            onClick={() => {
-              this.setType(0);
-            }}
-          >
-            Written
-          </a>
-          <a
-            data-toggle="collapse"
             href={`#cs-type-collapse${1}`}
             role="button"
             aria-expanded="false"
@@ -203,17 +193,31 @@ class ContentSection extends React.Component {
               this.setType(1);
             }}
           >
+            Written
+          </a>
+          <a
+            data-toggle="collapse"
+            href={`#cs-type-collapse${2}`}
+            role="button"
+            aria-expanded="false"
+            aria-controls={`cs-type-collapse${2}`}
+            className="ui label cs-feedback-type"
+            id={`cs-btn-post-type${2}`}
+            onClick={() => {
+              this.setType(2);
+            }}
+          >
             Spoken
           </a>
         </div>
         {/* hidden form for corresponding feedback type */}
-        <div id={`cs-type-collapse${0}`} className="collapse">
+        <div id={`cs-type-collapse${1}`} className="collapse">
           <div className="form-group">
             <label>Your written text:</label>
             <textarea className="form-control" onChange={(e) => { setPreviewScript(e.target.value) }}></textarea>
           </div>
         </div>
-        <div id={`cs-type-collapse${1}`} className="collapse">
+        <div id={`cs-type-collapse${2}`} className="collapse">
           <div className="form-group">
             <label>Upload video</label>
             <UploadButton

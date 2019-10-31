@@ -1,11 +1,11 @@
 import React from "react";
 import "./style.css";
-import UploadButton from "../../shared/UploadButton";
-import { ImageService } from "../../../_services/image";
-import { mediaUrl } from "../../../_constants/mediaBaseUrl";
-import UploadProgress from "../../shared/UploadProgress";
+import UploadButton from "../../../shared/UploadButton";
+import { ImageService } from "../../../../_services/image";
+import { mediaUrl } from "../../../../_constants/mediaBaseUrl";
+import UploadProgress from "../../../shared/UploadProgress";
 import { toast } from 'react-toastify';
-import CustomEditor from "../../shared/CustomEditor";
+import CustomEditor from "../../../shared/CustomEditor";
 
 class ContentSection extends React.Component {
   state = {

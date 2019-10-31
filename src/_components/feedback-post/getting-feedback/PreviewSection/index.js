@@ -33,8 +33,7 @@ class PreviewSection extends React.Component {
                 {" "}
               </h2>
               <div id="feedback-preview-type">
-                <span className="ui orange label">Written</span>
-                <span className="ui orange label">Spoken</span>
+                <span id="feedback-preview-label" className="ui orange label"></span>
               </div>
               <div
                 id="feedback-preview-content"

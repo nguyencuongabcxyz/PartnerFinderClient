@@ -61,8 +61,8 @@ const validate = (formValues) => {
         errors.title = 'Title can not exceed 200 characters!';
     }
 
-    if (formValues.content && formValues.content.length > 1000) {
-        errors.content = 'Content can not exceed 1000 characters!';
+    if (formValues.content && formValues.content.length > 2000) {
+        errors.content = 'Content can not exceed 2000 characters!';
     }
 
     return errors;

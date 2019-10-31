@@ -16,7 +16,17 @@ const createQuestionPost = async (questionPost) => {
 }
 
 const getQuestionPost = async (id) => {
-    var response = await apiClient.get(`posts/${id}/question-post`);
+    var response = await apiClient.get(`/posts/${id}/question-post`);
+    return response.data;
+}
+
+const createFeedbackPost = async (feedbackPost) => {
+    var reponse = await apiClient.post('/posts/feedback-post', feedbackPost);
+    return reponse.data;
+}
+
+const getFeedbackPost = async (id) => {
+    var response = await apiClient.get(`/posts/${id}/feedback-post`);
     return response.data;
 }
 
@@ -24,5 +34,7 @@ export const PostService = {
     getManyQuestionPosts,
     getManyFeedbackPosts,
     createQuestionPost,
-    getQuestionPost
+    getQuestionPost,
+    createFeedbackPost,
+    getFeedbackPost,
 }

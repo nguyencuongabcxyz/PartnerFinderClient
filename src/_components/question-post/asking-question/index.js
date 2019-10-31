@@ -3,12 +3,12 @@ import { connect } from 'react-redux';
 
 import "./style.css";
 
-import { createQuestionPost } from '../../_actions/post/question-post';
+import { createQuestionPost } from '../../../_actions/post/question-post';
 
 import TitleSection from "./TitleSection";
 import ContentSection from "./ContentSection";
 import PreviewSection from "./PreviewSection";
-import PageLayout from "../layout/PageLayout";
+import PageLayout from "../../layout/PageLayout";
 import AskingQuestionForm from "./AskingQuestionForm";
 
 class AskingQuestion extends React.Component {
