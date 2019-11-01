@@ -30,6 +30,16 @@ const getFeedbackPost = async (id) => {
     return response.data;
 }
 
+const updateQuestionPostUpVote = async (id) => {
+    var response = await apiClient.patch(`/posts/${id}/question-post/up-vote`);
+    return response.data;
+}
+
+const checkIfUserVotedPost = async (id) => {
+    var reponse = await apiClient.get(`/posts/${id}/check-vote`);
+    return reponse.data;
+}
+
 export const PostService = {
     getManyQuestionPosts,
     getManyFeedbackPosts,
@@ -37,4 +47,6 @@ export const PostService = {
     getQuestionPost,
     createFeedbackPost,
     getFeedbackPost,
+    updateQuestionPostUpVote,
+    checkIfUserVotedPost,
 }

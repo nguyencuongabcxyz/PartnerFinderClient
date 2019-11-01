@@ -9,6 +9,7 @@
     "ckeditor4-react": "^1.0.0",
     "jquery": "^3.4.1",
     "lodash": "^4.17.15",
+    "moment": "^2.24.0",
     "react": "^16.8.6",
     "react-bootstrap": "^1.0.0-beta.11",
     "react-countdown-clock": "^2.6.0",

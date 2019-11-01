@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import $ from "jquery";
 import { Link } from "react-router-dom";
+import { Popup } from 'semantic-ui-react';
 
 import "./style.css";
 import PageLayout from "../../layout/PageLayout";
@@ -220,12 +221,13 @@ class FeedbackDetail extends React.Component {
                   Vote
                   <div className="detail">{answerNumber}</div>
                 </div>
-                <div class="ui orange label">{FEEDBACK_TYPE_TXT[type]}</div>
+                <div className="ui orange label">{FEEDBACK_TYPE_TXT[type]}</div>
               </div>
               <div
                 dangerouslySetInnerHTML={{ __html: content }}
                 id="qd-question-content"
               ></div>
+              <h3 className="ui dividing header">Script</h3>
               <div
                 id="qd-script"
                 className="ui floating message teal"
@@ -251,12 +253,22 @@ class FeedbackDetail extends React.Component {
                     {name}
                   </Link>
                   <div id="qd-vote-button">
-                    <button className="ui icon button red">
-                      <i className="thumbs up icon"></i>
-                    </button>
-                    <button className="ui icon button teal">
-                      <i className="thumbs down icon"></i>
-                    </button>
+                    <Popup
+                      content={"Upvote this post"}
+                      trigger={
+                        <button className="ui icon button red">
+                          <i className="thumbs up icon"></i>
+                        </button>
+                      }
+                    />
+                    <Popup
+                      content={"Downvote this post"}
+                      trigger={
+                        <button className="ui icon button teal">
+                          <i className="thumbs down icon"></i>
+                        </button>
+                      }
+                    />
                   </div>
                 </div>
               </div>

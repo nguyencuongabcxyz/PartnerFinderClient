@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import $ from 'jquery';
 import { Link } from 'react-router-dom';
+import { Popup } from 'semantic-ui-react';
 
 import "./style.css";
 import PageLayout from "../../layout/PageLayout";
@@ -9,8 +10,8 @@ import CustomEditor from "../../shared/CustomEditor";
 import {
   getPostedTimeAgo
 } from '../../../_helpers/dateTimeHelper'
-
-import { fetchOneQuestionPost } from "../../../_actions/post/question-post";
+import { PostService } from '../../../_services/post';
+import { fetchOneQuestionPost, updateQuestionPostUpvote } from "../../../_actions/post/question-post";
 import { 
     fetchManyComments,
     addSubComment,
@@ -25,9 +26,17 @@ class QuestionDetail extends React.Component {
     autoGrow_maxHeight : 600,
   }
 
-  componentDidMount() {
+  state = {
+    isVoted: false,
+  }
+
+  async componentDidMount() {
     const { id } = this.props.match.params;
     this.props.fetchOneQuestionPost(id);
+    const checkVotedResult = await PostService.checkIfUserVotedPost(id);
+    this.setState({
+      isVoted: checkVotedResult.isVoted,
+    });
     this.props.fetchManyComments(id);
   }
 
@@ -56,6 +65,10 @@ class QuestionDetail extends React.Component {
 
   addParentComment = (postId, content) => {
       this.props.addParentComment(postId, content);
+  }
+
+  updateUpvote = (id) => {
+    this.props.updateQuestionPostUpvote(id);
   }
 
   renderSubComments = (subComments) => {
@@ -124,8 +137,9 @@ class QuestionDetail extends React.Component {
   }
 
   render() {
+    const { isVoted } = this.state;
     const { questionPost } = this.props;
-    const { title, content, avatar, name, id, userId, answerNumber, updatedDate } = questionPost || {};
+    const { title, content, avatar, name, id, userId, answerNumber, updatedDate, upVote } = questionPost || {};
     return (
       <PageLayout>
         <div className="question-detail">
@@ -144,7 +158,7 @@ class QuestionDetail extends React.Component {
                 </div>
                 <div className="ui label">
                   Vote
-                  <div className="detail">{answerNumber}</div>
+                  <div className="detail">{upVote}</div>
                 </div>
               </div>
               <div
@@ -158,7 +172,10 @@ class QuestionDetail extends React.Component {
                   <a className="ui teal tag label">daily</a>
                 </div>
                 <div id="qd-question-user">
-                  <Link to={`/user-info/${userId}`} className="ui label qd-avatar-label">
+                  <Link
+                    to={`/user-info/${userId}`}
+                    className="ui label qd-avatar-label"
+                  >
                     <img
                       alt="avatar"
                       className="ui right spaced avatar image"
@@ -167,12 +184,27 @@ class QuestionDetail extends React.Component {
                     {name}
                   </Link>
                   <div id="qd-vote-button">
-                    <button className="ui icon button red">
-                      <i className="thumbs up icon"></i>
-                    </button>
-                    <button className="ui icon button teal">
-                      <i className="thumbs down icon"></i>
-                    </button>
+                    <Popup
+                      content={"Upvote this post"}
+                      trigger={
+                        <button
+                          className={isVoted ? 'ui icon button red' : "ui icon basic button red" }
+                          onClick={() => {
+                            this.updateUpvote(id);
+                          }}
+                        >
+                          <i className="thumbs up icon"></i>
+                        </button>
+                      }
+                    />
+                    <Popup
+                      content={"Upvote this post"}
+                      trigger={
+                        <button className="ui icon basic button teal">
+                          <i className="thumbs down icon"></i>
+                        </button>
+                      }
+                    />
                   </div>
                 </div>
               </div>
@@ -183,13 +215,22 @@ class QuestionDetail extends React.Component {
                 {this.renderComments()}
                 <div id="qd-main-reply-comment">
                   <CustomEditor
-                  ref={(el) => { this[`_customParentEditor${id}`] = el; }}
-                  config={this.editorConfig}
-                  data=""
-                  setPreviewContent={() => {}}
-                  submitData={this.addParentComment}
-                   />
-                   <button className="brown ui button qd-btn-reply" onClick={() => {this.triggerAddParentCommentFunc(id)}}><i className="ui icon edit"></i>Add comment</button>
+                    ref={el => {
+                      this[`_customParentEditor${id}`] = el;
+                    }}
+                    config={this.editorConfig}
+                    data=""
+                    setPreviewContent={() => {}}
+                    submitData={this.addParentComment}
+                  />
+                  <button
+                    className="brown ui button qd-btn-reply"
+                    onClick={() => {
+                      this.triggerAddParentCommentFunc(id);
+                    }}
+                  >
+                    <i className="ui icon edit"></i>Add comment
+                  </button>
                 </div>
               </div>
             </div>
@@ -219,6 +260,7 @@ export default connect(
     fetchOneQuestionPost,
     fetchManyComments,
     addSubComment,
-    addParentComment
+    addParentComment,
+    updateQuestionPostUpvote
   }
 )(QuestionDetail);

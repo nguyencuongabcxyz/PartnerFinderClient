@@ -1,7 +1,8 @@
 import { PostService } from '../../../_services/post';
 import {
     CREATE_QUESTION_POST,
-    FETCH_ONE_QUESTION_POST
+    FETCH_ONE_QUESTION_POST,
+    UPDATE_QUESTION_POST_UPVOTE
 } from './type';
 
 import history from '../../../history';
@@ -21,6 +22,16 @@ export const fetchOneQuestionPost = (id) => async (dispatch) => {
     if (result) {
         dispatch({
             type: FETCH_ONE_QUESTION_POST,
+            questionPost: result,
+        });
+    }
+}
+
+export const updateQuestionPostUpvote = (id) => async (dispatch) => {
+    var result = await PostService.updateQuestionPostUpVote(id);
+    if (result) {
+        dispatch({
+            type: UPDATE_QUESTION_POST_UPVOTE,
             questionPost: result,
         });
     }
