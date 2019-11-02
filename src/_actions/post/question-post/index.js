@@ -27,7 +27,7 @@ export const fetchOneQuestionPost = (id) => async (dispatch) => {
     }
 }
 
-export const updateQuestionPostUpvote = (id) => async (dispatch) => {
+export const updateQuestionPostUpVote = (id) => async (dispatch) => {
     var result = await PostService.updateQuestionPostUpVote(id);
     if (result) {
         dispatch({

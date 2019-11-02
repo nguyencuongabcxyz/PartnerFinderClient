@@ -3,7 +3,8 @@ import history from '../../../history';
 
 import {
     FETCH_ONE_FEEDBACK_POST,
-    CREATE_FEEDBACK_POST
+    CREATE_FEEDBACK_POST,
+    UPDATE_FEEDBACK_POST_UPVOTE
 } from './type';
 
 export const createFeedbackPost = (feedbackPost) => async (dispatch) => {
@@ -26,3 +27,13 @@ export const fetchOneFeedbackPost = (id) => async (dispatch) => {
         });
     }
 }
+
+export const updateFeedbackPostUpVote = (id) => async (dispatch) => {
+    var result = await PostService.updateFeedbackPostUpVote(id);
+    if (result) {
+        dispatch({
+            type: UPDATE_FEEDBACK_POST_UPVOTE,
+            feedbackPost: result,
+        });
+    }
+} 

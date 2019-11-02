@@ -9,24 +9,36 @@ import PageLayout from "../../layout/PageLayout";
 import CustomEditor from "../../shared/CustomEditor";
 import { getPostedTimeAgo } from "../../../_helpers/dateTimeHelper";
 
-import { fetchOneFeedbackPost } from "../../../_actions/post/feedback-post";
+import { fetchOneFeedbackPost, updateFeedbackPostUpVote } from "../../../_actions/post/feedback-post";
 import {
   fetchManyComments,
   addSubComment,
   addParentComment
 } from "../../../_actions/comment";
+import { PostService } from '../../../_services/post';
 import { FEEDBACK_TYPE_TXT } from "../../../_constants/common";
 import Spinner from "../../Spinner";
 
 class FeedbackDetail extends React.Component {
+
+  state = {
+    isVoted: false,
+  }
+
   editorConfig = {
     extraPlugins: "autogrow",
     autoGrow_maxHeight: 600
   };
 
-  componentDidMount() {
+  async componentDidMount() {
     const { id } = this.props.match.params;
     this.props.fetchOneFeedbackPost(id);
+    const checkVotedResult = await PostService.checkIfUserVotedPost(id);
+    if (checkVotedResult) {
+      this.setState({
+        isVoted: checkVotedResult.isVoted
+      });
+    }
     this.props.fetchManyComments(id);
   }
 
@@ -56,6 +68,13 @@ class FeedbackDetail extends React.Component {
   addParentComment = (postId, content) => {
     this.props.addParentComment(postId, content);
   };
+
+  updateUpVote = (id) => {
+    this.props.updateFeedbackPostUpVote(id);
+    this.setState(preState => ({
+      isVoted: !preState.isVoted,
+    }));
+  }
 
   renderSubComments = subComments => {
     return subComments.map(comment => {
@@ -145,6 +164,7 @@ class FeedbackDetail extends React.Component {
               >
                 Reply
               </a>
+              <span><i className="ui icon red heart"></i>9</span>
             </div>
           </div>
           <div className="comments qd-c-sub-comments">
@@ -187,6 +207,8 @@ class FeedbackDetail extends React.Component {
   }
 
   render() {
+    const { isVoted } = this.state;
+    const upVoteButtonClass = isVoted ? 'ui icon button red' : 'ui icon basic button red'
     const { feedbackPost } = this.props;
     const {
       title,
@@ -199,7 +221,8 @@ class FeedbackDetail extends React.Component {
       updatedDate,
       type,
       script,
-      video
+      video,
+      upVote
     } = feedbackPost || {};
     return (
       <PageLayout>
@@ -219,7 +242,7 @@ class FeedbackDetail extends React.Component {
                 </div>
                 <div className="ui label">
                   Vote
-                  <div className="detail">{answerNumber}</div>
+                  <div className="detail">{upVote}</div>
                 </div>
                 <div className="ui orange label">{FEEDBACK_TYPE_TXT[type]}</div>
               </div>
@@ -256,7 +279,12 @@ class FeedbackDetail extends React.Component {
                     <Popup
                       content={"Upvote this post"}
                       trigger={
-                        <button className="ui icon button red">
+                        <button
+                          className={upVoteButtonClass}
+                          onClick={() => {
+                            this.updateUpVote(id);
+                          }}
+                        >
                           <i className="thumbs up icon"></i>
                         </button>
                       }
@@ -264,7 +292,7 @@ class FeedbackDetail extends React.Component {
                     <Popup
                       content={"Downvote this post"}
                       trigger={
-                        <button className="ui icon button teal">
+                        <button className="ui icon basic button teal">
                           <i className="thumbs down icon"></i>
                         </button>
                       }
@@ -324,6 +352,7 @@ export default connect(
     fetchOneFeedbackPost,
     fetchManyComments,
     addSubComment,
-    addParentComment
+    addParentComment,
+    updateFeedbackPostUpVote
   }
 )(FeedbackDetail);
