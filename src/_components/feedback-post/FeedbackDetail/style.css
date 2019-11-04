@@ -13,3 +13,11 @@
 #fd-spoken-video{
     width: 100%;
 }
+
+.comment-like-nums{
+    font-weight: bold;
+}
+
+.comment-like-icon{
+    font-size: 14px !important;
+}

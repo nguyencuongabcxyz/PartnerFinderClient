@@ -1,7 +1,9 @@
 import {
     FETCH_MANY_COMMENTS,
     ADD_ONE_PARENT_COMMENT,
-    ADD_ONE_SUB_COMMENT
+    ADD_ONE_SUB_COMMENT,
+    SWITCH_PARENT_COMMENT_LIKE_REACTION,
+    SWITCH_SUB_COMMENT_LIKE_REACTION
 } from './type';
 
 import {
@@ -33,6 +35,26 @@ export const addSubComment = (parentId, content) => async (dispatch) => {
     if (data){
         dispatch({
             type: ADD_ONE_SUB_COMMENT,
+            comment: data,
+        });
+    }
+}
+
+export const switchLikeReactionOfMainComment = (id) => async (dispatch) => {
+    const data = await CommentService.switchLikeReaction(id);
+    if (data){
+        dispatch({
+            type: SWITCH_PARENT_COMMENT_LIKE_REACTION,
+            comment: data,
+        });
+    }
+}
+
+export const switchLikeReactionOfSubComment = (id) => async (dispatch) => {
+    const data = await CommentService.switchLikeReaction(id);
+    if (data){
+        dispatch({
+            type: SWITCH_SUB_COMMENT_LIKE_REACTION,
             comment: data,
         });
     }

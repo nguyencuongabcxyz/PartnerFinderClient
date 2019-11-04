@@ -23,9 +23,16 @@ const addSubComment = async (parentId, content) => {
     return response.data;
 }
 
+const switchLikeReaction = async (id) => {
+    const response = await apiClient.patch(`/comments/${id}/like`);
+    return response.data;
+}
+
+
 export const CommentService = {
     getManyByPostId,
     addParentComment,
-    addSubComment
+    addSubComment,
+    switchLikeReaction,
 }
 

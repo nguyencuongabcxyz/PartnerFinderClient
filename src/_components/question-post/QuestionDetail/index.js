@@ -33,12 +33,10 @@ class QuestionDetail extends React.Component {
   async componentDidMount() {
     const { id } = this.props.match.params;
     this.props.fetchOneQuestionPost(id);
-    const checkVotedResult = await PostService.checkIfUserVotedPost(id);
-    if (checkVotedResult) {
+    const isVoted = await PostService.checkIfUserVotedPost(id);
     this.setState({
-      isVoted: checkVotedResult.isVoted
+      isVoted,
     });
-    }
     this.props.fetchManyComments(id);
   }
 
@@ -256,7 +254,7 @@ class QuestionDetail extends React.Component {
                   </Link>
                   <div id="qd-vote-button">
                     <Popup
-                      content={"Downvote this post"}
+                      content={"Upvote this post"}
                       trigger={
                         <button
                           className={upvoteButtonClass}

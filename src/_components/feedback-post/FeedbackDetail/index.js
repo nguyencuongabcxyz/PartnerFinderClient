@@ -13,7 +13,9 @@ import { fetchOneFeedbackPost, updateFeedbackPostUpVote } from "../../../_action
 import {
   fetchManyComments,
   addSubComment,
-  addParentComment
+  addParentComment,
+  switchLikeReactionOfMainComment,
+  switchLikeReactionOfSubComment,
 } from "../../../_actions/comment";
 import { PostService } from '../../../_services/post';
 import { FEEDBACK_TYPE_TXT } from "../../../_constants/common";
@@ -33,12 +35,10 @@ class FeedbackDetail extends React.Component {
   async componentDidMount() {
     const { id } = this.props.match.params;
     this.props.fetchOneFeedbackPost(id);
-    const checkVotedResult = await PostService.checkIfUserVotedPost(id);
-    if (checkVotedResult) {
-      this.setState({
-        isVoted: checkVotedResult.isVoted
-      });
-    }
+    const isVoted = await PostService.checkIfUserVotedPost(id);
+    this.setState({
+      isVoted,
+    });
     this.props.fetchManyComments(id);
   }
 
@@ -76,6 +76,14 @@ class FeedbackDetail extends React.Component {
     }));
   }
 
+  switchSubLikeReaction = (id) => {
+    this.props.switchLikeReactionOfSubComment(id);
+  }
+
+  switchMainLikeReaction = (id) => {
+    this.props.switchLikeReactionOfMainComment(id);
+  }
+
   renderSubComments = subComments => {
     return subComments.map(comment => {
       const {
@@ -85,7 +93,9 @@ class FeedbackDetail extends React.Component {
         content,
         id,
         parentId,
-        userId
+        userId,
+        like,
+        isLiked
       } = comment;
       return (
         <div className="comment" key={id}>
@@ -105,7 +115,7 @@ class FeedbackDetail extends React.Component {
               dangerouslySetInnerHTML={{ __html: content }}
             ></div>
             <div className="actions">
-              <a className="reply">Like</a>
+              <a className="reply" onClick={() => { this.switchSubLikeReaction(id) }}>{isLiked ? <i className="ui icon red thumbs up comment-like-icon"></i> : 'Like'}</a>
               <a
                 className="reply"
                 data-toggle="collapse"
@@ -116,6 +126,7 @@ class FeedbackDetail extends React.Component {
               >
                 Reply
               </a>
+              <span className="comment-like-nums"><i className="ui icon teal thumbs up outline"></i>{like}</span>
             </div>
           </div>
         </div>
@@ -133,7 +144,9 @@ class FeedbackDetail extends React.Component {
         content,
         subComments,
         id,
-        userId
+        userId,
+        like,
+        isLiked,
       } = comment;
       return (
         <div className="comment" key={id}>
@@ -153,7 +166,7 @@ class FeedbackDetail extends React.Component {
               dangerouslySetInnerHTML={{ __html: content }}
             ></div>
             <div className="actions">
-              <a className="reply">Like</a>
+              <a className="reply" onClick={() => { this.switchMainLikeReaction(id) }}>{isLiked ? <i className="ui icon red thumbs up comment-like-icon"></i> : 'Like'}</a>
               <a
                 className="reply"
                 data-toggle="collapse"
@@ -164,7 +177,7 @@ class FeedbackDetail extends React.Component {
               >
                 Reply
               </a>
-              <span><i className="ui icon red heart"></i>9</span>
+              <span className="comment-like-nums"><i className="ui icon teal thumbs up outline"></i>{like}</span>
             </div>
           </div>
           <div className="comments qd-c-sub-comments">
@@ -353,6 +366,8 @@ export default connect(
     fetchManyComments,
     addSubComment,
     addParentComment,
-    updateFeedbackPostUpVote
+    updateFeedbackPostUpVote,
+    switchLikeReactionOfMainComment,
+    switchLikeReactionOfSubComment,
   }
 )(FeedbackDetail);
