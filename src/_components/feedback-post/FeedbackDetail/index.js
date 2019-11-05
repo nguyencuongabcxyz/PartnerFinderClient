@@ -6,6 +6,7 @@ import { Popup } from 'semantic-ui-react';
 
 import "./style.css";
 import PageLayout from "../../layout/PageLayout";
+import FeedbackList from "../../dashboard/FeedbackList";
 import CustomEditor from "../../shared/CustomEditor";
 import { getPostedTimeAgo } from "../../../_helpers/dateTimeHelper";
 
@@ -341,7 +342,7 @@ class FeedbackDetail extends React.Component {
             </div>
           </div>
           <div id="qd-right-section">
-            <div id="qd-related-questions"></div>
+              <FeedbackList paginationSize={10}/>
           </div>
         </div>
       </PageLayout>

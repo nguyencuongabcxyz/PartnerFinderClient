@@ -8,10 +8,10 @@ import Spinner from '../../Spinner';
 
 class FeedbackList extends React.Component {
 
-    sizePage = 6;
 
     componentDidMount() {
-        this.props.fetchManyFeedbackPosts(0, this.sizePage);
+        const { paginationSize } = this.props;
+        this.props.fetchManyFeedbackPosts(0, paginationSize);
     }
 
     renderFeedbackPosts = () => {
@@ -27,6 +27,7 @@ class FeedbackList extends React.Component {
     }
 
     render() {
+        const { paginationSize } = this.props;
         return (
             <div id="feedback-list">
                 <h1 className="dashboard-title">Top feedback</h1>
@@ -34,7 +35,7 @@ class FeedbackList extends React.Component {
                 <div className="right-section-content">
                     {this.renderFeedbackPosts()}
                 </div>
-                <Pagination callBack={this.fetchFeedbackPostsPagination}  itemCount={this.props.count} sizePage={this.sizePage}/>
+                <Pagination callBack={this.fetchFeedbackPostsPagination}  itemCount={this.props.count} sizePage={paginationSize}/>
             </div>
         );
     }

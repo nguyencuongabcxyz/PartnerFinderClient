@@ -6,6 +6,7 @@ import { Popup } from "semantic-ui-react";
 
 import "./style.css";
 import PageLayout from "../../layout/PageLayout";
+import QuestionList from '../../dashboard/QuestionList'
 import CustomEditor from "../../shared/CustomEditor";
 import { getPostedTimeAgo } from "../../../_helpers/dateTimeHelper";
 import { PostService } from "../../../_services/post";
@@ -305,7 +306,7 @@ class QuestionDetail extends React.Component {
             </div>
           </div>
           <div id="qd-right-section">
-            <div id="qd-related-questions"></div>
+              <QuestionList paginationSize={10} />
           </div>
         </div>
       </PageLayout>

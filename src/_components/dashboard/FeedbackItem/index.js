@@ -31,7 +31,7 @@ class FeedbackItem extends React.Component {
                 </div>
                 <div className="question-body">
                 <div className="question-top">
-                    <Link to={`/feedback-detail/${id}`}>{title}</Link>
+                    <a href={`/feedback-detail/${id}`}>{title}</a>
                 </div>
                 <div className="question-bottom">
                     <Link to={`/user-info/${userId}`} className="owner-block ui teal image label">

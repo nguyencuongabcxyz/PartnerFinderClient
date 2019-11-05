@@ -8,11 +8,9 @@ import Spinner from '../../Spinner';
 
 class QuestionList extends React.Component {
 
-    sizePage = 6;
-
     componentDidMount() {
-        console.log("render did mount!");
-        this.props.fetchManyQuestionPosts(0, this.sizePage);
+        const { paginationSize } = this.props;
+        this.props.fetchManyQuestionPosts(0, paginationSize);
     }
 
     renderQuestionPosts = () => {
@@ -28,6 +26,7 @@ class QuestionList extends React.Component {
     }
 
     render() {
+        const { paginationSize } = this.props;
         return (
             <div id="question-list">
                 <h1 className="dashboard-title">Top questions</h1>
@@ -35,7 +34,7 @@ class QuestionList extends React.Component {
                 <div className="right-section-content">
                     {this.renderQuestionPosts()}
                 </div>
-                <Pagination callBack={this.fetchQuestionPostsPagination}  itemCount={this.props.count} sizePage={this.sizePage}/>
+                <Pagination callBack={this.fetchQuestionPostsPagination}  itemCount={this.props.count} sizePage={paginationSize}/>
             </div>
         );
     }
