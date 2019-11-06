@@ -22,7 +22,8 @@ class QuestionList extends React.Component {
     }
 
     fetchQuestionPostsPagination = (index) => {
-        this.props.fetchManyQuestionPosts(index, this.sizePage)
+        const { paginationSize } = this.props;
+        this.props.fetchManyQuestionPosts(index, paginationSize)
     }
 
     render() {
