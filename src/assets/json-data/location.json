@@ -1,255 +1,445 @@
 {
-    "cities": [ {
+    "cities": [
+      {
         "name": "An Giang",
-        "slug": "An Giang"
-    },
-    {
+        "slug": "An Giang",
+        "text": "An Giang",
+        "key": "An Giang",
+        "value": "An Giang"
+      },
+      {
         "name": "Kon Tum",
-        "slug": "Kon Tum"
-    },
-    {
+        "slug": "Kon Tum",
+        "text": "Kon Tum",
+        "key": "Kon Tum",
+        "value": "Kon Tum"
+      },
+      {
         "name": "Đắk Nông",
-        "slug": "Dak Nong"
-    },
-    {
+        "slug": "Dak Nong",
+        "text": "Đắk Nông",
+        "key": "Đắk Nông",
+        "value": "Dak Nong"
+      },
+      {
         "name": "Sóc Trăng",
-        "slug": "Soc Trang"
-    },
-    {
+        "slug": "Soc Trang",
+        "text": "Sóc Trăng",
+        "key": "Sóc Trăng",
+        "value": "Soc Trang"
+      },
+      {
         "name": "Bình Phước",
-        "slug": "Binh Phuoc"
-    },
-    {
+        "slug": "Binh Phuoc",
+        "text": "Bình Phước",
+        "key": "Bình Phước",
+        "value": "Binh Phuoc"
+      },
+      {
         "name": "Hưng Yên",
-        "slug": "Hung Yen"
-    },
-    {
+        "slug": "Hung Yen",
+        "text": "Hưng Yên",
+        "key": "Hưng Yên",
+        "value": "Hung Yen"
+      },
+      {
         "name": "Thanh Hóa",
-        "slug": "Thanh Hoa"
-    },
-    {
+        "slug": "Thanh Hoa",
+        "text": "Thanh Hóa",
+        "key": "Thanh Hóa",
+        "value": "Thanh Hoa"
+      },
+      {
         "name": "Quảng Trị",
-        "slug": "Quang Tri"
-    },
-    {
+        "slug": "Quang Tri",
+        "text": "Quảng Trị",
+        "key": "Quảng Trị",
+        "value": "Quang Tri"
+      },
+      {
         "name": "Tuyên Quang",
-        "slug": "Tuyen Quang"
-    },
-    {
+        "slug": "Tuyen Quang",
+        "text": "Tuyên Quang",
+        "key": "Tuyên Quang",
+        "value": "Tuyen Quang"
+      },
+      {
         "name": "Quảng Ngãi",
-        "slug": "Quang Ngai"
-    },
-    {
+        "slug": "Quang Ngai",
+        "text": "Quảng Ngãi",
+        "key": "Quảng Ngãi",
+        "value": "Quang Ngai"
+      },
+      {
         "name": "Hà Nội",
-        "slug": "Ha Noi"
-    },
-    {
+        "slug": "Ha Noi",
+        "text": "Hà Nội",
+        "key": "Hà Nội",
+        "value": "Ha Noi"
+      },
+      {
         "name": "Lào Cai",
-        "slug": "Lao Cai"
-    },
-    {
+        "slug": "Lao Cai",
+        "text": "Lào Cai",
+        "key": "Lào Cai",
+        "value": "Lao Cai"
+      },
+      {
         "name": "Vĩnh Long",
-        "slug": "Vinh Long"
-    },
-    {
+        "slug": "Vinh Long",
+        "text": "Vĩnh Long",
+        "key": "Vĩnh Long",
+        "value": "Vinh Long"
+      },
+      {
         "name": "Lâm Đồng",
-        "slug": "Lam Dong"
-    },
-    {
+        "slug": "Lam Dong",
+        "text": "Lâm Đồng",
+        "key": "Lâm Đồng",
+        "value": "Lam Dong"
+      },
+      {
         "name": "Bình Định",
-        "slug": "Binh Dinh"
-    },
-    {
+        "slug": "Binh Dinh",
+        "text": "Bình Định",
+        "key": "Bình Định",
+        "value": "Binh Dinh"
+      },
+      {
         "name": "Nghệ An",
-        "slug": "Nghe An"
-    },
-    {
+        "slug": "Nghe An",
+        "text": "Nghệ An",
+        "key": "Nghệ An",
+        "value": "Nghe An"
+      },
+      {
         "name": "Kiên Giang",
-        "slug": "Kien Giang"
-    },
-    {
+        "slug": "Kien Giang",
+        "text": "Kiên Giang",
+        "key": "Kiên Giang",
+        "value": "Kien Giang"
+      },
+      {
         "name": "Hà Giang",
-        "slug": "Ha Giang"
-    },
-    {
+        "slug": "Ha Giang",
+        "text": "Hà Giang",
+        "key": "Hà Giang",
+        "value": "Ha Giang"
+      },
+      {
         "name": "Phú Yên",
-        "slug": "Phu Yen"
-    },
-    {
+        "slug": "Phu Yen",
+        "text": "Phú Yên",
+        "key": "Phú Yên",
+        "value": "Phu Yen"
+      },
+      {
         "name": "Lạng Sơn",
-        "slug": "Lang Son"
-    },
-    {
+        "slug": "Lang Son",
+        "text": "Lạng Sơn",
+        "key": "Lạng Sơn",
+        "value": "Lang Son"
+      },
+      {
         "name": "Đà Nẵng",
-        "slug": "Da Nang"
-    },
-    {
+        "slug": "Da Nang",
+        "text": "Đà Nẵng",
+        "key": "Đà Nẵng",
+        "value": "Da Nang"
+      },
+      {
         "name": "Sơn La",
-        "slug": "Son La"
-    },
-    {
+        "slug": "Son La",
+        "text": "Sơn La",
+        "key": "Sơn La",
+        "value": "Son La"
+      },
+      {
         "name": "Tây Ninh",
-        "slug": "Tay Ninh"
-    },
-    {
+        "slug": "Tay Ninh",
+        "text": "Tây Ninh",
+        "key": "Tây Ninh",
+        "value": "Tay Ninh"
+      },
+      {
         "name": "Nam Định",
-        "slug": "Nam Dinh"
-    },
-    {
+        "slug": "Nam Dinh",
+        "text": "Nam Định",
+        "key": "Nam Định",
+        "value": "Nam Dinh"
+      },
+      {
         "name": "Lai Châu",
-        "slug": "Lai Chau"
-    },
-    {
+        "slug": "Lai Chau",
+        "text": "Lai Châu",
+        "key": "Lai Châu",
+        "value": "Lai Chau"
+      },
+      {
         "name": "Bến Tre",
-        "slug": "Ben Tre"
-    },
-    {
+        "slug": "Ben Tre",
+        "text": "Bến Tre",
+        "key": "Bến Tre",
+        "value": "Ben Tre"
+      },
+      {
         "name": "Khánh Hòa",
-        "slug": "Khanh Hoa"
-    },
-    {
+        "slug": "Khanh Hoa",
+        "text": "Khánh Hòa",
+        "key": "Khánh Hòa",
+        "value": "Khanh Hoa"
+      },
+      {
         "name": "Bình Thuận",
-        "slug": "Binh Thuan"
-    },
-    {
+        "slug": "Binh Thuan",
+        "text": "Bình Thuận",
+        "key": "Bình Thuận",
+        "value": "Binh Thuan"
+      },
+      {
         "name": "Cao Bằng",
-        "slug": "Cao Bang"
-    },
-    {
+        "slug": "Cao Bang",
+        "text": "Cao Bằng",
+        "key": "Cao Bằng",
+        "value": "Cao Bang"
+      },
+      {
         "name": "Hải Phòng",
-        "slug": "Hai Phong"
-    },
-    {
+        "slug": "Hai Phong",
+        "text": "Hải Phòng",
+        "key": "Hải Phòng",
+        "value": "Hai Phong"
+      },
+      {
         "name": "Ninh Bình",
-        "slug": "Ninh Binh"
-    },
-    {
+        "slug": "Ninh Binh",
+        "text": "Ninh Bình",
+        "key": "Ninh Bình",
+        "value": "Ninh Binh"
+      },
+      {
         "name": "Yên Bái",
-        "slug": "Yen Bai"
-    },
-    {
+        "slug": "Yen Bai",
+        "text": "Yên Bái",
+        "key": "Yên Bái",
+        "value": "Yen Bai"
+      },
+      {
         "name": "Gia Lai",
-        "slug": "Gia Lai"
-    },
-    {
+        "slug": "Gia Lai",
+        "text": "Gia Lai",
+        "key": "Gia Lai",
+        "value": "Gia Lai"
+      },
+      {
         "name": "Hoà Bình",
-        "slug": "Hoa Binh"
-    },
-    {
+        "slug": "Hoa Binh",
+        "text": "Hoà Bình",
+        "key": "Hoà Bình",
+        "value": "Hoa Binh"
+      },
+      {
         "name": "Bà Rịa - Vũng Tàu",
-        "slug": "Ba Ria Vung Tau"
-    },
-    {
+        "slug": "Ba Ria Vung Tau",
+        "text": "Bà Rịa - Vũng Tàu",
+        "key": "Bà Rịa - Vũng Tàu",
+        "value": "Ba Ria Vung Tau"
+      },
+      {
         "name": "Cà Mau",
-        "slug": "Ca Mau"
-    },
-    {
+        "slug": "Ca Mau",
+        "text": "Cà Mau",
+        "key": "Cà Mau",
+        "value": "Ca Mau"
+      },
+      {
         "name": "Bình Dương",
-        "slug": "Binh Duong"
-    },
-    {
+        "slug": "Binh Duong",
+        "text": "Bình Dương",
+        "key": "Bình Dương",
+        "value": "Binh Duong"
+      },
+      {
         "name": "Cần Thơ",
-        "slug": "Can Tho"
-    },
-    {
+        "slug": "Can Tho",
+        "text": "Cần Thơ",
+        "key": "Cần Thơ",
+        "value": "Can Tho"
+      },
+      {
         "name": "Thừa Thiên Huế",
-        "slug": "Thua Thien Hue"
-    },
-    {
+        "slug": "Thua Thien Hue",
+        "text": "Thừa Thiên Huế",
+        "key": "Thừa Thiên Huế",
+        "value": "Thua Thien Hue"
+      },
+      {
         "name": "Đồng Nai",
-        "slug": "Dong Nai"
-    },
-    {
+        "slug": "Dong Nai",
+        "text": "Đồng Nai",
+        "key": "Đồng Nai",
+        "value": "Dong Nai"
+      },
+      {
         "name": "Tiền Giang",
-        "slug": "Tien Giang"
-    },
-    {
+        "slug": "Tien Giang",
+        "text": "Tiền Giang",
+        "key": "Tiền Giang",
+        "value": "Tien Giang"
+      },
+      {
         "name": "Điện Biên",
-        "slug": "Dien Bien"
-    },
-    {
+        "slug": "Dien Bien",
+        "text": "Điện Biên",
+        "key": "Điện Biên",
+        "value": "Dien Bien"
+      },
+      {
         "name": "Vĩnh Phúc",
-        "slug": "Vinh Phuc"
-    },
-    {
+        "slug": "Vinh Phuc",
+        "text": "Vĩnh Phúc",
+        "key": "Vĩnh Phúc",
+        "value": "Vinh Phuc"
+      },
+      {
         "name": "Quảng Nam",
-        "slug": "Quang Nam"
-    },
-    {
+        "slug": "Quang Nam",
+        "text": "Quảng Nam",
+        "key": "Quảng Nam",
+        "value": "Quang Nam"
+      },
+      {
         "name": "Đắk Lắk",
-        "slug": "Dak Lak"
-    },
-    {
+        "slug": "Dak Lak",
+        "text": "Đắk Lắk",
+        "key": "Đắk Lắk",
+        "value": "Dak Lak"
+      },
+      {
         "name": "Thái Nguyên",
-        "slug": "Thai Nguyen"
-    },
-    {
+        "slug": "Thai Nguyen",
+        "text": "Thái Nguyên",
+        "key": "Thái Nguyên",
+        "value": "Thai Nguyen"
+      },
+      {
         "name": "Hải Dương",
-        "slug": "Hai Duong"
-    },
-    {
+        "slug": "Hai Duong",
+        "text": "Hải Dương",
+        "key": "Hải Dương",
+        "value": "Hai Duong"
+      },
+      {
         "name": "Bạc Liêu",
-        "slug": "Bac Lieu"
-    },
-    {
+        "slug": "Bac Lieu",
+        "text": "Bạc Liêu",
+        "key": "Bạc Liêu",
+        "value": "Bac Lieu"
+      },
+      {
         "name": "Trà Vinh",
-        "slug": "Tra Vinh"
-    },
-    {
+        "slug": "Tra Vinh",
+        "text": "Trà Vinh",
+        "key": "Trà Vinh",
+        "value": "Tra Vinh"
+      },
+      {
         "name": "Thái Bình",
-        "slug": "Thai Binh"
-    },
-    {
+        "slug": "Thai Binh",
+        "text": "Thái Bình",
+        "key": "Thái Bình",
+        "value": "Thai Binh"
+      },
+      {
         "name": "Hà Tĩnh",
-        "slug": "Ha Tinh"
-    },
-    {
+        "slug": "Ha Tinh",
+        "text": "Hà Tĩnh",
+        "key": "Hà Tĩnh",
+        "value": "Ha Tinh"
+      },
+      {
         "name": "Ninh Thuận",
-        "slug": "Ninh Thuan"
-    },
-    {
+        "slug": "Ninh Thuan",
+        "text": "Ninh Thuận",
+        "key": "Ninh Thuận",
+        "value": "Ninh Thuan"
+      },
+      {
         "name": "Đồng Tháp",
-        "slug": "Dong Thap"
-    },
-    {
+        "slug": "Dong Thap",
+        "text": "Đồng Tháp",
+        "key": "Đồng Tháp",
+        "value": "Dong Thap"
+      },
+      {
         "name": "Long An",
-        "slug": "Long An"
-    },
-    {
+        "slug": "Long An",
+        "text": "Long An",
+        "key": "Long An",
+        "value": "Long An"
+      },
+      {
         "name": "Hậu Giang",
-        "slug": "Hau Giang"
-    },
-    {
+        "slug": "Hau Giang",
+        "text": "Hậu Giang",
+        "key": "Hậu Giang",
+        "value": "Hau Giang"
+      },
+      {
         "name": "Quảng Ninh",
-        "slug": "Quang Ninh"
-    },
-{
+        "slug": "Quang Ninh",
+        "text": "Quảng Ninh",
+        "key": "Quảng Ninh",
+        "value": "Quang Ninh"
+      },
+      {
         "name": "Phú Thọ",
-        "slug": "Phu Tho"
-    },
-    {
+        "slug": "Phu Tho",
+        "text": "Phú Thọ",
+        "key": "Phú Thọ",
+        "value": "Phu Tho"
+      },
+      {
         "name": "Quảng Bình",
-        "slug": "Quang Binh"
-    },
-    {
+        "slug": "Quang Binh",
+        "text": "Quảng Bình",
+        "key": "Quảng Bình",
+        "value": "Quang Binh"
+      },
+      {
         "name": "Hồ Chí Minh",
-        "slug": "Ho Chi Minh"
-    },
-    {
+        "slug": "Ho Chi Minh",
+        "text": "Hồ Chí Minh",
+        "key": "Hồ Chí Minh",
+        "value": "Ho Chi Minh"
+      },
+      {
         "name": "Hà Nam",
-        "slug": "Ha Nam"
-    },
-    {
+        "slug": "Ha Nam",
+        "text": "Hà Nam",
+        "key": "Hà Nam",
+        "value": "Ha Nam"
+      },
+      {
         "name": "Bắc Ninh",
-        "slug": "Bac Ninh"
-    },
-    {
+        "slug": "Bac Ninh",
+        "text": "Bắc Ninh",
+        "key": "Bắc Ninh",
+        "value": "Bac Ninh"
+      },
+      {
         "name": "Bắc Giang",
-        "slug": "Bac Giang"
-    },
-    {
+        "slug": "Bac Giang",
+        "text": "Bắc Giang",
+        "key": "Bắc Giang",
+        "value": "Bac Giang"
+      },
+      {
         "name": "Bắc Kạn",
-        "slug": "Bac Kan"
-    }
-]
-}
+        "slug": "Bac Kan",
+        "text": "Bắc Kạn",
+        "key": "Bắc Kạn",
+        "value": "Bac Kan"
+      }
+    ]
+  }

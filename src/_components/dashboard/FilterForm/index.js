@@ -3,11 +3,44 @@ import { Field, reduxForm, change } from 'redux-form';
 import { connect } from 'react-redux';
 import './style.css';
 import LocationInput from '../../shared/LocationInput';
+import { Dropdown } from 'semantic-ui-react'
+
 
 class FilterForm extends React.Component {
 
-    setValue = (value) => {
+    setLocationValue = (value) => {
         this.props.dispatch(change('filterForm', 'location', value));
+    }
+
+    setLevelValue = (event, {value}) => {
+        this.props.dispatch(change('filterForm', 'level', value));
+    }
+
+    renderSelectInput = () => {
+        const options = [{
+            key: 0,
+            value: 0,
+            text: "Beginner"
+        },
+        {
+            key: 1,
+            value: 1,
+            text: "Intermediate"
+        },
+        {
+            key: 2,
+            value: 2,
+            text: "Advanced"
+        }]
+        return (
+            <Dropdown
+            placeholder='Select level'
+            fluid
+            selection
+            onChange={this.setLevelValue}
+            options={options}
+          />
+        );
     }
 
     render() {
@@ -17,14 +50,11 @@ class FilterForm extends React.Component {
                 <div className="row">
                     <div className="form-group filter-item col-lg-6">
                         <label>Level</label>
-                        <Field className="custom-select" name="level" component="select">
-                            <option value="3">Choose level</option>
-                            <option value="0">Beginner</option>
-                            <option value="1">Intermediate</option>
-                            <option value="2">Advanced</option>
-                        </Field>
+                        {this.renderSelectInput()}
                     </div>
-                    <LocationInput setValue={this.setValue} additionalClasses="col-lg-6"/>
+                    <div className="col-lg-6">
+                    <LocationInput setValue={this.setLocationValue}/>
+                    </div>
                 </div>
                 <button type="submit" className="btn btn-warning btn-filter">Filter</button>
             </form>

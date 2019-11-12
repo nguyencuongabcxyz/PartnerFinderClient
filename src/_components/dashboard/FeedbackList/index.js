@@ -23,20 +23,35 @@ class FeedbackList extends React.Component {
     }
 
     fetchFeedbackPostsPagination = (index) => {
-        this.props.fetchManyFeedbackPosts(index, this.sizePage);
+        const { paginationSize } = this.props;
+        this.props.fetchManyFeedbackPosts(index, paginationSize);
     }
 
     render() {
         const { paginationSize } = this.props;
         return (
-            <div id="feedback-list">
-                <h1 className="dashboard-title">Top feedback</h1>
-                <Spinner condition={this.props.feedbackPosts.length === 0}/>
-                <div className="right-section-content">
-                    {this.renderFeedbackPosts()}
-                </div>
-                <Pagination callBack={this.fetchFeedbackPostsPagination}  itemCount={this.props.count} sizePage={paginationSize}/>
+          <div id="feedback-list">
+            <h1 className="dashboard-title">Top feedback</h1>
+            <div className="ui search">
+              <div className="ui icon input">
+                <input
+                  className="prompt"
+                  type="text"
+                  placeholder="Search by name..."
+                />
+                <i className="search icon"></i>
+              </div>
             </div>
+            <Spinner condition={this.props.feedbackPosts.length === 0} />
+            <div className="right-section-content">
+              {this.renderFeedbackPosts()}
+            </div>
+            <Pagination
+              callBack={this.fetchFeedbackPostsPagination}
+              itemCount={this.props.count}
+              sizePage={paginationSize}
+            />
+          </div>
         );
     }
 }
