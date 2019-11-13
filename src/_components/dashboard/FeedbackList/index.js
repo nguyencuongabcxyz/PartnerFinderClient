@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { fetchManyFeedbackPosts } from '../../../_actions/dashboard-post/db-feedback-post';
 import Pagination from '../../shared/pagination';
 import Spinner from '../../Spinner';
+import SearchDropdown from '../../shared/SearchDropdown';
 
 class FeedbackList extends React.Component {
 
@@ -32,16 +33,7 @@ class FeedbackList extends React.Component {
         return (
           <div id="feedback-list">
             <h1 className="dashboard-title">Top feedback</h1>
-            <div className="ui search">
-              <div className="ui icon input">
-                <input
-                  className="prompt"
-                  type="text"
-                  placeholder="Search by name..."
-                />
-                <i className="search icon"></i>
-              </div>
-            </div>
+            <SearchDropdown />
             <Spinner condition={this.props.feedbackPosts.length === 0} />
             <div className="right-section-content">
               {this.renderFeedbackPosts()}

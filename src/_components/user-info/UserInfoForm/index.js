@@ -47,13 +47,15 @@ class UserInfoForm extends React.Component {
     }
 
     render() {
+        const { initialValues } = this.props;
+        console.log(initialValues.location);
         return (
             <form onSubmit={this.props.handleSubmit}>
                 <h1 id="user-form-title">Update information</h1>
                 <Field name="userId" component={this.renderInputText} type="hidden"/>
                 <Field name="name" component={this.renderInputText} label="Name" placeholder="Enter name"/>
                 <div className="form-group info-group">
-                <LocationInput setValue={this.setValue}/>
+                <LocationInput setValue={this.setValue} defaultValue={initialValues.location}/>
                 </div>
                 <Field type="number" name="age" component={this.renderInputText} label="Age" placeholder="Enter a number"/>
                 <div className="form-group info-group">
