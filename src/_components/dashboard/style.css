@@ -29,3 +29,7 @@
 #db-question-list-wrapper{
     margin-bottom: 40px;
 }
+
+.dashboard-header-section {
+    display: flex;
+}

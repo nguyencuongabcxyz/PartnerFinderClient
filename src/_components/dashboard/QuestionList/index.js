@@ -6,7 +6,7 @@ import { fetchManyQuestionPosts } from "../../../_actions/dashboard-post/db-ques
 import Pagination from "../../shared/pagination";
 import Spinner from "../../Spinner";
 import SearchDropdown from "../../shared/SearchDropdown";
-import { POST_TYPE_DETAIL_ROUTE } from '../../../_constants/common';
+import { POST_TYPE_DETAIL_ROUTE } from "../../../_constants/common";
 
 import { PostService } from "../../../_services/post";
 
@@ -31,9 +31,15 @@ class QuestionList extends React.Component {
     const { paginationSize } = this.props;
     return (
       <div id="question-list">
-        <h1 className="dashboard-title">Top questions</h1>
-        <div className="post-search-wrapper">
-          <SearchDropdown searchFunction={PostService.searchForQuestionPost} routeType={POST_TYPE_DETAIL_ROUTE.QUESTION}/>
+        <div className="dashboard-header-section">
+          <h1 className="dashboard-title">Top questions</h1>
+          <div className="post-search-wrapper">
+            <SearchDropdown
+              searchFunction={PostService.searchForQuestionPost}
+              route={POST_TYPE_DETAIL_ROUTE.QUESTION}
+              hint="Search for posts"
+            />
+          </div>
         </div>
         <Spinner condition={this.props.questionPosts.length === 0} />
         <div className="right-section-content">
@@ -56,7 +62,6 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  { fetchManyQuestionPosts }
-)(QuestionList);
+export default connect(mapStateToProps, { fetchManyQuestionPosts })(
+  QuestionList
+);

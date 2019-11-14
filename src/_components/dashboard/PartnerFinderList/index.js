@@ -1,8 +1,7 @@
 import React from 'react'
 import PartnerFinderItem from '../PartnerFinderItem';
-import FilterForm from '../FilterForm';
 import { connect } from 'react-redux';
-import { fetchManyFinders, fetchManyWithFilter } from '../../../_actions/partner-finder';
+import { fetchManyFinders} from '../../../_actions/partner-finder';
 import './style.css'
 import Spinner from '../../Spinner';
 import Pagination from '../../shared/pagination';
@@ -31,26 +30,19 @@ class PartnerFinderList extends React.Component {
         })
     }
 
-    onSubmit = (formValues) => {
-        this.props.fetchManyWithFilter(formValues, 0, 6);
-        this.setState({
-            filter : true
-        });
-    }
-
     render() {
         let resultDisplay = this.state.filter ? 'block' : 'none';
         return (
           <div id="finder-list">
-            {/* <div id="filter">
-                    <FilterForm onSubmit={this.onSubmit}/>
-                </div> */}
+            <div className="dashboard-header-section">
             <h1 className="dashboard-title">People looking for partners</h1>
             <div className="post-search-wrapper">
               <SearchDropdown
                 // searchFunction={PostService.searchForFeedbackPost}
                 // routeType={POST_TYPE_DETAIL_ROUTE.FEEDBACK}
+                hint="Search by location"
               />
+            </div>
             </div>
             <h5
               style={{
@@ -84,5 +76,5 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, {fetchManyFinders, fetchManyWithFilter})(PartnerFinderList);
+export default connect(mapStateToProps, {fetchManyFinders})(PartnerFinderList);
 

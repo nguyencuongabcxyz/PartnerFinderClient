@@ -177,7 +177,6 @@ class Pagination extends React.Component {
   };
 
   render() {
-    console.log(this.props.sizePage);
     return (
       <div className="paging">
         <nav aria-label="Page navigation example">

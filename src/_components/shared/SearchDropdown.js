@@ -33,8 +33,8 @@ class SearchDropdown extends Component {
   handleResultSelect = (e, { result }) => {
     if (!result) return;
     const { id } = result;
-    const { routeType } = this.props;
-    window.location.href = `/${routeType}/${id}`;
+    const { route } = this.props;
+    window.location.href = `/${route}/${id}`;
   }
 
   handleSearchChange = (e, { value }) => {
@@ -71,6 +71,7 @@ class SearchDropdown extends Component {
   );
 
   render() {
+    const { hint } = this.props;
     const { isLoading, value, results } = this.state;
     return (
       <Search
@@ -82,6 +83,7 @@ class SearchDropdown extends Component {
         results={results}
         value={value}
         {...this.props}
+        placeholder={hint}
         resultRenderer={this.resultRenderer}
       />
     );
