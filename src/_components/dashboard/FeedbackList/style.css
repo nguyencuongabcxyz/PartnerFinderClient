@@ -4,3 +4,13 @@
     box-shadow: 0px 1px 5px rgba(0,0,0,0.38);
     border-radius: 5px;
 }
+
+.post-search-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+}
+
+.post-search-wrapper .search{
+    width: fit-content;
+}

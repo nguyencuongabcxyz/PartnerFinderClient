@@ -17,7 +17,9 @@ import {
 import {
   fetchManyComments,
   addSubComment,
-  addParentComment
+  addParentComment,
+  switchLikeReactionOfMainComment,
+  switchLikeReactionOfSubComment,
 } from "../../../_actions/comment";
 import Spinner from "../../Spinner";
 
@@ -75,6 +77,14 @@ class QuestionDetail extends React.Component {
     }));
   };
 
+  switchSubLikeReaction = (id) => {
+    this.props.switchLikeReactionOfSubComment(id);
+  }
+
+  switchMainLikeReaction = (id) => {
+    this.props.switchLikeReactionOfMainComment(id);
+  }
+
   renderSubComments = subComments => {
     return subComments.map(comment => {
       const {
@@ -84,7 +94,9 @@ class QuestionDetail extends React.Component {
         content,
         id,
         parentId,
-        userId
+        like,
+        userId,
+        isLiked
       } = comment;
       return (
         <div className="comment" key={id}>
@@ -104,7 +116,7 @@ class QuestionDetail extends React.Component {
               dangerouslySetInnerHTML={{ __html: content }}
             ></div>
             <div className="actions">
-              <a className="reply">Like</a>
+              <Link className="reply" onClick={() => { this.switchSubLikeReaction(id) }}>{isLiked ? <i className="ui icon red thumbs up comment-like-icon"></i> : 'Like'}</Link>
               <a
                 className="reply"
                 data-toggle="collapse"
@@ -115,6 +127,7 @@ class QuestionDetail extends React.Component {
               >
                 Reply
               </a>
+              <span className="comment-like-nums"><i className="ui icon teal thumbs up outline"></i>{like}</span>
             </div>
           </div>
         </div>
@@ -132,7 +145,9 @@ class QuestionDetail extends React.Component {
         content,
         subComments,
         id,
-        userId
+        userId,
+        like,
+        isLiked
       } = comment;
       return (
         <div className="comment" key={id}>
@@ -152,7 +167,7 @@ class QuestionDetail extends React.Component {
               dangerouslySetInnerHTML={{ __html: content }}
             ></div>
             <div className="actions">
-              <a className="reply">Like</a>
+              <Link className="reply" onClick={() => { this.switchMainLikeReaction(id) }}>{isLiked ? <i className="ui icon red thumbs up comment-like-icon"></i> : 'Like'}</Link>
               <a
                 className="reply"
                 data-toggle="collapse"
@@ -163,6 +178,7 @@ class QuestionDetail extends React.Component {
               >
                 Reply
               </a>
+              <span className="comment-like-nums"><i className="ui icon teal thumbs up outline"></i>{like}</span>
             </div>
           </div>
           <div className="comments qd-c-sub-comments">
@@ -331,6 +347,8 @@ export default connect(
     fetchManyComments,
     addSubComment,
     addParentComment,
-    updateQuestionPostUpVote
+    updateQuestionPostUpVote,
+    switchLikeReactionOfMainComment,
+    switchLikeReactionOfSubComment,
   }
 )(QuestionDetail);

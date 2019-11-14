@@ -116,7 +116,7 @@ class FeedbackDetail extends React.Component {
               dangerouslySetInnerHTML={{ __html: content }}
             ></div>
             <div className="actions">
-              <a className="reply" onClick={() => { this.switchSubLikeReaction(id) }}>{isLiked ? <i className="ui icon red thumbs up comment-like-icon"></i> : 'Like'}</a>
+              <Link className="reply" onClick={() => { this.switchSubLikeReaction(id) }}>{isLiked ? <i className="ui icon red thumbs up comment-like-icon"></i> : 'Like'}</Link>
               <a
                 className="reply"
                 data-toggle="collapse"
@@ -167,7 +167,7 @@ class FeedbackDetail extends React.Component {
               dangerouslySetInnerHTML={{ __html: content }}
             ></div>
             <div className="actions">
-              <a className="reply" onClick={() => { this.switchMainLikeReaction(id) }}>{isLiked ? <i className="ui icon red thumbs up comment-like-icon"></i> : 'Like'}</a>
+              <Link className="reply" onClick={() => { this.switchMainLikeReaction(id) }}>{isLiked ? <i className="ui icon red thumbs up comment-like-icon"></i> : 'Like'}</Link>
               <a
                 className="reply"
                 data-toggle="collapse"

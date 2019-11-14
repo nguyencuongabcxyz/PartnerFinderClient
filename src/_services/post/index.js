@@ -45,6 +45,16 @@ const checkIfUserVotedPost = async (id) => {
     return reponse.data;
 }
 
+const searchForFeedbackPost = async (pattern) => {
+    var reponse = await apiClient.get(`/posts/feedback-post/search?pattern=${pattern}`);
+    return reponse.data;
+}
+
+const searchForQuestionPost = async (pattern) => {
+    var response = await apiClient.get(`/posts/question-post/search?pattern=${pattern}`);
+    return response.data;
+}
+
 export const PostService = {
     getManyQuestionPosts,
     getManyFeedbackPosts,
@@ -54,5 +64,7 @@ export const PostService = {
     getFeedbackPost,
     updateQuestionPostUpVote,
     checkIfUserVotedPost,
-    updateFeedbackPostUpVote
+    updateFeedbackPostUpVote,
+    searchForFeedbackPost,
+    searchForQuestionPost
 }

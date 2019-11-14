@@ -6,6 +6,9 @@ import { fetchManyFeedbackPosts } from '../../../_actions/dashboard-post/db-feed
 import Pagination from '../../shared/pagination';
 import Spinner from '../../Spinner';
 import SearchDropdown from '../../shared/SearchDropdown';
+import { POST_TYPE_DETAIL_ROUTE } from '../../../_constants/common';
+
+import { PostService } from '../../../_services/post';
 
 class FeedbackList extends React.Component {
 
@@ -28,12 +31,18 @@ class FeedbackList extends React.Component {
         this.props.fetchManyFeedbackPosts(index, paginationSize);
     }
 
+    searchForFeedbackPosts = (value) => {
+        
+    }
+
     render() {
         const { paginationSize } = this.props;
         return (
           <div id="feedback-list">
             <h1 className="dashboard-title">Top feedback</h1>
-            <SearchDropdown />
+            <div className="post-search-wrapper">
+            <SearchDropdown searchFunction={PostService.searchForFeedbackPost} routeType={POST_TYPE_DETAIL_ROUTE.FEEDBACK}/>
+            </div>
             <Spinner condition={this.props.feedbackPosts.length === 0} />
             <div className="right-section-content">
               {this.renderFeedbackPosts()}

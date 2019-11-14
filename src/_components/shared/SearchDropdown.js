@@ -1,7 +1,7 @@
 import _ from "lodash";
-import faker from "faker";
 import React, { Component } from "react";
-import { Search, Label } from "semantic-ui-react";
+import { Search } from "semantic-ui-react";
+
 
 const initialState = { 
     isLoading: false, 
@@ -9,40 +9,69 @@ const initialState = {
     value: "" 
 };
 
-const source = _.times(5, () => ({
-  title: faker.company.companyName(),
-  description: faker.company.catchPhrase(),
-  image: faker.internet.avatar(),
-  price: faker.finance.amount(0, 100, 2, "$")
-}));
-
 class SearchDropdown extends Component {
   state = initialState;
 
-  handleResultSelect = (e, { result }) =>
-    this.setState({ value: result.title });
+  mapResultsToSearchResults = results => {
+    if (!results) return;
+    const searchResults = [];
+    results.forEach(element => {
+      let searchModel = _.pick(element, [
+        "id",
+        "title",
+        "type",
+        "avatar",
+        "name"
+      ]);
+      searchModel.answer = element.answerNumber;
+      searchModel.uid = element.userId;
+      searchResults.push(searchModel);
+    });
+    return searchResults;
+  };
+
+  handleResultSelect = (e, { result }) => {
+    if (!result) return;
+    const { id } = result;
+    const { routeType } = this.props;
+    window.location.href = `/${routeType}/${id}`;
+  }
 
   handleSearchChange = (e, { value }) => {
+    const { searchFunction } = this.props;
     this.setState({ isLoading: true, value });
-
-    setTimeout(() => {
+    setTimeout(async () => {
       if (this.state.value.length < 1) return this.setState(initialState);
-
-      const re = new RegExp(_.escapeRegExp(this.state.value), "i");
-      const isMatch = result => re.test(result.title);
-
+      const results = await searchFunction(value);
       this.setState({
         isLoading: false,
-        results: _.filter(source, isMatch)
+        results: this.mapResultsToSearchResults(results)
       });
     }, 300);
   };
 
-  resultRenderer = ({ title }) => <Label content={title} />
+  renderType = type => {
+    if (type === 1) {
+      return <div className="ui orange label">Written</div>;
+    } else if (type === 2) {
+      return <div className="ui green label">Spoken</div>;
+    } else {
+      return null;
+    }
+  };
+
+  resultRenderer = ({ title, type, answer }) => (
+    <div className="ui positive message">
+      <p>{title}</p>
+      <div>
+        {this.renderType(type)}
+        <div className="ui brown label">{answer} answers</div>
+      </div>
+    </div>
+  );
 
   render() {
     const { isLoading, value, results } = this.state;
-
     return (
       <Search
         loading={isLoading}

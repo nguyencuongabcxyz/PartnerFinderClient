@@ -5,7 +5,7 @@
     border-radius: 5px;
     margin: 15px auto;
 }
-
+/* 
 #filter {
     padding: 15px;
     background: white;
@@ -13,7 +13,14 @@
     border-radius: 4px;
     border: 1px solid wheat;
     box-shadow: 0px 1px 5px rgba(0,0,0,0.38);
+} */
+
+#finder-list {
+    box-shadow: 0px 1px 5px rgba(0,0,0,0.38);
+    background-color: white;
+    padding: 20px;
 }
+
 #partner-finder-list {
     display: grid;
     grid-template-columns: 1fr 1fr;
