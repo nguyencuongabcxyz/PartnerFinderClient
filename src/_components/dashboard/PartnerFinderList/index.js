@@ -5,7 +5,8 @@ import { fetchManyFinders} from '../../../_actions/partner-finder';
 import './style.css'
 import Spinner from '../../Spinner';
 import Pagination from '../../shared/pagination';
-import SearchDropdown from '../../shared/SearchDropdown';
+import SearchDropdown from '../../shared/SearchPost';
+import SearchPartnerFinder from '../../shared/SearchPartnerFinder';
 
 class PartnerFinderList extends React.Component {
 
@@ -37,11 +38,7 @@ class PartnerFinderList extends React.Component {
             <div className="dashboard-header-section">
             <h1 className="dashboard-title">People looking for partners</h1>
             <div className="post-search-wrapper">
-              <SearchDropdown
-                // searchFunction={PostService.searchForFeedbackPost}
-                // routeType={POST_TYPE_DETAIL_ROUTE.FEEDBACK}
-                hint="Search by location"
-              />
+                <SearchPartnerFinder hint="Search by location"/>
             </div>
             </div>
             <h5

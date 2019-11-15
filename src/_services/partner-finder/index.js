@@ -5,12 +5,12 @@ const getMany = async (index, size) => {
     return response.data;
 }
 
-const getManyWithFilter = async ({level, location}, index, size) => {
-    const response = await apiClient.get(`/findingpartnerusers/filter?location=${location}&&level=${level}&&index=${index}&&size=${size}`)
+const searchByLocation = async (location) => {
+    const response = await apiClient.get(`/findingpartnerusers/search?location=${location}`);
     return response.data;
-}
+} 
 
 export const PartnerFinderService = {
     getMany,
-    getManyWithFilter
+    searchByLocation,
 }

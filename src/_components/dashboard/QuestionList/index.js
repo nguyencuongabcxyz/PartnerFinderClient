@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { fetchManyQuestionPosts } from "../../../_actions/dashboard-post/db-question-post";
 import Pagination from "../../shared/pagination";
 import Spinner from "../../Spinner";
-import SearchDropdown from "../../shared/SearchDropdown";
+import SearchPost from "../../shared/SearchPost";
 import { POST_TYPE_DETAIL_ROUTE } from "../../../_constants/common";
 
 import { PostService } from "../../../_services/post";
@@ -34,7 +34,7 @@ class QuestionList extends React.Component {
         <div className="dashboard-header-section">
           <h1 className="dashboard-title">Top questions</h1>
           <div className="post-search-wrapper">
-            <SearchDropdown
+            <SearchPost
               searchFunction={PostService.searchForQuestionPost}
               route={POST_TYPE_DETAIL_ROUTE.QUESTION}
               hint="Search for posts"

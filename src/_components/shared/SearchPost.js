@@ -9,7 +9,7 @@ const initialState = {
     value: "" 
 };
 
-class SearchDropdown extends Component {
+class SearchPost extends Component {
   state = initialState;
 
   mapResultsToSearchResults = results => {
@@ -90,4 +90,4 @@ class SearchDropdown extends Component {
   }
 }
 
-export default SearchDropdown;
+export default SearchPost;

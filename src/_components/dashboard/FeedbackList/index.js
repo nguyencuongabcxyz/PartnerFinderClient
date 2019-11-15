@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { fetchManyFeedbackPosts } from "../../../_actions/dashboard-post/db-feedback-post";
 import Pagination from "../../shared/pagination";
 import Spinner from "../../Spinner";
-import SearchDropdown from "../../shared/SearchDropdown";
+import SearchPost from "../../shared/SearchPost";
 import { POST_TYPE_DETAIL_ROUTE } from "../../../_constants/common";
 
 import { PostService } from "../../../_services/post";
@@ -36,7 +36,7 @@ class FeedbackList extends React.Component {
         <div className="dashboard-header-section">
           <h1 className="dashboard-title">Top feedback</h1>
           <div className="post-search-wrapper">
-            <SearchDropdown
+            <SearchPost
               searchFunction={PostService.searchForFeedbackPost}
               route={POST_TYPE_DETAIL_ROUTE.FEEDBACK}
               hint="Search for posts"
