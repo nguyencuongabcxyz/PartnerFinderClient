@@ -9,12 +9,12 @@ class LocationInput extends React.Component {
     }
 
     render() {
-      const { defaultValue } = this.props;
+      const { defaultValue, placeholder } = this.props;
         return (
           <div className="form-group">
             <label>Location</label>
             <Dropdown
-              placeholder="City - Province"
+              placeholder={placeholder}
               fluid
               search
               selection
