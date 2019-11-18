@@ -34,16 +34,28 @@ class PartnerFinderItem extends React.Component {
   }
 
   splitDescription = () => {
-    var description = this.props.partnerFinder.description;
-    var splitedDescription = {};
-    splitedDescription.firstPart = description.substr(0, 60);
-    splitedDescription.secondPart = description.substring(60, description.length - 1);
+    const { introduction }= this.props.partnerFinder;
+    const splitedDescription = {};
+    splitedDescription.firstPart =introduction.substr(0, 60);
+    splitedDescription.secondPart = introduction.substring(60, introduction.length - 1);
     return splitedDescription;
   }
 
+  renderIntroduction = () => {
+    const { introduction }= this.props.partnerFinder;
+    if(!introduction) return null;
+    const splitedDescription = this.splitDescription();
+    const { userId }= this.props.partnerFinder;
+    return (
+      <div className="description">
+      <span>{splitedDescription.firstPart}</span><a style={{color: 'blue'}} id={`btn-more${userId}`} onClick={this.loadMore}>...show more</a>
+      <span id={`text-more${userId}`} style={{display: 'none'}}>{splitedDescription.secondPart}</span><a style={{display: 'none', color: 'blue'}} id={`btn-less${userId}`} onClick={this.loadLess}>...show less</a>
+      </div>
+    );
+  }
+
   render() {
-    var splitedDescription = this.splitDescription();
-    var userId = this.props.partnerFinder.userId;
+    const { userId }= this.props.partnerFinder;
     return (
       <div className="partner-item">
         <div className="ui card user-block">
@@ -57,10 +69,7 @@ class PartnerFinderItem extends React.Component {
               <p><strong>Location: </strong>{this.props.partnerFinder.location}</p>
               <p><strong>Level: </strong>{this.convertLevel()}</p>
             </div>
-            <div className="description">
-            <span>{splitedDescription.firstPart}</span><a style={{color: 'blue'}} id={`btn-more${userId}`} onClick={this.loadMore}>...show more</a>
-            <span id={`text-more${userId}`} style={{display: 'none'}}>{splitedDescription.secondPart}</span><a style={{display: 'none', color: 'blue'}} id={`btn-less${userId}`} onClick={this.loadLess}>...show less</a>
-            </div>
+            {this.renderIntroduction()}
           </div>
           <div className="extra content">
             <button className="btn btn-info btn-partner">
@@ -69,7 +78,7 @@ class PartnerFinderItem extends React.Component {
             <button className="btn btn-secondary btn-partner">
                 Ignore
             </button>
-            <div>{getPostedTimeAgo(this.props.partnerFinder.postedDate)}</div>
+            <div>{getPostedTimeAgo(this.props.partnerFinder.updatedDate)}</div>
           </div>
         </div>
       </div>

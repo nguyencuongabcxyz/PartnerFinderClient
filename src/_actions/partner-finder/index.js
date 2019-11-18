@@ -5,8 +5,8 @@ import {
 
 import { PartnerFinderService } from '../../_services/partner-finder'
 
-export const fetchManyFinders = (index, size) => async (dispatch) => {
-    var result = await PartnerFinderService.getMany(index, size);
+export const fetchManyFinders = (index, size, location, level) => async (dispatch) => {
+    var result = await PartnerFinderService.getMany(index, size, location, level);
     if(result){
     dispatch({
         type: FETCH_MANY,

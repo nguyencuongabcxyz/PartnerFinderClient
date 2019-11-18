@@ -1,16 +1,10 @@
 import apiClient from '../../interceptor';
 
-const getMany = async (index, size) => {
-    const response = await apiClient.get(`/findingpartnerusers/?index=${index}&&size=${size}`);
+const getMany = async (index, size, location, level) => {
+    const response = await apiClient.get(`/partnerFinders?location=${location}&&level=${level}&&index=${index}&&size=${size}`);
     return response.data;
 }
 
-const searchByLocation = async (location) => {
-    const response = await apiClient.get(`/findingpartnerusers/search?location=${location}`);
-    return response.data;
-} 
-
 export const PartnerFinderService = {
-    getMany,
-    searchByLocation,
+    getMany
 }
