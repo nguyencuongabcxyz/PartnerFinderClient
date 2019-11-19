@@ -11,15 +11,25 @@ import LocationInput from "../../shared/LocationInput";
 class PartnerFinderList extends React.Component {
   sizePage = 6;
   state = {
-    filter: false
+    filterMode: false,
+    defaultLocation: '',
+    defaultLevel: 3,
+    location: '',
+    level: 3,
   };
 
   componentDidMount() {
-    this.props.fetchManyFinders(0, this.sizePage, "", 3);
+    const { defaultLocation, defaultLevel } = this.state;
+    this.props.fetchManyFinders(0, this.sizePage, defaultLocation, defaultLevel);
   }
 
   fetchFindersPagination = index => {
-    this.props.fetchManyFinders(index, this.sizePage);
+    const { location, level, filterMode, defaultLocation, defaultLevel } = this.state;
+    if (filterMode){
+    this.props.fetchManyFinders(index, this.sizePage, location, level);
+    } else{
+      this.props.fetchManyFinders(index, this.sizePage, defaultLocation, defaultLevel);
+    }
   };
 
   renderPartnerFinderList = () => {
@@ -28,16 +38,42 @@ class PartnerFinderList extends React.Component {
     });
   };
 
-  filterByLocation = value => {};
+  setLevel = (event, { value }) => {
+    this.setState({
+      level: value
+    });
+  };
+
+  setLocation = (value) => {
+    this.setState({
+      location: value,
+    });
+  }
+
+  filter = () => {
+    this.setState({
+      filterMode: true,
+    })
+    const { location, level } = this.state;
+    this.props.fetchManyFinders(0, this.sizePage, location, level);
+  }
+
+  showAll = () => {
+    this.setState({
+      filterMode: false,
+    })
+    const { defaultLocation, defaultLevel } = this.state;
+    this.props.fetchManyFinders(0, this.sizePage, defaultLocation, defaultLevel);
+  }
 
   levelOptions = [
-    { key: "0", text: "Beginner", value: 0 },
-    { key: "1", text: "Intermediate", value: 1 },
-    { key: "2", text: "Advanced", value: 2 }
+    { key: "0", text: "Beginner", value: '0' },
+    { key: "1", text: "Intermediate", value: '1' },
+    { key: "2", text: "Advanced", value: '2' }
   ];
 
   render() {
-    let resultDisplay = this.state.filter ? "block" : "none";
+    let resultDisplay = this.state.filterMode ? "block" : "none";
     return (
       <div id="finder-list">
         <div className="dashboard-header-section">
@@ -49,19 +85,20 @@ class PartnerFinderList extends React.Component {
               fluid
               selection
               options={this.levelOptions}
+              onChange={this.setLevel}
             />
           </div>
           <LocationInput
-            setValue={this.filterByLocation}
+            setValue={this.setLocation}
             placeholder="Filter by location"
           />
         </div>
-        <div>
-        <div className="ui buttons">
-          <button className="ui button">Filter</button>
-          <div className="or"></div>
-          <button className="ui positive button">Show all</button>
-        </div>
+        <div className="fd-filter-wrapper">
+          <div className="ui buttons">
+            <button className="ui button" onClick={this.filter}>Filter</button>
+            <div className="or"></div>
+            <button className="ui positive button" onClick={this.showAll}>Show all</button>
+          </div>
         </div>
         <h5
           style={{
@@ -74,7 +111,7 @@ class PartnerFinderList extends React.Component {
         </h5>
         <Spinner
           condition={
-            this.props.partnerFinders.length === 0 && !this.state.filter
+            this.props.partnerFinders.length === 0 && !this.state.filterMode
           }
         />
         <div id="partner-finder-list">{this.renderPartnerFinderList()}</div>

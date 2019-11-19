@@ -18,11 +18,55 @@ class DashBoard extends React.Component {
             <PartnerFinderList />
           </div>
           <div id="db-right-section" className="col-lg-6">
-            <div id="db-question-list-wrapper">
-              <QuestionList paginationSize={6} />
-            </div>
-            <div id="db-feedback-list-wrapper">
-              <FeedbackList paginationSize={6}/>
+            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+              <li class="nav-item">
+                <a
+                  class="active nav-post-title"
+                  id="pills-home-tab"
+                  data-toggle="pill"
+                  href="#pills-home"
+                  role="tab"
+                  aria-controls="pills-home"
+                  aria-selected="true"
+                >
+                  Top Questions
+                </a>
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-post-title"
+                  id="pills-profile-tab"
+                  data-toggle="pill"
+                  href="#pills-profile"
+                  role="tab"
+                  aria-controls="pills-profile"
+                  aria-selected="false"
+                >
+                  Top Feedbacks
+                </a>
+              </li>
+            </ul>
+            <div class="tab-content" id="pills-tabContent">
+              <div
+                class="tab-pane fade show active"
+                id="pills-home"
+                role="tabpanel"
+                aria-labelledby="pills-home-tab"
+              >
+                <div id="db-question-list-wrapper">
+                  <QuestionList paginationSize={12} />
+                </div>
+              </div>
+              <div
+                class="tab-pane fade"
+                id="pills-profile"
+                role="tabpanel"
+                aria-labelledby="pills-profile-tab"
+              >
+                <div id="db-feedback-list-wrapper">
+                  <FeedbackList paginationSize={12} />
+                </div>
+              </div>
             </div>
           </div>
         </div>

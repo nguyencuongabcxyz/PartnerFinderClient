@@ -19,6 +19,7 @@
     grid-column-gap: 20px;
 }
 
-.fd-filter-or-show{
-    margin-bottom: 30px !important;
+
+.fd-filter-wrapper{
+    margin-bottom: 20px;
 }

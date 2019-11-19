@@ -32,7 +32,6 @@ class QuestionList extends React.Component {
     return (
       <div id="question-list">
         <div className="dashboard-header-section">
-          <h1 className="dashboard-title">Top questions</h1>
           <div className="post-search-wrapper">
             <SearchPost
               searchFunction={PostService.searchForQuestionPost}

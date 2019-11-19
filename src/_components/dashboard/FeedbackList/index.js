@@ -34,7 +34,6 @@ class FeedbackList extends React.Component {
     return (
       <div id="feedback-list">
         <div className="dashboard-header-section">
-          <h1 className="dashboard-title">Top feedback</h1>
           <div className="post-search-wrapper">
             <SearchPost
               searchFunction={PostService.searchForFeedbackPost}
