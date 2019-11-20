@@ -13,9 +13,11 @@ class NavigationBar extends React.Component {
         if (scroll !== 0) {
           navBar.style.padding = "20px 10%";
           navBar.style.boxShadow = "0px 1px 5px rgba(0,0,0,0.38)";
+          navBar.style.setProperty("background-color", "white", "important");
         } else {
           navBar.style.padding = "10px 10%";
           navBar.style.boxShadow = "none";
+          navBar.style.setProperty("background-color", "#F7F5EB", "important");
         }
       }
     });
@@ -51,7 +53,7 @@ class NavigationBar extends React.Component {
             </li>
             <li className="nav-item nav-menu-item">
               <Link className="nav-link func-link" to={"/getting-feedback"}>
-                <i className="nav-icon smile outline icon"></i>
+                <i className="nav-icon wrench icon"></i>
                 Get feedback
               </Link>
             </li>

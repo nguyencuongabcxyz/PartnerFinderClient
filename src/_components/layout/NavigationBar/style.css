@@ -3,7 +3,7 @@
     width: 100%;
     padding: 10px 10%;
     z-index: 1000;
-    background-color: white !important;
+    background-color: #f7f5eb !important;
 }
 
 .navbar-brand {
@@ -23,8 +23,12 @@
 
 .nav-menu-item {
     padding: 5px 0;
+    transition: all linear 0.2s;
 }
 
+.nav-menu-item:hover {
+    border-bottom: 2px solid orange;
+}
 
 .right-link img{
     height: 30px;
@@ -73,6 +77,10 @@
 
 #navigation-bar{
     transition: all ease-in-out 0.3s;
+}
+
+.dropdown-toggle::after{
+    margin-left: 0 !important;
 }
 
 @media(max-width: 991px){
