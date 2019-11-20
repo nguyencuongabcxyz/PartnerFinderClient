@@ -1,0 +1,56 @@
+.pr-popup-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.pr-popup-header{
+    height: 5%;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #D4D4D5;
+}
+
+.pr-popup-header h3 {
+    font-size: 14px;
+    font-weight: bold;
+    font-family: 'Open Sans', sans-serif;
+    padding-left: 20px;
+}
+
+.pr-popup-body{
+    height: 90%;
+    overflow: scroll;
+}
+
+.pr-popup-body p{
+    font-size: 12px;
+    height: 25px;
+    line-height: 25px;
+    font-weight: bold;
+    background-color: #EDF2FA;
+    font-family: 'Open Sans', sans-serif;
+    padding-left: 20px;
+    margin-bottom: 0px;
+}
+
+.pr-popup-footer{
+    height: 5%;
+    border-top: 1px solid #D4D4D5;
+}
+
+.pr-popup-footer a {
+    font-size: 12px;
+    font-weight: bold;
+    font-family: 'Open Sans', sans-serif;
+    text-align: center;
+    display: block;
+    padding: 8px 12px;
+    height: 100%;
+}
+
+.pr-popup-item-wrapper{
+    padding: 10px;
+    border: 1px solid #D4D4D5;
+}

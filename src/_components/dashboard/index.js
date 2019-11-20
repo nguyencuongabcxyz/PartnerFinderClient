@@ -18,10 +18,10 @@ class DashBoard extends React.Component {
             <PartnerFinderList />
           </div>
           <div id="db-right-section" className="col-lg-6">
-            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-              <li class="nav-item">
+            <ul className="nav nav-pills mb-3" id="pills-tab" role="tablist">
+              <li className="nav-item">
                 <a
-                  class="active nav-post-title"
+                  className="active nav-post-title"
                   id="pills-home-tab"
                   data-toggle="pill"
                   href="#pills-home"
@@ -32,9 +32,9 @@ class DashBoard extends React.Component {
                   Top Questions
                 </a>
               </li>
-              <li class="nav-item">
+              <li className="nav-item">
                 <a
-                  class="nav-post-title"
+                  className="nav-post-title"
                   id="pills-profile-tab"
                   data-toggle="pill"
                   href="#pills-profile"
@@ -46,9 +46,9 @@ class DashBoard extends React.Component {
                 </a>
               </li>
             </ul>
-            <div class="tab-content" id="pills-tabContent">
+            <div className="tab-content" id="pills-tabContent">
               <div
-                class="tab-pane fade show active"
+                className="tab-pane fade show active"
                 id="pills-home"
                 role="tabpanel"
                 aria-labelledby="pills-home-tab"
@@ -58,7 +58,7 @@ class DashBoard extends React.Component {
                 </div>
               </div>
               <div
-                class="tab-pane fade"
+                className="tab-pane fade"
                 id="pills-profile"
                 role="tabpanel"
                 aria-labelledby="pills-profile-tab"

@@ -24,6 +24,7 @@
 .nav-menu-item {
     padding: 5px 0;
     transition: all linear 0.2s;
+    position: relative;
 }
 
 .nav-menu-item:hover {

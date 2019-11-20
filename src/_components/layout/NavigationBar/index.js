@@ -3,8 +3,16 @@ import "./style.css";
 import { connect } from "react-redux";
 import { logoutUser } from "../../../_actions/auth";
 import { Link } from "react-router-dom";
+import PopupContainer from "../../shared/PopupContainer";
+import PartnerRequestListPopup from "../../partner-request/PartnerRequestListPopup";
 
 class NavigationBar extends React.Component {
+  state = {
+    messagePopup: false,
+    partnerPopup: false,
+    notificationPopup: false
+  };
+
   componentDidMount() {
     window.addEventListener("scroll", function(event) {
       const scroll = this.scrollY;
@@ -23,12 +31,62 @@ class NavigationBar extends React.Component {
     });
   }
 
+  showPopup = name => {
+    switch (name) {
+      case "message":
+        if(this.state.messagePopup) {
+          this.setState({
+            messagePopup: false,
+          })
+          break;
+        }
+        this.setState({
+          messagePopup: true,
+          partnerPopup: false,
+          notificationPopup: false
+        });
+        break;
+      case "partner":
+        if(this.state.partnerPopup) {
+          this.setState({
+            partnerPopup: false,
+          });
+          break;
+        }
+        this.setState({
+          messagePopup: false,
+          partnerPopup: true,
+          notificationPopup: false
+        });
+        break;
+      case "notify":
+        if(this.state.notificationPopup) {
+          this.setState({
+            notificationPopup: false,
+          });
+          break;
+        }
+        this.setState({
+          messagePopup: false,
+          partnerPopup: false,
+          notificationPopup: true
+        });
+        break;
+      default:
+        break;
+    }
+  };
+
   onLogout = () => {
     this.props.logoutUser();
   };
   render() {
+    const { messagePopup, partnerPopup, notificationPopup } = this.state;
     return (
-      <nav className="navbar navbar-expand-lg navbar-light bg-light" id="navigation-bar">
+      <nav
+        className="navbar navbar-expand-lg navbar-light bg-light"
+        id="navigation-bar"
+      >
         <Link className="navbar-brand" to="/">
           <img alt="page-logo" src="/Images/HomePage/logo.svg" />
         </Link>
@@ -58,22 +116,27 @@ class NavigationBar extends React.Component {
               </Link>
             </li>
             <li className="nav-item nav-menu-item">
-              <Link className="nav-link func-link" to="#">
+              <Link className="nav-link func-link" to="#" onClick={() => {this.showPopup('message')}}>
                 <i className="nav-icon comment comments outline icon"></i>
                 Message
               </Link>
+              <PopupContainer isDisplay={messagePopup} />
             </li>
             <li className="nav-item nav-menu-item">
-              <Link to={"/"} className="nav-link func-link">
+              <Link className="nav-link func-link" to="#" onClick={() => {this.showPopup('partner')}}>
                 <i className="nav-icon question paper plane outline icon"></i>
                 Partner Request
               </Link>
+              <PopupContainer isDisplay={partnerPopup}>
+                <PartnerRequestListPopup />
+              </PopupContainer>
             </li>
             <li className="nav-item nav-menu-item">
-              <Link className="nav-link func-link" to="#">
+              <Link className="nav-link func-link" to="#" onClick={() => {this.showPopup('notify')}}>
                 <i className="nav-icon bell outline icon"></i>
                 Notification
               </Link>
+              <PopupContainer isDisplay={notificationPopup} />
             </li>
             <li className="nav-item nav-menu-item dropdown">
               <a
