@@ -1,0 +1,12 @@
+.pf-popup-content{
+    background-color: #2C3A47;
+    width: 100%;
+}
+
+.pf-popup-content-title {
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 20px;
+    font-family: 'Open Sans', sans-serif;
+}

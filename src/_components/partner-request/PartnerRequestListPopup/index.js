@@ -16,7 +16,7 @@ class PartnerRequestListPopup extends React.Component {
     renderPartnerRequests = () => {
       const { partnerRequests } = this.props;
       return partnerRequests.map(item => {
-        return <PartnerRequestItemPopup item={item} />
+        return <PartnerRequestItemPopup key={item.id} item={item} />
       });
     }
 

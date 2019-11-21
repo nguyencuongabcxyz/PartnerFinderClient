@@ -3,7 +3,8 @@ import { AuthService } from '../../_services/auth';
 import {
     REGISTER_SUCCESS,
     REGISTER_DUPLICATE,
-    REGISTER_FAILURE
+    REGISTER_FAILURE,
+    RESET_REGISTER_RESULT
 }from './type'
 
 import {
@@ -27,6 +28,12 @@ const registerFailure = () => {
 const registerSuccess = () => {
     return {
         type: REGISTER_SUCCESS
+    }
+}
+
+export const resetRegisterResult = () => {
+    return {
+        type: RESET_REGISTER_RESULT
     }
 }
 

@@ -3,7 +3,7 @@ import './style.css';
 
 class PartnerRequestItemPopup extends React.Component {
   render() {
-    const { senderAvatar, senderName, content, senderId } = this.props.item;  
+    const { senderAvatar, senderName, content, senderId, id } = this.props.item;  
     return (
       <div className="pr-popup-item-wrapper">
         <div className="ui feed">

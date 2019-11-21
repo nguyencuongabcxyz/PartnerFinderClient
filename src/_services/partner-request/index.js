@@ -5,6 +5,11 @@ const getMany = async (index, size) => {
     return response.data;
 }
 
+const addOne = async (content, receiverId) => {
+    await apiClient.post("/partnerrequests", {content, receiverId});
+}
+
 export const PartnerRequestService = {
-    getMany
+    getMany,
+    addOne
 }

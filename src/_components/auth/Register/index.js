@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { registerUser } from '../../../_actions/registration';
+import { registerUser, resetRegisterResult } from '../../../_actions/registration';
 import '../../../assets/css/loginRegisterForm.css';
 import { toast } from 'react-toastify';
 import ClipLoader from 'react-spinners/ClipLoader';
@@ -20,21 +20,25 @@ class Register extends React.Component {
     }
 
     handleRegistrationResult() {
+        const { registrationResult, resetRegisterResult } = this.props; 
         if(!document.getElementById('spinner-register')){
             return;
         }
-        switch (this.props.registrationResult) {
+        switch (registrationResult) {
             case DUPLICATE:
                 toast.warn("This user name is already taken!");
                 document.getElementById('spinner-register').style.display = 'none';
+                resetRegisterResult();
                 break;
             case FAILED:
                 toast.error("Errors occured! Registration failed!");
                 document.getElementById('spinner-register').style.display = 'none';
+                resetRegisterResult();
                 break;
             case SUCCESSFULL:
                 toast.success("Registration is successfull!");
                 document.getElementById('spinner-register').style.display = 'none';
+                resetRegisterResult();
                 break;
             default:
                 break;
@@ -82,4 +86,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, { registerUser })(Register);
+export default connect(mapStateToProps, { registerUser, resetRegisterResult })(Register);
