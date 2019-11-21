@@ -1,6 +1,5 @@
 import {
     FETCH_MANY,
-    IGNORE
 } from './type'
 
 import { PartnerFinderService } from '../../_services/partner-finder'
@@ -13,5 +12,5 @@ export const fetchManyFinders = (index, size, location, level) => async (dispatc
         partnerFinders: result.partnerFinders,
         count: result.count
     });
-}
+    }
 }

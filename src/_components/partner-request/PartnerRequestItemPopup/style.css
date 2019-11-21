@@ -1,0 +1,27 @@
+.pr-popup-avatar {
+    height: 35px !important;
+    object-fit: cover;
+}
+.pr-popup-content {
+    font-size: 13px;
+    height: 25px;
+    line-height: 25px;
+    font-weight: 500;
+    font-family: 'Roboto', sans-serif;
+    width: 300px;
+    white-space: nowrap;
+    overflow: hidden;
+    display: inline-block;
+    text-overflow: ellipsis;
+    margin: 0;
+}
+
+.pr-popup-action-icon {
+    font-size: 17px !important;
+    cursor: pointer;
+}
+
+.pr-popup-action-icon.left {
+    margin-left: 10px !important;
+    margin-right: 13px;
+}

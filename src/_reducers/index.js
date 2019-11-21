@@ -9,6 +9,7 @@ import questionPostReducer from './post/question-post';
 import feedbackPostReducer from './post/feedback-post';
 import userInfoReducer from './user-info';
 import commentReducer from './comment';
+import partnerRequestReducer from './partner-request';
 
 export default combineReducers({
     form: formReducer,
@@ -20,6 +21,7 @@ export default combineReducers({
     questionPost: questionPostReducer,
     feedbackPost: feedbackPostReducer,
     userInfo: userInfoReducer,
-    comment: commentReducer
+    comment: commentReducer,
+    partnerRequest: partnerRequestReducer,
 });
 

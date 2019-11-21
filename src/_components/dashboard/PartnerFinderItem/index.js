@@ -75,9 +75,6 @@ class PartnerFinderItem extends React.Component {
             <button className="btn btn-info btn-partner">
                 Request partner
             </button>
-            <button className="btn btn-secondary btn-partner">
-                Ignore
-            </button>
             <div>{getPostedTimeAgo(this.props.partnerFinder.updatedDate)}</div>
           </div>
         </div>

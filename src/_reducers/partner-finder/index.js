@@ -1,6 +1,5 @@
 import {
     FETCH_MANY,
-    IGNORE
 } from '../../_actions/partner-finder/type';
 
 const INITIAL_STATE = {

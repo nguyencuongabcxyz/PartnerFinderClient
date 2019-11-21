@@ -1,27 +1,23 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { fetchManyPartnerRequests } from '../../../_actions/partner-request';
 import './style.css';
-import faker from 'faker';
+import PartnerRequestItemPopup from '../PartnerRequestItemPopup';
 
 class PartnerRequestListPopup extends React.Component {
 
-    renderItem = () => {
-        return (
-        <div className="pr-popup-item-wrapper">
-          <div className="ui feed">
-            <div className="event">
-              <div className="label">
-                <img src={faker.image.avatar()} />
-              </div>
-              <div className="content">
-                <div className="date">3 days ago</div>
-                <div className="summary">
-                  You added <a>Jenny Hess</a> to your <a>coworker</a> group.
-                </div>
-              </div>
-            </div>
-          </div>
-          </div>
-        );
+  sizePage = 8;
+
+  componentDidMount() {
+    const { fetchManyPartnerRequests } = this.props;
+    fetchManyPartnerRequests(0, this.sizePage);
+  }
+
+    renderPartnerRequests = () => {
+      const { partnerRequests } = this.props;
+      return partnerRequests.map(item => {
+        return <PartnerRequestItemPopup item={item} />
+      });
     }
 
     render(){
@@ -31,23 +27,8 @@ class PartnerRequestListPopup extends React.Component {
                     <h3>Partner requests</h3>
                 </div>
                 <div className="pr-popup-body">
-                <p>New</p>
-                    {this.renderItem()}
-                    {this.renderItem()}
-                    {this.renderItem()}
-                    {this.renderItem()}
-                    {this.renderItem()}
-                    {this.renderItem()}
-                    {this.renderItem()}
-                    {this.renderItem()}
-                    {this.renderItem()}
-                    {this.renderItem()}
-                    {this.renderItem()}
-                    {this.renderItem()}
-                    {this.renderItem()}
-                    {this.renderItem()}
-                    {this.renderItem()}
-                    {this.renderItem()}
+                <p className="pr-popup-new">New</p>
+                   {this.renderPartnerRequests()}
                 </div>
                 <div className="pr-popup-footer">
                     <a href="#"><span>See all</span></a>
@@ -57,4 +38,12 @@ class PartnerRequestListPopup extends React.Component {
     };
 }
 
-export default PartnerRequestListPopup;
+const mapStateToProps = state => {
+  return {
+    partnerRequests: state.partnerRequest.partnerRequests,
+    count: state.partnerRequest.count
+  };
+};
+
+
+export default connect(mapStateToProps, { fetchManyPartnerRequests })(PartnerRequestListPopup);
