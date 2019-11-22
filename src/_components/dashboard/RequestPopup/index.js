@@ -1,6 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
-import { addOnePartnerRequest } from '../../../_actions/partner-request';
+import { fetchManyFinders } from '../../../_actions/partner-finder';
+import { PartnerRequestService } from '../../../_services/partner-request';
+import {toast} from 'react-toastify';
 import './style.css';
 import $ from 'jquery';
 
@@ -9,16 +11,24 @@ class RequestPopup extends React.Component {
        contentText : ''
    }
 
+   sizePage = 6;
+
    handleOnChange = (e) => {
        this.setState({
            contentText: e.target.value,
        });
    }
 
-  sendRequest = (userId) => {
+  sendRequest = async (userId) => {
     const { contentText } = this.state;
-    const { addOnePartnerRequest, fetchManyPartnerRequests } = this.props;
-    addOnePartnerRequest(contentText, userId);
+    const { currentPage, passedLevel, passedLocation, fetchManyFinders } = this.props;
+    const {result} = await PartnerRequestService.addOne(contentText, userId);
+    if (result) {
+      toast.success("Send request successfully!");
+      fetchManyFinders(currentPage, this.sizePage, passedLocation, passedLevel);
+    }else {
+      toast.success("Send request failed!");
+    }
     $(`#exampleModal${userId}`).modal('hide');
   }
 
@@ -53,4 +63,4 @@ class RequestPopup extends React.Component {
   }
 }
 
-export default connect(null, { addOnePartnerRequest })(RequestPopup);
+export default connect(null, { fetchManyFinders })(RequestPopup);

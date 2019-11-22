@@ -42,24 +42,20 @@ class PartnerFinderItem extends React.Component {
             Request partner
           </button>
         );
-        break;
       case 1:
         return (
           <button disabled className="ui brown button btn-partner">
             Request has sent
           </button>
         );
-        break;
       case 2:
         return (
           <span className="ui grey label">
             <i className="ui icon check white"></i>Partnership
           </span>
         );
-        break;
       default:
         return null;
-        break;
     }
   };
 
@@ -104,6 +100,7 @@ class PartnerFinderItem extends React.Component {
   };
 
   renderInputContentPopup = () => {
+    const { currentPage, passedLevel, passedLocation } = this.props;
     const { userId } = this.props.partnerFinder;
     console.log(userId);
     return (
@@ -115,7 +112,12 @@ class PartnerFinderItem extends React.Component {
         aria-labelledby="exampleModalLabel"
         aria-hidden="true"
       >
-        <RequestPopup userId={userId}/>
+        <RequestPopup
+         userId={userId}
+         currentPage={currentPage}
+         passedLevel={passedLevel}
+         passedLocation={passedLocation}
+        />
       </div>
     );
   };

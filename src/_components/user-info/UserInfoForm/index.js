@@ -2,6 +2,7 @@ import React from 'react';
 import { Field, reduxForm, change } from 'redux-form';
 import './style.css';
 import LocationInput from '../../shared/LocationInput';
+import $ from 'jquery';
 
 class UserInfoForm extends React.Component {
 
@@ -71,7 +72,7 @@ class UserInfoForm extends React.Component {
                 <Field name="englishSkill" component={this.renderTextArea} label="English skills" placeholder="Enter your english skills"/>
                 <Field name="learningSkill" component={this.renderTextArea} label="Skills want to learn" placeholder="Enter skills you want to learn"/>
                 <Field name="expectation" component={this.renderTextArea} label="Expectation for partners" placeholder="Enter your expectation for partners"/>
-                <button type="submit" className="btn btn-danger btn-submit">Submit</button>
+                <button type="submit" className="btn btn-danger btn-submit" onClick={() => {$(window).scrollTop(0);}}>Submit</button>
             </form>
         );
     }

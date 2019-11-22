@@ -12,29 +12,67 @@ class PartnerFinderList extends React.Component {
   sizePage = 6;
   state = {
     filterMode: false,
-    defaultLocation: '',
+    defaultLocation: "",
     defaultLevel: 3,
-    location: '',
+    location: "",
     level: 3,
+    currentPage: 0
   };
 
   componentDidMount() {
     const { defaultLocation, defaultLevel } = this.state;
-    this.props.fetchManyFinders(0, this.sizePage, defaultLocation, defaultLevel);
+    this.props.fetchManyFinders(
+      0,
+      this.sizePage,
+      defaultLocation,
+      defaultLevel
+    );
   }
 
   fetchFindersPagination = index => {
-    const { location, level, filterMode, defaultLocation, defaultLevel } = this.state;
-    if (filterMode){
-    this.props.fetchManyFinders(index, this.sizePage, location, level);
-    } else{
-      this.props.fetchManyFinders(index, this.sizePage, defaultLocation, defaultLevel);
+    this.setState({
+      currentPage: index
+    });
+    const {
+      location,
+      level,
+      filterMode,
+      defaultLocation,
+      defaultLevel
+    } = this.state;
+    if (filterMode) {
+      this.props.fetchManyFinders(index, this.sizePage, location, level);
+    } else {
+      this.props.fetchManyFinders(
+        index,
+        this.sizePage,
+        defaultLocation,
+        defaultLevel
+      );
     }
   };
 
   renderPartnerFinderList = () => {
+    const {
+      currentPage,
+      filterMode,
+      defaultLevel,
+      defaultLocation,
+      level,
+      location
+    } = this.state;
+    const passedLevel = filterMode ? level : defaultLevel;
+    const passedLocation = filterMode ? location : defaultLocation; 
     return this.props.partnerFinders.map(item => {
-      return <PartnerFinderItem key={item.userId} partnerFinder={item} />;
+      return (
+        <PartnerFinderItem
+          currentPage={currentPage}
+          passedLevel={passedLevel}
+          passedLocation={passedLocation}
+          key={item.userId}
+          partnerFinder={item}
+        />
+      );
     });
   };
 
@@ -44,32 +82,38 @@ class PartnerFinderList extends React.Component {
     });
   };
 
-  setLocation = (value) => {
+  setLocation = value => {
     this.setState({
-      location: value,
+      location: value
     });
-  }
+  };
 
   filter = () => {
     this.setState({
-      filterMode: true,
-    })
+      filterMode: true
+    });
     const { location, level } = this.state;
     this.props.fetchManyFinders(0, this.sizePage, location, level);
-  }
+  };
 
   showAll = () => {
     this.setState({
-      filterMode: false,
-    })
+      filterMode: false
+    });
     const { defaultLocation, defaultLevel } = this.state;
-    this.props.fetchManyFinders(0, this.sizePage, defaultLocation, defaultLevel);
-  }
+    this.props.fetchManyFinders(
+      0,
+      this.sizePage,
+      defaultLocation,
+      defaultLevel
+    );
+  };
 
   levelOptions = [
-    { key: "0", text: "Beginner", value: '0' },
-    { key: "1", text: "Intermediate", value: '1' },
-    { key: "2", text: "Advanced", value: '2' }
+    { key: "0", text: "All", value: "3" },
+    { key: "1", text: "Beginner", value: "0" },
+    { key: "2", text: "Intermediate", value: "1" },
+    { key: "3", text: "Advanced", value: "2" },
   ];
 
   render() {
@@ -95,9 +139,13 @@ class PartnerFinderList extends React.Component {
         </div>
         <div className="fd-filter-wrapper">
           <div className="ui buttons">
-            <button className="ui button" onClick={this.filter}>Filter</button>
+            <button className="ui button" onClick={this.filter}>
+              Filter
+            </button>
             <div className="or"></div>
-            <button className="ui positive button" onClick={this.showAll}>Show all</button>
+            <button className="ui positive button" onClick={this.showAll}>
+              Show all
+            </button>
           </div>
         </div>
         <h5

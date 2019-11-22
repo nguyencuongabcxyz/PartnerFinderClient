@@ -35,6 +35,7 @@
 .user-block {
     margin: 0 !important;
     margin-top: 0 !important;
+    height: 100% !important;
 }
 
 .ui.card{

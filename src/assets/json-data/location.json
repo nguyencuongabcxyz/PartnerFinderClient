@@ -1,6 +1,13 @@
 {
     "cities": [
       {
+        "name": "All",
+        "slug": "All",
+        "text": "All",
+        "key": "All",
+        "value": ""
+      },
+      {
         "name": "An Giang",
         "slug": "An Giang",
         "text": "An Giang",
