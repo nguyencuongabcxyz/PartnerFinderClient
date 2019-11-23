@@ -1,0 +1,16 @@
+.c-semantic-delete-modal {
+    height: auto !important;
+    top: auto !important;
+    left: auto !important;
+}
+
+.c-semantic-modal-header {
+    background-color: #F2DEDE !important;
+    color: #B85A54 !important;
+}
+.c-semantic-modal-content {
+    color: #B85A54;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    font-size: 16px;
+}

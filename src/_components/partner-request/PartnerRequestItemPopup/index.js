@@ -1,24 +1,25 @@
 import React from "react";
-import { connect } from 'react-redux';
-import { removeOnePartnerFinder, acceptOnePartnerRequest } from '../../../_actions/partner-request'
-import './style.css';
-import ConfirmPopup from "../../shared/ConfirmPopup";
+import { connect } from "react-redux";
+import {
+  removeOnePartnerFinder,
+  acceptOnePartnerRequest
+} from "../../../_actions/partner-request";
+import "./style.css";
+import DeleteConfirmPopup from "../../shared/DeleteConfirmPopup";
 
 class PartnerRequestItemPopup extends React.Component {
+  removePartnerRequest = id => {
+    const { removeOnePartnerFinder } = this.props;
+    removeOnePartnerFinder(id);
+  };
 
-
-  removePartnerRequest = (id) => {
-      const {removeOnePartnerFinder} = this.props;
-      removeOnePartnerFinder(id);
-  }
-  
   acceptPartnerRequest = (id, partnerId) => {
-      const {acceptOnePartnerRequest} = this.props;
-      acceptOnePartnerRequest(id, partnerId);
-  }
+    const { acceptOnePartnerRequest } = this.props;
+    acceptOnePartnerRequest(id, partnerId);
+  };
 
   render() {
-    const { senderAvatar, senderName, content, senderId, id } = this.props.item;  
+    const { senderAvatar, senderName, content, senderId, id } = this.props.item;
     return (
       <div className="pr-popup-item-wrapper">
         <div className="ui feed">
@@ -39,18 +40,12 @@ class PartnerRequestItemPopup extends React.Component {
                     this.acceptPartnerRequest(id, senderId);
                   }}
                 ></i>
-                <ConfirmPopup 
-                  id={`direct-delete-request-${id}`} 
-                  content="Are you sure you want to delete this item?"
-                  action={this.removePartnerRequest}
-                  ref={el => this[`popupDelete${id}`] = el}
-                />
-                <i
-                  className="icon times red pr-popup-action-icon right"
-                  onClick={() => {
-                    this[`popupDelete${id}`].showModal();
-                  }}
-                ></i>
+                <i className="icon times red pr-popup-action-icon right" onClick={() => {this.deleteConfirmPopup.open()}}></i>
+                <DeleteConfirmPopup 
+                ref={el => this.deleteConfirmPopup = el}
+                id={id}
+                action={this.removePartnerRequest}
+                 />
               </div>
               <div className="summary">
                 <a href={`/user-info/${senderId}`}>{senderName}</a> has sent you
@@ -65,4 +60,7 @@ class PartnerRequestItemPopup extends React.Component {
   }
 }
 
-export default connect(null, {acceptOnePartnerRequest, removeOnePartnerFinder})(PartnerRequestItemPopup);
+export default connect(null, {
+  acceptOnePartnerRequest,
+  removeOnePartnerFinder
+})(PartnerRequestItemPopup);
