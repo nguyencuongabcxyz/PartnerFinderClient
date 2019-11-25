@@ -6,7 +6,7 @@
 
 .c-semantic-sider-partnership {
     padding-top: 100px !important;
-    background-color: #2d98da !important;
+    background-color: #227093 !important;
     border-right: 1px solid gray;
     width: 300px !important;
 }
@@ -29,7 +29,7 @@
 }
 
 .pl-collapse-left:hover {
-    background-color: #4b7bec;
+    background-color: #34ace0;
 }
 
 .pl-collapse-right {
@@ -52,7 +52,7 @@
 .pl-btn-open-sidebar {
     position: fixed !important;
     top: 100px !important;
-    background-color: #2D98DA !important;
+    background-color: #227093 !important;
 }
 
 .pl-btn-open-sidebar:hover{
@@ -96,4 +96,10 @@
 
 .pl-user-sidebar-action i:nth-child(2) {
     margin-left: 10px;
+}
+
+.pl-search-partner {
+    position: absolute !important;
+    bottom: 10px !important;
+    left: 20px !important;
 }

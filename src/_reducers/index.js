@@ -10,6 +10,7 @@ import feedbackPostReducer from './post/feedback-post';
 import userInfoReducer from './user-info';
 import commentReducer from './comment';
 import partnerRequestReducer from './partner-request';
+import partnershipReducer from './partnership';
 
 export default combineReducers({
     form: formReducer,
@@ -23,5 +24,6 @@ export default combineReducers({
     userInfo: userInfoReducer,
     comment: commentReducer,
     partnerRequest: partnerRequestReducer,
+    partnerships: partnershipReducer,
 });
 

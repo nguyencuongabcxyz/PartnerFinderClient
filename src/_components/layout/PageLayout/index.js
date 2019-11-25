@@ -1,9 +1,10 @@
 import React from "react";
 import Footer from "../Footer";
 import NavigationBar from "../NavigationBar";
-import { Sidebar, Menu, Icon } from "semantic-ui-react";
+import { Sidebar, Menu, Search } from "semantic-ui-react";
 import "./style.css";
 import faker from 'faker';
+import PartnerList from "../../partnership/PartnerList";
 
 class PageLayout extends React.Component {
   state = {
@@ -110,8 +111,12 @@ class PageLayout extends React.Component {
             </div>
           </div>
           <div className="pl-user-sidebar-wrapper">
-          {this.renderList()}
+          <PartnerList />
           </div>
+          <Search
+            placeholder={"Search for partners"}
+            className="pl-search-partner"
+          />
         </Sidebar>
         <button className="ui black big launch right attached fixed button pl-btn-open-sidebar" onClick={this.showSidebar}>
           <i className="ui icon users"></i> Your partners

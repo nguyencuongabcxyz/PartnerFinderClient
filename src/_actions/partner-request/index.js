@@ -1,6 +1,5 @@
 import { FETCH_MANY_PARTNER_REQUEST, ADD_ONE_PARTNER_REQUEST, REMOVE_ONE_PARTNER_REQUEST } from "./type";
 import { PartnerRequestService } from "../../_services/partner-request";
-import { PartnershipService } from '../../_services/partnership';
 import { toast } from "react-toastify";
 
 export const fetchManyPartnerRequests = (index, size) => async dispatch => {
@@ -31,10 +30,3 @@ export const addOnePartnerRequest = (content, receiverId) => async dispatch => {
   });
   toast.success("Send request successfully!");
 };
-
-export const acceptOnePartnerRequest = (requestId, partnerId) => async dispatch => {
-    const data = await PartnershipService.addOne(partnerId);
-    if (data && data.result){
-        dispatch(removeOnePartnerFinder(requestId))
-    }
-}
