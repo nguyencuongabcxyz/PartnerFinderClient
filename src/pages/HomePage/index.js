@@ -42,7 +42,6 @@ class Home extends React.Component {
               }
             }
             if (section3Offsets.top < screenHeight - 200){
-               console.log(section3Offsets.top);
                const rightElement = document.getElementsByClassName('block-right');
                const leftElement = this.document.getElementsByClassName('block-left');
                for(let i = 0; i < rightElement.length; i++){

@@ -33,7 +33,6 @@ class RequestPopup extends React.Component {
   }
 
   render() {
-      console.log(this.state.contentText);
     const {userId} = this.props;
     return (
       <div className="modal-dialog" role="document">

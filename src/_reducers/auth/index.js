@@ -23,8 +23,8 @@ export default (state = INITIAL_STATE, action) => {
             return { ...state, isAuthenticated: false, statusCode: action.statusCode };
         case LOGIN_SERVER_ERROR:
             return { ...state, isAuthenticated: false, statusCode: action.statusCode };
-        case LOGOUT: 
-            return {...INITIAL_STATE}
+        // case LOGOUT: 
+        //     return {...INITIAL_STATE}
         default:
             return state;
     }

@@ -64,7 +64,6 @@ class TestPage extends React.Component {
   }
 
   onSubmit = async (formValues) => {
-    console.log("submit!");
     let questionArray = [];
     for (let q in formValues) {
       let questionObject = {};

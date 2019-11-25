@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 import { reducer as formReducer } from 'redux-form';
+import { LOGOUT } from '../_actions/auth/type'
 import authReducer from './auth';
 import registrationReducer from './registration';
 import partnerFinderReducer from './partner-finder';
@@ -12,7 +13,7 @@ import commentReducer from './comment';
 import partnerRequestReducer from './partner-request';
 import partnershipReducer from './partnership';
 
-export default combineReducers({
+const rootReducer = combineReducers({
     form: formReducer,
     auth: authReducer,
     registrationResult: registrationReducer,
@@ -27,3 +28,8 @@ export default combineReducers({
     partnerships: partnershipReducer,
 });
 
+export default (state, action) => (
+    action.type === LOGOUT
+        ? rootReducer(undefined, action)
+        : rootReducer(state, action)
+)

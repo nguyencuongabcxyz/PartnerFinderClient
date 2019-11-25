@@ -32,8 +32,6 @@ class DeleteConfirmPopup extends React.Component {
     const {open} = this.state;
     return (
       <Modal
-      close
-      closeIcon
       className="c-semantic-delete-modal"
       open={open}
     >

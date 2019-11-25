@@ -102,7 +102,6 @@ class PartnerFinderItem extends React.Component {
   renderInputContentPopup = () => {
     const { currentPage, passedLevel, passedLocation } = this.props;
     const { userId } = this.props.partnerFinder;
-    console.log(userId);
     return (
       <div
         className="modal fade"

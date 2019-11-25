@@ -10,19 +10,31 @@ class PartnerList extends React.Component {
         fetchAllPartners();
     }
 
-    // renderPartnerList = () => {
-    //     const {partners} = this.props;
-    //     return partners.map(item => {
-    //         return (
-
-    //         );
-    //     })
-    // }
+    renderPartnerList = () => {
+        const {partners} = this.props;
+        return partners.map(item => {
+            const {avatar, name, partnerId} = item;
+            return (
+                <div className="item pl-c-user-sidebar">
+                <div className="pl-c-user-sidebar-header">
+                <img className="ui avatar image" src={avatar} />
+                <div className="content">
+                  <div className="header pl-c-user-name"><a href="/user-info">{name}</a></div>
+                </div>
+                </div>
+                <div className="pl-user-sidebar-action">
+                    <i className="ui icon talk"></i>
+                    <i className="ui icon remove user"></i>
+              </div>
+              </div>
+            );
+        });
+    }
 
     render() {
         return (
-            <div>
-                PartnerList
+            <div className="ui middle aligned animated list">
+                {this.renderPartnerList()}
             </div>
         );
     }

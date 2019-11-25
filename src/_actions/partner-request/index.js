@@ -1,4 +1,9 @@
-import { FETCH_MANY_PARTNER_REQUEST, ADD_ONE_PARTNER_REQUEST, REMOVE_ONE_PARTNER_REQUEST } from "./type";
+import { 
+  FETCH_MANY_PARTNER_REQUEST, 
+  ADD_ONE_PARTNER_REQUEST, 
+  REMOVE_ONE_PARTNER_REQUEST,
+  ACCEPT_ONE_PARTNER_REQUEST
+ } from "./type";
 import { PartnerRequestService } from "../../_services/partner-request";
 import { toast } from "react-toastify";
 
@@ -13,7 +18,7 @@ export const fetchManyPartnerRequests = (index, size) => async dispatch => {
   }
 };
 
-export const removeOnePartnerFinder = (id) => async dispatch => {
+export const removeOnePartnerRequest = (id) => async dispatch => {
     const data = await PartnerRequestService.removeOne(id);
     if(data && data.result) {
         dispatch({
@@ -21,6 +26,16 @@ export const removeOnePartnerFinder = (id) => async dispatch => {
             id,
         });
     }
+}
+
+export const acceptOnePartnerRequest = (id) => async dispatch => {
+  const data = await PartnerRequestService.acceptOne(id);
+  if(data && data.result) {
+    dispatch({
+      type: ACCEPT_ONE_PARTNER_REQUEST,
+      id,
+    });
+  }
 }
 
 export const addOnePartnerRequest = (content, receiverId) => async dispatch => {

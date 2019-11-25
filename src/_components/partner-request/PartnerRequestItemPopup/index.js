@@ -1,7 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 import {
-  removeOnePartnerFinder,
+  removeOnePartnerRequest,
+  acceptOnePartnerRequest
 } from "../../../_actions/partner-request";
 import {
   addOnePartner
@@ -11,14 +12,14 @@ import DeleteConfirmPopup from "../../shared/DeleteConfirmPopup";
 
 class PartnerRequestItemPopup extends React.Component {
   removePartnerRequest = id => {
-    const { removeOnePartnerFinder } = this.props;
-    removeOnePartnerFinder(id);
+    const { removeOnePartnerRequest } = this.props;
+    removeOnePartnerRequest(id);
   };
 
   acceptPartnerRequest = (id, partnerId) => {
-    const { addOnePartner, removeOnePartnerFinder } = this.props;
+    const { addOnePartner, acceptOnePartnerRequest } = this.props;
     addOnePartner(partnerId);
-    removeOnePartnerFinder(id);
+    acceptOnePartnerRequest(id);
   };
 
   render() {
@@ -64,6 +65,7 @@ class PartnerRequestItemPopup extends React.Component {
 }
 
 export default connect(null, {
-  removeOnePartnerFinder,
+  removeOnePartnerRequest,
+  acceptOnePartnerRequest,
   addOnePartner,
 })(PartnerRequestItemPopup);

@@ -3,7 +3,6 @@ import '../../assets/css/sharedHover.css'
 
 const scrollToSection = (link, e) => {
     e.preventDefault();
-    console.log(link);
     var section = document.getElementById(link);
     section.scrollIntoView({
         behavior: "smooth"

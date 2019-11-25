@@ -15,8 +15,14 @@ const removeOne = async (id) => {
     return response.data;
 }
 
+const acceptOne = async (id) => {
+    const response = await apiClient.delete(`/partnerrequests/${id}/accept`);
+    return response.data;
+}
+
 export const PartnerRequestService = {
     getMany,
     addOne,
     removeOne,
+    acceptOne,
 }
