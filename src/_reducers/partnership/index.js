@@ -8,7 +8,8 @@ export default (state = {}, action) => {
         case ADD_ONE_PARTNER:
             return {...state, [action.partner.id]: action.partner};
         case REMOVE_ONE_PARTNER:
-            return _.omit(state, action.partner)    
+            console.log(action.partner);
+            return _.omit(state, action.partner.partnerId);    
         default:
             return state;    
     }

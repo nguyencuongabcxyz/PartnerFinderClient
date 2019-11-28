@@ -1,13 +1,24 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchAllPartners } from '../../../_actions/partnership';
+import { fetchAllPartners, deleteOnePartner } from '../../../_actions/partnership';
+import { Link } from 'react-router-dom';
 import './style.css';
+import DeleteConfirmPopup from '../../shared/DeleteConfirmPopup';
 
 class PartnerList extends React.Component {
 
     componentDidMount() {
         const {fetchAllPartners} = this.props;
         fetchAllPartners();
+    }
+
+    removeOnePartnership = (partnerId) => {
+        const {deleteOnePartner} = this.props;
+        deleteOnePartner(partnerId);
+    }
+
+    openPopup = () => {
+        this.deletePopup.open();
     }
 
     renderPartnerList = () => {
@@ -17,14 +28,15 @@ class PartnerList extends React.Component {
             return (
                 <div className="item pl-c-user-sidebar">
                 <div className="pl-c-user-sidebar-header">
-                <img className="ui avatar image" src={avatar} />
+                <img className="ui avatar image" src={avatar} alt="avatar" />
                 <div className="content">
-                  <div className="header pl-c-user-name"><a href="/user-info">{name}</a></div>
+                  <div className="header pl-c-user-name"><Link to={`/user-info/${partnerId}`}>{name}</Link></div>
                 </div>
                 </div>
                 <div className="pl-user-sidebar-action">
                     <i className="ui icon talk"></i>
-                    <i className="ui icon remove user"></i>
+                    <i className="ui icon remove user" onClick={this.openPopup}></i>
+                    <DeleteConfirmPopup ref={el => this.deletePopup = el} id={partnerId} action={this.removeOnePartnership} />
               </div>
               </div>
             );
@@ -47,4 +59,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, {fetchAllPartners})(PartnerList);
+export default connect(mapStateToProps, {fetchAllPartners, deleteOnePartner})(PartnerList);

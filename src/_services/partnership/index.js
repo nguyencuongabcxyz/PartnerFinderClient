@@ -11,7 +11,7 @@ const fetchAll = async () => {
 }
 
 const deleteOne = async (partnerId) => {
-    const response = await apiClient.delete(`/partnerships?partnerId=${partnerId}`);
+    const response = await apiClient.delete(`/partnerships/${partnerId}`);
     return response.data;
 }
 
