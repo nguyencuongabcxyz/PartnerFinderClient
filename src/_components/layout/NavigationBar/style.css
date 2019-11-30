@@ -84,6 +84,12 @@
     margin-left: 0 !important;
 }
 
+.c-floating-label {
+    left: 80% !important;
+    top: -0.7em !important;
+    border-radius: 90% !important;
+}
+
 @media(max-width: 991px){
 
 }

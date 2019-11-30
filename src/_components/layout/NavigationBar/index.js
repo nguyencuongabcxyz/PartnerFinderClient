@@ -119,6 +119,7 @@ class NavigationBar extends React.Component {
               <Link className="nav-link func-link" to="#" onClick={() => {this.showPopup('message')}}>
                 <i className="nav-icon comment comments outline icon"></i>
                 Message
+                <div class="c-floating-label floating ui red label">2</div>
               </Link>
               <PopupContainer isDisplay={messagePopup} />
             </li>
@@ -126,15 +127,17 @@ class NavigationBar extends React.Component {
               <Link className="nav-link func-link" to="#" onClick={() => {this.showPopup('partner')}}>
                 <i className="nav-icon question paper plane outline icon"></i>
                 Partner Request
+                <div class="c-floating-label floating ui red label">2</div>
               </Link>
               <PopupContainer isDisplay={partnerPopup}>
                 <PartnerRequestListPopup />
               </PopupContainer>
             </li>
             <li className="nav-item nav-menu-item">
-              <Link className="nav-link func-link" to="#" onClick={() => {this.showPopup('notify')}}>
+              <Link className="nav-link func-link item" to="#" onClick={() => {this.showPopup('notify')}}>
                 <i className="nav-icon bell outline icon"></i>
                 Notification
+                <div class="c-floating-label floating ui red label">2</div>
               </Link>
               <PopupContainer isDisplay={notificationPopup} />
             </li>
