@@ -26,7 +26,7 @@ class PartnerList extends React.Component {
         return partners.map(item => {
             const {avatar, name, partnerId} = item;
             return (
-                <div className="item pl-c-user-sidebar">
+                <div className="item pl-c-user-sidebar" key={partnerId}>
                 <div className="pl-c-user-sidebar-header">
                 <img className="ui avatar image" src={avatar} alt="avatar" />
                 <div className="content">

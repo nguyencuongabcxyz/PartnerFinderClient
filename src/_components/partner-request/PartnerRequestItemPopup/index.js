@@ -9,6 +9,7 @@ import {
 } from "../../../_actions/partnership";
 import "./style.css";
 import DeleteConfirmPopup from "../../shared/DeleteConfirmPopup";
+import { getPostedTimeAgo } from '../../../_helpers/dateTimeHelper';
 
 class PartnerRequestItemPopup extends React.Component {
   removePartnerRequest = id => {
@@ -23,7 +24,7 @@ class PartnerRequestItemPopup extends React.Component {
   };
 
   render() {
-    const { senderAvatar, senderName, content, senderId, id } = this.props.item;
+    const { senderAvatar, senderName, content, senderId, id, createdDate } = this.props.item;
     return (
       <div className="pr-popup-item-wrapper">
         <div className="ui feed">
@@ -37,7 +38,7 @@ class PartnerRequestItemPopup extends React.Component {
             </div>
             <div className="content">
               <div className="date">
-                3 days ago
+                {getPostedTimeAgo(createdDate)}
                 <i
                   className="icon check green pr-popup-action-icon left"
                   onClick={() => {

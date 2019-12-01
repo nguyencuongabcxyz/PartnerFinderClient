@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { fetchManyPartnerRequests } from '../../../_actions/partner-request';
 import './style.css';
 import PartnerRequestItemPopup from '../PartnerRequestItemPopup';
+import {Link} from 'react-router-dom';
 
 class PartnerRequestListPopup extends React.Component {
 
@@ -31,7 +32,7 @@ class PartnerRequestListPopup extends React.Component {
                    {this.renderPartnerRequests()}
                 </div>
                 <div className="pr-popup-footer">
-                    <a href="#"><span>See all</span></a>
+                    <Link to={"partner-request"}><span>See all</span></Link>
                 </div>
             </div>
         );

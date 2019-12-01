@@ -5,15 +5,21 @@ import { logoutUser } from "../../../_actions/auth";
 import { Link } from "react-router-dom";
 import PopupContainer from "../../shared/PopupContainer";
 import PartnerRequestListPopup from "../../partner-request/PartnerRequestListPopup";
+import { PartnerRequestService } from '../../../_services/partner-request'
 
 class NavigationBar extends React.Component {
   state = {
     messagePopup: false,
     partnerPopup: false,
-    notificationPopup: false
+    notificationPopup: false,
+    partnerRequests: 0,
   };
 
-  componentDidMount() {
+  async componentDidMount() {
+    const partnerRequests = await PartnerRequestService.getCount();
+    this.setState({
+      partnerRequests
+    });
     window.addEventListener("scroll", function(event) {
       const scroll = this.scrollY;
       const navBar = this.document.getElementById("navigation-bar");
@@ -81,7 +87,7 @@ class NavigationBar extends React.Component {
     this.props.logoutUser();
   };
   render() {
-    const { messagePopup, partnerPopup, notificationPopup } = this.state;
+    const { messagePopup, partnerPopup, notificationPopup, partnerRequests } = this.state;
     return (
       <nav
         className="navbar navbar-expand-lg navbar-light bg-light"
@@ -119,7 +125,7 @@ class NavigationBar extends React.Component {
               <Link className="nav-link func-link" to="#" onClick={() => {this.showPopup('message')}}>
                 <i className="nav-icon comment comments outline icon"></i>
                 Message
-                <div class="c-floating-label floating ui red label">2</div>
+                <div className="c-floating-label floating ui red label">2</div>
               </Link>
               <PopupContainer isDisplay={messagePopup} />
             </li>
@@ -127,7 +133,7 @@ class NavigationBar extends React.Component {
               <Link className="nav-link func-link" to="#" onClick={() => {this.showPopup('partner')}}>
                 <i className="nav-icon question paper plane outline icon"></i>
                 Partner Request
-                <div class="c-floating-label floating ui red label">2</div>
+                <div className="c-floating-label floating ui red label">{partnerRequests}</div>
               </Link>
               <PopupContainer isDisplay={partnerPopup}>
                 <PartnerRequestListPopup />
@@ -137,7 +143,7 @@ class NavigationBar extends React.Component {
               <Link className="nav-link func-link item" to="#" onClick={() => {this.showPopup('notify')}}>
                 <i className="nav-icon bell outline icon"></i>
                 Notification
-                <div class="c-floating-label floating ui red label">2</div>
+                <div className="c-floating-label floating ui red label">2</div>
               </Link>
               <PopupContainer isDisplay={notificationPopup} />
             </li>

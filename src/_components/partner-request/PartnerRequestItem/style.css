@@ -1,0 +1,32 @@
+.c-list-item {
+    padding-top: 10px !important;
+}
+
+.c-list-avatar {
+    height: 40px !important;
+    width: 40px !important;
+}
+
+.pr-bottom-content {
+    padding-left: 50px;
+}
+
+.c-list-content {
+    font-weight: bold;
+    font-family: "Open Sans", sans-serif;
+    font-size: 16px;
+}
+
+.pr-bottom-content p {
+    color: #4f4f4f;
+    font-weight: 500;
+    font-family: "Open Sans", sans-serif;
+    font-size: 14px;
+}
+
+.c-list-date {
+    font-weight: bold;
+    font-family: "Open Sans", sans-serif;
+    font-size: 14px;
+    color: #B6B6B6;
+}

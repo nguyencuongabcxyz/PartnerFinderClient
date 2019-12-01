@@ -20,9 +20,15 @@ const acceptOne = async (id) => {
     return response.data;
 }
 
+const getCount = async () => {
+    const response = await apiClient.get("/partnerrequests/count");
+    return response.data;
+}
+
 export const PartnerRequestService = {
     getMany,
     addOne,
     removeOne,
     acceptOne,
+    getCount,
 }
