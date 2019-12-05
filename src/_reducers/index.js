@@ -12,6 +12,7 @@ import userInfoReducer from './user-info';
 import commentReducer from './comment';
 import partnerRequestReducer from './partner-request';
 import partnershipReducer from './partnership';
+import notificationReducer from './notification';
 
 const rootReducer = combineReducers({
     form: formReducer,
@@ -25,6 +26,7 @@ const rootReducer = combineReducers({
     userInfo: userInfoReducer,
     comment: commentReducer,
     partnerRequest: partnerRequestReducer,
+    notification: notificationReducer,
     partnerships: partnershipReducer,
 });
 

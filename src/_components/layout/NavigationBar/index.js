@@ -6,6 +6,8 @@ import { Link } from "react-router-dom";
 import PopupContainer from "../../shared/PopupContainer";
 import PartnerRequestListPopup from "../../partner-request/PartnerRequestListPopup";
 import { PartnerRequestService } from '../../../_services/partner-request'
+import { NotificationService } from '../../../_services/notification';
+import NotificationListPopup from "../../notification/NotificationListPopup";
 
 class NavigationBar extends React.Component {
   state = {
@@ -13,11 +15,14 @@ class NavigationBar extends React.Component {
     partnerPopup: false,
     notificationPopup: false,
     partnerRequests: 0,
+    notifications: 0,
   };
 
   async componentDidMount() {
     const partnerRequests = await PartnerRequestService.getCount();
+    const notifications = await NotificationService.getCount();
     this.setState({
+      notifications,
       partnerRequests
     });
     window.addEventListener("scroll", function(event) {
@@ -87,7 +92,7 @@ class NavigationBar extends React.Component {
     this.props.logoutUser();
   };
   render() {
-    const { messagePopup, partnerPopup, notificationPopup, partnerRequests } = this.state;
+    const { messagePopup, partnerPopup, notificationPopup, partnerRequests, notifications } = this.state;
     return (
       <nav
         className="navbar navbar-expand-lg navbar-light bg-light"
@@ -143,9 +148,11 @@ class NavigationBar extends React.Component {
               <Link className="nav-link func-link item" to="#" onClick={() => {this.showPopup('notify')}}>
                 <i className="nav-icon bell outline icon"></i>
                 Notification
-                <div className="c-floating-label floating ui red label">2</div>
+                <div className="c-floating-label floating ui red label">{notifications}</div>
               </Link>
-              <PopupContainer isDisplay={notificationPopup} />
+              <PopupContainer isDisplay={notificationPopup}>
+                <NotificationListPopup />
+              </PopupContainer>
             </li>
             <li className="nav-item nav-menu-item dropdown">
               <a

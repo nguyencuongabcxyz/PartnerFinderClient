@@ -31,10 +31,10 @@ class CustomEditor extends React.Component {
         submitData(postId, data);
     }
 
-    addSubComment = (parentId) => {
+    addSubComment = (postId, parentId) => {
         const { submitData } = this.props;
         const { data } = this.state;
-        submitData(parentId, data);
+        submitData(postId, parentId, data);
     }
 
 

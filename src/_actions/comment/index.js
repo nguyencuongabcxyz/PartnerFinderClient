@@ -30,8 +30,8 @@ export const addParentComment = (postId, content) => async (dispatch) => {
     }
 }
 
-export const addSubComment = (parentId, content) => async (dispatch) => {
-    const data = await CommentService.addSubComment(parentId, content);
+export const addSubComment = (postId, parentId, content) => async (dispatch) => {
+    const data = await CommentService.addSubComment(postId, parentId, content);
     if (data){
         dispatch({
             type: ADD_ONE_SUB_COMMENT,

@@ -14,8 +14,9 @@ const addParentComment = async (postId, content) => {
     return response.data;
 }
 
-const addSubComment = async (parentId, content) => {
+const addSubComment = async (postId, parentId, content) => {
     var data = {
+        postId,
         parentId,
         content,
     }

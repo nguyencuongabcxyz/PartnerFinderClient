@@ -52,13 +52,13 @@ class QuestionDetail extends React.Component {
     this[`_customParentEditor${id}`].setData("");
   };
 
-  triggerAddSubCommentFunc = parentId => {
-    this[`_customSubEditor${parentId}`].addSubComment(parentId);
+  triggerAddSubCommentFunc = (postId, parentId) => {
+    this[`_customSubEditor${parentId}`].addSubComment(postId, parentId);
     this.resetSubCommentBox(parentId);
   };
 
-  addSubComment = (parentId, content) => {
-    this.props.addSubComment(parentId, content);
+  addSubComment = (postId, parentId, content) => {
+    this.props.addSubComment(postId, parentId, content);
   };
 
   triggerAddParentCommentFunc = postId => {
@@ -147,7 +147,8 @@ class QuestionDetail extends React.Component {
         id,
         userId,
         like,
-        isLiked
+        isLiked,
+        postId,
       } = comment;
       return (
         <div className="comment" key={id}>
@@ -197,7 +198,7 @@ class QuestionDetail extends React.Component {
               <button
                 className="brown ui button qd-btn-reply"
                 onClick={() => {
-                  this.triggerAddSubCommentFunc(id);
+                  this.triggerAddSubCommentFunc(postId, id);
                 }}
               >
                 <i className="ui icon edit"></i>Reply

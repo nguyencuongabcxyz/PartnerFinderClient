@@ -13,7 +13,7 @@ export const createQuestionPost = (questionPost) => async (dispatch) => {
             type: CREATE_QUESTION_POST,
             questionPost: result,
         });
-        history.push(`/question-detail/${result.id}`)
+        history.push(`/post-detail/${result.id}`)
     }
 }
 

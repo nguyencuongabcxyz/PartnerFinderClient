@@ -44,8 +44,8 @@ class App extends React.Component {
           <ProtectedRoute exact path="/update-info" component={UpdatingUserInfo} />
           <ProtectedRoute exact path="/asking-question" component={AskingQuestion} />
           <ProtectedRoute exact path="/getting-feedback" component={GettingFeedback} />
-          <ProtectedRoute path="/question-detail/:id" component={QuestionDetail} />
-          <ProtectedRoute path="/feedback-detail/:id" component={FeedbackDetail} />
+          <ProtectedRoute path="/post-detail/:id" component={QuestionDetail} />
+          <ProtectedRoute path="/post-detail/:id" component={FeedbackDetail} />
           <ProtectedRoute path="/partner-request" component={PartnerRequest} />
           <Route exact path="/notfound" component={NotFound} />
           <Route exact path="/servererror" component={ServerError}/>

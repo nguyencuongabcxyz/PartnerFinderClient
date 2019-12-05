@@ -11,7 +11,7 @@ class QuestionItem extends React.Component {
                 <div className="answer-number">{answerNumber} Answers</div>
                 <div className="question-body">
                 <div className="question-top">
-                    <a href={`/question-detail/${id}`}>{title}</a>
+                    <a href={`/post-detail/${id}`}>{title}</a>
                 </div>
                 <div className="question-bottom">
                     <Link to={`/user-info/${userId}`} className="owner-block ui teal image label">

@@ -14,7 +14,7 @@ export const createFeedbackPost = (feedbackPost) => async (dispatch) => {
             type: CREATE_FEEDBACK_POST,
             feedbackPost: result,
         });
-        history.push(`/feedback-detail/${result.id}`)
+        history.push(`/post-detail/${result.id}`)
     }
 }
 
