@@ -1,0 +1,30 @@
+.chat-header {
+  border-bottom: 2px solid #36bdb2;
+}
+
+.chat-body {
+  background-color: white;
+  border: 1px solid #36bdb2;
+  position: relative;
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.38);
+  border-radius: 5px;
+  height: 600px;
+  margin-top: 10px;
+  padding: 0 10px 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-message {
+  height: 90%;
+  margin-bottom: 20px;
+}
+
+.chat-input {
+  width: 100%;
+}
+
+.chat-input input[type="text"] {
+  border: 1px solid #227093;
+  background-color: #f8efba;
+}

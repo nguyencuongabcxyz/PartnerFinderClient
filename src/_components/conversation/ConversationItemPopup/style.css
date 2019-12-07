@@ -1,0 +1,19 @@
+.conversation-item-popup {
+  display: block;
+}
+
+.conversation-item-popup:hover {
+  text-decoration: none;
+}
+
+.conversation-user-name {
+  font-size: 18px;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+}
+
+.lasted-message {
+  margin-bottom: 10px !important;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 500 !important;
+}

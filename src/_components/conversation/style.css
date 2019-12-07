@@ -1,0 +1,22 @@
+.conversation {
+  display: flex;
+}
+
+.conversation-left {
+  width: 30%;
+  background-color: white;
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.38);
+  border-radius: 5px;
+  height: 700px;
+  margin-right: 20px;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+.conversation-right {
+  width: 70%;
+  background-color: white;
+  padding: 20px 20px 10px;
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.38);
+  border-radius: 5px;
+}

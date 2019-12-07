@@ -5,9 +5,10 @@ import { logoutUser } from "../../../_actions/auth";
 import { Link } from "react-router-dom";
 import PopupContainer from "../../shared/PopupContainer";
 import PartnerRequestListPopup from "../../partner-request/PartnerRequestListPopup";
-import { PartnerRequestService } from '../../../_services/partner-request'
-import { NotificationService } from '../../../_services/notification';
+import { PartnerRequestService } from "../../../_services/partner-request";
+import { NotificationService } from "../../../_services/notification";
 import NotificationListPopup from "../../notification/NotificationListPopup";
+import ConversationListPopup from "../../conversation/ConversationListPopup";
 
 class NavigationBar extends React.Component {
   state = {
@@ -15,7 +16,7 @@ class NavigationBar extends React.Component {
     partnerPopup: false,
     notificationPopup: false,
     partnerRequests: 0,
-    notifications: 0,
+    notifications: 0
   };
 
   async componentDidMount() {
@@ -45,10 +46,10 @@ class NavigationBar extends React.Component {
   showPopup = name => {
     switch (name) {
       case "message":
-        if(this.state.messagePopup) {
+        if (this.state.messagePopup) {
           this.setState({
-            messagePopup: false,
-          })
+            messagePopup: false
+          });
           break;
         }
         this.setState({
@@ -58,9 +59,9 @@ class NavigationBar extends React.Component {
         });
         break;
       case "partner":
-        if(this.state.partnerPopup) {
+        if (this.state.partnerPopup) {
           this.setState({
-            partnerPopup: false,
+            partnerPopup: false
           });
           break;
         }
@@ -71,9 +72,9 @@ class NavigationBar extends React.Component {
         });
         break;
       case "notify":
-        if(this.state.notificationPopup) {
+        if (this.state.notificationPopup) {
           this.setState({
-            notificationPopup: false,
+            notificationPopup: false
           });
           break;
         }
@@ -92,7 +93,13 @@ class NavigationBar extends React.Component {
     this.props.logoutUser();
   };
   render() {
-    const { messagePopup, partnerPopup, notificationPopup, partnerRequests, notifications } = this.state;
+    const {
+      messagePopup,
+      partnerPopup,
+      notificationPopup,
+      partnerRequests,
+      notifications
+    } = this.state;
     return (
       <nav
         className="navbar navbar-expand-lg navbar-light bg-light"
@@ -127,28 +134,52 @@ class NavigationBar extends React.Component {
               </Link>
             </li>
             <li className="nav-item nav-menu-item">
-              <Link className="nav-link func-link" to="#" onClick={() => {this.showPopup('message')}}>
+              <Link
+                className="nav-link func-link"
+                to="#"
+                onClick={() => {
+                  this.showPopup("message");
+                }}
+              >
                 <i className="nav-icon comment comments outline icon"></i>
                 Message
                 <div className="c-floating-label floating ui red label">2</div>
               </Link>
-              <PopupContainer isDisplay={messagePopup} />
+              <PopupContainer isDisplay={messagePopup}>
+                <ConversationListPopup />
+              </PopupContainer>
             </li>
             <li className="nav-item nav-menu-item">
-              <Link className="nav-link func-link" to="#" onClick={() => {this.showPopup('partner')}}>
+              <Link
+                className="nav-link func-link"
+                to="#"
+                onClick={() => {
+                  this.showPopup("partner");
+                }}
+              >
                 <i className="nav-icon question paper plane outline icon"></i>
                 Partner Request
-                <div className="c-floating-label floating ui red label">{partnerRequests}</div>
+                <div className="c-floating-label floating ui red label">
+                  {partnerRequests}
+                </div>
               </Link>
               <PopupContainer isDisplay={partnerPopup}>
                 <PartnerRequestListPopup />
               </PopupContainer>
             </li>
             <li className="nav-item nav-menu-item">
-              <Link className="nav-link func-link item" to="#" onClick={() => {this.showPopup('notify')}}>
+              <Link
+                className="nav-link func-link item"
+                to="#"
+                onClick={() => {
+                  this.showPopup("notify");
+                }}
+              >
                 <i className="nav-icon bell outline icon"></i>
                 Notification
-                <div className="c-floating-label floating ui red label">{notifications}</div>
+                <div className="c-floating-label floating ui red label">
+                  {notifications}
+                </div>
               </Link>
               <PopupContainer isDisplay={notificationPopup}>
                 <NotificationListPopup />
