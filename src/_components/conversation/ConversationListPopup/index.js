@@ -18,7 +18,6 @@ class ConversationListPopup extends React.Component {
   };
 
   render() {
-    console.log(this.props.conversations);
     return (
       <div className="pr-popup-container">
         <div className="pr-popup-header">

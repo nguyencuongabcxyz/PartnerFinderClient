@@ -65,8 +65,8 @@ class App extends React.Component {
             path="/getting-feedback"
             component={GettingFeedback}
           />
-          <ProtectedRoute path="/post-detail/:id" component={QuestionDetail} />
-          <ProtectedRoute path="/post-detail/:id" component={FeedbackDetail} />
+          <ProtectedRoute path="/question-detail/:id" component={QuestionDetail} />
+          <ProtectedRoute path="/feedback-detail/:id" component={FeedbackDetail} />
           <ProtectedRoute path="/partner-request" component={PartnerRequest} />
           <ProtectedRoute path="/notification" component={Notification} />
           <ProtectedRoute path="/conversation/:id" component={Conversation} />

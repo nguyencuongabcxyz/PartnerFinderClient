@@ -19,7 +19,6 @@ class ConversationList extends React.Component {
   };
 
   render() {
-    console.log(this.props.conversations);
     return (
       <div>
         <div className="cl-header">

@@ -10,7 +10,13 @@ const getOne = async id => {
   return response.data;
 };
 
+const getCount = async () => {
+  const response = await apiClient.get("/conversations/count");
+  return response.data;
+}
+
 export const ConversationService = {
   getAll,
-  getOne
+  getOne,
+  getCount,
 };

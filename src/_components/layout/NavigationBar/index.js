@@ -7,6 +7,7 @@ import PopupContainer from "../../shared/PopupContainer";
 import PartnerRequestListPopup from "../../partner-request/PartnerRequestListPopup";
 import { PartnerRequestService } from "../../../_services/partner-request";
 import { NotificationService } from "../../../_services/notification";
+import { ConversationService } from '../../../_services/conversation';
 import NotificationListPopup from "../../notification/NotificationListPopup";
 import ConversationListPopup from "../../conversation/ConversationListPopup";
 
@@ -16,15 +17,18 @@ class NavigationBar extends React.Component {
     partnerPopup: false,
     notificationPopup: false,
     partnerRequests: 0,
-    notifications: 0
+    notifications: 0,
+    conversations: 0,
   };
 
   async componentDidMount() {
     const partnerRequests = await PartnerRequestService.getCount();
     const notifications = await NotificationService.getCount();
+    const conversations = await ConversationService.getCount();
     this.setState({
       notifications,
-      partnerRequests
+      partnerRequests,
+      conversations,
     });
     window.addEventListener("scroll", function(event) {
       const scroll = this.scrollY;
@@ -98,7 +102,8 @@ class NavigationBar extends React.Component {
       partnerPopup,
       notificationPopup,
       partnerRequests,
-      notifications
+      notifications,
+      conversations
     } = this.state;
     return (
       <nav
@@ -143,7 +148,7 @@ class NavigationBar extends React.Component {
               >
                 <i className="nav-icon comment comments outline icon"></i>
                 Message
-                <div className="c-floating-label floating ui red label">2</div>
+                <div className="c-floating-label floating ui red label">{conversations}</div>
               </Link>
               <PopupContainer isDisplay={messagePopup}>
                 <ConversationListPopup />

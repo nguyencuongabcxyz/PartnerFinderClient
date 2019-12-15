@@ -37,7 +37,7 @@ class Conversation extends React.Component {
             <ConversationList />
           </div>
           <div className="conversation-right">
-            <ChatScreen conversation={conversation} />
+           {conversation === 0 || <ChatScreen conversation={conversation} />}
           </div>
         </div>
       </PageLayout>

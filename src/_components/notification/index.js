@@ -14,7 +14,6 @@ class Notification extends React.Component {
 
   renderNotificationList = () => {
     const { notifications } = this.props;
-    console.log(notifications);
     return notifications.map(item => {
       return <NotificationItem key={item.id} notification={item} />;
     });

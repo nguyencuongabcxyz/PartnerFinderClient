@@ -29,9 +29,11 @@ class NotificationItem extends React.Component {
       postId,
       creatorId,
       creatorName,
-      creatorAvatar
+      creatorAvatar,
+      postType,
     } = this.props.notification;
     const isViewedClass = isViewed ? "" : "not-viewed";
+    const linkToPost = postType === 0 ? `/question-detail/${postId}` : `/feedback-detail/${postId}`;
     return (
       <div className={`item c-list-item ${isViewedClass}`}>
         <div className="right floated content">
@@ -68,7 +70,7 @@ class NotificationItem extends React.Component {
           <Link to={`user-info/${creatorId}`}>{creatorName}</Link> {content}
         </div>
         <div className="pr-bottom-content">
-          <a className="view-post" href={`post-detail/${postId}`}>
+          <a className="view-post" href={linkToPost}>
             View post
           </a>
           <div className="date c-list-date">

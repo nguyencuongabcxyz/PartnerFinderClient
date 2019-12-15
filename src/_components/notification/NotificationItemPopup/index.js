@@ -28,9 +28,11 @@ class NotificationItemPopup extends React.Component {
       postId,
       creatorId,
       creatorName,
-      creatorAvatar
+      creatorAvatar,
+      postType
     } = this.props.item;
     const notiBackground = isViewed ? "" : "notViewedNoti";
+    const linkToPost = postType === 0 ? `/question-detail/${postId}` : `/feedback-detail/${postId}`;
     return (
       <div className={`pr-popup-item-wrapper ${notiBackground}`}>
         <div className="ui feed">
@@ -68,7 +70,7 @@ class NotificationItemPopup extends React.Component {
               <div className="summary">
                 <a href={`/user-info/${creatorId}`}>{creatorName}</a> {content}
                 <br></br>
-                <a href={`/post-detail/${postId}`}>View post</a>
+                <a href={linkToPost}>View post</a>
               </div>
             </div>
           </div>

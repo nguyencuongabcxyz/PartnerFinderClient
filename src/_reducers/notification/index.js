@@ -23,7 +23,6 @@ export default (state = INITIAL_STATE, action) => {
       };
     case MARK_VIEW_NOTIFICATION:
       //const index = currentNotifications.findIndex(action.notification);
-      console.log(action.notification);
       const newNotifications = currentNotifications.map(el =>
         el.id === action.notification.id ? action.notification : el
       );
