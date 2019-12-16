@@ -19,20 +19,29 @@ class ChatScreen extends React.Component {
   };
   count = 0;
   componentDidMount() {
+    const el = document.getElementById("myMessageContainer");
+    if (el) {
+      setTimeout(() => {
+        $("#myMessageContainer").animate(
+          {
+            scrollTop:
+              $("#myMessageContainer")[0].scrollHeight -
+              $("#myMessageContainer")[0].clientHeight +
+              10000000
+          },
+          1000
+        );
+      }, 300);
+    }
     const { messages } = this.props.conversation;
     const arrayMessages = [];
     messages.forEach(el => {
-      const message = {senderId: el.senderId, content: el.content};
+      const message = { senderId: el.senderId, content: el.content };
       arrayMessages.push(message);
     });
     this.setState({
-      messages: arrayMessages,
+      messages: arrayMessages
     });
-    $("#myMessageContainer")
-      .stop()
-      .animate({
-        scrollTop: $("#myMessageContainer")[0].scrollHeight
-      });
     this.connect();
     this.autoReconnect();
     this.listenMessage();
@@ -68,15 +77,29 @@ class ChatScreen extends React.Component {
   listenMessage = () => {
     const { hubConnection } = this.state;
     hubConnection.on("sendChatMessage", (message, senderId) => {
-      const newMessage = {senderId: senderId, content: message};
+      const {reRender} = this.props;
+      reRender();
+      const newMessage = { senderId: senderId, content: message };
+      const el = document.getElementById("myMessageContainer");
+      if (el) {
+        $("#myMessageContainer").animate(
+          {
+            scrollTop:
+              $("#myMessageContainer")[0].scrollHeight -
+              $("#myMessageContainer")[0].clientHeight +
+              1000000
+          },
+          1000
+        );
+      }
       this.setState({
-        messages: [...this.state.messages, newMessage],
+        messages: [newMessage, ...this.state.messages]
       });
     });
   };
 
   sendMessage = (receiverId, message) => {
-    this.chatInput.value = '';
+    this.chatInput.value = "";
     const { hubConnection } = this.state;
     hubConnection
       .invoke("sendChatMessage", receiverId, message)
@@ -84,17 +107,12 @@ class ChatScreen extends React.Component {
   };
 
   renderMessages = () => {
-    console.log("RENDER MESSAGE");
     const { creatorId, creatorAvatar } = this.props.conversation;
     const { messages } = this.state;
-    if(!messages) return;
+    if (!messages) return;
     return messages.map(el => {
       if (el.senderId !== creatorId) {
-        return (
-          <div className="user-message">
-            {el.content}
-          </div>
-        );
+        return <div className="user-message">{el.content}</div>;
       } else {
         return (
           <div className="partner-message">
@@ -107,7 +125,6 @@ class ChatScreen extends React.Component {
   };
 
   render() {
-    console.log("RENDER");
     const { creatorId, creatorName, creatorAvatar } = this.props.conversation;
     return (
       <div>
@@ -121,16 +138,21 @@ class ChatScreen extends React.Component {
           </div>
         </div>
         <div className="chat-body">
-          <div className="chat-message" id="myMessageContainer">
-            {this.renderMessages()}
+          <div className="table-wrapper" id="myMessageContainer">
+            <div className="chat-message">
+              <div className="chat-cell">
+                <div className="message-wrapper">{this.renderMessages()}</div>
+              </div>
+            </div>
           </div>
           <div className="ui icon input chat-input">
             <input
-              ref={el => this.chatInput = el}
+              ref={el => (this.chatInput = el)}
               type="text"
               placeholder="Input your message..."
               onKeyPress={event => {
                 if (event.key === "Enter") {
+                  if (event.target.value == "") return false;
                   this.sendMessage(creatorId, event.target.value);
                 }
               }}

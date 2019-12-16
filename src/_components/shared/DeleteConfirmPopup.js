@@ -22,6 +22,7 @@ class DeleteConfirmPopup extends React.Component {
 
   executeAction = () => {
     const { action, id } = this.props;
+    console.log(id);
     action(id);
     this.setState({
       open: false,

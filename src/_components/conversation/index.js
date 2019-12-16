@@ -7,7 +7,8 @@ import { ConversationService } from "../../_services/conversation";
 
 class Conversation extends React.Component {
   state = {
-    conversation: 0
+    conversation: 0,
+    render: 0,
   };
   async componentDidMount() {
     const { id } = this.props.match.params;
@@ -17,6 +18,12 @@ class Conversation extends React.Component {
         conversation
       });
     }
+  }
+
+  reRender = () => {
+      this.setState(prevState => ({  
+          render: prevState.render++
+      }));
   }
 
   setActiveConversation = async id => {
@@ -37,7 +44,7 @@ class Conversation extends React.Component {
             <ConversationList />
           </div>
           <div className="conversation-right">
-           {conversation === 0 || <ChatScreen conversation={conversation} />}
+           {conversation === 0 || <ChatScreen reRender={this.reRender} conversation={conversation} />}
           </div>
         </div>
       </PageLayout>

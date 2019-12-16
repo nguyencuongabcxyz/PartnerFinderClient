@@ -38,16 +38,30 @@
   margin-left: 10px;
 }
 
+.table-wrapper {
+  overflow-y: scroll;
+  height: 95%;
+}
+
 .chat-message {
-  display: flex;
-  height: 90%;
-  margin-bottom: 20px;
-  flex-direction: column;
-  transform: scale(-1,1);
-  /* justify-content: flex-end; */
+  display: table;
+  height: 100%;
+  padding-right: 10px;
+  width: 100%;
   /* flex-direction: column-reverse; */
   overflow-y: scroll;
   overflow-x: hidden;
+}
+
+.chat-cell {
+  width: 100%;
+  display: table-cell;
+  vertical-align: bottom;
+}
+
+.message-wrapper {
+  display: flex;
+  flex-direction: column-reverse;
 }
 
 .chat-message::-webkit-scrollbar
@@ -76,14 +90,16 @@
 .user-message {
   max-width: 300px;
   padding: 10px 20px;
-  background-color: wheat;
+  background-color: #81ecec;
   margin-bottom: 20px;
+  border-radius: 8px;
+  align-self: flex-end;
 }
 
 .partner-message {
+  border-radius: 8px;
   max-width: 300px;
-  align-self: flex-end;
   padding: 10px 20px;
-  background-color: wheat;
+  background-color: #fab1a0;
   margin-bottom: 20px;
 }

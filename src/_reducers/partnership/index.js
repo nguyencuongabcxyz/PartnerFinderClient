@@ -6,7 +6,7 @@ export default (state = {}, action) => {
         case FETCH_ALL_PARTNERS:
             return {...state, ..._.mapKeys(action.partners, 'partnerId')};
         case ADD_ONE_PARTNER:
-            return {...state, [action.partner.id]: action.partner};
+            return {...state, [action.partner.partnerId]: action.partner};
         case REMOVE_ONE_PARTNER:
             return _.omit(state, action.partner.partnerId);    
         default:

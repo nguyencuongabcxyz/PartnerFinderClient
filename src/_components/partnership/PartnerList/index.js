@@ -4,6 +4,7 @@ import { fetchAllPartners, deleteOnePartner } from '../../../_actions/partnershi
 import { Link } from 'react-router-dom';
 import './style.css';
 import DeleteConfirmPopup from '../../shared/DeleteConfirmPopup';
+import PartnerItem from '../PartnerItem';
 
 class PartnerList extends React.Component {
 
@@ -12,33 +13,12 @@ class PartnerList extends React.Component {
         fetchAllPartners();
     }
 
-    removeOnePartnership = (partnerId) => {
-        const {deleteOnePartner} = this.props;
-        deleteOnePartner(partnerId);
-    }
-
-    openPopup = () => {
-        this.deletePopup.open();
-    }
-
     renderPartnerList = () => {
         const {partners} = this.props;
         return partners.map(item => {
-            const {avatar, name, partnerId} = item;
+            const {avatar, name, partnerId, conversationId} = item;
             return (
-                <div className="item pl-c-user-sidebar" key={partnerId}>
-                <div className="pl-c-user-sidebar-header">
-                <img className="ui avatar image" src={avatar} alt="avatar" />
-                <div className="content">
-                  <div className="header pl-c-user-name"><Link to={`/user-info/${partnerId}`}>{name}</Link></div>
-                </div>
-                </div>
-                <div className="pl-user-sidebar-action">
-                    <i className="ui icon talk"></i>
-                    <i className="ui icon remove user" onClick={this.openPopup}></i>
-                    <DeleteConfirmPopup ref={el => this.deletePopup = el} id={partnerId} action={this.removeOnePartnership} />
-              </div>
-              </div>
+                <PartnerItem key={item.partnerId} item={item} />
             );
         });
     }

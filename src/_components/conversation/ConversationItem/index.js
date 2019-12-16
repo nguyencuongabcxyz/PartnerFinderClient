@@ -15,7 +15,7 @@ class ConversationItem extends React.Component {
     const notiBackground = isViewed ? "" : "notViewedNoti";
     return (
       <a
-        href={"conversation"}
+      href={`/conversation/${id}`}
         className={`pr-popup-item-wrapper conversation-item-popup ${notiBackground}`}
       >
         <div className="ui feed">
