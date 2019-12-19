@@ -10,6 +10,7 @@ import { NotificationService } from "../../../_services/notification";
 import { ConversationService } from '../../../_services/conversation';
 import NotificationListPopup from "../../notification/NotificationListPopup";
 import ConversationListPopup from "../../conversation/ConversationListPopup";
+import { TokenService } from '../../../_services/token'
 
 class NavigationBar extends React.Component {
   state = {
@@ -35,11 +36,11 @@ class NavigationBar extends React.Component {
       const navBar = this.document.getElementById("navigation-bar");
       if (navBar) {
         if (scroll !== 0) {
-          navBar.style.padding = "20px 10%";
+          navBar.style.padding = "10px 10%";
           navBar.style.boxShadow = "0px 1px 5px rgba(0,0,0,0.38)";
           navBar.style.setProperty("background-color", "white", "important");
         } else {
-          navBar.style.padding = "10px 10%";
+          navBar.style.padding = "8px 10%";
           navBar.style.boxShadow = "none";
           navBar.style.setProperty("background-color", "#F7F5EB", "important");
         }
@@ -97,6 +98,7 @@ class NavigationBar extends React.Component {
     this.props.logoutUser();
   };
   render() {
+    const isAdmin = TokenService.extractUserRole() === 'Admin' ? true : false;
     const {
       messagePopup,
       partnerPopup,
@@ -126,6 +128,12 @@ class NavigationBar extends React.Component {
         </button>
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav">
+            {!isAdmin ||<li className="nav-item nav-menu-item">
+              <Link to={"/admin-page"} className="nav-link func-link">
+                <i className="nav-icon recycle icon"></i>
+                Admin
+              </Link>
+            </li>}
             <li className="nav-item nav-menu-item">
               <Link to={"/asking-question"} className="nav-link func-link">
                 <i className="nav-icon question circle outline icon"></i>

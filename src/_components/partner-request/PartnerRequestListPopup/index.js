@@ -32,7 +32,7 @@ class PartnerRequestListPopup extends React.Component {
                    {this.renderPartnerRequests()}
                 </div>
                 <div className="pr-popup-footer">
-                    <Link to={"partner-request"}><span>See all</span></Link>
+                    <Link to={"/partner-request"}><span>See all</span></Link>
                 </div>
             </div>
         );

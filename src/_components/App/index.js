@@ -21,6 +21,7 @@ import FeedbackDetail from "../feedback-post/FeedbackDetail";
 import PartnerRequest from "../partner-request";
 import Notification from "../notification";
 import Conversation from "../conversation";
+import AdminPage from "../admin";
 
 class App extends React.Component {
   render() {
@@ -70,6 +71,7 @@ class App extends React.Component {
           <ProtectedRoute path="/partner-request" component={PartnerRequest} />
           <ProtectedRoute path="/notification" component={Notification} />
           <ProtectedRoute path="/conversation/:id" component={Conversation} />
+          <ProtectedRoute path="/admin-page" component={AdminPage}/>
           <Route exact path="/notfound" component={NotFound} />
           <Route exact path="/servererror" component={ServerError} />
           <ToastContainer autoClose={3000} />

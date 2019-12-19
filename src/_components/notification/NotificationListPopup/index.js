@@ -31,7 +31,7 @@ class NotificationListPopup extends React.Component {
           {this.renderNotifications()}
         </div>
         <div className="pr-popup-footer">
-          <Link to={"notification"}>
+          <Link to={"/notification"}>
             <span>See all</span>
           </Link>
         </div>
