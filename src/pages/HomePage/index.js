@@ -55,6 +55,10 @@ class Home extends React.Component {
     }
 
     componentDidMount(){
+        document.getElementById("section1").style.backgroundImage = `linear-gradient(
+            rgba(10, 0, 0, 0.9),
+            rgba(8, 7, 7, 0.6)
+          ),url('${process.env.PUBLIC_URL + "/images/HomePage/background_home1.jpg"}')`;
         this.animateBlock();
         removeModalBootstrap();
     }
@@ -76,17 +80,17 @@ class Home extends React.Component {
                     <h1 id="hp-section2-title" className="section-title">How <span>PartnerFinder</span> can help you</h1>
                     <div className="section-content row">
                         <div className="section-block col-lg-3 col-md-4 hidden">
-                            <img src="/Images/HomePage/finding_partner.svg" alt="finding_partner"></img>
+                            <img src={process.env.PUBLIC_URL + "/images/HomePage/finding_partner.svg"} alt="finding_partner"></img>
                             <h2>While you don’t have to use any specific library to</h2>
                             <p>While you don’t have to use any specific library to integrate Bootstrap with React apps, it's often easier than trying to wrap the Bootstrap jQuery plugins. React Bootstrap is the most popular option that strives for complete parity with Bootstrap.</p>
                         </div>
                         <div className="section-block col-lg-3 col-md-4 hidden">
-                            <img src="/Images/HomePage/asking.svg" alt="asking"></img>
+                            <img src={process.env.PUBLIC_URL + "/images/HomePage/asking.svg"} alt="asking"></img>
                             <h2>While you don’t have to use any specific library to</h2>
                             <p>While you don’t have to use any specific library to integrate Bootstrap with React apps, it's often easier than trying to wrap the Bootstrap jQuery plugins. React Bootstrap is the most popular option that strives for complete parity with Bootstrap. </p>
                         </div>
                         <div className="section-block col-lg-3 col-md-4 hidden">
-                            <img src="/Images/HomePage/feedback.svg" alt="feedback"></img>
+                            <img src={process.env.PUBLIC_URL + "/images/HomePage/feedback.svg"} alt="feedback"></img>
                             <h2>While you don’t have to use any specific library to</h2>
                             <p>While you don’t have to use any specific library to integrate Bootstrap with React apps, it's often easier than trying to wrap the Bootstrap jQuery plugins. React Bootstrap is the most popular option that strives for complete parity with Bootstrap. </p>
                         </div>
@@ -98,7 +102,7 @@ class Home extends React.Component {
                     <h1 id="hp-section3-title" className="section-title">See how <span>PartnerFinder</span> works</h1>
                     <div className="guide-content">
                         <div className="guide-block block-left">
-                            <img alt="guide_image" src="/Images/HomePage/exam_guide.svg"></img>
+                            <img alt="guide_image" src={process.env.PUBLIC_URL + "/images/HomePage/exam_guide.svg"}></img>
                             <div>
                             <h2><span>1</span>While you don’t have to use any specific library to integrate Bootstrap with React apps</h2>
                                 <p>While you don’t have to use any specific library to integrate Bootstrap with React apps, it's often easier than trying to wrap the Bootstrap jQuery plugins. React Bootstrap is the most popular option that strives for complete parity with Bootstrap. reactstrap is also a good choice</p>
@@ -109,10 +113,10 @@ class Home extends React.Component {
                             <h2><span>2</span>While you don’t have to use any specific library to integrate Bootstrap with React apps</h2>
                                 <p>While you don’t have to use any specific library to integrate Bootstrap with React apps, it's often easier than trying to wrap the Bootstrap jQuery plugins. React Bootstrap is the most popular option that strives for complete parity with Bootstrap. reactstrap is also a good choice</p>
                             </div>
-                            <img alt="guide_image" src="/Images/HomePage/fill_info_guide.svg"></img>
+                            <img alt="guide_image" src={process.env.PUBLIC_URL + "/images/HomePage/fill_info_guide.svg"}></img>
                         </div>
                         <div className="guide-block block-left">
-                            <img alt="guide_image" src="/Images/HomePage/search_guide.svg"></img>
+                            <img alt="guide_image" src={process.env.PUBLIC_URL + "/images/HomePage/search_guide.svg"}></img>
                             <div>
                             <h2><span>3</span>While you don’t have to use any specific library to integrate Bootstrap with React apps</h2>
                                 <p>While you don’t have to use any specific library to integrate Bootstrap with React apps, it's often easier than trying to wrap the Bootstrap jQuery plugins. React Bootstrap is the most popular option that strives for complete parity with Bootstrap. reactstrap is also a good choice</p>
@@ -123,12 +127,12 @@ class Home extends React.Component {
                                 <h2><span>4</span>While you don’t have to use any specific library to integrate Bootstrap with React apps</h2>
                                 <p>While you don’t have to use any specific library to integrate Bootstrap with React apps, it's often easier than trying to wrap the Bootstrap jQuery plugins. React Bootstrap is the most popular option that strives for complete parity with Bootstrap. reactstrap is also a good choice</p>
                             </div>
-                            <img alt="guide_image" src="/Images/HomePage/question_guide.svg"></img>
+                            <img alt="guide_image" src={process.env.PUBLIC_URL + "/images/HomePage/question_guide.svg"}></img>
                         </div>
                     </div>
                 </div>
                 <Footer />
-                <img id="back-to-top" onClick={(e) => { scrollToTop(e) }} style={{ position: "fixed", bottom: '30px', left: '93vw', cursor: 'pointer' }} width="40px" alt="back-to-top" src="/Images/HomePage/back-to-top.svg"></img>
+                <img id="back-to-top" onClick={(e) => { scrollToTop(e) }} style={{ position: "fixed", bottom: '30px', left: '93vw', cursor: 'pointer' }} width="40px" alt="back-to-top" src={process.env.PUBLIC_URL + "/images/HomePage/back-to-top.svg"}></img>
             </div>
         );
     }

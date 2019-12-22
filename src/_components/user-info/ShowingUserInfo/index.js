@@ -20,33 +20,33 @@ class ShowingUserInfo extends React.Component {
                 case 0:
                     return (
                         <div id="star-block">
-                            <img alt="star" src="/images/userinfo/active-star.svg" height="30" />
-                            <img alt="star" src="/images/userinfo/star.svg" height="30" />
-                            <img alt="star" src="/images/userinfo/star.svg" height="30" />
+                            <img alt="star" src={process.env.PUBLIC_URL + "/images/userinfo/active-star.svg"} height="30" />
+                            <img alt="star" src={process.env.PUBLIC_URL + "/images/userinfo/star.svg"} height="30" />
+                            <img alt="star" src={process.env.PUBLIC_URL + "/images/userinfo/star.svg"} height="30" />
                         </div>
                     );
                 case 1:
                     return (
                         <div id="star-block">
-                            <img alt="star" src="/images/userinfo/active-star.svg" height="30" />
-                            <img alt="star" src="/images/userinfo/active-star.svg" height="30" />
-                            <img alt="star" src="/images/userinfo/star.svg" height="30" />
+                            <img alt="star" src={process.env.PUBLIC_URL + "/images/userinfo/active-star.svg"} height="30" />
+                            <img alt="star" src={process.env.PUBLIC_URL + "/images/userinfo/active-star.svg"} height="30" />
+                            <img alt="star" src={process.env.PUBLIC_URL + "/images/userinfo/star.svg"} height="30" />
                         </div>
                     );
                 case 2:
                     return (
                         <div id="star-block">
-                            <img alt="star" src="/images/userinfo/active-star.svg" height="30" />
-                            <img alt="star" src="/images/userinfo/active-star.svg" height="30" />
-                            <img alt="star" src="/images/userinfo/active-star.svg" height="30" />
+                            <img alt="star" src={process.env.PUBLIC_URL + "/images/userinfo/active-star.svg"} height="30" />
+                            <img alt="star" src={process.env.PUBLIC_URL + "/images/userinfo/active-star.svg"} height="30" />
+                            <img alt="star" src={process.env.PUBLIC_URL + "/images/userinfo/active-star.svg"} height="30" />
                         </div>
                     );
                 default:
                     return (
                         <div id="star-block">
-                            <img alt="star" src="/images/userinfo/star.svg" height="30" />
-                            <img alt="star" src="/images/userinfo/star.svg" height="30" />
-                            <img alt="star" src="/images/userinfo/star.svg" height="30" />
+                            <img alt="star" src={process.env.PUBLIC_URL + "/images/userinfo/star.svg"} height="30" />
+                            <img alt="star" src={process.env.PUBLIC_URL + "/images/userinfo/star.svg"} height="30" />
+                            <img alt="star" src={process.env.PUBLIC_URL + "/images/userinfo/star.svg"} height="30" />
                         </div>
                     );
             }
@@ -122,7 +122,7 @@ class ShowingUserInfo extends React.Component {
                             <div id="overall-info">
                                 <h2>{this.props.userInfo.name}</h2>
                                 <div id="location-block">
-                                    <img src="/images/userinfo/location.svg" alt="location" height="30" width="30" />
+                                    <img src={process.env.PUBLIC_URL + "/images/userinfo/location.svg"} alt="location" height="30" width="30" />
                                     <p>{this.props.userInfo.location}</p>
                                 </div>
                                 <p>Age: {this.props.userInfo.age}</p>

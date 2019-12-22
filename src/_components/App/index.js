@@ -40,40 +40,40 @@ class App extends React.Component {
     return (
       <Router history={history}>
         <div>
-          <PublicRoute exact path="/" component={Home} />
-          <ProtectedRoute exact path="/dashboard" component={DashBoard} />
-          <ProtectedRoute exact path="/check-info" component={CheckInfo} />
-          <ProtectedRoute exact path="/test-intro" component={TestIntro} />
-          <ProtectedRoute exact path="/test-page" component={TestPage} />
-          <ProtectedRoute exact path="/user-info" component={ShowingUserInfo} />
+          <PublicRoute exact path={process.env.PUBLIC_URL + "/"} component={Home} />
+          <ProtectedRoute exact path={process.env.PUBLIC_URL + "/dashboard"} component={DashBoard} />
+          <ProtectedRoute exact path={process.env.PUBLIC_URL + "/check-info"} component={CheckInfo} />
+          <ProtectedRoute exact path={process.env.PUBLIC_URL + "/test-intro"} component={TestIntro} />
+          <ProtectedRoute exact path={process.env.PUBLIC_URL + "/test-page"} component={TestPage} />
+          <ProtectedRoute exact path={process.env.PUBLIC_URL + "/user-info"} component={ShowingUserInfo} />
           <ProtectedRoute
             exact
-            path="/user-info/:id"
+            path={process.env.PUBLIC_URL + "/user-info/:id"}
             component={ShowingUserInfo}
           />
           <ProtectedRoute
             exact
-            path="/update-info"
+            path={process.env.PUBLIC_URL + "/update-info"}
             component={UpdatingUserInfo}
           />
           <ProtectedRoute
             exact
-            path="/asking-question"
+            path={process.env.PUBLIC_URL + "/asking-question"}
             component={AskingQuestion}
           />
           <ProtectedRoute
             exact
-            path="/getting-feedback"
+            path={process.env.PUBLIC_URL + "/getting-feedback"}
             component={GettingFeedback}
           />
-          <ProtectedRoute path="/question-detail/:id" component={QuestionDetail} />
-          <ProtectedRoute path="/feedback-detail/:id" component={FeedbackDetail} />
-          <ProtectedRoute path="/partner-request" component={PartnerRequest} />
-          <ProtectedRoute path="/notification" component={Notification} />
-          <ProtectedRoute path="/conversation/:id" component={Conversation} />
-          <ProtectedRoute path="/admin-page" component={AdminPage}/>
-          <Route exact path="/notfound" component={NotFound} />
-          <Route exact path="/servererror" component={ServerError} />
+          <ProtectedRoute path={process.env.PUBLIC_URL + "/question-detail/:id"} component={QuestionDetail} />
+          <ProtectedRoute path={process.env.PUBLIC_URL + "/feedback-detail/:id"} component={FeedbackDetail} />
+          <ProtectedRoute path={process.env.PUBLIC_URL + "/partner-request"} component={PartnerRequest} />
+          <ProtectedRoute path={process.env.PUBLIC_URL + "/notification"} component={Notification} />
+          <ProtectedRoute path={process.env.PUBLIC_URL + "/conversation/:id"} component={Conversation} />
+          <ProtectedRoute path={process.env.PUBLIC_URL + "/admin-page"} component={AdminPage}/>
+          <Route exact path={process.env.PUBLIC_URL + "/notfound"} component={NotFound} />
+          <Route exact path={"/servererror"} component={ServerError} />
           <ToastContainer autoClose={3000} />
         </div>
       </Router>

@@ -38,8 +38,8 @@ class LoginForm extends React.Component {
                 {this.props.children}
                 <p className="login-options-text">Or login with</p>
                 <div className="login-options-images">
-                    <img alt="login-options" src="/Images/LoginPage/facebook_login.svg" />
-                    <img alt="login-options" src="/Images/LoginPage/google_login.svg" />
+                    <img alt="login-options" src={process.env.PUBLIC_URL + "/images/LoginPage/facebook_login.svg"} />
+                    <img alt="login-options" src={process.env.PUBLIC_URL + "/images/LoginPage/google_login.svg"} />
                 </div>
             </form>
         );

@@ -113,7 +113,7 @@ class NavigationBar extends React.Component {
         id="navigation-bar"
       >
         <Link className="navbar-brand" to="/">
-          <img alt="page-logo" src="/Images/HomePage/logo.svg" />
+          <img alt="page-logo" src={process.env.PUBLIC_URL + "/images/HomePage/logo.svg"} />
         </Link>
         <button
           className="navbar-toggler"

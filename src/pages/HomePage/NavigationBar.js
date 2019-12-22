@@ -22,7 +22,7 @@ const NavigationBar = () => {
     return(
         <div id="navigation-bar-home" style={navBarStyles}>
             <div style={{marginRight: '40px'}}>
-                <img src="/Images/HomePage/logo.svg" alt="logo" height="70px" width="70px" />
+                <img src={process.env.PUBLIC_URL + "/images/HomePage/logo.svg"} alt="logo" height="70px" width="70px" />
             </div>
             <div id="button-section" style={buttonSectionStyles}>
             <div>
