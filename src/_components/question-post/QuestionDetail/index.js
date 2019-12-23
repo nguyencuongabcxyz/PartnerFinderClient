@@ -6,7 +6,7 @@ import { Popup } from "semantic-ui-react";
 
 import "./style.css";
 import PageLayout from "../../layout/PageLayout";
-import QuestionList from '../../dashboard/QuestionList'
+import QuestionList from "../../dashboard/QuestionList";
 import CustomEditor from "../../shared/CustomEditor";
 import { getPostedTimeAgo } from "../../../_helpers/dateTimeHelper";
 import { PostService } from "../../../_services/post";
@@ -19,9 +19,10 @@ import {
   addSubComment,
   addParentComment,
   switchLikeReactionOfMainComment,
-  switchLikeReactionOfSubComment,
+  switchLikeReactionOfSubComment
 } from "../../../_actions/comment";
 import Spinner from "../../Spinner";
+import ReportPostPopup from "../../ReportPostPopup";
 
 class QuestionDetail extends React.Component {
   editorConfig = {
@@ -38,7 +39,7 @@ class QuestionDetail extends React.Component {
     this.props.fetchOneQuestionPost(id);
     const isVoted = await PostService.checkIfUserVotedPost(id);
     this.setState({
-      isVoted,
+      isVoted
     });
     this.props.fetchManyComments(id);
   }
@@ -73,17 +74,17 @@ class QuestionDetail extends React.Component {
   updateUpvote = async id => {
     this.props.updateQuestionPostUpVote(id);
     this.setState(preState => ({
-      isVoted: !preState.isVoted,
+      isVoted: !preState.isVoted
     }));
   };
 
-  switchSubLikeReaction = (id) => {
+  switchSubLikeReaction = id => {
     this.props.switchLikeReactionOfSubComment(id);
-  }
+  };
 
-  switchMainLikeReaction = (id) => {
+  switchMainLikeReaction = id => {
     this.props.switchLikeReactionOfMainComment(id);
-  }
+  };
 
   renderSubComments = subComments => {
     return subComments.map(comment => {
@@ -116,7 +117,18 @@ class QuestionDetail extends React.Component {
               dangerouslySetInnerHTML={{ __html: content }}
             ></div>
             <div className="actions">
-              <Link className="reply" onClick={() => { this.switchSubLikeReaction(id) }}>{isLiked ? <i className="ui icon red thumbs up comment-like-icon"></i> : 'Like'}</Link>
+              <Link
+                className="reply"
+                onClick={() => {
+                  this.switchSubLikeReaction(id);
+                }}
+              >
+                {isLiked ? (
+                  <i className="ui icon red thumbs up comment-like-icon"></i>
+                ) : (
+                  "Like"
+                )}
+              </Link>
               <a
                 className="reply"
                 data-toggle="collapse"
@@ -127,7 +139,10 @@ class QuestionDetail extends React.Component {
               >
                 Reply
               </a>
-              <span className="comment-like-nums"><i className="ui icon teal thumbs up outline"></i>{like}</span>
+              <span className="comment-like-nums">
+                <i className="ui icon teal thumbs up outline"></i>
+                {like}
+              </span>
             </div>
           </div>
         </div>
@@ -148,7 +163,7 @@ class QuestionDetail extends React.Component {
         userId,
         like,
         isLiked,
-        postId,
+        postId
       } = comment;
       return (
         <div className="comment" key={id}>
@@ -168,7 +183,18 @@ class QuestionDetail extends React.Component {
               dangerouslySetInnerHTML={{ __html: content }}
             ></div>
             <div className="actions">
-              <Link className="reply" onClick={() => { this.switchMainLikeReaction(id) }}>{isLiked ? <i className="ui icon red thumbs up comment-like-icon"></i> : 'Like'}</Link>
+              <Link
+                className="reply"
+                onClick={() => {
+                  this.switchMainLikeReaction(id);
+                }}
+              >
+                {isLiked ? (
+                  <i className="ui icon red thumbs up comment-like-icon"></i>
+                ) : (
+                  "Like"
+                )}
+              </Link>
               <a
                 className="reply"
                 data-toggle="collapse"
@@ -179,7 +205,10 @@ class QuestionDetail extends React.Component {
               >
                 Reply
               </a>
-              <span className="comment-like-nums"><i className="ui icon teal thumbs up outline"></i>{like}</span>
+              <span className="comment-like-nums">
+                <i className="ui icon teal thumbs up outline"></i>
+                {like}
+              </span>
             </div>
           </div>
           <div className="comments qd-c-sub-comments">
@@ -287,11 +316,21 @@ class QuestionDetail extends React.Component {
                     <Popup
                       content={"Downvote this post"}
                       trigger={
-                        <button className="ui icon basic button teal">
-                          <i className="thumbs down icon"></i>
+                        <button className="ui icon basic button teal" data-toggle="modal" data-target={`#questionModal${id}`}>
+                          <i className="exclamation icon"></i>
                         </button>
                       }
                     />
+                    <div
+                      className="modal fade"
+                      id={`questionModal${id}`}
+                      tabIndex="-1"
+                      role="dialog"
+                      aria-labelledby="exampleModalLabel"
+                      aria-hidden="true"
+                    >
+                      <ReportPostPopup postId={id} userId={userId} />
+                    </div>
                   </div>
                 </div>
               </div>
@@ -323,7 +362,7 @@ class QuestionDetail extends React.Component {
             </div>
           </div>
           <div id="qd-right-section">
-              <QuestionList paginationSize={10} />
+            <QuestionList paginationSize={10} />
           </div>
         </div>
       </PageLayout>
@@ -341,15 +380,12 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  {
-    fetchOneQuestionPost,
-    fetchManyComments,
-    addSubComment,
-    addParentComment,
-    updateQuestionPostUpVote,
-    switchLikeReactionOfMainComment,
-    switchLikeReactionOfSubComment,
-  }
-)(QuestionDetail);
+export default connect(mapStateToProps, {
+  fetchOneQuestionPost,
+  fetchManyComments,
+  addSubComment,
+  addParentComment,
+  updateQuestionPostUpVote,
+  switchLikeReactionOfMainComment,
+  switchLikeReactionOfSubComment
+})(QuestionDetail);

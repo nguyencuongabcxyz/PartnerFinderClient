@@ -308,7 +308,7 @@ class FeedbackDetail extends React.Component {
                       content={"Downvote this post"}
                       trigger={
                         <button className="ui icon basic button teal">
-                          <i className="thumbs down icon"></i>
+                          <i className="exclamation icon"></i>
                         </button>
                       }
                     />

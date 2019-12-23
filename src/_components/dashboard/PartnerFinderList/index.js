@@ -157,11 +157,11 @@ class PartnerFinderList extends React.Component {
         >
           {this.props.count} results were found
         </h5>
-        <Spinner
+        {/* <Spinner
           condition={
             this.props.partnerFinders.length === 0 && !this.state.filterMode
           }
-        />
+        /> */}
         <div id="partner-finder-list">{this.renderPartnerFinderList()}</div>
         <Pagination
           callBack={this.fetchFindersPagination}
