@@ -7,7 +7,7 @@ const addOne = async (report) => {
 }
 
 const fetchAll = async (index, size) => {
-    const response = await apiClient.get('/reports');
+    const response = await apiClient.get(`/reports?index=${index}&&size=${size}`);
     return response.data;
 }
 

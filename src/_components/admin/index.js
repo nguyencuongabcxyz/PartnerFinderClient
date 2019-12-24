@@ -4,6 +4,7 @@ import { fetchManyFinders } from "../../_actions/partner-finder";
 import { Link } from "react-router-dom";
 import "./style.css";
 import PageLayout from "../layout/PageLayout";
+import ReportList from "./ReportList";
 
 class AdminPage extends Component {
   componentDidMount() {
@@ -41,13 +42,14 @@ class AdminPage extends Component {
       <PageLayout>
         <div className="admin-container">
           <div className="admin-left admin-section">
-            <h1>UserList</h1>
+            <h1 className="dashboard-title">User list</h1>
             <div className="ui middle aligned divided list">
               {this.renderUserList()}
             </div>
           </div>
           <div className="admin-right admin-section">
-            <h1>Report list</h1>
+            <h1 className="dashboard-title">Report list</h1>
+            <ReportList />
           </div>
         </div>
       </PageLayout>

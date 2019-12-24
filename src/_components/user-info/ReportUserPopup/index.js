@@ -1,9 +1,9 @@
 import React from "react";
-import {ReportService} from '../../_services/report'
+import {ReportService} from '../../../_services/report'
 import {toast} from 'react-toastify';
 import $ from 'jquery';
 
-class ReportPostPopup extends React.Component {
+class ReportUserPopup extends React.Component {
    state = {
        contentText : ''
    }
@@ -14,13 +14,12 @@ class ReportPostPopup extends React.Component {
        });
    }
 
-  sendRequest = async (postId, userId) => {
+  sendRequest = async (userId) => {
     const { contentText } = this.state;
     const report = {
-        postId: postId,
         content: contentText,
         receiverId: userId,
-        type: 1,
+        type: 0,
     }
     const {result} = await ReportService.addOne(report);
     if (result) {
@@ -28,11 +27,11 @@ class ReportPostPopup extends React.Component {
     }else {
       toast.success("Send request failed!");
     }
-    $(`#questionModal${postId}`).modal('hide');
+    $(`#userReportModal${userId}`).modal('hide');
   }
 
   render() {
-    const {postId, userId} = this.props;
+    const {userId} = this.props;
     return (
       <div className="modal-dialog" role="document">
         <div className="modal-content pf-popup-content">
@@ -46,7 +45,7 @@ class ReportPostPopup extends React.Component {
             <button
               className="ui orange button"
               onClick={() => {
-                this.sendRequest(postId, userId);
+                this.sendRequest(userId);
               }}
             >
               Send
@@ -61,4 +60,4 @@ class ReportPostPopup extends React.Component {
   }
 }
 
-export default ReportPostPopup;
+export default ReportUserPopup;

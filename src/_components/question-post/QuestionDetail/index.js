@@ -10,6 +10,7 @@ import QuestionList from "../../dashboard/QuestionList";
 import CustomEditor from "../../shared/CustomEditor";
 import { getPostedTimeAgo } from "../../../_helpers/dateTimeHelper";
 import { PostService } from "../../../_services/post";
+import {TokenService} from "../../../_services/token";
 import {
   fetchOneQuestionPost,
   updateQuestionPostUpVote
@@ -150,6 +151,12 @@ class QuestionDetail extends React.Component {
     });
   };
 
+  _checkIsOwnProfile = (userId) => {
+    const tokenUserId = TokenService.extractUserId();
+    if (userId === tokenUserId) return true;
+    return false;
+}
+
   renderComments = () => {
     const { comments } = this.props;
     return comments.map(comment => {
@@ -262,6 +269,8 @@ class QuestionDetail extends React.Component {
           <div id="qd-left-section">
             <div id="qd-question-detail">
               <Spinner condition={!this.props.questionPost} />
+              <div style={{display: 'flex', justifyContent: 'space-between'}}>
+                <div>
               <h2>{title}</h2>
               <div id="qd-label-section">
                 <div className="ui label">
@@ -276,6 +285,12 @@ class QuestionDetail extends React.Component {
                   Vote
                   <div className="detail">{upVote}</div>
                 </div>
+              </div>
+              </div>
+              <div>
+                <button className="ui red button">Close
+                </button>
+              </div>
               </div>
               <div
                 dangerouslySetInnerHTML={{ __html: content }}
@@ -313,14 +328,14 @@ class QuestionDetail extends React.Component {
                         </button>
                       }
                     />
-                    <Popup
+                    {this._checkIsOwnProfile(userId) || <Popup
                       content={"Downvote this post"}
                       trigger={
                         <button className="ui icon basic button teal" data-toggle="modal" data-target={`#questionModal${id}`}>
                           <i className="exclamation icon"></i>
                         </button>
                       }
-                    />
+                    />}
                     <div
                       className="modal fade"
                       id={`questionModal${id}`}

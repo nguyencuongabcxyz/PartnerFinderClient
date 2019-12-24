@@ -1,16 +1,6 @@
 import {ADD_ONE_REPORT, FETCH_ALL_REPORTS, DELETE_ONE_REPORT} from './type';
 import { ReportService } from '../../_services/report';
-
-export const createFeedbackPost = (feedbackPost) => async (dispatch) => {
-    var result = await PostService.createFeedbackPost(feedbackPost);
-    if (result){
-        dispatch({
-            type: CREATE_FEEDBACK_POST,
-            feedbackPost: result,
-        });
-        history.push(`/feedback-detail/${result.id}`)
-    }
-}
+import {toast} from 'react-toastify';
 
 export const addOne = (report) => async (dispatch) => {
     console.log(report);
@@ -23,12 +13,13 @@ export const addOne = (report) => async (dispatch) => {
     }
 }
 
-export const fetchAll = () => async (dispatch) => {
-    var data = await ReportService.fetchAll();
+export const fetchAll = (index, size) => async (dispatch) => {
+    var data = await ReportService.fetchAll(index, size);
     if(data) {
         dispatch({
             type: FETCH_ALL_REPORTS,
-            reports: data,
+            reports: data.reports,
+            count: data.count,
         });
     }
 }

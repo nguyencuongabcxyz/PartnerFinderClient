@@ -9,6 +9,7 @@ import {
   };
   
   export default (state = INITIAL_STATE, action) => {
+    const currentReports = state.reports;
     switch (action.type) {
       case FETCH_ALL_REPORTS:
         return {
@@ -19,7 +20,7 @@ import {
       case DELETE_ONE_REPORT:
         return {
           ...state,
-          reports: reports.filter(e => e.id !== action.id)
+          reports: currentReports.filter(e => e.id !== action.id)
         };
       default:
         return state;

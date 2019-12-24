@@ -9,6 +9,8 @@ import PageLayout from "../../layout/PageLayout";
 import FeedbackList from "../../dashboard/FeedbackList";
 import CustomEditor from "../../shared/CustomEditor";
 import { getPostedTimeAgo } from "../../../_helpers/dateTimeHelper";
+import ReportPostPopup from "../../ReportPostPopup";
+import {TokenService} from '../../../_services/token';
 
 import { fetchOneFeedbackPost, updateFeedbackPostUpVote } from "../../../_actions/post/feedback-post";
 import {
@@ -84,6 +86,12 @@ class FeedbackDetail extends React.Component {
   switchMainLikeReaction = (id) => {
     this.props.switchLikeReactionOfMainComment(id);
   }
+
+  _checkIsOwnProfile = (userId) => {
+    const tokenUserId = TokenService.extractUserId();
+    if (userId === tokenUserId) return true;
+    return false;
+}
 
   renderSubComments = subComments => {
     return subComments.map(comment => {
@@ -245,6 +253,8 @@ class FeedbackDetail extends React.Component {
           <div id="qd-left-section">
             <div id="qd-question-detail">
               <Spinner condition={!this.props.feedbackPost} />
+              <div style={{display: 'flex', justifyContent: 'space-between'}}>
+                <div>
               <h2>{title}</h2>
               <div id="qd-label-section">
                 <div className="ui label">
@@ -260,6 +270,12 @@ class FeedbackDetail extends React.Component {
                   <div className="detail">{upVote}</div>
                 </div>
                 <div className="ui orange label">{FEEDBACK_TYPE_TXT[type]}</div>
+              </div>
+              </div>
+              <div>
+                <button className="ui red button">Close
+                </button>
+              </div>
               </div>
               <div
                 dangerouslySetInnerHTML={{ __html: content }}
@@ -304,14 +320,24 @@ class FeedbackDetail extends React.Component {
                         </button>
                       }
                     />
-                    <Popup
+                    {this._checkIsOwnProfile(userId) || <Popup
                       content={"Downvote this post"}
                       trigger={
-                        <button className="ui icon basic button teal">
+                        <button className="ui icon basic button teal" data-toggle="modal" data-target={`#questionModal${id}`}>
                           <i className="exclamation icon"></i>
                         </button>
                       }
-                    />
+                    />}
+                    <div
+                      className="modal fade"
+                      id={`questionModal${id}`}
+                      tabIndex="-1"
+                      role="dialog"
+                      aria-labelledby="exampleModalLabel"
+                      aria-hidden="true"
+                    >
+                      <ReportPostPopup postId={id} userId={userId} />
+                    </div>
                   </div>
                 </div>
               </div>
@@ -343,7 +369,7 @@ class FeedbackDetail extends React.Component {
             </div>
           </div>
           <div id="qd-right-section">
-              <FeedbackList paginationSize={10}/>
+            <FeedbackList paginationSize={10} />
           </div>
         </div>
       </PageLayout>

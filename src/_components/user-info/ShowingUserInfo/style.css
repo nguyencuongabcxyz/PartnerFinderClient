@@ -118,6 +118,7 @@
 
 #top-info-wrapper {
     display: flex;
+    justify-content: space-between;
 }
 
 #completed-info {

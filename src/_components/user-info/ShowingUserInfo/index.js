@@ -7,6 +7,7 @@ import PageLayout from '../../layout/PageLayout';
 import { TokenService } from '../../../_services/token';
 import { UserService } from '../../../_services/user';
 import ScreenLoader from '../../shared/ScreenLoader';
+import ReportUserPopup from '../ReportUserPopup';
 
 class ShowingUserInfo extends React.Component {
 
@@ -82,18 +83,49 @@ class ShowingUserInfo extends React.Component {
     }
 
     _renderUpdateProfileBox = () => {
+        const userId = this.props.match.params.id;
         return this._checkIsOwnProfile() ? (
-            <div id="completed-info">
+          <div id="completed-info">
             <div className="card-body">
-                <h5 className="card-title">{this.state.completedInfoPercentage}% your information have been updated!</h5>
-                <div className="progress">
-                    <div className="progress-bar bg-danger" style={{width: `${this.state.completedInfoPercentage}%`}} role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-                <p className="card-text">Update your information to help you impress other people and get a high chance to meet your ideal partner</p>
-                <Link to={"/update-info"} className="right-btn btn btn-warning" >Update information</Link>
+              <h5 className="card-title">
+                {this.state.completedInfoPercentage}% your information have been
+                updated!
+              </h5>
+              <div className="progress">
+                <div
+                  className="progress-bar bg-danger"
+                  style={{ width: `${this.state.completedInfoPercentage}%` }}
+                  role="progressbar"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                ></div>
+              </div>
+              <p className="card-text">
+                Update your information to help you impress other people and get
+                a high chance to meet your ideal partner
+              </p>
+              <Link to={"/update-info"} className="right-btn btn btn-warning">
+                Update information
+              </Link>
             </div>
+          </div>
+        ) : (
+          <div>
+            <button className="ui red button" data-toggle="modal" data-target={`#userReportModal${userId}`}>
+              <i className="icon exclamation" /> Report
+            </button>
+            <div
+              className="modal fade"
+              id={`userReportModal${userId}`}
+              tabIndex="-1"
+              role="dialog"
+              aria-labelledby="exampleModalLabel"
+              aria-hidden="true"
+            >
+              <ReportUserPopup userId={userId} />
             </div>
-        ) : null;
+          </div>
+        );
     }
 
     render() {
