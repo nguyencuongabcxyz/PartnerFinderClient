@@ -55,6 +55,11 @@ const searchForQuestionPost = async (pattern) => {
     return response.data;
 }
 
+const closePost = async (id) => {
+    var reponse = await apiClient.put(`/posts/${id}/close`);
+    return reponse.data;
+}
+
 export const PostService = {
     getManyQuestionPosts,
     getManyFeedbackPosts,
@@ -66,5 +71,6 @@ export const PostService = {
     checkIfUserVotedPost,
     updateFeedbackPostUpVote,
     searchForFeedbackPost,
-    searchForQuestionPost
+    searchForQuestionPost,
+    closePost
 }

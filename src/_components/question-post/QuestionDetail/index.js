@@ -11,6 +11,8 @@ import CustomEditor from "../../shared/CustomEditor";
 import { getPostedTimeAgo } from "../../../_helpers/dateTimeHelper";
 import { PostService } from "../../../_services/post";
 import {TokenService} from "../../../_services/token";
+import DeleteConfirmPopup from "../../shared/DeleteConfirmPopup";
+import { toast } from "react-toastify";
 import {
   fetchOneQuestionPost,
   updateQuestionPostUpVote
@@ -32,7 +34,8 @@ class QuestionDetail extends React.Component {
   };
 
   state = {
-    isVoted: false
+    isVoted: false,
+    isClosed: false,
   };
 
   async componentDidMount() {
@@ -246,8 +249,19 @@ class QuestionDetail extends React.Component {
     });
   };
 
+  closePost = async (id) => {
+    const {result} = await PostService.closePost(id);
+    if(result) {
+      toast.success('Close successfully!');
+      this.setState({
+        isClosed: true,
+      })
+    }
+  }
+
   render() {
-    const { isVoted } = this.state;
+    const { isVoted, isClosed } = this.state;
+    const isAdmin = TokenService.extractUserRole() === "Admin"; 
     const upvoteButtonClass = isVoted
       ? "ui icon button red"
       : "ui icon basic button red";
@@ -287,10 +301,25 @@ class QuestionDetail extends React.Component {
                 </div>
               </div>
               </div>
-              <div>
-                <button className="ui red button">Close
-                </button>
-              </div>
+                {/* Close BUTTOONNNN */}
+                {isAdmin && (
+                  <div>
+                    <button
+                      className="ui red button"
+                      disabled={isClosed ? true : false}
+                      onClick={() => {
+                        this[`closePost${id}`].open();
+                      }}
+                    >
+                      Close
+                    </button>
+                    <DeleteConfirmPopup
+                      ref={el => (this[`closePost${id}`] = el)}
+                      id={id}
+                      action={this.closePost}
+                    />
+                  </div>
+                )}
               </div>
               <div
                 dangerouslySetInnerHTML={{ __html: content }}

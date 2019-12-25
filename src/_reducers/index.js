@@ -15,6 +15,7 @@ import partnershipReducer from "./partnership";
 import notificationReducer from "./notification";
 import conversationReducer from "./conversation";
 import reportReducer from './report';
+import adminUserReducer from './adminUser';
 
 const rootReducer = combineReducers({
   form: formReducer,
@@ -32,6 +33,7 @@ const rootReducer = combineReducers({
   partnerships: partnershipReducer,
   conversation: conversationReducer,
   report: reportReducer,
+  adminUser: adminUserReducer,
 });
 
 export default (state, action) =>

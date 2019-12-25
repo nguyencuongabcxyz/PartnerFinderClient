@@ -25,7 +25,7 @@ class Login extends React.Component {
                 document.getElementById('spinner-login').style.display = 'none';
                 break;
             case 403:
-                toast.info('Your account has been block!');
+                toast.info('Your account has been blocked!');
                 document.getElementById('spinner-login').style.display = 'none';
                 break;
             case 500:

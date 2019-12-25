@@ -1,0 +1,4 @@
+export const FETCH_ADMIN_USERS = 'FETCH_ADMIN_USERS';
+export const SEARCH_ADMIN_USERS = 'SEARCH_ADMIN_USERS';
+export const BLOCK_USER = 'BLOCK_USER';
+export const ACTIVE_USER = 'ACTIVE_USER';

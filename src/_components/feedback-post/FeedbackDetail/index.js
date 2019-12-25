@@ -23,11 +23,14 @@ import {
 import { PostService } from '../../../_services/post';
 import { FEEDBACK_TYPE_TXT } from "../../../_constants/common";
 import Spinner from "../../Spinner";
+import { toast } from "react-toastify";
+import DeleteConfirmPopup from "../../shared/DeleteConfirmPopup";
 
 class FeedbackDetail extends React.Component {
 
   state = {
     isVoted: false,
+    isClosed: false,
   }
 
   editorConfig = {
@@ -229,8 +232,19 @@ class FeedbackDetail extends React.Component {
       ); 
   }
 
+  closePost = async (id) => {
+    const {result} = await PostService.closePost(id);
+    if(result) {
+      toast.success('Close successfully!');
+      this.setState({
+        isClosed: true,
+      })
+    }
+  }
+
   render() {
-    const { isVoted } = this.state;
+    const { isVoted, isClosed } = this.state;
+    const isAdmin = TokenService.extractUserRole() === "Admin"; 
     const upVoteButtonClass = isVoted ? 'ui icon button red' : 'ui icon basic button red'
     const { feedbackPost } = this.props;
     const {
@@ -253,29 +267,48 @@ class FeedbackDetail extends React.Component {
           <div id="qd-left-section">
             <div id="qd-question-detail">
               <Spinner condition={!this.props.feedbackPost} />
-              <div style={{display: 'flex', justifyContent: 'space-between'}}>
+              <div style={{ display: "flex", justifyContent: "space-between" }}>
                 <div>
-              <h2>{title}</h2>
-              <div id="qd-label-section">
-                <div className="ui label">
-                  Asked
-                  <div className="detail">{getPostedTimeAgo(updatedDate)}</div>
+                  <h2>{title}</h2>
+                  <div id="qd-label-section">
+                    <div className="ui label">
+                      Asked
+                      <div className="detail">
+                        {getPostedTimeAgo(updatedDate)}
+                      </div>
+                    </div>
+                    <div className="ui label">
+                      Comments
+                      <div className="detail">{answerNumber}</div>
+                    </div>
+                    <div className="ui label">
+                      Vote
+                      <div className="detail">{upVote}</div>
+                    </div>
+                    <div className="ui orange label">
+                      {FEEDBACK_TYPE_TXT[type]}
+                    </div>
+                  </div>
                 </div>
-                <div className="ui label">
-                  Comments
-                  <div className="detail">{answerNumber}</div>
-                </div>
-                <div className="ui label">
-                  Vote
-                  <div className="detail">{upVote}</div>
-                </div>
-                <div className="ui orange label">{FEEDBACK_TYPE_TXT[type]}</div>
-              </div>
-              </div>
-              <div>
-                <button className="ui red button">Close
-                </button>
-              </div>
+                {/* Close BUTTOONNNN */}
+                {isAdmin && (
+                  <div>
+                    <button
+                      className="ui red button"
+                      disabled={isClosed ? true : false}
+                      onClick={() => {
+                        this[`closePost${id}`].open();
+                      }}
+                    >
+                      Close
+                    </button>
+                    <DeleteConfirmPopup
+                      ref={el => (this[`closePost${id}`] = el)}
+                      id={id}
+                      action={this.closePost}
+                    />
+                  </div>
+                )}
               </div>
               <div
                 dangerouslySetInnerHTML={{ __html: content }}
@@ -320,14 +353,20 @@ class FeedbackDetail extends React.Component {
                         </button>
                       }
                     />
-                    {this._checkIsOwnProfile(userId) || <Popup
-                      content={"Downvote this post"}
-                      trigger={
-                        <button className="ui icon basic button teal" data-toggle="modal" data-target={`#questionModal${id}`}>
-                          <i className="exclamation icon"></i>
-                        </button>
-                      }
-                    />}
+                    {this._checkIsOwnProfile(userId) || (
+                      <Popup
+                        content={"Downvote this post"}
+                        trigger={
+                          <button
+                            className="ui icon basic button teal"
+                            data-toggle="modal"
+                            data-target={`#questionModal${id}`}
+                          >
+                            <i className="exclamation icon"></i>
+                          </button>
+                        }
+                      />
+                    )}
                     <div
                       className="modal fade"
                       id={`questionModal${id}`}
