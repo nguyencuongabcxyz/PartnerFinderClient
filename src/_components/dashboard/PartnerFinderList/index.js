@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import { fetchManyFinders } from "../../../_actions/partner-finder";
 import { Dropdown } from "semantic-ui-react";
 import "./style.css";
-import Spinner from "../../Spinner";
 import Pagination from "../../shared/pagination";
 import LocationInput from "../../shared/LocationInput";
 

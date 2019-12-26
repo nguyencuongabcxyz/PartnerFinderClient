@@ -23,6 +23,21 @@
 
 }
 
+@media(max-width: 1010px){
+    #user-info {
+        flex-direction: column;
+    }
+    .ui-left-section {
+        width: 100%;
+        margin-bottom: 30px;
+    }
+    
+    .ui-right-section {
+        width: 100%;
+    
+    }
+}
+
 
 .square-box{
     position: relative;

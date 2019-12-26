@@ -84,7 +84,7 @@ class AdminPage extends Component {
                 placeholder="Search..."
                 onKeyPress={event => {
                   if (event.key === "Enter") {
-                    if (event.target.value == "") return false;
+                    if (event.target.value === "") return false;
                     this.search(event.target.value);
                   }
                 }}

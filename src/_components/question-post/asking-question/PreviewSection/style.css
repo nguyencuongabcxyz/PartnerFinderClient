@@ -14,3 +14,10 @@
     color: #4f4f4f;
     font-family: 'Roboto', sans-serif;
 }
+
+@media(max-width: 930px){
+    .ps-preview-content img{
+        max-width: 450px;
+        max-height: 500px;
+    }
+}
